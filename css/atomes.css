@@ -112,10 +112,6 @@
   color: var(--color-white);
 }
 
-.icon--white {
-  color: var(--color-white);
-}
-
 .badge {
   display: inline-flex;
   align-items: center;
