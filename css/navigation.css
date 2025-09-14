@@ -102,27 +102,38 @@
 
 @media (max-width: 1024px) {
 
-  .navbar { backdrop-filter: none; }
+  .navbar {
+    backdrop-filter: none;
+    z-index: 9999;
+  }
 
   .navbar__toggle {
     display: flex;
   }
-  .navbar__menu {
+
+  .navbar__menu--desktop {
+    display: none;
+  }
+
+  .navbar__menu--mobile {
     position: fixed;
-    top: -100vh;
+    top: -100%;
     left: 0;
     width: 100%;
     background: var(--color-white);
     flex-direction: column;
-    transition: top var(--transition-very-slow);
-    z-index: 1000;
+    transition: top 0.4s ease-in-out;
+    z-index: 1;
     gap: var(--space-xl);
     padding: var(--space-xl);
     box-shadow: var(--shadow-lg);
     text-align: center;
+    display: flex;
   }
-  .navbar__menu--active {
+
+  .navbar__menu--mobile.navbar__menu--active {
     top: var(--header-height);
+    z-index: 1;
   }
 }
 

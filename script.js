@@ -32,7 +32,7 @@
 
   const navbar = $('.navbar');
   const navbarToggle = $('.navbar__toggle');
-  const navbarMenu = $('.navbar__menu');
+  const navbarMenu = $('.navbar__menu--mobile');
   const navbarLinks = $$('.navbar__link');
 
                 // Toggle menu mobile
@@ -53,7 +53,7 @@
                   }
                 });
 
-                // Fermer le menu en cliquant sur un lien
+                // Fermer le menu en cliquant sur un lien ou un bouton
                 navbarLinks.forEach(link => {
                   link.addEventListener('click', () => {
                     navbarToggle.setAttribute('aria-expanded', 'false');
@@ -61,12 +61,31 @@
                   });
                 });
 
+                // Fermer le menu en cliquant sur le bouton CTA
+                const navbarBtn = navbarMenu.querySelector('.navbar__btn');
+                if (navbarBtn) {
+                  navbarBtn.addEventListener('click', () => {
+                    navbarToggle.setAttribute('aria-expanded', 'false');
+                    navbarMenu.classList.remove('navbar__menu--active');
+                  });
+                }
+
                 // Fermer le menu avec la touche Escape
                 document.addEventListener('keydown', (e) => {
                   if (e.key === 'Escape' && navbarMenu.classList.contains('navbar__menu--active')) {
                     navbarToggle.setAttribute('aria-expanded', 'false');
                     navbarMenu.classList.remove('navbar__menu--active');
                     navbarToggle.focus();
+                  }
+                });
+
+                // Fermer le menu en cliquant n'importe où
+                document.addEventListener('click', (e) => {
+                  if (navbarMenu.classList.contains('navbar__menu--active') &&
+                      !navbarMenu.contains(e.target) &&
+                      !navbarToggle.contains(e.target)) {
+                    navbarToggle.setAttribute('aria-expanded', 'false');
+                    navbarMenu.classList.remove('navbar__menu--active');
                   }
                 });
               }
