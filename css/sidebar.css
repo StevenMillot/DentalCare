@@ -33,7 +33,6 @@
   background: var(--color-secondary);
   color: var(--color-white);
   transform: translateY(-2px) scale(1.08);
-  outline: 2px solid var(--color-secondary);
 }
 .sidebar__action i {
   pointer-events: none;
