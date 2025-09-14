@@ -1,0 +1,40 @@
+/* ==========================================================================
+   MAIN CSS - Fichier principal
+   Import de tous les fichiers CSS modulaires
+   ========================================================================== */
+
+/* Variables et système de design */
+@import 'variables.css';
+
+/* Reset et styles de base */
+@import 'reset.css';
+
+/* Layout et classes utilitaires */
+@import 'layout.css';
+
+/* Typographie */
+@import 'typography.css';
+
+/* Atomes réutilisables */
+@import 'atomes.css';
+
+/* Navigation */
+@import 'navigation.css';
+
+/* Section Hero */
+@import 'hero.css';
+
+/* Sections principales */
+@import 'sections.css';
+
+/* Contact et formulaires */
+@import 'contact.css';
+
+/* Footer */
+@import 'footer.css';
+
+/* Sidebar actions */
+@import 'sidebar.css';
+
+/* Utilitaires et accessibilité */
+@import 'utilities.css';

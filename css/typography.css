@@ -1,0 +1,50 @@
+/* ========================================================================== */
+/* TYPOGRAPHY CSS - Styles de texte                                          */
+/* ========================================================================== */
+
+.heading {
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-dark);
+}
+
+.heading--xl {
+  font-size: var(--font-size-4xl);
+}
+
+.heading--lg {
+  font-size: var(--font-size-3xl);
+}
+
+.heading--md {
+  font-size: var(--font-size-2xl);
+}
+
+.heading--sm {
+  font-size: var(--font-size-xl);
+}
+
+.text {
+  font-size: var(--font-size-base);
+}
+
+.text--lg {
+  font-size: var(--font-size-lg);
+}
+
+.text--sm {
+  font-size: var(--font-size-sm);
+}
+
+.subtitle {
+  color: var(--color-light);
+  margin-top: var(--space-sm);
+}
+
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}

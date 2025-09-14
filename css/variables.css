@@ -1,0 +1,50 @@
+/* ========================================================================== */
+/* VARIABLES CSS - Système de design                                        */
+/* ========================================================================== */
+
+:root {
+  /* Colors */
+  --color-primary: #00d4aa;
+  --color-secondary: #4aa3eb;
+  --color-dark: #2d3748;
+  --color-light: #718096;
+  --color-white: #ffffff;
+  --color-bg: #f7fafc;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  /* Typography */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+
+  /* Layout */
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+  --container-max: 1200px;
+  --header-height: 70px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --transition: 0.2s ease;
+  --transition-slow: 0.3s ease;
+  --transition-very-slow: 0.5s ease;
+}
