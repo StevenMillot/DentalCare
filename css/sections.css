@@ -12,6 +12,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: var(--space-xl);
+  align-items: stretch;
 }
 
 .traitements__link {
@@ -20,6 +21,9 @@
 
 .traitement-card {
   padding: var(--space-xl);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .traitement-card__icon {
@@ -48,6 +52,7 @@
 
 .traitement-card__list {
   list-style: none;
+  flex-grow: 1;
 }
 
 .traitement-card__item {
