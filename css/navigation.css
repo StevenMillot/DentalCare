@@ -1,0 +1,146 @@
+/* ========================================================================== */
+/* NAVIGATION CSS - Styles de la navigation                                  */
+/* ========================================================================== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1500;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+}
+
+.navbar__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar__logo {
+  align-items: center;
+  display: flex;
+  color: var(--color-primary);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  padding-right: 30px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.navbar__logo:hover {
+  transform: scale(1.05);
+}
+
+.navbar__logo-img {
+  margin-right: var(--space-sm);
+  width: 50px;
+  height: 50px;
+}
+
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: var(--space-xl);
+}
+
+.navbar__link {
+  color: var(--color-dark);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+  position: relative;
+  padding: var(--space-sm) 0;
+}
+
+.navbar__link:hover {
+  color: var(--color-primary);
+}
+
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: width var(--transition);
+}
+
+.navbar__link:hover::after {
+  width: 100%;
+}
+
+.navbar__btn {
+  padding: var(--space-sm) var(--space-md);
+}
+
+.navbar__toggle {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-sm);
+  gap: 4px;
+}
+
+.navbar__toggle-line {
+  width: 25px;
+  height: 3px;
+  background: var(--color-dark);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+@media (max-width: 1024px) {
+
+  .navbar { backdrop-filter: none; }
+
+  .navbar__toggle {
+    display: flex;
+  }
+  .navbar__menu {
+    position: fixed;
+    top: -100vh;
+    left: 0;
+    width: 100%;
+    background: var(--color-white);
+    flex-direction: column;
+    transition: top var(--transition-very-slow);
+    z-index: 1000;
+    gap: var(--space-xl);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+  }
+  .navbar__menu--active {
+    top: var(--header-height);
+  }
+}
+
+/* ========================================================================== */
+/* SCROLL OFFSET - Décalage pour les ancres avec header fixe                 */
+/* ========================================================================== */
+
+/* Décalage pour toutes les sections avec ancres */
+#accueil,
+#traitements,
+#equipe,
+#cabinet,
+#technologies,
+#contact,
+#doctolib {
+  scroll-margin-top: var(--header-height);
+}
+
+#map {
+  scroll-margin-top: calc(var(--header-height) + 20px);
+}

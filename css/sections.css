@@ -1,0 +1,244 @@
+/* ========================================================================== */
+/* SECTIONS CSS - Sections principales                                       */
+/* ========================================================================== */
+
+/* TRAITEMENTS SECTION */
+.traitements__header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.traitements__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-xl);
+}
+
+.traitements__link {
+  text-decoration: none;
+}
+
+.traitement-card {
+  padding: var(--space-xl);
+}
+
+.traitement-card__icon {
+  width: 80px;
+  height: 80px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-lg);
+}
+
+.traitement-card__title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  color: var(--color-dark);
+}
+
+.traitement-card__description {
+  color: var(--color-light);
+  margin-bottom: var(--space-lg);
+  line-height: 1.6;
+}
+
+.traitement-card__list {
+  list-style: none;
+}
+
+.traitement-card__item {
+  padding: var(--space-xs) 0;
+  color: var(--color-light);
+  position: relative;
+  padding-left: var(--space-lg);
+}
+
+.traitement-card__item::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+/* TEAM SECTION */
+.team__header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.team__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+}
+
+.team-member {
+  text-align: center;
+  padding: var(--space-xl);
+}
+
+.team-member__photo {
+  width: 120px;
+  height: 120px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-lg);
+}
+
+.team-member__name {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  color: var(--color-dark);
+}
+
+.team-member__specialty {
+  color: var(--color-primary);
+  font-weight: 500;
+  margin-bottom: var(--space-md);
+}
+
+.team-member__description {
+  color: var(--color-light);
+  margin-bottom: var(--space-lg);
+  line-height: 1.6;
+}
+
+.team-member__social {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.team-member__social-link {
+  width: 40px;
+  height: 40px;
+  background: var(--color-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-light);
+  transition: var(--transition);
+  text-decoration: none !important;
+}
+
+.team-member__social-link:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.team-member__diplomas {
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md);
+  background: var(--color-bg);
+  border-radius: var(--border-radius);
+}
+
+.team-member__diplomas h4 {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.team-member__diplomas ul {
+  list-style: none;
+  margin: 0;
+}
+
+.team-member__diplomas li {
+  font-size: var(--font-size-sm);
+  color: var(--color-light);
+  padding: var(--space-xs) 0;
+  position: relative;
+  padding-left: var(--space-md);
+}
+
+.team-member__diplomas li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+/* CABINET SECTION */
+.cabinet__header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.cabinet__content {
+  display: flex;
+  justify-content: center;
+}
+
+.cabinet__placeholder {
+  text-align: center;
+  max-width: 600px;
+}
+
+.cabinet__placeholder h3 {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  color: var(--color-dark);
+}
+
+.cabinet__placeholder p {
+  color: var(--color-light);
+  line-height: 1.6;
+  margin-bottom: var(--space-md);
+}
+
+/* TECHNOLOGIES SECTION */
+.technologies__header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.technologies__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-xl);
+}
+
+.tech-item {
+  text-align: center;
+  padding: var(--space-xl);
+}
+
+.tech-item__icon {
+  width: 80px;
+  height: 80px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-lg);
+}
+
+.tech-item__title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  color: var(--color-dark);
+}
+
+.tech-item__description {
+  color: var(--color-light);
+  line-height: 1.6;
+}
