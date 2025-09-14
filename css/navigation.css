@@ -3,12 +3,6 @@
 /* ========================================================================== */
 
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
   z-index: 1500;
   height: var(--header-height);
   display: flex;
@@ -16,20 +10,14 @@
 }
 
 .navbar__container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
 }
 
 .navbar__logo {
-  align-items: center;
-  display: flex;
   color: black;
   font-size: var(--font-size-xl);
   font-weight: 700;
   padding-right: 30px;
-  text-decoration: none;
   transition: var(--transition);
 }
 
