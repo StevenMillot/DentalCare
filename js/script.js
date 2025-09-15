@@ -1,8 +1,3 @@
-/**
- * Cabinet DR Raphaël BROCHAND - JavaScript ultra-optimisé
- * Optimisé pour les performances critiques (FCP/LCP)
- */
-
 (function() {
   'use strict';
 
@@ -10,10 +5,32 @@
   // UTILITAIRES LÉGERS
   // ============================================================================
 
+  /**
+   * Sélecteur d'élément unique optimisé
+   * @param {string} selector - Sélecteur CSS
+   * @returns {Element|null} Premier élément correspondant ou null
+   * @example
+   * const navbar = $('.navbar');
+   */
   const $ = (selector) => document.querySelector(selector);
+
+  /**
+   * Sélecteur d'éléments multiples optimisé
+   * @param {string} selector - Sélecteur CSS
+   * @returns {NodeList} Liste des éléments correspondants
+   * @example
+   * const cards = $$('.card');
+   */
   const $$ = (selector) => document.querySelectorAll(selector);
 
-  // Debounce optimisé
+  /**
+   * Fonction debounce optimisée pour limiter les appels fréquents
+   * @param {Function} func - Fonction à débouncer
+   * @param {number} wait - Délai d'attente en millisecondes
+   * @returns {Function} Fonction débouncée
+   * @example
+   * const debouncedScroll = debounce(handleScroll, 100);
+   */
   function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -22,7 +39,12 @@
     };
   }
 
-  // Fonction pour reporter l'exécution après le rendu critique
+  /**
+   * Reporter l'exécution après le rendu critique pour optimiser les performances
+   * @param {Function} fn - Fonction à exécuter de manière différée
+   * @example
+   * defer(() => initAnimations());
+   */
   function defer(fn) {
     if (window.requestIdleCallback) {
       requestIdleCallback(fn, { timeout: 100 });
@@ -35,6 +57,13 @@
   // NAVIGATION - Initialisation différée
   // ============================================================================
 
+  /**
+   * Initialise la navigation mobile et les effets de scroll
+   * Gère le menu hamburger, la navigation sticky et l'accessibilité
+   * @function initNavigation
+   * @example
+   * initNavigation();
+   */
   function initNavigation() {
     const navbar = $('.navbar');
     const navbarToggle = $('.navbar__toggle');
@@ -105,6 +134,13 @@
   // SMOOTH SCROLL - Initialisation différée
   // ============================================================================
 
+  /**
+   * Initialise le scroll fluide pour les liens d'ancrage
+   * Ajoute un offset pour compenser la hauteur de la navbar fixe
+   * @function initSmoothScroll
+   * @example
+   * initSmoothScroll();
+   */
   function initSmoothScroll() {
     $$('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
@@ -126,6 +162,13 @@
   // FORMULAIRE - Initialisation différée
   // ============================================================================
 
+  /**
+   * Initialise la gestion du formulaire de prise de rendez-vous
+   * Inclut la validation en temps réel et la gestion des erreurs
+   * @function initForm
+   * @example
+   * initForm();
+   */
   function initForm() {
     const appointmentForm = $('#appointmentForm');
     if (!appointmentForm) return;
@@ -142,6 +185,11 @@
     // Soumission du formulaire
     appointmentForm.addEventListener('submit', handleFormSubmit);
 
+    /**
+     * Valide un champ de formulaire et affiche les erreurs
+     * @param {Event} e - Événement de blur
+     * @private
+     */
     function validateField(e) {
       const field = e.target;
       const isValid = field.checkValidity();
@@ -153,6 +201,11 @@
       }
     }
 
+    /**
+     * Efface les erreurs d'un champ lors de la saisie
+     * @param {Event} e - Événement d'input
+     * @private
+     */
     function clearFieldError(e) {
       const field = e.target;
       if (field.value.trim()) {
@@ -160,6 +213,11 @@
       }
     }
 
+    /**
+     * Gère la soumission du formulaire avec validation et feedback
+     * @param {Event} e - Événement de submit
+     * @private
+     */
     function handleFormSubmit(e) {
       e.preventDefault();
 
@@ -191,6 +249,13 @@
   // NOTIFICATIONS - Fonction globale
   // ============================================================================
 
+  /**
+   * Affiche une notification toast avec animation
+   * @param {string} message - Message à afficher
+   * @param {string} [type='info'] - Type de notification ('info' ou 'success')
+   * @example
+   * showNotification('Rendez-vous confirmé !', 'success');
+   */
   function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
     notification.className = 'notification';
@@ -243,6 +308,12 @@
     });
   }
 
+  /**
+   * Ferme une notification avec animation
+   * @param {HTMLElement} notification - Élément de notification à fermer
+   * @example
+   * closeNotification(notificationElement);
+   */
   function closeNotification(notification) {
     notification.style.transform = 'translateX(400px)';
     setTimeout(() => {
@@ -256,6 +327,13 @@
   // ANIMATIONS - Initialisation différée
   // ============================================================================
 
+  /**
+   * Initialise les animations d'apparition des éléments au scroll
+   * Utilise IntersectionObserver pour optimiser les performances
+   * @function initAnimations
+   * @example
+   * initAnimations();
+   */
   function initAnimations() {
     if (!('IntersectionObserver' in window)) {
       const elements = $$('.traitement-card, .team-member, .contact__item, .cabinet__placeholder');
@@ -291,6 +369,12 @@
   // EFFETS HOVER - Initialisation différée
   // ============================================================================
 
+  /**
+   * Initialise les effets de survol sur les cartes et icônes
+   * @function initHoverEffects
+   * @example
+   * initHoverEffects();
+   */
   function initHoverEffects() {
     // Effet sur les cartes
     $$('.card').forEach(card => {
@@ -317,6 +401,13 @@
   // RESPONSIVE - Initialisation différée
   // ============================================================================
 
+  /**
+   * Initialise la gestion responsive du menu mobile
+   * Ferme automatiquement le menu sur les écrans larges
+   * @function initResponsive
+   * @example
+   * initResponsive();
+   */
   function initResponsive() {
     const navbarToggle = $('.navbar__toggle');
     const navbarMenu = $('.navbar__menu--mobile');
@@ -337,6 +428,13 @@
   // ACCESSIBILITÉ - Initialisation différée
   // ============================================================================
 
+  /**
+   * Initialise les améliorations d'accessibilité
+   * Ajoute les attributs nécessaires pour les liens externes
+   * @function initAccessibility
+   * @example
+   * initAccessibility();
+   */
   function initAccessibility() {
     // Amélioration de l'accessibilité des liens
     $$('a[href^="mailto:"], a[href^="tel:"]').forEach(link => {
@@ -348,6 +446,13 @@
   // PERFORMANCE - Initialisation différée
   // ============================================================================
 
+  /**
+   * Initialise les optimisations de performance
+   * Configure le lazy loading des images
+   * @function initPerformance
+   * @example
+   * initPerformance();
+   */
   function initPerformance() {
     // Lazy loading des images
     if ('IntersectionObserver' in window) {
@@ -370,8 +475,21 @@
   // ANALYTICS - Initialisation différée
   // ============================================================================
 
+  /**
+   * Initialise le tracking Google Analytics
+   * Enregistre les interactions importantes (CTA, formulaires)
+   * @function initAnalytics
+   * @example
+   * initAnalytics();
+   */
   function initAnalytics() {
-    // Tracking des interactions importantes
+    /**
+     * Envoie un événement à Google Analytics
+     * @param {string} category - Catégorie de l'événement
+     * @param {string} action - Action effectuée
+     * @param {string} label - Libellé de l'événement
+     * @private
+     */
     function trackEvent(category, action, label) {
       if (typeof gtag !== 'undefined') {
         gtag('event', action, {
@@ -401,6 +519,13 @@
   // COPYRIGHT - Initialisation immédiate (critique)
   // ============================================================================
 
+  /**
+   * Met à jour l'année de copyright automatiquement
+   * Fonction critique exécutée immédiatement
+   * @function updateCopyright
+   * @example
+   * updateCopyright();
+   */
   function updateCopyright() {
     const currentYear = new Date().getFullYear();
     const copyrightYearElements = $$('.copyright-year');
@@ -413,7 +538,13 @@
   // INITIALISATION ULTRA-OPTIMISÉE POUR PERFORMANCES
   // ============================================================================
 
-  // Initialisation critique immédiate (ne bloque pas le rendu)
+  /**
+   * Initialise les fonctionnalités critiques immédiatement
+   * Ne bloque pas le rendu initial de la page
+   * @function initCritical
+   * @example
+   * initCritical();
+   */
   function initCritical() {
     // Seul le copyright est critique pour le rendu initial
     updateCopyright();
@@ -425,7 +556,13 @@
     }
   }
 
-  // Initialisation des fonctionnalités non-critiques (différée)
+  /**
+   * Initialise les fonctionnalités non-critiques de manière différée
+   * Utilise requestIdleCallback pour optimiser les performances
+   * @function initNonCritical
+   * @example
+   * initNonCritical();
+   */
   function initNonCritical() {
     defer(() => {
       initNavigation();
@@ -454,6 +591,12 @@
           const start = window.scrollY || window.pageYOffset;
           const duration = 700;
           const startTime = performance.now();
+
+          /**
+           * Animation de scroll fluide vers le haut
+           * @param {number} now - Timestamp actuel
+           * @private
+           */
           function scrollStep(now) {
             const elapsed = now - startTime;
             const progress = Math.min(elapsed / duration, 1);
@@ -468,7 +611,13 @@
     });
   }
 
-  // Démarrage ultra-optimisé pour mobile
+  /**
+   * Point d'entrée principal de l'application
+   * Initialise les fonctionnalités critiques puis les non-critiques
+   * @function startApp
+   * @example
+   * startApp();
+   */
   function startApp() {
     // Initialisation critique immédiate
     initCritical();
