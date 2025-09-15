@@ -1,6 +1,9 @@
 {
-  "name": "Raphaël Brochand",
-  "short_name": "Raphaël Brochand",
+  "name": "Cabinet Dr Raphaël BROCHAND - Chirurgien-Dentiste",
+  "short_name": "Dr BROCHAND",
+  "description": "Cabinet dentaire du Dr Raphaël BROCHAND à Châtenay-Malabry. Chirurgie orale, parodontologie, implantologie.",
+  "start_url": "/DentalCare/",
+  "scope": "/DentalCare/",
   "icons": [
     {
       "src": "web-app-manifest-192x192.png",
@@ -17,5 +20,7 @@
   ],
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
-  "display": "standalone"
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "lang": "fr"
 }
