@@ -18,12 +18,20 @@
 
     <!-- Optimisations critiques pour FCP/LCP -->
     <link rel="preload" href="css/main.css" as="style">
-    <link rel="preload" href="assets/Logo - Raphael Brochand.png" as="image">
+    <link rel="preload" href="assets/Logo-B - Raphael Brochand.svg" as="image">
     <meta name="description" content="Cabinet dentaire du Dr Raphaël BROCHAND à Châtenay-Malabry. Chirurgie orale, parodontologie, implantologie. Technologies modernes, équipe expérimentée. Prise de rendez-vous en ligne.">
     <meta name="keywords" content="dentiste, chirurgien-dentiste, Châtenay-Malabry, chirurgie orale, parodontologie, implantologie, cabinet dentaire">
     <meta name="author" content="Dr Raphaël BROCHAND">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dr-brochand.fr">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <!-- Open Graph -->
     <meta property="og:title" content="Cabinet Dr Raphaël BROCHAND - Chirurgien-Dentiste">
     <meta property="og:description" content="Cabinet dentaire du Dr Raphaël BROCHAND à Châtenay-Malabry. Chirurgie orale, parodontologie, implantologie.">
     <meta property="og:type" content="website">
@@ -31,6 +39,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Cabinet Dr Raphaël BROCHAND - Chirurgien-Dentiste">
     <meta name="twitter:description" content="Cabinet dentaire du Dr Raphaël BROCHAND à Châtenay-Malabry">
+
     <!-- CSS critique en premier -->
     <link rel="stylesheet" href="css/main.css">
 
@@ -44,35 +53,35 @@
 
     <!-- CSS critique inline pour FCP/LCP maximal -->
     <style>
-      /* Reset critique minimal */
-      * { box-sizing: border-box; }
-      body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    /* Reset critique minimal */
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
 
-      /* Hero critique - LCP optimisé */
-      .hero {
+    /* Hero critique - LCP optimisé */
+    .hero {
         min-height: 100vh;
         display: flex;
         align-items: center;
         background: var(--gradient-primary);
         will-change: auto;
-      }
-      .hero__title {
+    }
+    .hero__title {
         font-size: 3rem;
         font-weight: 700;
         color: white;
         margin: 0;
         opacity: 1;
         line-height: 1.2;
-      }
-      .hero__subtitle {
+    }
+    .hero__subtitle {
         font-size: 1.2rem;
         color: rgba(255,255,255,0.9);
         margin: 1rem 0;
         line-height: 1.4;
-      }
+    }
 
-      /* Navigation critique */
-      .navbar {
+    /* Navigation critique */
+    .navbar {
         position: fixed;
         top: 0;
         left: 0;
@@ -80,16 +89,16 @@
         z-index: 1000;
         background: rgba(255,255,255,0.95);
         backdrop-filter: blur(10px);
-      }
-      .navbar__container {
+    }
+    .navbar__container {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 1rem;
         max-width: 1200px;
         margin: 0 auto;
-      }
-      .navbar__logo {
+    }
+    .navbar__logo {
         display: flex;
         align-items: center;
         gap: 0.5rem;
@@ -97,10 +106,10 @@
         color: var(--color-primary);
         font-weight: 600;
         font-size: 1.1rem;
-      }
+    }
 
-      /* Sidebar optimisée - sans collision footer */
-      .sidebar {
+    /* Sidebar optimisée - sans collision footer */
+    .sidebar {
         position: fixed;
         right: 2vw;
         bottom: 4vw;
@@ -113,8 +122,8 @@
         /* Espace pour éviter le débordement */
         padding: 10px;
         margin: -10px;
-      }
-      .sidebar__action {
+    }
+    .sidebar__action {
         background: var(--color-primary);
         color: var(--color-white);
         width: 52px;
@@ -133,40 +142,40 @@
         /* Éviter le débordement */
         position: relative;
         overflow: visible;
-      }
-      .sidebar__action:hover,
-      .sidebar__action:focus {
+    }
+    .sidebar__action:hover,
+    .sidebar__action:focus {
         background: var(--color-secondary);
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      }
-      .sidebar__action i {
+    }
+    .sidebar__action i {
         pointer-events: none;
-      }
+    }
 
-      /* Responsive critique optimisé */
-      @media (max-width: 768px) {
+    /* Responsive critique optimisé */
+    @media (max-width: 768px) {
         .hero__title { font-size: 2rem; }
         .hero__subtitle { font-size: 1rem; }
         .sidebar {
-          right: 3vw;
-          bottom: 3vw;
-          gap: 0.7rem;
-          padding: 8px;
-          margin: -8px;
+            right: 3vw;
+            bottom: 3vw;
+            gap: 0.7rem;
+            padding: 8px;
+            margin: -8px;
         }
         .sidebar__action {
-          width: 44px;
-          height: 44px;
-          font-size: 1.2rem;
+            width: 44px;
+            height: 44px;
+            font-size: 1.2rem;
         }
         .navbar__container { padding: 0.8rem; }
-      }
+    }
 
-      /* Optimisations de performance */
-      .hero, .navbar, .sidebar {
+    /* Optimisations de performance */
+    .hero, .navbar, .sidebar {
         contain: layout style paint;
-      }
+    }
     </style>
 </head>
 <body>
@@ -175,12 +184,12 @@
         <div class="container navbar__container">
             <a href="#accueil" class="navbar__logo">
                 <img
-                    src="assets/Logo - Raphael Brochand.png"
+                    src="assets/Logo-B - Raphael Brochand.svg"
                     alt="Logo du cabinet Dr Raphaël BROCHAND"
                     class="navbar__logo-img"
                     aria-hidden="true"
-                    width="50px"
-                    height="50px"
+                    width="40px"
+                    height="40px"
                 >
                 <span>Dr Raphaël BROCHAND</span>
             </a>
@@ -739,6 +748,6 @@
         </button>
     </div>
 
-    <script src="script-ultra.js" defer></script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>
