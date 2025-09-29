@@ -9,7 +9,7 @@
 
 .hero__container {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 3fr 1fr;
   gap: var(--space-2xl);
   align-items: center;
   padding: calc(var(--header-height) + var(--space-md)) var(--space-xl) var(--space-2xl);
