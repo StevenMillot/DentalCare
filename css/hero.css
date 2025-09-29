@@ -9,7 +9,7 @@
 
 .hero__container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: var(--space-2xl);
   align-items: center;
   padding: calc(var(--header-height) + var(--space-md)) var(--space-xl) var(--space-2xl);
@@ -35,7 +35,6 @@
 
 .hero__subtitle--secondary {
   font-size: var(--font-size-base);
-  margin-top: var(--space-lg);
   opacity: 0.9;
 }
 
@@ -43,9 +42,8 @@
 .hero__values {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  padding: var(--space-xl);
+  padding: var(--space-md) var(--space-md) var(--space-lg);
   border-radius: var(--border-radius-lg);
-  margin-bottom: var(--space-xl);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -59,7 +57,7 @@
 
 .hero__values-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  /* grid-template-columns: repeat(2, 1fr); */
   gap: var(--space-md);
 }
 
@@ -68,8 +66,9 @@
   align-items: center;
   gap: var(--space-sm);
   color: var(--color-white);
+  flex-direction: column;
   font-weight: 500;
-  padding: var(--space-sm);
+  padding: var(--space-md);
   background: rgba(255, 255, 255, 0.1);
   border-radius: var(--border-radius);
   transition: var(--transition);
@@ -77,21 +76,6 @@
 
 .hero__value-item:hover {
   background: rgba(255, 255, 255, 0.2);
-}
-
-.hero__contact {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  padding: var(--space-lg);
-  border-radius: var(--border-radius-lg);
-  margin-bottom: var(--space-xl);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: var(--transition);
-  text-decoration: none;
-  color: inherit;
 }
 
 .hero__contact:hover {
@@ -124,13 +108,6 @@
 
 .hero__phone-label {
   font-size: var(--font-size-sm);
-}
-
-.hero__visual {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xl);
-  align-items: center;
 }
 
 .hero__floating-card {
