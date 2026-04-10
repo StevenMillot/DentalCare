@@ -27,6 +27,9 @@
 /* Sections principales */
 @import 'sections.css';
 
+/* Carrousel cabinet (médias) */
+@import 'cabinet-carousel.css';
+
 /* Contact et formulaires */
 @import 'contact.css';
 

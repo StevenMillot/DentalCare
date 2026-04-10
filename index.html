@@ -443,14 +443,145 @@
                 <p class="text text--lg subtitle">Un environnement moderne et confortable pour vos soins dentaires</p>
             </header>
 
-            <div class="cabinet__content">
-                <div class="cabinet__placeholder card card--padded">
-                    <i class="fas fa-building icon icon--xl icon--primary" aria-hidden="true"></i>
-                    <h3>Photos du Cabinet</h3>
-                    <p>Cette section sera enrichie avec les photos de notre cabinet moderne, équipé des dernières technologies pour votre confort et votre sécurité.</p>
-                    <p class="text--sm subtitle">Photos à venir : Salle d'attente, Salle de soins, Équipements, Espace de consultation</p>
+                <div id="cabinet-media-carousel" class="cabinet-media-carousel" data-autoplay-interval="5200" aria-label="Galerie photos et vidéos du cabinet">
+                    <div class="cabinet-media-carousel__stage">
+                        <div class="cabinet-media-carousel__viewport">
+                            <div class="cabinet-media-carousel__track">
+<figure id="cabinet-slide-0" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/cabinet-01.svg" data-label="Salle d'attente">
+                                    <div class="cabinet-media-carousel__slide-inner">
+                                        <div class="cabinet-media-carousel__media">
+                                            <img src="assets/cabinet-gallery/cabinet-01.svg" alt="Photo du cabinet : Salle d'attente" width="1600" height="900" fetchpriority="high" loading="eager" decoding="async">
+                                            <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Salle d'attente"></button>
+                                        </div>
+                                    </div>
+                                </figure>
+                                <figure id="cabinet-slide-1" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/cabinet-02.svg" data-label="Accueil">
+                                    <div class="cabinet-media-carousel__slide-inner">
+                                        <div class="cabinet-media-carousel__media">
+                                            <img src="assets/cabinet-gallery/cabinet-02.svg" alt="Photo du cabinet : Accueil" width="1600" height="900" loading="lazy" decoding="async">
+                                            <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Accueil"></button>
+                                        </div>
+                                    </div>
+                                </figure>
+                                <figure id="cabinet-slide-2" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/cabinet-03.svg" data-label="Couloir">
+                                    <div class="cabinet-media-carousel__slide-inner">
+                                        <div class="cabinet-media-carousel__media">
+                                            <img src="assets/cabinet-gallery/cabinet-03.svg" alt="Photo du cabinet : Couloir" width="1600" height="900" loading="lazy" decoding="async">
+                                            <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Couloir"></button>
+                                        </div>
+                                    </div>
+                                </figure>
+                                <figure id="cabinet-slide-3" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/cabinet-04.svg" data-label="Salle de soins 1">
+                                    <div class="cabinet-media-carousel__slide-inner">
+                                        <div class="cabinet-media-carousel__media">
+                                            <img src="assets/cabinet-gallery/cabinet-04.svg" alt="Photo du cabinet : Salle de soins 1" width="1600" height="900" loading="lazy" decoding="async">
+                                            <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Salle de soins 1"></button>
+                                        </div>
+                                    </div>
+                                </figure>
+                                <figure id="cabinet-slide-4" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/cabinet-05.svg" data-label="Salle de soins 2">
+                                    <div class="cabinet-media-carousel__slide-inner">
+                                        <div class="cabinet-media-carousel__media">
+                                            <img src="assets/cabinet-gallery/cabinet-05.svg" alt="Photo du cabinet : Salle de soins 2" width="1600" height="900" loading="lazy" decoding="async">
+                                            <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Salle de soins 2"></button>
+                                        </div>
+                                    </div>
+                                </figure>
+                                <figure id="cabinet-slide-5" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/cabinet-06.svg" data-label="Fauteuil et lampe">
+                                    <div class="cabinet-media-carousel__slide-inner">
+                                        <div class="cabinet-media-carousel__media">
+                                            <img src="assets/cabinet-gallery/cabinet-06.svg" alt="Photo du cabinet : Fauteuil et lampe" width="1600" height="900" loading="lazy" decoding="async">
+                                            <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Fauteuil et lampe"></button>
+                                        </div>
+                                    </div>
+                                </figure>
+                                <figure id="cabinet-slide-6" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/cabinet-07.svg" data-label="Poste assistant">
+                                    <div class="cabinet-media-carousel__slide-inner">
+                                        <div class="cabinet-media-carousel__media">
+                                            <img src="assets/cabinet-gallery/cabinet-07.svg" alt="Photo du cabinet : Poste assistant" width="1600" height="900" loading="lazy" decoding="async">
+                                            <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Poste assistant"></button>
+                                        </div>
+                                    </div>
+                                </figure>
+                                <figure id="cabinet-slide-7" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/cabinet-video-poster.svg" data-label="Vidéo · plateau technique">
+                                    <div class="cabinet-media-carousel__slide-inner">
+                                        <div class="cabinet-media-carousel__media">
+                                            <video poster="assets/cabinet-gallery/cabinet-video-poster.svg" preload="none" muted playsinline>
+                                                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm">
+                                                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+                                            </video>
+                                            <span class="cabinet-media-carousel__badge-video" aria-hidden="true"><i class="fas fa-play"></i></span>
+                                            <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Vidéo · plateau technique"></button>
+                                        </div>
+                                    </div>
+                                </figure>
+                                <figure id="cabinet-slide-8" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/cabinet-09.svg" data-label="Radiologie / CBCT">
+                                    <div class="cabinet-media-carousel__slide-inner">
+                                        <div class="cabinet-media-carousel__media">
+                                            <img src="assets/cabinet-gallery/cabinet-09.svg" alt="Photo du cabinet : Radiologie / CBCT" width="1600" height="900" loading="lazy" decoding="async">
+                                            <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Radiologie / CBCT"></button>
+                                        </div>
+                                    </div>
+                                </figure>
+                                <figure id="cabinet-slide-9" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/cabinet-10.svg" data-label="Bureau consultation">
+                                    <div class="cabinet-media-carousel__slide-inner">
+                                        <div class="cabinet-media-carousel__media">
+                                            <img src="assets/cabinet-gallery/cabinet-10.svg" alt="Photo du cabinet : Bureau consultation" width="1600" height="900" loading="lazy" decoding="async">
+                                            <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Bureau consultation"></button>
+                                        </div>
+                                    </div>
+                                </figure>
+                                <figure id="cabinet-slide-10" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/cabinet-11.svg" data-label="Espace parodontologie">
+                                    <div class="cabinet-media-carousel__slide-inner">
+                                        <div class="cabinet-media-carousel__media">
+                                            <img src="assets/cabinet-gallery/cabinet-11.svg" alt="Photo du cabinet : Espace parodontologie" width="1600" height="900" loading="lazy" decoding="async">
+                                            <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Espace parodontologie"></button>
+                                        </div>
+                                    </div>
+                                </figure>
+                                <figure id="cabinet-slide-11" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/cabinet-12.svg" data-label="Implantologie">
+                                    <div class="cabinet-media-carousel__slide-inner">
+                                        <div class="cabinet-media-carousel__media">
+                                            <img src="assets/cabinet-gallery/cabinet-12.svg" alt="Photo du cabinet : Implantologie" width="1600" height="900" loading="lazy" decoding="async">
+                                            <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Implantologie"></button>
+                                        </div>
+                                    </div>
+                                </figure>
+                                <figure id="cabinet-slide-12" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/cabinet-13.svg" data-label="Salle de briefing">
+                                    <div class="cabinet-media-carousel__slide-inner">
+                                        <div class="cabinet-media-carousel__media">
+                                            <img src="assets/cabinet-gallery/cabinet-13.svg" alt="Photo du cabinet : Salle de briefing" width="1600" height="900" loading="lazy" decoding="async">
+                                            <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Salle de briefing"></button>
+                                        </div>
+                                    </div>
+                                </figure>
+                                <figure id="cabinet-slide-13" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/cabinet-14.svg" data-label="Réserve matériel">
+                                    <div class="cabinet-media-carousel__slide-inner">
+                                        <div class="cabinet-media-carousel__media">
+                                            <img src="assets/cabinet-gallery/cabinet-14.svg" alt="Photo du cabinet : Réserve matériel" width="1600" height="900" loading="lazy" decoding="async">
+                                            <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Réserve matériel"></button>
+                                        </div>
+                                    </div>
+                                </figure>
+                                <figure id="cabinet-slide-14" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/cabinet-video-poster.svg" data-label="Vidéo · présentation cabinet">
+                                    <div class="cabinet-media-carousel__slide-inner">
+                                        <div class="cabinet-media-carousel__media">
+                                            <video poster="assets/cabinet-gallery/cabinet-video-poster.svg" preload="none" muted playsinline>
+                                                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm">
+                                                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+                                            </video>
+                                            <span class="cabinet-media-carousel__badge-video" aria-hidden="true"><i class="fas fa-play"></i></span>
+                                            <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Vidéo · présentation cabinet"></button>
+                                        </div>
+                                    </div>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cabinet-media-carousel__thumbs-wrap">
+                        <div class="cabinet-media-carousel__thumbs" role="tablist" aria-label="Sélection d’un média"></div>
+                    </div>
                 </div>
-            </div>
         </div>
     </section>
 
@@ -840,5 +971,6 @@
     </div>
 
     <script src="js/script.js" defer></script>
+    <script src="js/cabinet-media-carousel.js" defer></script>
 </body>
 </html>

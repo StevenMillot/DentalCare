@@ -336,7 +336,7 @@
    */
   function initAnimations() {
     if (!('IntersectionObserver' in window)) {
-      const elements = $$('.traitement-card, .team-member, .contact__item, .cabinet__placeholder');
+      const elements = $$('.traitement-card, .team-member, .contact__item, .cabinet-media-carousel');
       elements.forEach(el => {
         el.style.opacity = '1';
         el.style.transform = 'translateY(0)';
@@ -356,7 +356,7 @@
       rootMargin: '0px 0px -50px 0px'
     });
 
-    const animatedElements = $$('.traitement-card, .team-member, .contact__item, .cabinet__placeholder');
+    const animatedElements = $$('.traitement-card, .team-member, .contact__item, .cabinet-media-carousel');
     animatedElements.forEach(el => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(20px)';

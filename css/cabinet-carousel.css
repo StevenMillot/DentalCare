@@ -1,0 +1,451 @@
+/* ==========================================================================
+   Cabinet — Carrousel média (images + vidéos)
+   ========================================================================== */
+
+.cabinet-media-carousel {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: 0;
+
+  container-type: inline-size;
+  container-name: cabinet-carousel;
+  --cabinet-carousel-transition: 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* Fond de section / page (pas de carte blanche autour du carrousel) */
+  --cabinet-fade-color: var(--color-white);
+}
+
+.cabinet-media-carousel__stage {
+  position: relative;
+}
+
+/* Viewport : zone 16:9 stable */
+.cabinet-media-carousel__viewport {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius-lg);
+  outline: none;
+  touch-action: manipulation;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--color-bg);
+}
+
+.cabinet-media-carousel__viewport:focus-visible {
+  box-shadow: 0 0 0 3px var(--color-primary), 0 0 0 5px var(--color-white);
+}
+
+/* Masques latéraux : desktop = plus large ; mobile = fondu plus étroit */
+.cabinet-media-carousel__viewport::before,
+.cabinet-media-carousel__viewport::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+}
+
+.cabinet-media-carousel--desktop .cabinet-media-carousel__viewport::before {
+  left: 0;
+  width: clamp(40px, 10%, 100px);
+  opacity: 1;
+  background: linear-gradient(
+    to right,
+    var(--cabinet-fade-color) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.cabinet-media-carousel--desktop .cabinet-media-carousel__viewport::after {
+  right: 0;
+  width: clamp(40px, 10%, 100px);
+  opacity: 1;
+  background: linear-gradient(
+    to left,
+    var(--cabinet-fade-color) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.cabinet-media-carousel--mobile .cabinet-media-carousel__viewport::before {
+  left: 0;
+  width: clamp(18px, 6%, 40px);
+  opacity: 1;
+  background: linear-gradient(
+    to right,
+    var(--cabinet-fade-color) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.cabinet-media-carousel--mobile .cabinet-media-carousel__viewport::after {
+  right: 0;
+  width: clamp(18px, 6%, 40px);
+  opacity: 1;
+  background: linear-gradient(
+    to left,
+    var(--cabinet-fade-color) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.cabinet-media-carousel__track {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  height: 100%;
+  gap: 20px;
+  will-change: transform;
+  transition: transform var(--cabinet-carousel-transition);
+  box-sizing: border-box;
+}
+
+.cabinet-media-carousel--instant .cabinet-media-carousel__track {
+  transition: none;
+}
+
+.cabinet-media-carousel__slide {
+  position: relative;
+  flex-shrink: 0;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.cabinet-media-carousel__slide-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Overlay : même boîte que le cadre 16:9 (.media), pas toute la cellule .slide-inner */
+.cabinet-media-carousel__media .cabinet-media-carousel__open {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: default;
+  border-radius: calc(var(--border-radius-lg) - 4px);
+}
+
+.cabinet-media-carousel__slide.is-active .cabinet-media-carousel__media .cabinet-media-carousel__open {
+  cursor: zoom-in;
+}
+
+.cabinet-media-carousel__media .cabinet-media-carousel__open:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/*
+ * Cadre 16:9 : largeur = 100 % de la slide, hauteur déduite de aspect-ratio.
+ * max-height: 100 % réduit la largeur si besoin (cellule moins haute que large×9/16).
+ * Ne pas mettre height: 100 % (étirerait le cadre hors 16:9).
+ */
+.cabinet-media-carousel__media {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  margin: 0;
+  flex: 0 1 auto;
+  align-self: center;
+  border-radius: calc(var(--border-radius-lg) - 4px);
+  overflow: hidden;
+  background: var(--color-bg);
+  min-width: 0;
+  min-height: 0;
+}
+
+.cabinet-media-carousel__media img,
+.cabinet-media-carousel__media video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  vertical-align: middle;
+}
+
+.cabinet-media-carousel__media img,
+.cabinet-media-carousel__media video {
+  position: absolute;
+  inset: 0;
+}
+
+/* Slides latérales atténuées (desktop + mobile, 20 % visibles) */
+.cabinet-media-carousel__slide:not(.is-active) .cabinet-media-carousel__slide-inner {
+  opacity: 0.62;
+  filter: blur(0.45px);
+  transition:
+    opacity var(--transition-slow),
+    filter var(--transition-slow);
+}
+
+.cabinet-media-carousel__slide.is-active .cabinet-media-carousel__slide-inner {
+  opacity: 1;
+  filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cabinet-media-carousel__slide:not(.is-active) .cabinet-media-carousel__slide-inner {
+    filter: none;
+  }
+}
+
+.cabinet-media-carousel__badge-video {
+  position: absolute;
+  bottom: var(--space-md);
+  right: var(--space-md);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(45, 55, 72, 0.85);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  font-size: 1rem;
+  z-index: 1;
+}
+
+/* Miniatures */
+.cabinet-media-carousel__thumbs-wrap {
+  position: relative;
+  margin-inline: 0;
+}
+
+.cabinet-media-carousel__thumbs {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-sm);
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: var(--space-xs) 0 var(--space-sm);
+  scroll-snap-type: x proximity;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+}
+
+.cabinet-media-carousel__thumbs::-webkit-scrollbar {
+  height: 6px;
+}
+
+.cabinet-media-carousel__thumbs::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.cabinet-media-carousel__thumb {
+  flex: 0 0 auto;
+  width: auto;
+  height: 70px;
+  aspect-ratio: 16 / 9;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+  background: var(--color-bg);
+  cursor: pointer;
+  scroll-snap-align: center;
+  transition:
+    border-color var(--transition),
+    opacity var(--transition),
+    box-shadow var(--transition);
+  opacity: 0.72;
+}
+
+.cabinet-media-carousel__thumb:hover {
+  opacity: 1;
+}
+
+.cabinet-media-carousel__thumb[aria-selected='true'] {
+  border-color: var(--color-primary);
+  opacity: 1;
+}
+
+/* Anneau intérieur : visible même avec overflow-x sur la piste (outline extérieure coupée) */
+.cabinet-media-carousel__thumb:focus-visible {
+  outline: none;
+  z-index: 1;
+  position: relative;
+  box-shadow:
+    inset 0 0 0 2px var(--color-white),
+    inset 0 0 0 5px var(--color-secondary);
+}
+
+.cabinet-media-carousel__thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  object-position: center;
+  /* Rayon parallèle au bouton : padding 2px + bordure 1px */
+  border-radius: calc(var(--border-radius) - 3px);
+  pointer-events: none;
+}
+
+/* Lightbox plein écran */
+.cabinet-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right))
+    max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+  box-sizing: border-box;
+  background: rgba(15, 23, 42, 0.92);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.cabinet-lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cabinet-lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  cursor: pointer;
+}
+
+.cabinet-lightbox__body {
+  position: relative;
+  z-index: 1;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-lg);
+  overflow: visible;
+  background: transparent;
+  pointer-events: auto;
+}
+
+.cabinet-lightbox__body img,
+.cabinet-lightbox__body video {
+  display: block;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--border-radius);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+.cabinet-lightbox__close {
+  position: fixed;
+  top: max(1.25rem, env(safe-area-inset-top, 0px) + 0.75rem);
+  right: max(1.25rem, env(safe-area-inset-right, 0px) + 0.75rem);
+  z-index: 2147483001;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-white);
+  color: var(--color-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+  pointer-events: auto;
+}
+
+.cabinet-lightbox__close-icon {
+  display: block;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+}
+
+.cabinet-lightbox__close-icon path {
+  stroke: var(--color-primary);
+  stroke-width: 1.15;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.cabinet-lightbox__close:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
+}
+
+.cabinet-lightbox__close:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .cabinet-media-carousel {
+    --cabinet-carousel-transition: 0.01ms;
+  }
+
+  .cabinet-media-carousel__thumbs {
+    scroll-behavior: auto;
+  }
+
+  .cabinet-lightbox {
+    transition: none;
+  }
+
+  .cabinet-lightbox__close:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .cabinet-media-carousel {
+    padding-inline: 0;
+    margin-inline: 0;
+    width: 100%;
+  }
+}

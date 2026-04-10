@@ -346,12 +346,12 @@
 /* CABINET SECTION */
 .cabinet__header {
   text-align: center;
-  margin-bottom: var(--space-2xl);
 }
 
 .cabinet__content {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .cabinet__placeholder {
