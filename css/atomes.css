@@ -74,6 +74,13 @@
   box-shadow: var(--shadow-lg);
 }
 
+/* Les cartes de la section Traitements ne doivent pas réagir au hover :
+   seuls les liens internes sont interactifs. */
+.card--floating:hover {
+  transform: none;
+  box-shadow: var(--shadow-sm);
+}
+
 .card--padded {
   padding: var(--space-xl);
 }

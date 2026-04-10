@@ -5,9 +5,9 @@
 /* Styles critiques de .sidebar et .sidebar__action définis dans le CSS inline du <head> */
 .sidebar__action:hover,
 .sidebar__action:focus {
-  background: var(--color-secondary);
-  color: var(--color-white);
-  transform: translateY(-2px) scale(1.08);
+    background: var(--gradient-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 .sidebar__action i {
   pointer-events: none;

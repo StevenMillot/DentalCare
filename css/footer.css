@@ -156,7 +156,6 @@
   .footer__social {
     justify-content: center;
     gap: var(--space-md);
-    margin-top: var(--space-md);
   }
   .footer__social-link {
     margin: 0 var(--space-xs);

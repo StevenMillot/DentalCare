@@ -17,7 +17,6 @@
   color: black;
   font-size: var(--font-size-xl);
   font-weight: 700;
-  padding-right: 30px;
   transition: var(--transition);
 }
 
@@ -44,6 +43,10 @@
   transition: var(--transition);
   position: relative;
   padding: var(--space-sm) 0;
+}
+
+.treatment-page .navbar__link {
+  color: var(--color-primary);
 }
 
 .navbar__link:hover {
@@ -87,8 +90,11 @@
   transition: var(--transition);
 }
 
-@media (max-width: 1024px) {
+.navbar__menu--mobile {
+  display: none;
+}
 
+@media (max-width: 1060px) {
   .navbar {
     backdrop-filter: none;
     z-index: 9999;
@@ -115,10 +121,10 @@
     padding: var(--space-xl);
     box-shadow: var(--shadow-lg);
     text-align: center;
-    display: flex;
   }
 
   .navbar__menu--mobile.navbar__menu--active {
+    display: flex;
     top: var(--header-height);
     z-index: 1;
   }

@@ -365,37 +365,8 @@
     });
   }
 
-  // ============================================================================
-  // EFFETS HOVER - Initialisation différée
-  // ============================================================================
-
-  /**
-   * Initialise les effets de survol sur les cartes et icônes
-   * @function initHoverEffects
-   * @example
-   * initHoverEffects();
-   */
-  function initHoverEffects() {
-    // Effet sur les cartes
-    $$('.card').forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        card.style.transform = 'translateY(-4px)';
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = 'translateY(0)';
-      });
-    });
-
-    // Effet sur les icônes
-    $$('.service-card__icon').forEach(icon => {
-      icon.addEventListener('mouseenter', () => {
-        icon.style.transform = 'scale(1.05)';
-      });
-      icon.addEventListener('mouseleave', () => {
-        icon.style.transform = 'scale(1)';
-      });
-    });
-  }
+  // EFFETS HOVER : gérés en CSS uniquement (atomes.css, sections.css) pour de meilleures perfs.
+  // Pas d'initHoverEffects en JS pour éviter des dizaines de listeners redondants.
 
   // ============================================================================
   // RESPONSIVE - Initialisation différée
@@ -454,21 +425,28 @@
    * initPerformance();
    */
   function initPerformance() {
-    // Lazy loading des images
-    if ('IntersectionObserver' in window) {
-      const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const img = entry.target;
-            img.src = img.dataset.src;
-            img.classList.remove('lazy');
-            imageObserver.unobserve(img);
-          }
-        });
+    const lazyImages = $$('img[data-src]');
+    if (lazyImages.length === 0) return;
+    if (!('IntersectionObserver' in window)) {
+      lazyImages.forEach(img => {
+        if (img.dataset.src) img.src = img.dataset.src;
       });
-
-      $$('img[data-src]').forEach(img => imageObserver.observe(img));
+      return;
     }
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          if (img.dataset.src) {
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+          }
+          img.classList.remove('lazy');
+          imageObserver.unobserve(img);
+        }
+      });
+    }, { rootMargin: '50px', threshold: 0.01 });
+    lazyImages.forEach(img => imageObserver.observe(img));
   }
 
   // ============================================================================
@@ -577,7 +555,6 @@
 
     defer(() => {
       initAnimations();
-      initHoverEffects();
       initPerformance();
       initAnalytics();
     });
@@ -589,8 +566,10 @@
         sidebarScrollBtn.addEventListener('click', function(e) {
           e.preventDefault();
           const start = window.scrollY || window.pageYOffset;
-          const duration = 700;
+          const duration = 400;
           const startTime = performance.now();
+
+          const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
 
           /**
            * Animation de scroll fluide vers le haut
@@ -600,7 +579,8 @@
           function scrollStep(now) {
             const elapsed = now - startTime;
             const progress = Math.min(elapsed / duration, 1);
-            window.scrollTo(0, start * (1 - progress));
+            const eased = easeOutCubic(progress);
+            window.scrollTo(0, start * (1 - eased));
             if (progress < 1) {
               requestAnimationFrame(scrollStep);
             }

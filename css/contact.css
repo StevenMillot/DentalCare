@@ -240,6 +240,30 @@
   text-decoration: underline;
 }
 
+.contact__card.card p.contact__link {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.contact__item.card:hover p.contact__link{
+  color: var(--color-secondary);
+  text-decoration: underline;
+}
+
+p.contact__link,
+a.contact__link {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+p.contact__link:hover,
+a.contact__link:hover {
+  color: var(--color-secondary);
+  text-decoration: underline;
+}
+
 /* ========================================================================== */
 /* RESPONSIVE DESIGN - Mobile et tablette                                     */
 /* ========================================================================== */

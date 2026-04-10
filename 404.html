@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page non trouvée - Cabinet Dr Raphaël BROCHAND</title>
+    <title>Page non trouvée - cabinet Parodontia du Dr Raphaël BROCHAND</title>
 
     <!-- Optimisations critiques pour mobile -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,64 +39,68 @@
     <!-- CSS critique inline pour FCP/LCP maximal -->
     <style>
       /* Reset critique minimal */
-      * { box-sizing: border-box; }
-      body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
 
-      /* Hero critique - LCP optimisé */
-      .hero {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        background: var(--gradient-primary);
-        will-change: auto;
-      }
-      .hero__title {
-        font-size: 3rem;
-        font-weight: 700;
-        color: white;
-        margin: 0;
-        opacity: 1;
-        line-height: 1.2;
-      }
-      .hero__subtitle {
-        font-size: 1.2rem;
-        color: rgba(255,255,255,0.9);
-        margin: 1rem 0;
-        line-height: 1.4;
-      }
+        /* Hero critique - LCP optimisé */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--gradient-primary);
+            will-change: auto;
+        }
+        .hero__title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+            opacity: 1;
+            line-height: 1.2;
+        }
+        .hero__subtitle {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            margin: 1rem 0;
+            line-height: 1.4;
+        }
 
-      /* Navigation critique */
-      .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        background: rgba(255,255,255,0.95);
-        backdrop-filter: blur(10px);
-      }
-      .navbar__container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-      .navbar__logo {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        text-decoration: none;
-        color: var(--color-primary);
-        font-weight: 600;
-        font-size: 1.1rem;
-      }
+        /* Navigation critique */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+        }
+        .navbar__container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .navbar__logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
 
-      /* Optimisations de performance */
-      .hero, .navbar {
-        contain: layout style paint;
-      }
+        /* Optimisations de performance */
+        .hero, .navbar {
+            contain: layout style paint;
+        }
+
+        .btn .fas {
+            margin-right: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -106,13 +110,13 @@
             <a href="index.html" class="navbar__logo">
                 <img
                     src="assets/Logo-B - Raphael Brochand.svg"
-                    alt="Logo du cabinet Dr Raphaël BROCHAND"
+                    alt="Logo du cabinet Parodontia, du Dr Raphaël BROCHAND"
                     class="navbar__logo-img"
                     aria-hidden="true"
                     width="50px"
                     height="50px"
                 >
-                <span>Dr Raphaël BROCHAND</span>
+                <span>PARODONTIA</span>
             </a>
         </div>
     </nav>
@@ -122,16 +126,16 @@
         <div class="container">
             <div class="hero__content" style="text-align: center; max-width: 600px; margin: 0 auto;">
                 <h1 class="hero__title" style="font-size: 8rem; margin-bottom: 1rem;">404</h1>
-                <h2 class="hero__subtitle" style="font-size: 2rem; margin-bottom: 2rem;">Page non trouvée</h2>
-                <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
+                <h2 class="hero__subtitle" style="font-size: 2rem; margin-bottom: 2rem; border: none; pointer-events: none;">Page non trouvée</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
                     Désolé, la page que vous recherchez n'existe pas ou a été déplacée.
                 </p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="index.html" class="btn btn--primary" style="padding: 1rem 2rem;">
+                <div style="display: flex; gap: 4rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="index.html" class="btn btn--primary" style="padding: 0.5rem 1rem; border: 1px solid var(--color-white)">
                         <i class="fas fa-home" aria-hidden="true"></i>
                         Retour à l'accueil
                     </a>
-                    <a href="tel:0675173880" class="btn btn--secondary" style="padding: 1rem 2rem;">
+                    <a href="tel:0675173880" class="btn btn--secondary" style="padding: 0.5rem 1rem; border: 1px solid var(--color-white)">
                         <i class="fas fa-phone" aria-hidden="true"></i>
                         Nous appeler
                     </a>
