@@ -162,6 +162,7 @@
   }
   .hero__title {
     font-size: var(--font-size-3xl);
+    margin-top: var(--space-lg);
   }
   .hero__subtitle {
     margin-bottom: var(--space-xl);
