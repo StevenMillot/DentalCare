@@ -284,6 +284,8 @@
   padding: var(--space-xs) 0 var(--space-sm);
   scroll-snap-type: x proximity;
   scroll-behavior: smooth;
+  /* Évite que l’ancrage de scroll ne lutte contre le scroll programmé (suivi miniature active). */
+  overflow-anchor: none;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
   scrollbar-width: thin;

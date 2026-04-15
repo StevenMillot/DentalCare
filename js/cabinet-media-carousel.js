@@ -240,6 +240,11 @@
       var c = thumbsContainer;
       if (!btn || !c) return;
 
+      /* Pas de défilement auto tant que l’utilisateur parcourt la liste (évite les sauts si l’autoplay avance). */
+      if (typeof c.matches === 'function' && c.matches(':hover')) {
+        return;
+      }
+
       function scrollToActive() {
         var cRect = c.getBoundingClientRect();
         var bRect = btn.getBoundingClientRect();
@@ -633,6 +638,10 @@
       }
     };
 
+    bound.thumbsMouseLeave = function () {
+      syncThumbScroll(currentRealIndex(), !reducedMotion);
+    };
+
     /* ---------- Enregistrement ---------- */
     viewport.setAttribute('tabindex', '0');
     viewport.setAttribute('role', 'region');
@@ -658,6 +667,7 @@
     window.addEventListener('resize', bound.resize);
     addMediaListener(mqMobile, bound.mq);
     addMediaListener(reducedMotionMq, bound.reduced);
+    thumbsContainer.addEventListener('mouseleave', bound.thumbsMouseLeave);
 
     updateLayoutMode();
     updateActiveStates({ thumbSmooth: false });
@@ -682,6 +692,7 @@
         window.removeEventListener('resize', bound.resize);
         removeMediaListener(mqMobile, bound.mq);
         removeMediaListener(reducedMotionMq, bound.reduced);
+        thumbsContainer.removeEventListener('mouseleave', bound.thumbsMouseLeave);
 
         closeLightbox();
         if (lightboxEl && lightboxEl.parentNode) {
