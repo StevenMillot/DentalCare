@@ -195,24 +195,14 @@
   inset: 0;
 }
 
-/* Slides latérales atténuées (desktop + mobile, 20 % visibles) */
+/* Slides latérales atténuées (desktop + mobile, 20 % visibles) — pas de filter:blur (coût GPU / Lighthouse) */
 .cabinet-media-carousel__slide:not(.is-active) .cabinet-media-carousel__slide-inner {
   opacity: 0.62;
-  filter: blur(0.45px);
-  transition:
-    opacity var(--transition-slow),
-    filter var(--transition-slow);
+  transition: opacity var(--transition-slow);
 }
 
 .cabinet-media-carousel__slide.is-active .cabinet-media-carousel__slide-inner {
   opacity: 1;
-  filter: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .cabinet-media-carousel__slide:not(.is-active) .cabinet-media-carousel__slide-inner {
-    filter: none;
-  }
 }
 
 @keyframes cabinet-media-carousel-badge-pulse {

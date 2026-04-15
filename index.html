@@ -53,7 +53,6 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-    <link rel="manifest" href="site.webmanifest" />
 
     <!-- Open Graph -->
     <meta property="og:title" content="Parodontia - cabinet Parodontia du Dr Raphaël BROCHAND - Chirurgien-Dentiste">
@@ -108,16 +107,28 @@
         }
     </script>
 
-    <!-- CSS critique en premier -->
-    <link rel="stylesheet" href="css/main.css">
+    <!-- Styles modulaires (ordre de cascade — voir css/main.css) -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/atomes.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/cabinet-carousel.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/utilities.css">
 
     <!-- Polices optimisées pour mobile -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
-    <!-- Font Awesome différé -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    <!-- Font Awesome (local, font-display:swap) — chargement non bloquant -->
+    <link rel="stylesheet" href="css/vendor/fontawesome.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="css/vendor/fontawesome.min.css"></noscript>
 
     <!-- CSS critique inline pour FCP/LCP maximal -->
     <style>
@@ -326,9 +337,7 @@
 
 <!-- Section Accueil -->
     <section id="accueil" class="hero" aria-labelledby="hero-title">
-        <video class="hero__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-            <source src="assets/Présentation Cabinet Parodontia 720p muted.mp4" type="video/mp4">
-        </video>
+        <video class="hero__video" muted loop playsinline preload="none" aria-hidden="true" data-hero-src="assets/Présentation Cabinet Parodontia 720p muted.mp4"></video>
         <div class="container hero__container">
             <div class="hero__content">
                 <h1 id="hero-title" class="hero__title">

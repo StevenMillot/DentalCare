@@ -137,12 +137,12 @@
   padding: 0;
 }
 
-
-@media (max-width: 768px) {
+@media (max-width: 850px) {
   .footer__content {
-    grid-template-columns: 1fr;
     text-align: center;
     gap: var(--space-lg);
+    flex-direction: column;
+    align-items: center;
     max-width: 95vw;
     margin: 0 auto var(--space-xl) auto;
   }

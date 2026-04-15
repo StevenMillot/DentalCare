@@ -615,6 +615,47 @@
     }
   }
 
+  /**
+   * Manifest hors chemin critique (chaîne réseau Lighthouse).
+   */
+  function initDeferredManifest() {
+    if (document.querySelector('link[rel~="manifest"]')) return;
+    const link = document.createElement('link');
+    link.rel = 'manifest';
+    link.href = 'site.webmanifest';
+    document.head.appendChild(link);
+  }
+
+  /**
+   * Vidéo hero : pas de téléchargement MP4 tant que le DOM est prêt (réduit la charge initiale).
+   */
+  function initHeroVideoDeferred() {
+    const video = $('.hero__video[data-hero-src]');
+    if (!video) return;
+    const src = video.getAttribute('data-hero-src');
+    if (!src) return;
+    const source = document.createElement('source');
+    source.src = src;
+    source.type = 'video/mp4';
+    video.appendChild(source);
+    video.setAttribute('autoplay', '');
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => {});
+    }
+  }
+
+  function runDeferredHeadWork() {
+    initDeferredManifest();
+    initHeroVideoDeferred();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runDeferredHeadWork);
+  } else {
+    runDeferredHeadWork();
+  }
+
   // Attendre que tout soit complètement chargé
   if (document.readyState === 'complete') {
     startApp();
