@@ -215,14 +215,24 @@
   }
 }
 
+@keyframes cabinet-media-carousel-badge-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
+
 .cabinet-media-carousel__badge-video {
   position: absolute;
-  bottom: var(--space-md);
-  right: var(--space-md);
+  bottom: 50%;
+  right: 50%;
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(45, 55, 72, 0.85);
+  background: var(--gradient-primary);
   color: var(--color-white);
   display: flex;
   align-items: center;
@@ -230,6 +240,33 @@
   pointer-events: none;
   font-size: 1rem;
   z-index: 1;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.28);
+  transform-origin: center center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cabinet-media-carousel__slide.is-active
+    .cabinet-media-carousel__badge-video:not(.cabinet-media-carousel__badge-video--thumb) {
+    animation: cabinet-media-carousel-badge-pulse 1.4s ease-in-out infinite;
+  }
+}
+
+/* Même picto play que la diapo, centré sur la miniature vidéo (même dégradé, sans animation) */
+.cabinet-media-carousel__thumb--video {
+  position: relative;
+}
+
+.cabinet-media-carousel__badge-video--thumb {
+  bottom: auto;
+  right: auto;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 0.7rem;
+  transform: translate(-50%, -50%);
+  background: var(--gradient-primary);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.28);
 }
 
 /* Miniatures */

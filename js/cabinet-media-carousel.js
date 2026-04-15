@@ -145,6 +145,16 @@
       im.loading = 'lazy';
       btn.appendChild(im);
 
+      if (fig.querySelector('video')) {
+        btn.classList.add('cabinet-media-carousel__thumb--video');
+        var playBadge = document.createElement('span');
+        playBadge.className =
+          'cabinet-media-carousel__badge-video cabinet-media-carousel__badge-video--thumb';
+        playBadge.setAttribute('aria-hidden', 'true');
+        playBadge.innerHTML = '<i class="fas fa-play"></i>';
+        btn.appendChild(playBadge);
+      }
+
       btn.addEventListener('click', function () {
         goToRealIndex(i);
       });

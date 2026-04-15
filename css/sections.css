@@ -442,6 +442,10 @@ body.treatment-page--implantologie {
   padding-top: var(--space-md);
 }
 
+.treatment-page--specialist .treatment-page__gallery {
+  grid-template-columns: 1fr;
+}
+
 .treatment-page--implantologie .treatment-page__media {
   width: min(360px, 100%);
 }
@@ -549,10 +553,6 @@ body.treatment-page--specialist .treatment-page__layout {
   will-change: transform;
 }
 
-.treatment-page__media:nth-child(1) {
-  transform: rotate(-1deg);
-}
-
 .treatment-page__media + .treatment-page__media {
   margin-top: -140px;
   margin-left: 60px;
@@ -563,7 +563,7 @@ body.treatment-page--specialist .treatment-page__layout {
 .treatment-page__media:hover,
 .treatment-page__media:focus-within {
   z-index: 6;
-  transform: translateY(-6px) rotate(0deg);
+  transform: translateY(-6px) scale(1.02);
   box-shadow: var(--shadow-lg);
 }
 
@@ -640,6 +640,12 @@ body.treatment-page--specialist .treatment-page__media img {
     margin-left: 0;
     z-index: 1;
     transform: none;
+  }
+}
+
+@media (max-width: 850px) {
+  .treatment-page--specialist .treatment-page__layout {
+    grid-template-columns: 1fr;
   }
 }
 
