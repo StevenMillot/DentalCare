@@ -214,18 +214,22 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, 270%);
+  transform: translate(-50%, 400%);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease, transform 0.2s ease;
   white-space: nowrap;
 }
 
+.team-card__cta.btn {
+  padding: var(--space-sm) var(--space-md);
+}
+
 .team-card:hover .team-card__cta,
 .team-card:focus-within .team-card__cta {
   opacity: 1;
   pointer-events: auto;
-  transform: translate(-50%, 160%) scale(1.02);
+  transform: translate(-50%, 240%) scale(1.02);
 }
 
 .team-card--link:hover .team-card__media img,

@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
-  <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#667eea"/><stop offset="100%" style="stop-color:#764ba2"/></linearGradient></defs>
-  <rect width="1600" height="900" fill="url(#g)"/>
-  <rect x="40" y="40" width="1520" height="820" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="4" rx="24"/>
-  <text x="80" y="130" fill="rgba(255,255,255,0.95)" font-family="system-ui,-apple-system,sans-serif" font-size="56" font-weight="700">Photo test 14</text>
-  <text x="80" y="210" fill="rgba(255,255,255,0.88)" font-family="system-ui,-apple-system,sans-serif" font-size="36">Réserve matériel</text>
-  <text x="80" y="820" fill="rgba(255,255,255,0.5)" font-family="system-ui,-apple-system,sans-serif" font-size="24">Ratio 16:9 · Cabinet Parodontia (placeholder)</text>
-</svg>
