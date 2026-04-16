@@ -50,17 +50,14 @@
     <link rel="stylesheet" href="css/utilities.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="css/vendor/fontawesome.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="css/vendor/fontawesome.min.css"></noscript>
-    <!-- CSS critique : barre de navigation fixe uniquement (pas de section .hero) -->
+<!-- CSS critique : barre de navigation fixe uniquement (pas de section .hero) -->
     <style>
       * { box-sizing: border-box; }
       body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
       .navbar { position: fixed; top:0; left:0; right:0; z-index:1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); }
       .navbar__container { display:flex; justify-content:space-between; align-items:center; padding:1rem 1.5rem; max-width:1200px; margin:0 auto; }
       .navbar__logo { display:flex; align-items:center; gap:.5rem; text-decoration:none; color: var(--color-primary); font-weight:600; font-size:1.1rem; }
-      .fa-arrow-left { margin-right: var(--space-md); }
-      .navbar { contain: layout style paint; }
+.navbar { contain: layout style paint; }
     </style>
 </head>
 <body class="treatment-page">
@@ -71,7 +68,7 @@
                 <span>PARODONTIA</span>
             </a>
             <a href="index.html#traitements" class="navbar__link" aria-label="Retour aux traitements">
-                <i class="fas fa-arrow-left" aria-hidden="true"></i>Retour
+                <svg class="icon icon--sm" aria-hidden="true" style="margin-right: var(--space-md);"><use href="assets/icons.svg#i-arrow-left"></use></svg>Retour
             </a>
         </div>
     </nav>

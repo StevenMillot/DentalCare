@@ -65,11 +65,11 @@
     const AUTO_MS = { success: 6500, info: 5500, error: 10000, warning: 8000 };
     const stack = [];
 
-    function iconFor(kind) {
-      if (kind === 'success') return 'fa-check-circle';
-      if (kind === 'error') return 'fa-exclamation-circle';
-      if (kind === 'warning') return 'fa-exclamation-triangle';
-      return 'fa-info-circle';
+    function symbolFor(kind) {
+      if (kind === 'success') return 'i-check-circle';
+      if (kind === 'error') return 'i-alert-circle';
+      if (kind === 'warning') return 'i-alert-triangle';
+      return 'i-info';
     }
 
     function trimStack() {
@@ -105,9 +105,12 @@
       const row = document.createElement('div');
       row.className = 'toast__row';
 
-      const icon = document.createElement('i');
-      icon.className = `fas ${iconFor(kind)} toast__icon`;
+      const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      icon.setAttribute('class', 'toast__icon icon');
       icon.setAttribute('aria-hidden', 'true');
+      const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+      use.setAttribute('href', `assets/icons.svg#${symbolFor(kind)}`);
+      icon.appendChild(use);
 
       const text = document.createElement('p');
       text.className = 'toast__text';
@@ -117,10 +120,13 @@
       closeBtn.type = 'button';
       closeBtn.className = 'toast__close';
       closeBtn.setAttribute('aria-label', 'Fermer la notification');
-      const xi = document.createElement('i');
-      xi.className = 'fas fa-times';
-      xi.setAttribute('aria-hidden', 'true');
-      closeBtn.appendChild(xi);
+      const closeSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      closeSvg.setAttribute('class', 'icon');
+      closeSvg.setAttribute('aria-hidden', 'true');
+      const closeUse = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+      closeUse.setAttribute('href', 'assets/icons.svg#i-x');
+      closeSvg.appendChild(closeUse);
+      closeBtn.appendChild(closeSvg);
 
       row.appendChild(icon);
       row.appendChild(text);
@@ -890,21 +896,46 @@
   }
 
   /**
-   * Vidéo hero : pas de téléchargement MP4 tant que le DOM est prêt (réduit la charge initiale).
+   * Vidéo hero : éviter de télécharger le MP4 sur mobile / connexions lentes (Lighthouse).
    */
   function initHeroVideoDeferred() {
     const video = $('.hero__video[data-hero-src]');
     if (!video) return;
     const src = video.getAttribute('data-hero-src');
     if (!src) return;
-    const source = document.createElement('source');
-    source.src = src;
-    source.type = 'video/mp4';
-    video.appendChild(source);
-    video.setAttribute('autoplay', '');
-    const playPromise = video.play();
-    if (playPromise && typeof playPromise.catch === 'function') {
-      playPromise.catch(() => {});
+
+    // Ne pas charger la vidéo si l’utilisateur préfère réduire les animations,
+    // si le mode économie de données est actif, ou si l’écran est petit.
+    try {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    } catch {}
+    try {
+      if (navigator.connection && navigator.connection.saveData) return;
+      if (navigator.connection && typeof navigator.connection.effectiveType === 'string') {
+        const t = navigator.connection.effectiveType;
+        if (t.includes('2g') || t.includes('3g')) return;
+      }
+    } catch {}
+    if (window.innerWidth && window.innerWidth < 1024) return;
+
+    // Déjà initialisée
+    if (video.querySelector('source')) return;
+
+    // Différer réellement après l'UI interactive
+    const start = () => {
+      const source = document.createElement('source');
+      source.src = src;
+      source.type = 'video/mp4';
+      video.appendChild(source);
+      // On tente lecture, sans forcer (autoplay peut être bloqué).
+      const playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === 'function') playPromise.catch(() => {});
+    };
+
+    if (window.requestIdleCallback) {
+      requestIdleCallback(start, { timeout: 2500 });
+    } else {
+      setTimeout(start, 600);
     }
   }
 

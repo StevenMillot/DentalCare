@@ -64,10 +64,7 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
     <!-- Font Awesome différé -->
-    <link rel="stylesheet" href="css/vendor/fontawesome.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="css/vendor/fontawesome.min.css"></noscript>
-
-    <!-- CSS critique : navigation fixe uniquement (page sans bandeau .hero) -->
+<!-- CSS critique : navigation fixe uniquement (page sans bandeau .hero) -->
     <style>
       * { box-sizing: border-box; }
       body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
@@ -97,8 +94,7 @@
         font-weight: 600;
         font-size: 1.1rem;
       }
-      .fa-arrow-left { margin-right: var(--space-md); }
-      .navbar { contain: layout style paint; }
+.navbar { contain: layout style paint; }
     </style>
 </head>
 <body class="treatment-page treatment-page--specialist">
@@ -117,7 +113,7 @@
             </a>
 
             <a href="index.html#equipe" class="navbar__link" aria-label="Retour à la section Notre équipe">
-                <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                <svg class="icon icon--sm" aria-hidden="true" style="margin-right: var(--space-md);"><use href="assets/icons.svg#i-arrow-left"></use></svg>
                 Retour
             </a>
         </div>

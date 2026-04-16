@@ -99,6 +99,14 @@
   height: 1em;
 }
 
+/* SVG icons (sprite) */
+svg.icon {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  flex: 0 0 auto;
+}
+
 .icon--lg {
   font-size: 2rem;
 }
