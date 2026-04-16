@@ -130,13 +130,12 @@
     <link rel="stylesheet" href="css/vendor/fontawesome.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="css/vendor/fontawesome.min.css"></noscript>
 
-    <!-- CSS critique inline pour FCP/LCP maximal -->
+    <!-- CSS critique accueil : hero (LCP), navigation fixe, sidebar -->
     <style>
-    /* Reset critique minimal */
     * { box-sizing: border-box; }
     body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
 
-    /* Hero critique - LCP optimisé */
+    /* Hero plein écran — priorité LCP (titre + sous-titre) */
     .hero {
         min-height: 100vh;
         display: flex;
@@ -158,7 +157,7 @@
         line-height: 1.4;
     }
 
-    /* Navigation critique */
+    /* Navigation fixe */
     .navbar {
         position: fixed;
         top: 0;
@@ -189,11 +188,6 @@
     .navbar__link {
         color: var(--color-dark);
     }
-
-/*     .navbar__link,
-    .navbar__btn {
-        font-size: 1.1rem;
-    } */
 
     /* Sidebar optimisée - sans collision footer */
     .sidebar {
@@ -234,7 +228,7 @@
         pointer-events: none;
     }
 
-    /* Responsive critique optimisé */
+    /* Responsive (hero + sidebar) */
     @media (max-width: 768px) {
         .hero__title { font-size: 2.2rem; }
         .hero__subtitle {
@@ -256,7 +250,6 @@
         .navbar__container { padding: 0.8rem; }
     }
 
-    /* Optimisations de performance */
     .hero, .navbar, .sidebar {
         contain: layout style paint;
     }

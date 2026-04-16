@@ -119,22 +119,6 @@
   color: var(--color-white);
 }
 
-.badge {
-  display: inline-flex;
-  align-items: center;
-  padding: var(--space-xs) var(--space-sm);
-  border-radius: var(--border-radius);
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.badge--primary {
-  background: var(--gradient-primary);
-  color: var(--color-white);
-}
-
 .team-member__social-link {
   text-decoration: none !important;
 }

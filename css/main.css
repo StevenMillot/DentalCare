@@ -1,0 +1,9 @@
+/* ==========================================================================
+   RÉFÉRENCE — feuilles par type de page (pas d’@import ici)
+   ==========================================================================
+   Accueil (index) : toutes les feuilles + critique inline hero + nav + sidebar.
+   Hubs (chirurgie-orale, parodontologie, implantologie, 404) : hero + sections…
+     sans cabinet-carousel, contact, footer, sidebar.
+   Pages traitement / spécialiste : variables → utilities (sans hero, carrousel,
+     contact, footer, sidebar) ; critique inline = navigation seule.
+   ========================================================================== */

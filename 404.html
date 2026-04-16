@@ -33,10 +33,6 @@
     <link rel="stylesheet" href="css/navigation.css">
     <link rel="stylesheet" href="css/hero.css">
     <link rel="stylesheet" href="css/sections.css">
-    <link rel="stylesheet" href="css/cabinet-carousel.css">
-    <link rel="stylesheet" href="css/contact.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/utilities.css">
 
     <!-- Polices optimisées pour mobile -->
@@ -47,13 +43,12 @@
     <link rel="stylesheet" href="css/vendor/fontawesome.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="css/vendor/fontawesome.min.css"></noscript>
 
-    <!-- CSS critique inline pour FCP/LCP maximal -->
+    <!-- CSS critique : page 404 — zone plein écran (.hero) + navigation -->
     <style>
-      /* Reset critique minimal */
         * { box-sizing: border-box; }
         body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
 
-        /* Hero critique - LCP optimisé */
+        /* Zone principale 404 (fond dégradé, titres) */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -76,7 +71,7 @@
             line-height: 1.4;
         }
 
-        /* Navigation critique */
+        /* Navigation fixe */
         .navbar {
             position: fixed;
             top: 0;
@@ -104,7 +99,6 @@
             font-size: 1.1rem;
         }
 
-        /* Optimisations de performance */
         .hero, .navbar {
             contain: layout style paint;
         }
