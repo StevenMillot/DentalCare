@@ -731,41 +731,48 @@
                 <div class="contact__form card card--padded">
                     <div class="contact__item-content">
                         <h3 id="form-title">Contactez-nous</h3>
-                        <form id="appointmentForm" aria-labelledby="form-title" method="post" action="#contact" autocomplete="on" novalidate>
+                        <!-- Envoi par défaut : FormSubmit → data-contact-email. Optionnel : clé https://web3forms.com dans data-web3forms-access-key pour utiliser Web3Forms à la place. -->
+                        <form id="appointmentForm" aria-labelledby="form-title" method="post" action="#contact" autocomplete="on" novalidate data-contact-email="contact@parodontia.fr" data-web3forms-access-key="">
+                            <input type="checkbox" name="botcheck" class="form__hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+                            <div id="appointmentForm-banner" class="form__banner form__banner--error" role="alert" aria-live="assertive" hidden></div>
                             <div class="form__grid grid grid--2">
                                 <div class="form__group">
                                 <label for="given-name" class="form__label">Prénom <span class="required" aria-label="Champ obligatoire">*</span></label>
                                 <input type="text" id="given-name" name="given-name" class="form__input"
-                                        placeholder="Votre prénom" required aria-required="true"
-                                        autocomplete="given-name" autocapitalize="words">
+                                        placeholder="Votre prénom" required aria-required="true" maxlength="80"
+                                        autocomplete="given-name" autocapitalize="words" aria-describedby="err-given-name">
+                                <p id="err-given-name" class="form__error-msg" hidden></p>
                                 </div>
 
                                 <div class="form__group">
                                 <label for="family-name" class="form__label">Nom <span class="required" aria-label="Champ obligatoire">*</span></label>
                                 <input type="text" id="family-name" name="family-name" class="form__input"
-                                        placeholder="Votre nom" required aria-required="true"
-                                        autocomplete="family-name" autocapitalize="words">
+                                        placeholder="Votre nom" required aria-required="true" maxlength="80"
+                                        autocomplete="family-name" autocapitalize="words" aria-describedby="err-family-name">
+                                <p id="err-family-name" class="form__error-msg" hidden></p>
                                 </div>
 
                                 <div class="form__group">
                                 <label for="email" class="form__label">Email <span class="required" aria-label="Champ obligatoire">*</span></label>
                                 <input type="email" id="email" name="email" class="form__input"
-                                        placeholder="Votre email" required aria-required="true"
-                                        autocomplete="email" inputmode="email" spellcheck="false">
+                                        placeholder="Votre email" required aria-required="true" maxlength="120"
+                                        autocomplete="email" inputmode="email" spellcheck="false" aria-describedby="err-email">
+                                <p id="err-email" class="form__error-msg" hidden></p>
                                 </div>
 
                                 <div class="form__group">
                                 <label for="phone" class="form__label">Téléphone <span class="required" aria-label="Champ obligatoire">*</span></label>
                                 <input type="tel" id="phone" name="phone" class="form__input"
-                                        placeholder="Votre téléphone" required aria-required="true"
-                                        autocomplete="tel" inputmode="tel" pattern="\\+?[0-9\\s\\-\\.]+">
+                                        placeholder="Ex. 06 xx xx xx xx" required aria-required="true" maxlength="30"
+                                        autocomplete="tel" inputmode="tel" aria-describedby="err-phone">
+                                <p id="err-phone" class="form__error-msg" hidden></p>
                                 </div>
 
                                 <div class="form__group">
                                 <label for="service" class="form__label">
                                     Traitement souhaité <span class="required" aria-label="Champ obligatoire">*</span>
                                 </label>
-                                <select id="service" name="service" class="form__select" required aria-required="true">
+                                <select id="service" name="service" class="form__select" required aria-required="true" aria-describedby="err-service">
                                     <option value="">Choisir un traitement</option>
                                     <option value="consultation">Consultation</option>
                                     <option value="consultation-desinclusion">Consultation pour désinclusion</option>
@@ -775,6 +782,7 @@
                                     <option value="consultation-extraction">Consultation pour extraction dentaire ou dents de sagesse</option>
                                     <option value="urgence">Urgence</option>
                                 </select>
+                                <p id="err-service" class="form__error-msg" hidden></p>
                                 </div>
 
                                 <div class="form__group">
@@ -786,7 +794,8 @@
                             </div>
 
                             <div id="submit-help" class="form__help">
-                                En soumettant ce formulaire, vous acceptez d'être contacté pour confirmer votre rendez-vous.
+                                Votre message est adressé à <strong>contact@parodontia.fr</strong>.
+                                <br>Pour prendre rendez-vous en ligne, vous pouvez aussi utiliser <a href="#doctolib" class="link--bold">Doctolib</a>.
                             </div>
                             <button type="submit" class="btn btn--primary form__submit" aria-describedby="submit-help">
                                 Envoyer
@@ -909,6 +918,8 @@
             <i class="fas fa-arrow-up"></i>
         </button>
     </div>
+
+    <div id="toast-host" class="toast-host" aria-live="polite"></div>
 
     <script src="js/script.js" defer></script>
     <script src="js/cabinet-media-carousel.js" defer></script>

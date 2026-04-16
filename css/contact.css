@@ -71,6 +71,10 @@
   height: fit-content;
 }
 
+#appointmentForm {
+  position: relative;
+}
+
 .contact__map {
   padding: var(--space-xl);
 }
@@ -155,6 +159,166 @@
 .form__help,
 .form__submit {
   margin-top: var(--space-lg);
+}
+
+.form__banner {
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--space-lg);
+  font-size: var(--font-size-sm);
+  line-height: 1.45;
+}
+
+.form__banner--error {
+  background: #fdecea;
+  border: 1px solid #e53e3e;
+  color: #9b2c2c;
+}
+
+.form__error-msg {
+  margin: 0.35rem 0 0;
+  font-size: var(--font-size-sm);
+  color: #c53030;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.form__error-msg[hidden] {
+  display: none !important;
+}
+
+/* Piège anti-robots (Web3Forms / lecture seule côté JS) */
+.form__hp {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  pointer-events: none;
+}
+
+/* Toasts (notify.*) — #toast-host dans index.html */
+.toast-host {
+  position: fixed;
+  /* Au-dessus de la lightbox cabinet (z-index ~2e9) pour que notify.* reste visible */
+  z-index: 2147483647;
+  top: 1rem;
+  right: 1rem;
+  left: auto;
+  max-width: min(26rem, calc(100vw - 1.5rem));
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: stretch;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem 0.9rem 1.1rem;
+  border-radius: var(--border-radius, 8px);
+  color: #fff;
+  font-size: var(--font-size-sm, 0.9375rem);
+  line-height: 1.45;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  transform: translateX(110%);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.toast--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.toast--leaving {
+  opacity: 0;
+  transform: translateX(110%);
+}
+
+.toast--success {
+  background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+}
+
+.toast--error {
+  background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+}
+
+.toast--info {
+  background: linear-gradient(135deg, #4a69bd 0%, #6c88c9 100%);
+}
+
+.toast--warning {
+  background: linear-gradient(135deg, #d68910 0%, #f39c12 100%);
+}
+
+.toast__row {
+  display: flex;
+  gap: 0.65rem;
+  flex: 1;
+  min-width: 0;
+  align-items: flex-start;
+}
+
+.toast__icon {
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
+.toast__text {
+  margin: 0;
+  font-weight: 500;
+}
+
+.toast__close {
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: inherit;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+
+.toast__close:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.toast__close:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .toast-host {
+    top: auto;
+    bottom: 1rem;
+    right: 0.75rem;
+    left: 0.75rem;
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    transition: opacity 0.2s ease;
+    transform: none !important;
+  }
 }
 
 .contact__doctolib-section {

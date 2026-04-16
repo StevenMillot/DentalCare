@@ -53,6 +53,106 @@
     }
   }
 
+  /** Détache les écouteurs document du menu mobile (resize → desktop, etc.) */
+  let releaseMobileMenuDocListeners = () => {};
+
+  /**
+   * Toasts empilés (max 4), texte sûr (textContent), auto-fermeture, rôles a11y.
+   * @type {{ success: function(string): void, error: function(string): void, info: function(string): void, warning: function(string): void }}
+   */
+  const notify = (() => {
+    const MAX = 4;
+    const AUTO_MS = { success: 6500, info: 5500, error: 10000, warning: 8000 };
+    const stack = [];
+
+    function iconFor(kind) {
+      if (kind === 'success') return 'fa-check-circle';
+      if (kind === 'error') return 'fa-exclamation-circle';
+      if (kind === 'warning') return 'fa-exclamation-triangle';
+      return 'fa-info-circle';
+    }
+
+    function trimStack() {
+      while (stack.length >= MAX) {
+        const old = stack.shift();
+        if (old.timer) clearTimeout(old.timer);
+        if (old.el && old.el.parentNode) old.el.remove();
+      }
+    }
+
+    function dismiss(el) {
+      const i = stack.findIndex((t) => t.el === el);
+      if (i >= 0) {
+        if (stack[i].timer) clearTimeout(stack[i].timer);
+        stack.splice(i, 1);
+      }
+      if (!el || !el.parentNode) return;
+      el.classList.add('toast--leaving');
+      window.setTimeout(() => {
+        if (el.parentNode) el.remove();
+      }, 280);
+    }
+
+    function show(message, kind = 'info') {
+      if (!message || typeof message !== 'string') return;
+      trimStack();
+
+      const el = document.createElement('div');
+      el.className = `toast toast--${kind}`;
+      el.setAttribute('role', kind === 'error' ? 'alert' : 'status');
+      el.setAttribute('aria-live', kind === 'error' ? 'assertive' : 'polite');
+
+      const row = document.createElement('div');
+      row.className = 'toast__row';
+
+      const icon = document.createElement('i');
+      icon.className = `fas ${iconFor(kind)} toast__icon`;
+      icon.setAttribute('aria-hidden', 'true');
+
+      const text = document.createElement('p');
+      text.className = 'toast__text';
+      text.textContent = message;
+
+      const closeBtn = document.createElement('button');
+      closeBtn.type = 'button';
+      closeBtn.className = 'toast__close';
+      closeBtn.setAttribute('aria-label', 'Fermer la notification');
+      const xi = document.createElement('i');
+      xi.className = 'fas fa-times';
+      xi.setAttribute('aria-hidden', 'true');
+      closeBtn.appendChild(xi);
+
+      row.appendChild(icon);
+      row.appendChild(text);
+      el.appendChild(row);
+      el.appendChild(closeBtn);
+
+      const host = document.getElementById('toast-host') || document.body;
+      host.appendChild(el);
+
+      const entry = { el, timer: null };
+      stack.push(entry);
+
+      window.requestAnimationFrame(() => el.classList.add('toast--visible'));
+
+      const ms = AUTO_MS[kind] || AUTO_MS.info;
+      entry.timer = window.setTimeout(() => dismiss(el), ms);
+
+      closeBtn.addEventListener('click', () => {
+        if (entry.timer) clearTimeout(entry.timer);
+        entry.timer = null;
+        dismiss(el);
+      });
+    }
+
+    return {
+      success: (m) => show(m, 'success'),
+      error: (m) => show(m, 'error'),
+      info: (m) => show(m, 'info'),
+      warning: (m) => show(m, 'warning'),
+    };
+  })();
+
   // ============================================================================
   // NAVIGATION - Initialisation différée
   // ============================================================================
@@ -70,47 +170,72 @@
     const navbarMenu = $('.navbar__menu--mobile');
     const navbarLinks = $$('.navbar__link');
 
-    // Toggle menu mobile
+    /* Listeners document (Escape / clic extérieur) uniquement quand le menu est ouvert
+     * — évite deux écouteurs permanents sur document. */
     if (navbarToggle && navbarMenu) {
+      let docListenersAttached = false;
+
+      function removeMobileMenuDocListeners() {
+        if (!docListenersAttached) return;
+        document.removeEventListener('keydown', onDocKeydownEscape);
+        document.removeEventListener('click', onDocClickOutside, true);
+        docListenersAttached = false;
+      }
+
+      releaseMobileMenuDocListeners = removeMobileMenuDocListeners;
+
+      function closeMobileMenu() {
+        navbarToggle.setAttribute('aria-expanded', 'false');
+        navbarMenu.classList.remove('navbar__menu--active');
+        removeMobileMenuDocListeners();
+      }
+
+      function onDocKeydownEscape(e) {
+        if (e.key !== 'Escape') return;
+        if (!navbarMenu.classList.contains('navbar__menu--active')) return;
+        e.preventDefault();
+        closeMobileMenu();
+        navbarToggle.focus();
+      }
+
+      function onDocClickOutside(e) {
+        if (!navbarMenu.classList.contains('navbar__menu--active')) return;
+        if (navbarMenu.contains(e.target) || navbarToggle.contains(e.target)) return;
+        closeMobileMenu();
+      }
+
+      function openMobileMenuDocListeners() {
+        if (docListenersAttached) return;
+        docListenersAttached = true;
+        /* setTimeout : évite que le clic d’ouverture ne déclenche tout de suite le « outside » */
+        window.setTimeout(() => {
+          document.addEventListener('keydown', onDocKeydownEscape);
+          document.addEventListener('click', onDocClickOutside, true);
+        }, 0);
+      }
+
       navbarToggle.addEventListener('click', () => {
         const isExpanded = navbarToggle.getAttribute('aria-expanded') === 'true';
-        navbarToggle.setAttribute('aria-expanded', !isExpanded);
-        navbarMenu.classList.toggle('navbar__menu--active');
+        const willOpen = !isExpanded;
+        navbarToggle.setAttribute('aria-expanded', willOpen);
+        navbarMenu.classList.toggle('navbar__menu--active', willOpen);
 
-        // Gestion du focus pour l'accessibilité
-        if (!isExpanded) {
+        if (willOpen) {
           const firstLink = navbarMenu.querySelector('.navbar__link');
           if (firstLink) firstLink.focus();
+          openMobileMenuDocListeners();
         } else {
+          removeMobileMenuDocListeners();
           navbarToggle.focus();
         }
       });
 
-      // Fermer le menu sur clic lien
       navbarLinks.forEach(link => {
         link.addEventListener('click', () => {
-          navbarToggle.setAttribute('aria-expanded', 'false');
-          navbarMenu.classList.remove('navbar__menu--active');
+          if (navbarMenu.classList.contains('navbar__menu--active')) {
+            closeMobileMenu();
+          }
         });
-      });
-
-      // Fermer le menu sur Escape
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navbarMenu.classList.contains('navbar__menu--active')) {
-          navbarToggle.setAttribute('aria-expanded', 'false');
-          navbarMenu.classList.remove('navbar__menu--active');
-          navbarToggle.focus();
-        }
-      });
-
-      // Fermer le menu sur clic extérieur
-      document.addEventListener('click', (e) => {
-        if (navbarMenu.classList.contains('navbar__menu--active') &&
-            !navbarMenu.contains(e.target) &&
-            !navbarToggle.contains(e.target)) {
-          navbarToggle.setAttribute('aria-expanded', 'false');
-          navbarMenu.classList.remove('navbar__menu--active');
-        }
       });
     }
 
@@ -173,154 +298,311 @@
     const appointmentForm = $('#appointmentForm');
     if (!appointmentForm) return;
 
-    const formInputs = $$('.form__input, .form__select, .form__textarea');
+    const formBanner = $('#appointmentForm-banner');
+    const formInputs = $$('#appointmentForm .form__input, #appointmentForm .form__select, #appointmentForm .form__textarea');
     const submitBtn = appointmentForm.querySelector('button[type="submit"]');
 
-    // Validation en temps réel
-    formInputs.forEach(input => {
-      input.addEventListener('blur', validateField);
-      input.addEventListener('input', clearFieldError);
-    });
+    const VALIDATED_IDS = new Set(['given-name', 'family-name', 'email', 'phone', 'service']);
 
-    // Soumission du formulaire
-    appointmentForm.addEventListener('submit', handleFormSubmit);
+    function clearFieldInvalid(field) {
+      field.classList.remove('form__input--error', 'form__select--error', 'form__textarea--error');
+    }
+
+    function setFieldInvalid(field) {
+      clearFieldInvalid(field);
+      if (field.matches('select')) field.classList.add('form__select--error');
+      else if (field.matches('textarea')) field.classList.add('form__textarea--error');
+      else field.classList.add('form__input--error');
+    }
+
+    function setFieldError(field, message) {
+      if (!field || !field.id || !VALIDATED_IDS.has(field.id)) return;
+      const errEl = document.getElementById(`err-${field.id}`);
+      if (message) {
+        setFieldInvalid(field);
+        field.setAttribute('aria-invalid', 'true');
+        if (errEl) {
+          errEl.textContent = message;
+          errEl.hidden = false;
+        }
+      } else {
+        clearFieldInvalid(field);
+        field.removeAttribute('aria-invalid');
+        if (errEl) {
+          errEl.textContent = '';
+          errEl.hidden = true;
+        }
+      }
+    }
+
+    function validateEmailValue(raw) {
+      const v = raw.trim();
+      if (!v) return 'Indiquez votre adresse e-mail.';
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return 'Format d’adresse e-mail invalide.';
+      return '';
+    }
+
+    function validatePhoneValue(raw) {
+      const digits = String(raw).replace(/\D/g, '');
+      if (!String(raw).trim()) return 'Indiquez un numéro de téléphone.';
+      if (digits.length < 10) {
+        return 'Saisissez au moins 10 chiffres (avec ou sans espaces).';
+      }
+      return '';
+    }
+
+    function getValidationMessage(field) {
+      switch (field.id) {
+        case 'given-name':
+          return field.value.trim() ? '' : 'Indiquez votre prénom.';
+        case 'family-name':
+          return field.value.trim() ? '' : 'Indiquez votre nom.';
+        case 'email':
+          return validateEmailValue(field.value);
+        case 'phone':
+          return validatePhoneValue(field.value);
+        case 'service':
+          return field.value ? '' : 'Choisissez un motif de consultation.';
+        default:
+          return '';
+      }
+    }
+
+    function clearFormBanner() {
+      if (!formBanner) return;
+      formBanner.hidden = true;
+      formBanner.textContent = '';
+    }
+
+    function showFormBanner(errorCount) {
+      if (!formBanner || errorCount < 1) return;
+      formBanner.hidden = false;
+      formBanner.textContent =
+        errorCount === 1
+          ? 'Veuillez corriger le champ indiqué ci-dessous.'
+          : `Veuillez corriger les ${errorCount} champs indiqués ci-dessous.`;
+    }
+
+    function clearAllFormErrors() {
+      VALIDATED_IDS.forEach((id) => {
+        const f = document.getElementById(id);
+        if (f) setFieldError(f, '');
+      });
+      clearFormBanner();
+    }
+
+    function validateAllForm() {
+      const fields = ['given-name', 'family-name', 'email', 'phone', 'service']
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
+
+      let firstInvalid = null;
+      let errorCount = 0;
+
+      fields.forEach((field) => {
+        const msg = getValidationMessage(field);
+        if (msg) {
+          setFieldError(field, msg);
+          errorCount += 1;
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+
+      clearFormBanner();
+      if (errorCount > 0) showFormBanner(errorCount);
+
+      return { ok: errorCount === 0, firstInvalid };
+    }
 
     /**
-     * Valide un champ de formulaire et affiche les erreurs
-     * @param {Event} e - Événement de blur
+     * @param {Event} e
      * @private
      */
     function validateField(e) {
       const field = e.target;
-      const isValid = field.checkValidity();
-
-      if (!isValid && field.value.trim()) {
-        field.classList.add('form__input--error');
-      } else {
-        field.classList.remove('form__input--error');
-      }
+      if (!field.id || !VALIDATED_IDS.has(field.id)) return;
+      setFieldError(field, getValidationMessage(field));
     }
 
     /**
-     * Efface les erreurs d'un champ lors de la saisie
-     * @param {Event} e - Événement d'input
+     * @param {Event} e
      * @private
      */
-    function clearFieldError(e) {
+    function onFieldInput(e) {
       const field = e.target;
-      if (field.value.trim()) {
-        field.classList.remove('form__input--error');
-      }
+      if (!field.id || !VALIDATED_IDS.has(field.id)) return;
+      const msg = getValidationMessage(field);
+      setFieldError(field, msg);
     }
 
+    formInputs.forEach((input) => {
+      input.addEventListener('blur', validateField);
+      input.addEventListener('input', onFieldInput);
+    });
+
+    appointmentForm.addEventListener('submit', handleFormSubmit);
+
+    clearAllFormErrors();
+
+    const MAX_MAILTO_CHARS = 1800;
+    const WEB3FORMS_URL = 'https://api.web3forms.com/submit';
+
     /**
-     * Gère la soumission du formulaire avec validation et feedback
-     * @param {Event} e - Événement de submit
-     * @private
+     * Envoi via FormSubmit (https://formsubmit.co) — aucune clé, l’e-mail de destination est dans l’URL.
+     * Première utilisation : FormSubmit envoie un mail de confirmation à cette adresse (à valider une fois).
      */
-    function handleFormSubmit(e) {
+    async function submitViaFormSubmit(endpointEmail, payload) {
+      const url = `https://formsubmit.co/ajax/${encodeURIComponent(endpointEmail)}`;
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const text = await res.text();
+      if (!res.ok) {
+        throw new Error(text || res.statusText || 'Envoi refusé');
+      }
+      return text;
+    }
+
+    async function handleFormSubmit(e) {
       e.preventDefault();
 
-      const isValid = appointmentForm.checkValidity();
-
-      if (!isValid) {
-        formInputs.forEach(input => {
-          if (!input.checkValidity()) {
-            input.classList.add('form__input--error');
-          }
-        });
+      const { ok, firstInvalid } = validateAllForm();
+      if (!ok) {
+        if (firstInvalid) {
+          firstInvalid.focus();
+          firstInvalid.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+        notify.error('Veuillez compléter ou corriger les champs indiqués dans le formulaire.');
         return;
       }
 
-      const originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Envoi en cours...';
-      submitBtn.disabled = true;
+      const hp = appointmentForm.querySelector('.form__hp');
+      if (hp && hp.checked) {
+        notify.error('Impossible d’envoyer le message. Réessayez ou contactez-nous par téléphone.');
+        return;
+      }
 
-      setTimeout(() => {
-        showNotification('Votre demande de rendez-vous a été envoyée avec succès !', 'success');
+      const givenName = $('#given-name').value.trim();
+      const familyName = $('#family-name').value.trim();
+      const email = $('#email').value.trim();
+      const phone = $('#phone').value.trim();
+      const serviceEl = $('#service');
+      const serviceValue = serviceEl.value;
+      const selectedOpt = serviceEl.options[serviceEl.selectedIndex];
+      const serviceLabel = selectedOpt ? selectedOpt.text : serviceValue;
+      const message = $('#message').value.trim();
+
+      const subject = `[parodontia.fr] Demande RDV — ${serviceLabel}`;
+      const bodyLines = [
+        'Bonjour,',
+        '',
+        `Prénom : ${givenName}`,
+        `Nom : ${familyName}`,
+        `Email : ${email}`,
+        `Téléphone : ${phone}`,
+        `Motif : ${serviceLabel}`,
+      ];
+      if (message) bodyLines.push('', 'Message :', message);
+      bodyLines.push('', '— Message envoyé depuis parodontia.fr');
+      const bodyText = bodyLines.join('\n');
+
+      const accessKey = (appointmentForm.getAttribute('data-web3forms-access-key') || '').trim();
+      const to = appointmentForm.getAttribute('data-contact-email') || 'contact@parodontia.fr';
+
+      const originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Envoi en cours…';
+
+      const trackSuccess = () => {
+        notify.success('Votre message a bien été envoyé. Nous vous répondrons dans les meilleurs délais.');
         appointmentForm.reset();
+        clearAllFormErrors();
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'form_submit', { event_category: 'engagement', event_label: 'appointment_form' });
+        }
+      };
+
+      const fallbackMailto = () => {
+        const mailtoHref = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+        if (mailtoHref.length > MAX_MAILTO_CHARS) {
+          notify.warning('Message trop long pour un lien courriel. Raccourcissez ou écrivez à contact@parodontia.fr.');
+          return;
+        }
+        notify.info(
+          'Ouverture de votre messagerie avec le message prérempli… Si rien ne s’affiche, écrivez à contact@parodontia.fr.'
+        );
+        appointmentForm.reset();
+        clearAllFormErrors();
+        window.setTimeout(() => {
+          window.location.href = mailtoHref;
+        }, 450);
+      };
+
+      try {
+        if (accessKey) {
+          const res = await fetch(WEB3FORMS_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify({
+              access_key: accessKey,
+              subject,
+              name: `${givenName} ${familyName}`.trim(),
+              email,
+              phone,
+              message: bodyText,
+              from_name: `${givenName} ${familyName}`.trim(),
+              replyto: email,
+              botcheck: false,
+            }),
+          });
+
+          let data;
+          try {
+            data = await res.json();
+          } catch (parseErr) {
+            notify.error('Réponse du service d’envoi invalide. Réessayez dans quelques minutes.');
+            return;
+          }
+
+          if (data && data.success) {
+            trackSuccess();
+          } else {
+            const errMsg =
+              (data && (data.message || (data.body && data.body.message))) ||
+              'L’envoi a échoué. Réessayez plus tard ou contactez-nous par téléphone.';
+            notify.error(errMsg);
+          }
+        } else {
+          await submitViaFormSubmit(to, {
+            _subject: subject,
+            _replyto: email,
+            _captcha: 'false',
+            name: `${givenName} ${familyName}`.trim(),
+            email,
+            phone,
+            motif: serviceLabel,
+            message: bodyText,
+          });
+          trackSuccess();
+        }
+      } catch (err) {
+        if (accessKey) {
+          notify.error('Connexion impossible. Vérifiez votre réseau puis réessayez.');
+        } else {
+          notify.warning(
+            'Envoi automatique indisponible. Nous ouvrons votre messagerie avec le message prérempli.'
+          );
+          fallbackMailto();
+        }
+      } finally {
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
-      }, 1500);
-    }
-  }
-
-  // ============================================================================
-  // NOTIFICATIONS - Fonction globale
-  // ============================================================================
-
-  /**
-   * Affiche une notification toast avec animation
-   * @param {string} message - Message à afficher
-   * @param {string} [type='info'] - Type de notification ('info' ou 'success')
-   * @example
-   * showNotification('Rendez-vous confirmé !', 'success');
-   */
-  function showNotification(message, type = 'info') {
-    const notification = document.createElement('div');
-    notification.className = 'notification';
-    notification.setAttribute('role', 'alert');
-    notification.setAttribute('aria-live', 'polite');
-
-    notification.innerHTML = `
-      <div class="notification__content">
-        <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-info-circle'}" aria-hidden="true"></i>
-        <span>${message}</span>
-      </div>
-      <button class="notification__close" aria-label="Fermer la notification">
-        <i class="fas fa-times" aria-hidden="true"></i>
-      </button>
-    `;
-
-    notification.style.cssText = `
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: ${type === 'success' ? '#00d4aa' : '#667eea'};
-      color: white;
-      padding: 1rem 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      z-index: 10000;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      transform: translateX(400px);
-      transition: transform 0.3s ease;
-      max-width: 400px;
-      font-family: inherit;
-    `;
-
-    document.body.appendChild(notification);
-
-    requestAnimationFrame(() => {
-      notification.style.transform = 'translateX(0)';
-    });
-
-    const autoClose = setTimeout(() => {
-      closeNotification(notification);
-    }, 5000);
-
-    const closeBtn = notification.querySelector('.notification__close');
-    closeBtn.addEventListener('click', () => {
-      clearTimeout(autoClose);
-      closeNotification(notification);
-    });
-  }
-
-  /**
-   * Ferme une notification avec animation
-   * @param {HTMLElement} notification - Élément de notification à fermer
-   * @example
-   * closeNotification(notificationElement);
-   */
-  function closeNotification(notification) {
-    notification.style.transform = 'translateX(400px)';
-    setTimeout(() => {
-      if (notification.parentNode) {
-        notification.parentNode.removeChild(notification);
       }
-    }, 300);
+    }
   }
 
   // ============================================================================
@@ -346,10 +628,11 @@
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+        observer.unobserve(el);
       });
     }, {
       threshold: 0.1,
@@ -388,11 +671,12 @@
         if (navbarToggle && navbarMenu) {
           navbarToggle.setAttribute('aria-expanded', 'false');
           navbarMenu.classList.remove('navbar__menu--active');
+          releaseMobileMenuDocListeners();
         }
       }
     }, 250);
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
   }
 
   // ============================================================================
@@ -400,16 +684,17 @@
   // ============================================================================
 
   /**
-   * Initialise les améliorations d'accessibilité
-   * Ajoute les attributs nécessaires pour les liens externes
+   * Renforce les liens ouverts dans un nouvel onglet (évite l’abus window.opener).
+   * Ne modifie pas mailto:/tel: (pas de nouvel onglet, rel inutile).
    * @function initAccessibility
    * @example
    * initAccessibility();
    */
   function initAccessibility() {
-    // Amélioration de l'accessibilité des liens
-    $$('a[href^="mailto:"], a[href^="tel:"]').forEach(link => {
-      link.setAttribute('rel', 'noopener');
+    $$('a[target="_blank"]').forEach((link) => {
+      const rel = link.getAttribute('rel') || '';
+      if (/\bnoopener\b/i.test(rel)) return;
+      link.setAttribute('rel', rel ? `${rel} noopener noreferrer`.trim() : 'noopener noreferrer');
     });
   }
 
@@ -484,13 +769,7 @@
       });
     });
 
-    // Tracking des soumissions de formulaire
-    const form = $('#appointmentForm');
-    if (form) {
-      form.addEventListener('submit', () => {
-        trackEvent('engagement', 'form_submit', 'appointment_form');
-      });
-    }
+    /* Soumission formulaire : événement gtag émis dans initForm après succès API uniquement */
   }
 
   // ============================================================================
@@ -535,31 +814,29 @@
   }
 
   /**
-   * Initialise les fonctionnalités non-critiques de manière différée
-   * Utilise requestIdleCallback pour optimiser les performances
-   * @function initNonCritical
-   * @example
-   * initNonCritical();
+   * UI interactive (navigation, formulaire, accessibilité) — exécution immédiate dès le DOM prêt.
+   * Ne pas retarder via load / requestIdleCallback : sinon le formulaire reste sans écouteurs (pas de validation, pas de toast).
+   * @function initInteractiveUI
    */
-  function initNonCritical() {
-    defer(() => {
-      initNavigation();
-      initSmoothScroll();
-    });
+  function initInteractiveUI() {
+    initNavigation();
+    initSmoothScroll();
+    initForm();
+    initResponsive();
+    initAccessibility();
+  }
 
-    defer(() => {
-      initForm();
-      initResponsive();
-      initAccessibility();
-    });
-
+  /**
+   * Animations, perfs, analytics, bouton retour haut — peut rester différé.
+   * @function initDeferredEnhancements
+   */
+  function initDeferredEnhancements() {
     defer(() => {
       initAnimations();
       initPerformance();
       initAnalytics();
     });
 
-    // Gestion du bouton retour en haut (différée)
     defer(() => {
       const sidebarScrollBtn = $('.sidebar__action[aria-label="Retour en haut"]');
       if (sidebarScrollBtn) {
@@ -599,18 +876,15 @@
    * startApp();
    */
   function startApp() {
-    // Initialisation critique immédiate
     initCritical();
-
-    // Reporter tout le reste après le rendu complet
+    initInteractiveUI();
     if (window.requestIdleCallback) {
       requestIdleCallback(() => {
-        initNonCritical();
+        initDeferredEnhancements();
       }, { timeout: 2000 });
     } else {
-      // Fallback pour navigateurs anciens
       setTimeout(() => {
-        initNonCritical();
+        initDeferredEnhancements();
       }, 100);
     }
   }
@@ -656,11 +930,12 @@
     runDeferredHeadWork();
   }
 
-  // Attendre que tout soit complètement chargé
-  if (document.readyState === 'complete') {
-    startApp();
+  /* Dès le DOM prêt (script en defer : souvent déjà « interactive » ici). Ne pas attendre window « load » :
+   * le formulaire doit être initialisé tout de suite, sans quoi soumission / validation / toasts ne fonctionnent pas. */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startApp);
   } else {
-    window.addEventListener('load', startApp);
+    startApp();
   }
 
 })();
