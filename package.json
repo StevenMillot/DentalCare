@@ -1,0 +1,20 @@
+{
+  "name": "dentalcare",
+  "version": "1.0.0",
+  "description": "Un site vitrine moderne et dynamique pour un cabinet dentaire, inspiré de la structure du site CTC Vienne mais avec un design original et des animations avancées.",
+  "main": "index.js",
+  "scripts": {
+    "images:responsive": "node tools/generate-responsive-images.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-millot:StevenMillot/DentalCare.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sharp": "^0.34.5"
+  }
+}

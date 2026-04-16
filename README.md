@@ -1,145 +1,52 @@
-# DentalCare - Site Vitrine
+# DentalCare (Parodontia) — site statique
 
-Un site vitrine moderne et dynamique pour un cabinet dentaire, inspiré de la structure du site CTC Vienne mais avec un design original et des animations avancées.
+Site vitrine statique (HTML/CSS/JS) avec pages “traitement”, formulaire de contact, et optimisations perf/SEO adaptées à un déploiement **GitHub Pages** et/ou domaine.
 
-## 🚀 Fonctionnalités
+## Lancer en local
 
-### Design & Interface
-- **Design moderne** avec dégradés et effets visuels avancés
-- **Interface responsive** adaptée à tous les appareils
-- **Animations fluides** et interactions dynamiques
-- **Navigation sticky** avec effets de transparence
-- **Cartes flottantes** avec animations parallaxes
+Évite `file://` (certaines APIs et chemins se comportent différemment). Utilise un serveur statique :
 
-### Sections du Site
-1. **Accueil** - Hero section avec titre animé et cartes flottantes
-2. **Services** - Présentation des soins dentaires avec icônes animées
-3. **Équipe** - Profils des professionnels avec liens sociaux
-4. **Technologies** - Équipements modernes du cabinet
-5. **Contact** - Formulaire de rendez-vous et informations de contact
-
-### Interactivité
-- **Menu mobile** hamburger avec animations
-- **Formulaire de contact** avec validation et notifications
-- **Smooth scroll** pour la navigation
-- **Animations au scroll** avec Intersection Observer
-- **Effets de hover** sur tous les éléments interactifs
-- **Particules animées** en arrière-plan
-
-## 🛠️ Technologies Utilisées
-
-- **HTML5** - Structure sémantique
-- **CSS3** - Styles modernes avec variables CSS et animations
-- **JavaScript ES6+** - Interactivité et animations
-- **Font Awesome** - Icônes vectorielles
-- **Google Fonts** - Typographie Inter
-
-## 📁 Structure du Projet
-
-```
-DentalCare/
-├── index.html          # Page principale
-├── styles.css          # Styles et animations CSS
-├── script.js           # JavaScript et interactions
-└── README.md           # Documentation
+```bash
+python3 -m http.server 8000
 ```
 
-## 🎨 Palette de Couleurs
+Puis ouvre `http://127.0.0.1:8000/`.
 
-- **Couleur primaire** : `#00d4aa` (Vert-cyan)
-- **Couleur secondaire** : `#667eea` (Bleu)
-- **Couleur d'accent** : `#f093fb` (Rose)
-- **Texte sombre** : `#2d3748`
-- **Texte clair** : `#718096`
+## Déploiement GitHub Pages (important)
 
-## 🚀 Installation et Utilisation
+- **Noms de fichiers “web-safe”** : les assets sont volontairement renommés **sans accents** et **sans espaces**.
+  - Pourquoi : sur GitHub Pages, un fichier `équipe.avif` / `Présentation.mp4` peut 404 selon la normalisation Unicode (NFD/NFC), même si ça marche en local sur macOS.
+- **Manifest** : `site.webmanifest` utilise `start_url: "./"` et `scope: "./"` pour fonctionner correctement dans un sous-dossier (`/DentalCare/`).
 
-1. **Cloner le projet** :
-   ```bash
-   git clone [url-du-repo]
-   cd DentalCare
-   ```
+## Images responsive (`srcset`)
 
-2. **Ouvrir le site** :
-   - Double-cliquer sur `index.html`
-   - Ou utiliser un serveur local :
-     ```bash
-     python -m http.server 8000
-     # Puis ouvrir http://localhost:8000
-     ```
+Les photos (équipe, galerie) sont servies avec `srcset` + `sizes` pour éviter de télécharger des images trop lourdes sur mobile.
 
-## 📱 Responsive Design
+### Générer / régénérer les variantes
 
-Le site est entièrement responsive avec des breakpoints :
-- **Desktop** : > 768px
-- **Tablet** : 768px - 480px
-- **Mobile** : < 480px
+Prérequis : Node.js + npm (dépendance dev `sharp`).
 
-## ✨ Animations Principales
-
-### CSS Animations
-- **Float** : Animation des cartes flottantes
-- **FadeInUp** : Apparition des éléments au scroll
-- **Bounce** : Indicateur de scroll
-- **Ripple** : Effet de clic sur les boutons
-
-### JavaScript Animations
-- **Typewriter** : Effet de machine à écrire sur le titre
-- **Parallaxe** : Effet de profondeur au scroll
-- **Particules** : Animation d'arrière-plan
-- **Notifications** : Système de messages dynamiques
-
-## 🔧 Personnalisation
-
-### Modifier les couleurs
-Éditer les variables CSS dans `styles.css` :
-```css
-:root {
-    --primary-color: #00d4aa;
-    --secondary-color: #667eea;
-    --accent-color: #f093fb;
-    /* ... */
-}
+```bash
+npm install
+npm run images:responsive
 ```
 
-### Ajouter des sections
-1. Ajouter la structure HTML dans `index.html`
-2. Créer les styles correspondants dans `styles.css`
-3. Ajouter les animations JavaScript si nécessaire
+Génère automatiquement :
 
-### Modifier le contenu
-- **Informations de contact** : Ligne 250-280 dans `index.html`
-- **Services** : Section services dans `index.html`
-- **Équipe** : Section équipe dans `index.html`
+- **Galerie cabinet (AVIF)** : `assets/cabinet-gallery/*-{480,960,1600}w.avif`
+- **Portraits équipe (JPG)** : `assets/team/*-{360,720,1080}w.jpg`
 
-## 🌟 Fonctionnalités Avancées
+Script : `tools/generate-responsive-images.mjs`
 
-### Système de Notifications
-- Notifications de succès pour le formulaire
-- Animations d'entrée et de sortie
-- Fermeture automatique et manuelle
+## Formulaire de contact
 
-### Validation de Formulaire
-- Validation en temps réel
-- Indicateurs visuels d'erreur
-- Prévention d'envoi de formulaires vides
+- **Validation JS dédiée** (messages inline + toast) : pas de dépendance aux comportements `checkValidity()` du navigateur.
+- **Envoi** : FormSubmit (ou Web3Forms si configuré), avec fallback `mailto:` en cas d’échec.
 
-### Performance
-- **Lazy loading** des animations
-- **Intersection Observer** pour les animations au scroll
-- **Optimisation** des transitions CSS
+## Structure (repères)
 
-## 📞 Support
-
-Pour toute question ou modification :
-- Modifier directement les fichiers HTML/CSS/JS
-- Tester sur différents navigateurs
-- Vérifier la responsivité sur mobile
-
-## 📄 Licence
-
-Ce projet est libre d'utilisation pour des projets personnels et commerciaux.
-
----
-
-**DentalCare** - Votre sourire, notre passion ✨
+- `index.html` : page principale + galerie + formulaire
+- `*.html` : pages “traitement” / “spécialiste”
+- `css/` : styles modulaires
+- `js/script.js` : navigation, galerie, formulaire, toasts, optimisations
+- `assets/` : médias (noms web-safe) + variantes `*-{...}w.*`

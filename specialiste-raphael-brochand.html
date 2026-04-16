@@ -11,7 +11,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="theme-color" content="#667eea">
 
-    <link rel="preload" href="assets/Logo-B - Raphael Brochand.svg" as="image">
+    <link rel="preload" href="assets/logo-b-raphael-brochand.svg" as="image">
 
     <meta name="description" content="Formations du Dr Raphaël BROCHAND, chirurgien-dentiste au cabinet Parodontia à Châtenay-Malabry.">
     <meta name="robots" content="index, follow">
@@ -106,7 +106,7 @@
         <div class="container navbar__container">
             <a href="index.html" class="navbar__logo">
                 <img
-                    src="assets/Logo-B - Raphael Brochand.svg"
+                    src="assets/logo-b-raphael-brochand.svg"
                     alt="Logo du cabinet Parodontia, du Dr Raphaël BROCHAND"
                     class="navbar__logo-img"
                     aria-hidden="true"
@@ -133,7 +133,21 @@
             <div class="treatment-page__layout">
                 <div class="treatment-page__gallery">
                     <div class="treatment-page__media">
-                        <img src="assets/team/raphael-brochand-chirurgien-dentiste.jpg" alt="Portrait du Dr Raphaël BROCHAND" width="720" height="960" loading="eager" fetchpriority="high">
+                        <img
+                          src="assets/team/raphael-brochand-chirurgien-dentiste-720w.jpg"
+                          srcset="
+                            assets/team/raphael-brochand-chirurgien-dentiste-360w.jpg 360w,
+                            assets/team/raphael-brochand-chirurgien-dentiste-720w.jpg 720w,
+                            assets/team/raphael-brochand-chirurgien-dentiste-1080w.jpg 1080w
+                          "
+                          sizes="(max-width: 768px) 92vw, 420px"
+                          alt="Portrait du Dr Raphaël BROCHAND"
+                          width="720"
+                          height="960"
+                          loading="eager"
+                          fetchpriority="high"
+                          decoding="async"
+                        >
                     </div>
                 </div>
 

@@ -13,7 +13,7 @@
     <meta name="theme-color" content="#667eea">
 
     <!-- Optimisations critiques pour FCP/LCP -->
-    <link rel="preload" href="assets/Logo-B - Raphael Brochand.svg" as="image">
+    <link rel="preload" href="assets/logo-b-raphael-brochand.svg" as="image">
     <meta name="description" content="Clinique Parodontia, cabinet dentaire du Dr Raphaël BROCHAND à Châtenay-Malabry. Chirurgie orale, parodontologie, implantologie. Technologies modernes, équipe expérimentée. Prise de rendez-vous en ligne.">
     <meta name="author" content="Dr Raphaël BROCHAND">
     <meta name="robots" content="index, follow">
@@ -236,7 +236,7 @@
         <div class="container navbar__container">
             <a href="#accueil" class="navbar__logo" title="Retour à l'accueil">
                 <img
-                    src="assets/Logo-B - Raphael Brochand.svg"
+                    src="assets/logo-b-raphael-brochand.svg"
                     alt="Logo du cabinet Parodontia, du Dr Raphaël BROCHAND"
                     class="navbar__logo-img"
                     aria-hidden="true"
@@ -361,7 +361,20 @@
                 <div class="team__grid team__grid--specialists">
                     <a class="team-card team-card--link card card--padded" href="specialiste-raphael-brochand.html" aria-labelledby="team-spec-name-1">
                         <div class="team-card__media">
-                            <img src="assets/team/raphael-brochand-chirurgien-dentiste.jpg" alt="" loading="lazy" width="720" height="960">
+                            <img
+                              src="assets/team/raphael-brochand-chirurgien-dentiste-720w.jpg"
+                              srcset="
+                                assets/team/raphael-brochand-chirurgien-dentiste-360w.jpg 360w,
+                                assets/team/raphael-brochand-chirurgien-dentiste-720w.jpg 720w,
+                                assets/team/raphael-brochand-chirurgien-dentiste-1080w.jpg 1080w
+                              "
+                              sizes="(max-width: 768px) 92vw, 360px"
+                              alt=""
+                              loading="lazy"
+                              decoding="async"
+                              width="720"
+                              height="960"
+                            >
                             <span class="btn btn--primary team-card__cta">Son parcours</span>
                         </div>
                         <h4 id="team-spec-name-1" class="team-card__name">Dr Raphaël Brochand</h4>
@@ -370,7 +383,20 @@
 
                     <a class="team-card team-card--link card card--padded" href="specialiste-2.html" aria-labelledby="team-spec-name-2">
                         <div class="team-card__media">
-                            <img src="assets/team/specialist-2 - Chirurgien Dentiste.jpg" alt="" loading="lazy" width="720" height="960">
+                            <img
+                              src="assets/team/specialist-2-chirurgien-dentiste-720w.jpg"
+                              srcset="
+                                assets/team/specialist-2-chirurgien-dentiste-360w.jpg 360w,
+                                assets/team/specialist-2-chirurgien-dentiste-720w.jpg 720w,
+                                assets/team/specialist-2-chirurgien-dentiste-1080w.jpg 1080w
+                              "
+                              sizes="(max-width: 768px) 92vw, 360px"
+                              alt=""
+                              loading="lazy"
+                              decoding="async"
+                              width="720"
+                              height="960"
+                            >
                             <span class="btn btn--primary team-card__cta">Son parcours</span>
                         </div>
                         <h4 id="team-spec-name-2" class="team-card__name">Spécialiste 2</h4>
@@ -384,7 +410,20 @@
                 <div class="team__grid team__grid--assistants">
                     <article class="team-card team-card--assistant card card--padded">
                         <div class="team-card__media">
-                            <img src="assets/team/Alicia - Assistante dentaire.jpg" alt="Portrait d'Alicia" loading="lazy" width="720" height="960">
+                            <img
+                              src="assets/team/alicia-assistante-dentaire-720w.jpg"
+                              srcset="
+                                assets/team/alicia-assistante-dentaire-360w.jpg 360w,
+                                assets/team/alicia-assistante-dentaire-720w.jpg 720w,
+                                assets/team/alicia-assistante-dentaire-1080w.jpg 1080w
+                              "
+                              sizes="(max-width: 768px) 92vw, 360px"
+                              alt="Portrait d'Alicia"
+                              loading="lazy"
+                              decoding="async"
+                              width="720"
+                              height="960"
+                            >
                         </div>
                         <h4 class="team-card__name">Alicia</h4>
                         <p class="team-card__status">Assistante dentaire qualifiée</p>
@@ -406,82 +445,200 @@
                     <div class="cabinet-media-carousel__stage">
                         <div class="cabinet-media-carousel__viewport">
                             <div class="cabinet-media-carousel__track">
-                                <figure id="cabinet-slide-0" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/Salle d'attente.avif" data-label="Salle d’attente">
+                                <figure id="cabinet-slide-0" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/salle-attente.avif" data-label="Salle d’attente">
                                     <div class="cabinet-media-carousel__slide-inner">
                                         <div class="cabinet-media-carousel__media">
-                                            <img src="assets/cabinet-gallery/Salle d'attente.avif" alt="Salle d’attente de la Clinique Parodontia à Châtenay-Malabry" width="1600" height="900" fetchpriority="high" loading="eager" decoding="async">
+                                            <img
+                                              src="assets/cabinet-gallery/salle-attente-960w.avif"
+                                              srcset="
+                                                assets/cabinet-gallery/salle-attente-480w.avif 480w,
+                                                assets/cabinet-gallery/salle-attente-960w.avif 960w,
+                                                assets/cabinet-gallery/salle-attente-1600w.avif 1600w
+                                              "
+                                              sizes="(max-width: 768px) 92vw, 1600px"
+                                              alt="Salle d’attente de la Clinique Parodontia à Châtenay-Malabry"
+                                              width="1600"
+                                              height="900"
+                                              fetchpriority="high"
+                                              loading="eager"
+                                              decoding="async"
+                                            >
                                             <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Salle d’attente"></button>
                                         </div>
                                     </div>
                                 </figure>
 
-                                <figure id="cabinet-slide-1" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/Accueil Parodontia.avif" data-label="Accueil">
+                                <figure id="cabinet-slide-1" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/accueil-parodontia.avif" data-label="Accueil">
                                     <div class="cabinet-media-carousel__slide-inner">
                                         <div class="cabinet-media-carousel__media">
-                                            <img src="assets/cabinet-gallery/Accueil Parodontia.avif" alt="Accueil de la Clinique Parodontia à Châtenay-Malabry" width="1600" height="900" loading="lazy" decoding="async">
+                                            <img
+                                              src="assets/cabinet-gallery/accueil-parodontia-960w.avif"
+                                              srcset="
+                                                assets/cabinet-gallery/accueil-parodontia-480w.avif 480w,
+                                                assets/cabinet-gallery/accueil-parodontia-960w.avif 960w,
+                                                assets/cabinet-gallery/accueil-parodontia-1600w.avif 1600w
+                                              "
+                                              sizes="(max-width: 768px) 92vw, 1600px"
+                                              alt="Accueil de la Clinique Parodontia à Châtenay-Malabry"
+                                              width="1600"
+                                              height="900"
+                                              loading="lazy"
+                                              decoding="async"
+                                            >
                                             <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Accueil"></button>
                                         </div>
                                     </div>
                                 </figure>
 
-                                <figure id="cabinet-slide-2" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/Équipe Parodontia.avif" data-label="Équipe">
+                                <figure id="cabinet-slide-2" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/equipe-parodontia.avif" data-label="Équipe">
                                     <div class="cabinet-media-carousel__slide-inner">
                                         <div class="cabinet-media-carousel__media">
-                                            <img src="assets/cabinet-gallery/Équipe Parodontia.avif" alt="Équipe de la Clinique Parodontia à Châtenay-Malabry" width="1600" height="900" loading="lazy" decoding="async">
+                                            <img
+                                              src="assets/cabinet-gallery/equipe-parodontia-960w.avif"
+                                              srcset="
+                                                assets/cabinet-gallery/equipe-parodontia-480w.avif 480w,
+                                                assets/cabinet-gallery/equipe-parodontia-960w.avif 960w,
+                                                assets/cabinet-gallery/equipe-parodontia-1600w.avif 1600w
+                                              "
+                                              sizes="(max-width: 768px) 92vw, 1600px"
+                                              alt="Équipe de la Clinique Parodontia à Châtenay-Malabry"
+                                              width="1600"
+                                              height="900"
+                                              loading="lazy"
+                                              decoding="async"
+                                            >
                                             <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Équipe"></button>
                                         </div>
                                     </div>
                                 </figure>
 
-                                <figure id="cabinet-slide-3" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/Salle de soin 1.avif" data-label="Salle de soin 1">
+                                <figure id="cabinet-slide-3" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/salle-soin-1.avif" data-label="Salle de soin 1">
                                     <div class="cabinet-media-carousel__slide-inner">
                                         <div class="cabinet-media-carousel__media">
-                                            <img src="assets/cabinet-gallery/Salle de soin 1.avif" alt="Salle de soin 1 de la Clinique Parodontia à Châtenay-Malabry" width="1600" height="900" loading="lazy" decoding="async">
+                                            <img
+                                              src="assets/cabinet-gallery/salle-soin-1-960w.avif"
+                                              srcset="
+                                                assets/cabinet-gallery/salle-soin-1-480w.avif 480w,
+                                                assets/cabinet-gallery/salle-soin-1-960w.avif 960w,
+                                                assets/cabinet-gallery/salle-soin-1-1600w.avif 1600w
+                                              "
+                                              sizes="(max-width: 768px) 92vw, 1600px"
+                                              alt="Salle de soin 1 de la Clinique Parodontia à Châtenay-Malabry"
+                                              width="1600"
+                                              height="900"
+                                              loading="lazy"
+                                              decoding="async"
+                                            >
                                             <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Salle de soin 1"></button>
                                         </div>
                                     </div>
                                 </figure>
 
-                                <figure id="cabinet-slide-4" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/Salle de soin 2.avif" data-label="Salle de soin 2">
+                                <figure id="cabinet-slide-4" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/salle-soin-2.avif" data-label="Salle de soin 2">
                                     <div class="cabinet-media-carousel__slide-inner">
                                         <div class="cabinet-media-carousel__media">
-                                            <img src="assets/cabinet-gallery/Salle de soin 2.avif" alt="Salle de soin 2 de la Clinique Parodontia à Châtenay-Malabry" width="1600" height="900" loading="lazy" decoding="async">
+                                            <img
+                                              src="assets/cabinet-gallery/salle-soin-2-960w.avif"
+                                              srcset="
+                                                assets/cabinet-gallery/salle-soin-2-480w.avif 480w,
+                                                assets/cabinet-gallery/salle-soin-2-960w.avif 960w,
+                                                assets/cabinet-gallery/salle-soin-2-1600w.avif 1600w
+                                              "
+                                              sizes="(max-width: 768px) 92vw, 1600px"
+                                              alt="Salle de soin 2 de la Clinique Parodontia à Châtenay-Malabry"
+                                              width="1600"
+                                              height="900"
+                                              loading="lazy"
+                                              decoding="async"
+                                            >
                                             <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Salle de soin 2"></button>
                                         </div>
                                     </div>
                                 </figure>
 
-                                <figure id="cabinet-slide-5" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/Salle de soin avec écrans.avif" data-label="Salle de soin · écrans">
+                                <figure id="cabinet-slide-5" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/salle-soin-ecrans.avif" data-label="Salle de soin · écrans">
                                     <div class="cabinet-media-carousel__slide-inner">
                                         <div class="cabinet-media-carousel__media">
-                                            <img src="assets/cabinet-gallery/Salle de soin avec écrans.avif" alt="Salle de soin avec écrans de la Clinique Parodontia à Châtenay-Malabry" width="1600" height="900" loading="lazy" decoding="async">
+                                            <img
+                                              src="assets/cabinet-gallery/salle-soin-ecrans-960w.avif"
+                                              srcset="
+                                                assets/cabinet-gallery/salle-soin-ecrans-480w.avif 480w,
+                                                assets/cabinet-gallery/salle-soin-ecrans-960w.avif 960w,
+                                                assets/cabinet-gallery/salle-soin-ecrans-1600w.avif 1600w
+                                              "
+                                              sizes="(max-width: 768px) 92vw, 1600px"
+                                              alt="Salle de soin avec écrans de la Clinique Parodontia à Châtenay-Malabry"
+                                              width="1600"
+                                              height="900"
+                                              loading="lazy"
+                                              decoding="async"
+                                            >
                                             <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Salle de soin · écrans"></button>
                                         </div>
                                     </div>
                                 </figure>
 
-                                <figure id="cabinet-slide-6" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/Cabinet Parodontia.avif" data-label="Cabinet Parodontia">
+                                <figure id="cabinet-slide-6" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/cabinet-parodontia.avif" data-label="Cabinet Parodontia">
                                     <div class="cabinet-media-carousel__slide-inner">
                                         <div class="cabinet-media-carousel__media">
-                                            <img src="assets/cabinet-gallery/Cabinet Parodontia.avif" alt="Clinique Parodontia à Châtenay-Malabry : vue du cabinet" width="1600" height="900" loading="lazy" decoding="async">
+                                            <img
+                                              src="assets/cabinet-gallery/cabinet-parodontia-960w.avif"
+                                              srcset="
+                                                assets/cabinet-gallery/cabinet-parodontia-480w.avif 480w,
+                                                assets/cabinet-gallery/cabinet-parodontia-960w.avif 960w,
+                                                assets/cabinet-gallery/cabinet-parodontia-1600w.avif 1600w
+                                              "
+                                              sizes="(max-width: 768px) 92vw, 1600px"
+                                              alt="Clinique Parodontia à Châtenay-Malabry : vue du cabinet"
+                                              width="1600"
+                                              height="900"
+                                              loading="lazy"
+                                              decoding="async"
+                                            >
                                             <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Cabinet Parodontia"></button>
                                         </div>
                                     </div>
                                 </figure>
 
-                                <figure id="cabinet-slide-7" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/Radio 3D-CBCT.avif" data-label="Radio 3D / CBCT">
+                                <figure id="cabinet-slide-7" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/radio-3d-cbct.avif" data-label="Radio 3D / CBCT">
                                     <div class="cabinet-media-carousel__slide-inner">
                                         <div class="cabinet-media-carousel__media">
-                                            <img src="assets/cabinet-gallery/Radio 3D-CBCT.avif" alt="Équipement de radiologie 3D (CBCT) de la Clinique Parodontia à Châtenay-Malabry" width="1600" height="900" loading="lazy" decoding="async">
+                                            <img
+                                              src="assets/cabinet-gallery/radio-3d-cbct-960w.avif"
+                                              srcset="
+                                                assets/cabinet-gallery/radio-3d-cbct-480w.avif 480w,
+                                                assets/cabinet-gallery/radio-3d-cbct-960w.avif 960w,
+                                                assets/cabinet-gallery/radio-3d-cbct-1600w.avif 1600w
+                                              "
+                                              sizes="(max-width: 768px) 92vw, 1600px"
+                                              alt="Équipement de radiologie 3D (CBCT) de la Clinique Parodontia à Châtenay-Malabry"
+                                              width="1600"
+                                              height="900"
+                                              loading="lazy"
+                                              decoding="async"
+                                            >
                                             <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Radio 3D / CBCT"></button>
                                         </div>
                                     </div>
                                 </figure>
 
-                                <figure id="cabinet-slide-8" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/Stérilisateur.avif" data-label="Stérilisation">
+                                <figure id="cabinet-slide-8" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/sterilisateur.avif" data-label="Stérilisation">
                                     <div class="cabinet-media-carousel__slide-inner">
                                         <div class="cabinet-media-carousel__media">
-                                            <img src="assets/cabinet-gallery/Stérilisateur.avif" alt="Zone de stérilisation et stérilisateur de la Clinique Parodontia à Châtenay-Malabry" width="1600" height="900" loading="lazy" decoding="async">
+                                            <img
+                                              src="assets/cabinet-gallery/sterilisateur-960w.avif"
+                                              srcset="
+                                                assets/cabinet-gallery/sterilisateur-480w.avif 480w,
+                                                assets/cabinet-gallery/sterilisateur-960w.avif 960w,
+                                                assets/cabinet-gallery/sterilisateur-1600w.avif 1600w
+                                              "
+                                              sizes="(max-width: 768px) 92vw, 1600px"
+                                              alt="Zone de stérilisation et stérilisateur de la Clinique Parodontia à Châtenay-Malabry"
+                                              width="1600"
+                                              height="900"
+                                              loading="lazy"
+                                              decoding="async"
+                                            >
                                             <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Stérilisation"></button>
                                         </div>
                                     </div>
@@ -490,7 +647,7 @@
                                 <figure id="cabinet-slide-9" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/poster-video-presentation-parodontia.avif" data-label="Vidéo · présentation du cabinet">
                                     <div class="cabinet-media-carousel__slide-inner">
                                         <div class="cabinet-media-carousel__media">
-                                            <video poster="assets/cabinet-gallery/poster-video-presentation-parodontia.avif" preload="none" muted playsinline>
+                                            <video poster="assets/cabinet-gallery/poster-video-presentation-parodontia-960w.avif" preload="none" muted playsinline>
                                                 <source src="assets/cabinet-gallery/presentation-cabinet-parodontia-1080p.mp4" type="video/mp4">
                                             </video>
                                             <span class="cabinet-media-carousel__badge-video" aria-hidden="true"><i class="fas fa-play"></i></span>
@@ -842,7 +999,7 @@
             <div class="footer__content">
                 <div class="footer__section footer__section--logo">
                     <div class="footer__logo">
-                        <img src="assets/Logo-W - Raphael Brochand.svg" alt="Logo du cabinet Parodontia, du Dr Raphaël BROCHAND" class="navbar__logo-img" aria-hidden="true" width="50px" height="50px">
+                        <img src="assets/logo-w-raphael-brochand.svg" alt="Logo du cabinet Parodontia, du Dr Raphaël BROCHAND" class="navbar__logo-img" aria-hidden="true" width="50px" height="50px">
                         <span>PARODONTIA</span>
                     </div>
                     <p class="text text--sm">Le cabinet est entièrement dédié à la parodontologie, à l’implantologie et à la chirurgie orale.</p>
