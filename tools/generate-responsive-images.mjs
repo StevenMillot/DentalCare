@@ -75,16 +75,16 @@ async function listFiles(dirRel, allowedExts) {
 }
 
 async function main() {
-  // Galerie cabinet (AVIF) : 480/960/1600
+  // Galerie cabinet (AVIF) : 240/480/640/960/1600
   const gallery = await listFiles('assets/cabinet-gallery', ['.avif']);
   for (const f of gallery) {
-    await generateVariants(f, [480, 960, 1600], { format: 'avif', quality: 50 });
+    await generateVariants(f, [240, 480, 640, 960, 1600], { format: 'avif', quality: 50 });
   }
 
-  // Portraits équipe (JPG) : 360/720/1080
+  // Portraits équipe (JPG) : 360/540/720/1080
   const team = await listFiles('assets/team', ['.jpg', '.jpeg']);
   for (const f of team) {
-    await generateVariants(f, [360, 720, 1080], { format: 'jpeg', quality: 78 });
+    await generateVariants(f, [360, 540, 720, 1080], { format: 'jpeg', quality: 78 });
   }
 
   console.log('OK: variants générées');

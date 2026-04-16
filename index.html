@@ -80,21 +80,8 @@
         }
     </script>
 
-    <!-- Styles modulaires (ordre de cascade — voir css/main.css) -->
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/typography.css">
-    <link rel="stylesheet" href="css/atomes.css">
-    <link rel="stylesheet" href="css/navigation.css">
-    <link rel="stylesheet" href="css/hero.css">
-    <link rel="stylesheet" href="css/sections.css">
-    <link rel="stylesheet" href="css/cabinet-carousel.css">
-    <link rel="stylesheet" href="css/contact.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/sidebar.css">
-    <link rel="stylesheet" href="css/utilities.css">
-
+    <!-- CSS bundle (réduit les requêtes bloquantes) -->
+    <link rel="stylesheet" href="css/bundle.css">
     <!-- Polices optimisées pour mobile -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
@@ -368,6 +355,7 @@
                               src="assets/team/raphael-brochand-chirurgien-dentiste-720w.jpg"
                               srcset="
                                 assets/team/raphael-brochand-chirurgien-dentiste-360w.jpg 360w,
+                                assets/team/raphael-brochand-chirurgien-dentiste-540w.jpg 540w,
                                 assets/team/raphael-brochand-chirurgien-dentiste-720w.jpg 720w,
                                 assets/team/raphael-brochand-chirurgien-dentiste-1080w.jpg 1080w
                               "
@@ -390,6 +378,7 @@
                               src="assets/team/specialist-2-chirurgien-dentiste-720w.jpg"
                               srcset="
                                 assets/team/specialist-2-chirurgien-dentiste-360w.jpg 360w,
+                                assets/team/specialist-2-chirurgien-dentiste-540w.jpg 540w,
                                 assets/team/specialist-2-chirurgien-dentiste-720w.jpg 720w,
                                 assets/team/specialist-2-chirurgien-dentiste-1080w.jpg 1080w
                               "
@@ -417,6 +406,7 @@
                               src="assets/team/alicia-assistante-dentaire-720w.jpg"
                               srcset="
                                 assets/team/alicia-assistante-dentaire-360w.jpg 360w,
+                                assets/team/alicia-assistante-dentaire-540w.jpg 540w,
                                 assets/team/alicia-assistante-dentaire-720w.jpg 720w,
                                 assets/team/alicia-assistante-dentaire-1080w.jpg 1080w
                               "
@@ -448,17 +438,18 @@
                     <div class="cabinet-media-carousel__stage">
                         <div class="cabinet-media-carousel__viewport">
                             <div class="cabinet-media-carousel__track">
-                                <figure id="cabinet-slide-0" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/salle-attente-480w.avif" data-label="Salle d’attente">
+                                <figure id="cabinet-slide-0" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/salle-attente-240w.avif" data-label="Salle d’attente">
                                     <div class="cabinet-media-carousel__slide-inner">
                                         <div class="cabinet-media-carousel__media">
                                             <img
                                               src="assets/cabinet-gallery/salle-attente-960w.avif"
                                               srcset="
                                                 assets/cabinet-gallery/salle-attente-480w.avif 480w,
+                                                assets/cabinet-gallery/salle-attente-640w.avif 640w,
                                                 assets/cabinet-gallery/salle-attente-960w.avif 960w,
                                                 assets/cabinet-gallery/salle-attente-1600w.avif 1600w
                                               "
-                                              sizes="(max-width: 768px) 92vw, 1600px"
+                                              sizes="(max-width: 768px) 92vw, 900px"
                                               alt="Salle d’attente de la Clinique Parodontia à Châtenay-Malabry"
                                               width="1600"
                                               height="900"
@@ -471,17 +462,18 @@
                                     </div>
                                 </figure>
 
-                                <figure id="cabinet-slide-1" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/accueil-parodontia-480w.avif" data-label="Accueil">
+                                <figure id="cabinet-slide-1" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/accueil-parodontia-240w.avif" data-label="Accueil">
                                     <div class="cabinet-media-carousel__slide-inner">
                                         <div class="cabinet-media-carousel__media">
                                             <img
                                               src="assets/cabinet-gallery/accueil-parodontia-960w.avif"
                                               srcset="
                                                 assets/cabinet-gallery/accueil-parodontia-480w.avif 480w,
+                                                assets/cabinet-gallery/accueil-parodontia-640w.avif 640w,
                                                 assets/cabinet-gallery/accueil-parodontia-960w.avif 960w,
                                                 assets/cabinet-gallery/accueil-parodontia-1600w.avif 1600w
                                               "
-                                              sizes="(max-width: 768px) 92vw, 1600px"
+                                              sizes="(max-width: 768px) 92vw, 900px"
                                               alt="Accueil de la Clinique Parodontia à Châtenay-Malabry"
                                               width="1600"
                                               height="900"
@@ -493,17 +485,18 @@
                                     </div>
                                 </figure>
 
-                                <figure id="cabinet-slide-2" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/equipe-parodontia-480w.avif" data-label="Équipe">
+                                <figure id="cabinet-slide-2" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/equipe-parodontia-240w.avif" data-label="Équipe">
                                     <div class="cabinet-media-carousel__slide-inner">
                                         <div class="cabinet-media-carousel__media">
                                             <img
                                               src="assets/cabinet-gallery/equipe-parodontia-960w.avif"
                                               srcset="
                                                 assets/cabinet-gallery/equipe-parodontia-480w.avif 480w,
+                                                assets/cabinet-gallery/equipe-parodontia-640w.avif 640w,
                                                 assets/cabinet-gallery/equipe-parodontia-960w.avif 960w,
                                                 assets/cabinet-gallery/equipe-parodontia-1600w.avif 1600w
                                               "
-                                              sizes="(max-width: 768px) 92vw, 1600px"
+                                              sizes="(max-width: 768px) 92vw, 900px"
                                               alt="Équipe de la Clinique Parodontia à Châtenay-Malabry"
                                               width="1600"
                                               height="900"
@@ -515,17 +508,18 @@
                                     </div>
                                 </figure>
 
-                                <figure id="cabinet-slide-3" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/salle-soin-1-480w.avif" data-label="Salle de soin 1">
+                                <figure id="cabinet-slide-3" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/salle-soin-1-240w.avif" data-label="Salle de soin 1">
                                     <div class="cabinet-media-carousel__slide-inner">
                                         <div class="cabinet-media-carousel__media">
                                             <img
                                               src="assets/cabinet-gallery/salle-soin-1-960w.avif"
                                               srcset="
                                                 assets/cabinet-gallery/salle-soin-1-480w.avif 480w,
+                                                assets/cabinet-gallery/salle-soin-1-640w.avif 640w,
                                                 assets/cabinet-gallery/salle-soin-1-960w.avif 960w,
                                                 assets/cabinet-gallery/salle-soin-1-1600w.avif 1600w
                                               "
-                                              sizes="(max-width: 768px) 92vw, 1600px"
+                                              sizes="(max-width: 768px) 92vw, 900px"
                                               alt="Salle de soin 1 de la Clinique Parodontia à Châtenay-Malabry"
                                               width="1600"
                                               height="900"
@@ -537,17 +531,18 @@
                                     </div>
                                 </figure>
 
-                                <figure id="cabinet-slide-4" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/salle-soin-2-480w.avif" data-label="Salle de soin 2">
+                                <figure id="cabinet-slide-4" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/salle-soin-2-240w.avif" data-label="Salle de soin 2">
                                     <div class="cabinet-media-carousel__slide-inner">
                                         <div class="cabinet-media-carousel__media">
                                             <img
                                               src="assets/cabinet-gallery/salle-soin-2-960w.avif"
                                               srcset="
                                                 assets/cabinet-gallery/salle-soin-2-480w.avif 480w,
+                                                assets/cabinet-gallery/salle-soin-2-640w.avif 640w,
                                                 assets/cabinet-gallery/salle-soin-2-960w.avif 960w,
                                                 assets/cabinet-gallery/salle-soin-2-1600w.avif 1600w
                                               "
-                                              sizes="(max-width: 768px) 92vw, 1600px"
+                                              sizes="(max-width: 768px) 92vw, 900px"
                                               alt="Salle de soin 2 de la Clinique Parodontia à Châtenay-Malabry"
                                               width="1600"
                                               height="900"
@@ -559,17 +554,18 @@
                                     </div>
                                 </figure>
 
-                                <figure id="cabinet-slide-5" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/salle-soin-ecrans-480w.avif" data-label="Salle de soin · écrans">
+                                <figure id="cabinet-slide-5" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/salle-soin-ecrans-240w.avif" data-label="Salle de soin · écrans">
                                     <div class="cabinet-media-carousel__slide-inner">
                                         <div class="cabinet-media-carousel__media">
                                             <img
                                               src="assets/cabinet-gallery/salle-soin-ecrans-960w.avif"
                                               srcset="
                                                 assets/cabinet-gallery/salle-soin-ecrans-480w.avif 480w,
+                                                assets/cabinet-gallery/salle-soin-ecrans-640w.avif 640w,
                                                 assets/cabinet-gallery/salle-soin-ecrans-960w.avif 960w,
                                                 assets/cabinet-gallery/salle-soin-ecrans-1600w.avif 1600w
                                               "
-                                              sizes="(max-width: 768px) 92vw, 1600px"
+                                              sizes="(max-width: 768px) 92vw, 900px"
                                               alt="Salle de soin avec écrans de la Clinique Parodontia à Châtenay-Malabry"
                                               width="1600"
                                               height="900"
@@ -581,17 +577,18 @@
                                     </div>
                                 </figure>
 
-                                <figure id="cabinet-slide-6" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/cabinet-parodontia-480w.avif" data-label="Cabinet Parodontia">
+                                <figure id="cabinet-slide-6" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/cabinet-parodontia-240w.avif" data-label="Cabinet Parodontia">
                                     <div class="cabinet-media-carousel__slide-inner">
                                         <div class="cabinet-media-carousel__media">
                                             <img
                                               src="assets/cabinet-gallery/cabinet-parodontia-960w.avif"
                                               srcset="
                                                 assets/cabinet-gallery/cabinet-parodontia-480w.avif 480w,
+                                                assets/cabinet-gallery/cabinet-parodontia-640w.avif 640w,
                                                 assets/cabinet-gallery/cabinet-parodontia-960w.avif 960w,
                                                 assets/cabinet-gallery/cabinet-parodontia-1600w.avif 1600w
                                               "
-                                              sizes="(max-width: 768px) 92vw, 1600px"
+                                              sizes="(max-width: 768px) 92vw, 900px"
                                               alt="Clinique Parodontia à Châtenay-Malabry : vue du cabinet"
                                               width="1600"
                                               height="900"
@@ -603,17 +600,18 @@
                                     </div>
                                 </figure>
 
-                                <figure id="cabinet-slide-7" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/radio-3d-cbct-480w.avif" data-label="Radio 3D / CBCT">
+                                <figure id="cabinet-slide-7" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/radio-3d-cbct-240w.avif" data-label="Radio 3D / CBCT">
                                     <div class="cabinet-media-carousel__slide-inner">
                                         <div class="cabinet-media-carousel__media">
                                             <img
                                               src="assets/cabinet-gallery/radio-3d-cbct-960w.avif"
                                               srcset="
                                                 assets/cabinet-gallery/radio-3d-cbct-480w.avif 480w,
+                                                assets/cabinet-gallery/radio-3d-cbct-640w.avif 640w,
                                                 assets/cabinet-gallery/radio-3d-cbct-960w.avif 960w,
                                                 assets/cabinet-gallery/radio-3d-cbct-1600w.avif 1600w
                                               "
-                                              sizes="(max-width: 768px) 92vw, 1600px"
+                                              sizes="(max-width: 768px) 92vw, 900px"
                                               alt="Équipement de radiologie 3D (CBCT) de la Clinique Parodontia à Châtenay-Malabry"
                                               width="1600"
                                               height="900"
@@ -625,17 +623,18 @@
                                     </div>
                                 </figure>
 
-                                <figure id="cabinet-slide-8" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/sterilisateur-480w.avif" data-label="Stérilisation">
+                                <figure id="cabinet-slide-8" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/sterilisateur-240w.avif" data-label="Stérilisation">
                                     <div class="cabinet-media-carousel__slide-inner">
                                         <div class="cabinet-media-carousel__media">
                                             <img
                                               src="assets/cabinet-gallery/sterilisateur-960w.avif"
                                               srcset="
                                                 assets/cabinet-gallery/sterilisateur-480w.avif 480w,
+                                                assets/cabinet-gallery/sterilisateur-640w.avif 640w,
                                                 assets/cabinet-gallery/sterilisateur-960w.avif 960w,
                                                 assets/cabinet-gallery/sterilisateur-1600w.avif 1600w
                                               "
-                                              sizes="(max-width: 768px) 92vw, 1600px"
+                                              sizes="(max-width: 768px) 92vw, 900px"
                                               alt="Zone de stérilisation et stérilisateur de la Clinique Parodontia à Châtenay-Malabry"
                                               width="1600"
                                               height="900"
@@ -647,7 +646,7 @@
                                     </div>
                                 </figure>
 
-                                <figure id="cabinet-slide-9" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/poster-video-presentation-parodontia-480w.avif" data-label="Vidéo · présentation du cabinet">
+                                <figure id="cabinet-slide-9" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/poster-video-presentation-parodontia-240w.avif" data-label="Vidéo · présentation du cabinet">
                                     <div class="cabinet-media-carousel__slide-inner">
                                         <div class="cabinet-media-carousel__media">
                                             <video poster="assets/cabinet-gallery/poster-video-presentation-parodontia-960w.avif" preload="none" muted playsinline>

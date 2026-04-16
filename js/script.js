@@ -960,6 +960,18 @@
     initHeroVideoDeferred();
   }
 
+  function initServiceWorker() {
+    if (!('serviceWorker' in navigator)) return;
+    const register = () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    };
+    if (window.requestIdleCallback) {
+      requestIdleCallback(register, { timeout: 8000 });
+    } else {
+      setTimeout(register, 2500);
+    }
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', runDeferredHeadWork);
   } else {
@@ -972,6 +984,13 @@
     document.addEventListener('DOMContentLoaded', startApp);
   } else {
     startApp();
+  }
+
+  // SW : enregistre après l'initialisation (sans bloquer le rendu).
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initServiceWorker);
+  } else {
+    initServiceWorker();
   }
 
 })();
