@@ -92,8 +92,56 @@
   border-radius: var(--border-radius);
 }
 
+.map__placeholder {
+  width: 100%;
+  min-height: 400px;
+  padding: clamp(var(--space-lg), 3vw, var(--space-2xl));
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: var(--space-md);
+  background:
+    radial-gradient(1200px 420px at 50% 0%, rgba(102, 126, 234, 0.10), transparent 55%),
+    linear-gradient(180deg, rgba(102, 126, 234, 0.06), rgba(0, 0, 0, 0) 55%),
+    var(--color-bg);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.map__placeholder .text {
+  max-width: 44ch;
+  margin: 0;
+  color: var(--color-light);
+}
+
+.map__placeholder::before {
+  content: '';
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)),
+    linear-gradient(135deg, rgba(102, 126, 234, 0.35), rgba(0, 212, 170, 0.28));
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.map__activate {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: min(360px, 100%);
+}
+
 .contact__map-section {
   margin-top: var(--space-2xl);
+}
+
+@media (max-width: 767px) {
+  .map__placeholder {
+    min-height: 320px;
+  }
 }
 
 .form__grid {

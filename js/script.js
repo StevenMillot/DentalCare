@@ -972,6 +972,41 @@
     }
   }
 
+  function initDeferredGoogleMap() {
+    const holder = document.querySelector('[data-map-consent][data-map-src]');
+    if (!holder) return;
+
+    const btn = holder.querySelector('.map__activate');
+    if (!btn) return;
+
+    const src = holder.getAttribute('data-map-src');
+    if (!src) return;
+
+    const loadMap = () => {
+      if (holder.getAttribute('data-map-loaded') === 'true') return;
+      holder.setAttribute('data-map-loaded', 'true');
+
+      const iframe = document.createElement('iframe');
+      iframe.src = src;
+      iframe.width = '100%';
+      iframe.height = '400';
+      iframe.style.border = '0';
+      iframe.style.borderRadius = 'var(--border-radius)';
+      iframe.allowFullscreen = true;
+      iframe.loading = 'lazy';
+      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      iframe.title = 'Carte : 40 Avenue de la Division Leclerc, 92290 Châtenay-Malabry';
+      iframe.setAttribute(
+        'aria-label',
+        'Carte Google Maps centrée sur 40 Avenue de la Division Leclerc, 92290 Châtenay-Malabry'
+      );
+
+      holder.replaceWith(iframe);
+    };
+
+    btn.addEventListener('click', loadMap, { once: true });
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', runDeferredHeadWork);
   } else {
@@ -991,6 +1026,13 @@
     document.addEventListener('DOMContentLoaded', initServiceWorker);
   } else {
     initServiceWorker();
+  }
+
+  // Carte Google Maps : chargement uniquement après action utilisateur.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDeferredGoogleMap);
+  } else {
+    initDeferredGoogleMap();
   }
 
 })();
