@@ -158,7 +158,7 @@
         playBadge.className =
           'cabinet-media-carousel__badge-video cabinet-media-carousel__badge-video--thumb';
         playBadge.setAttribute('aria-hidden', 'true');
-        playBadge.innerHTML = '<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-play"></use></svg>';
+        playBadge.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#i-play"></use></svg>';
         btn.appendChild(playBadge);
       }
 

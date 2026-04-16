@@ -109,7 +109,7 @@
       icon.setAttribute('class', 'toast__icon icon');
       icon.setAttribute('aria-hidden', 'true');
       const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-      use.setAttribute('href', `assets/icons.svg#${symbolFor(kind)}`);
+      use.setAttribute('href', `#${symbolFor(kind)}`);
       icon.appendChild(use);
 
       const text = document.createElement('p');
@@ -124,7 +124,7 @@
       closeSvg.setAttribute('class', 'icon');
       closeSvg.setAttribute('aria-hidden', 'true');
       const closeUse = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-      closeUse.setAttribute('href', 'assets/icons.svg#i-x');
+      closeUse.setAttribute('href', '#i-x');
       closeSvg.appendChild(closeUse);
       closeBtn.appendChild(closeSvg);
 
@@ -939,7 +939,24 @@
     }
   }
 
+  /**
+   * Manifest : éviter de l'ajouter au chemin critique (Lighthouse).
+   * On l'injecte après le rendu / idle.
+   */
+  function initDeferredManifest() {
+    if (document.querySelector('link[rel~="manifest"]')) return;
+    const link = document.createElement('link');
+    link.rel = 'manifest';
+    link.href = 'site.webmanifest';
+    document.head.appendChild(link);
+  }
+
   function runDeferredHeadWork() {
+    if (window.requestIdleCallback) {
+      requestIdleCallback(() => initDeferredManifest(), { timeout: 5000 });
+    } else {
+      setTimeout(() => initDeferredManifest(), 2000);
+    }
     initHeroVideoDeferred();
   }
 

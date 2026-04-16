@@ -97,6 +97,7 @@
   justify-content: center;
   width: auto;
   height: 1em;
+  color: #fff;
 }
 
 /* SVG icons (sprite) */
@@ -105,6 +106,15 @@ svg.icon {
   height: 1em;
   fill: currentColor;
   flex: 0 0 auto;
+  display: inline-block;
+  vertical-align: -0.125em;
+}
+
+/* <img class="icon"> (SVG fichier) : forcer en blanc */
+img.icon {
+  width: 1em;
+  height: 1em;
+  filter: brightness(0) invert(1);
 }
 
 .icon--lg {

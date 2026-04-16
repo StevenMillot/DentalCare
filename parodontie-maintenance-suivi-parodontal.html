@@ -38,8 +38,7 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="manifest" href="site.webmanifest">
-    <!-- Styles modulaires (ordre de cascade — voir css/main.css) -->
+<!-- Styles modulaires (ordre de cascade — voir css/main.css) -->
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/layout.css">
@@ -68,7 +67,7 @@
                 <span>PARODONTIA</span>
             </a>
             <a href="index.html#traitements" class="navbar__link" aria-label="Retour aux traitements">
-                <svg class="icon icon--sm" aria-hidden="true" style="margin-right: var(--space-md);"><use href="assets/icons.svg#i-arrow-left"></use></svg>Retour
+                <svg class="icon icon--sm" aria-hidden="true" style="margin-right: var(--space-md);"><use href="#i-arrow-left"></use></svg>Retour
             </a>
         </div>
     </nav>
@@ -103,5 +102,113 @@
     </main>
 
     <script src="js/script.js" defer></script>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <!-- Minimal icon sprite (fill: currentColor via CSS) -->
+
+  <symbol id="i-heart" viewBox="0 0 24 24">
+    <path d="M12 21s-7-4.35-10-9.35C-0.1 7.1 2.4 3.5 6.1 3.5c2 0 3.4 1 3.9 1.6.5-.6 1.9-1.6 3.9-1.6 3.7 0 6.2 3.6 4.1 8.15C19 16.65 12 21 12 21z"/>
+  </symbol>
+
+  <symbol id="i-award" viewBox="0 0 24 24">
+    <path d="M12 2a6 6 0 0 0-3.8 10.6L6 22l6-3 6 3-2.2-9.4A6 6 0 0 0 12 2zm0 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8z"/>
+  </symbol>
+
+  <symbol id="i-comments" viewBox="0 0 24 24">
+    <path d="M20 2H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h3v4l5-4h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/>
+  </symbol>
+
+  <symbol id="i-users" viewBox="0 0 24 24">
+    <path d="M16 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4zM8 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3z"/>
+    <path d="M16 13c-3.3 0-6 1.7-6 4v3h12v-3c0-2.3-2.7-4-6-4zM8 13c-2.8 0-5 1.4-5 3.2V20h5.2c-.1-.3-.2-.7-.2-1v-2c0-1.5.8-2.8 2-3.7A8.2 8.2 0 0 0 8 13z"/>
+  </symbol>
+
+  <symbol id="i-play" viewBox="0 0 24 24">
+    <path d="M8 5v14l11-7z"/>
+  </symbol>
+
+  <symbol id="i-stethoscope" viewBox="0 0 24 24">
+    <path d="M6 2v6a4 4 0 0 0 8 0V2h2v6a6 6 0 0 1-5 5.9V17a3 3 0 1 0 6 0v-3.1a3.5 3.5 0 1 1 2 0V17a5 5 0 0 1-10 0v-3.1A6 6 0 0 1 4 8V2h2z"/>
+  </symbol>
+
+  <symbol id="i-smile" viewBox="0 0 24 24">
+    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-4 9a1.2 1.2 0 1 1 1.2-1.2A1.2 1.2 0 0 1 8 11zm8 0a1.2 1.2 0 1 1 1.2-1.2A1.2 1.2 0 0 1 16 11zm-8.2 2.7h8.4a4.4 4.4 0 0 1-8.4 0z"/>
+  </symbol>
+
+  <symbol id="i-tooth" viewBox="0 0 24 24">
+    <path d="M12 2c-3.9 0-7 2.7-7 6.7 0 1.8.6 3.7 1.2 5.1.6 1.5 1.2 2.7 1.4 4.3.2 1.6.9 3.9 2.4 3.9 1.4 0 1.8-2.3 2-3.6.2-1.2.4-2.4 2-2.4s1.8 1.2 2 2.4c.2 1.3.6 3.6 2 3.6 1.5 0 2.2-2.3 2.4-3.9.2-1.6.8-2.8 1.4-4.3.6-1.4 1.2-3.3 1.2-5.1C19 4.7 15.9 2 12 2z"/>
+  </symbol>
+
+  <symbol id="i-phone" viewBox="0 0 24 24">
+    <path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A18 18 0 0 1 3 4a1 1 0 0 1 1-1h3.2a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .6 3.6 1 1 0 0 1-.25 1z"/>
+  </symbol>
+
+  <symbol id="i-envelope" viewBox="0 0 24 24">
+    <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5L4 8V6l8 5 8-5z"/>
+  </symbol>
+
+  <symbol id="i-clock" viewBox="0 0 24 24">
+    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 11h5v-2h-4V6h-2v7z"/>
+  </symbol>
+
+  <symbol id="i-pin" viewBox="0 0 24 24">
+    <path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5z"/>
+  </symbol>
+
+  <symbol id="i-car" viewBox="0 0 24 24">
+    <path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11v8h-2v-2H7v2H5v-8zm3.1-4L7 10h10l-1.1-3zM8 16a1.5 1.5 0 1 0-1.5-1.5A1.5 1.5 0 0 0 8 16zm8 0a1.5 1.5 0 1 0-1.5-1.5A1.5 1.5 0 0 0 16 16z"/>
+  </symbol>
+
+  <symbol id="i-calendar-check" viewBox="0 0 24 24">
+    <path d="M7 2h2v2h6V2h2v2h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h4V2zm15 8H2v10h20V10z"/>
+    <path d="M10.5 16.2 8.3 14l-1.4 1.4 3.6 3.6 6.6-6.6-1.4-1.4z"/>
+  </symbol>
+
+  <symbol id="i-calendar-plus" viewBox="0 0 24 24">
+    <path d="M7 2h2v2h6V2h2v2h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h4V2zm15 8H2v10h20V10z"/>
+    <path d="M11 12h2v3h3v2h-3v3h-2v-3H8v-2h3z"/>
+  </symbol>
+
+  <symbol id="i-info" viewBox="0 0 24 24">
+    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+  </symbol>
+
+  <symbol id="i-home" viewBox="0 0 24 24">
+    <path d="M12 3 2 11h3v10h6v-6h2v6h6V11h3z"/>
+  </symbol>
+
+  <symbol id="i-user-md" viewBox="0 0 24 24">
+    <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4z"/>
+    <path d="M4 22v-2c0-3.3 3.6-6 8-6s8 2.7 8 6v2h-6v-3h-2v3H4z"/>
+    <path d="M19 7h-1V6h-2v1h-1v2h1v1h2V9h1z"/>
+  </symbol>
+
+  <symbol id="i-arrow-left" viewBox="0 0 24 24">
+    <path d="M14 6 8 12l6 6 1.4-1.4L10.8 12l4.6-4.6z"/>
+  </symbol>
+
+  <symbol id="i-arrow-up" viewBox="0 0 24 24">
+    <path d="M12 4l-7 7 1.4 1.4L11 7.8V20h2V7.8l4.6 4.6L19 11z"/>
+  </symbol>
+
+  <symbol id="i-x" viewBox="0 0 24 24">
+    <path d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7 4.3 4.3l6.3 6.3 6.3-6.3z"/>
+  </symbol>
+
+  <symbol id="i-check-circle" viewBox="0 0 24 24">
+    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-1.1 14.2L6.8 12l1.4-1.4 2.7 2.7 5.9-5.9 1.4 1.4z"/>
+  </symbol>
+
+  <symbol id="i-alert-circle" viewBox="0 0 24 24">
+    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+  </symbol>
+
+  <symbol id="i-alert-triangle" viewBox="0 0 24 24">
+    <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+  </symbol>
+
+  <symbol id="i-instagram" viewBox="0 0 24 24">
+    <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4a4 4 0 1 1-4 4 4 4 0 0 1 4-4zm0 2a2 2 0 1 0 2 2 2 2 0 0 0-2-2zm5.2-2.3a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/>
+  </symbol>
+</svg>
 </body>
 </html>
