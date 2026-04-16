@@ -890,17 +890,6 @@
   }
 
   /**
-   * Manifest hors chemin critique (chaîne réseau Lighthouse).
-   */
-  function initDeferredManifest() {
-    if (document.querySelector('link[rel~="manifest"]')) return;
-    const link = document.createElement('link');
-    link.rel = 'manifest';
-    link.href = 'site.webmanifest';
-    document.head.appendChild(link);
-  }
-
-  /**
    * Vidéo hero : pas de téléchargement MP4 tant que le DOM est prêt (réduit la charge initiale).
    */
   function initHeroVideoDeferred() {
@@ -920,7 +909,6 @@
   }
 
   function runDeferredHeadWork() {
-    initDeferredManifest();
     initHeroVideoDeferred();
   }
 
