@@ -1062,8 +1062,10 @@
       let started = false;
 
       function hasExternalSpriteUse() {
+        // GitHub Pages = FS sensible à la casse : le dépôt utilise `assets/Icones/`.
+        // Accepter aussi `icones` pour ne pas désactiver tout le chargeur si une page a la mauvaise casse.
         return document.querySelector(
-          'svg use[href*="assets/Icones/icons.svg#"], svg use[xlink\\:href*="assets/Icones/icons.svg#"]'
+          'svg use[href*="assets/Icones/icons.svg#"], svg use[href*="assets/icones/icons.svg#"], svg use[xlink\\:href*="assets/Icones/icons.svg#"], svg use[xlink\\:href*="assets/icones/icons.svg#"]'
         );
       }
 
@@ -1073,7 +1075,7 @@
           .forEach((u) => {
             const raw = u.getAttribute('href') || u.getAttribute('xlink:href');
             if (!raw) return;
-            const m = raw.match(/(?:^|\/)assets\/Icones\/icons\.svg#(.+)$/);
+            const m = raw.match(/(?:^|\/)assets\/[Ii]cones\/icons\.svg#(.+)$/);
             if (!m) return;
             const local = `#${m[1]}`;
             u.setAttribute('href', local);
@@ -1255,7 +1257,9 @@
   }
 
   /**
-   * Vidéo hero : éviter de télécharger le MP4 sur mobile / connexions lentes (Lighthouse).
+   * Vidéo hero : MP4 H.264 (OK iPhone + Android), jamais dans le chemin critique.
+   * On attend la fin du chargement document (`load`) puis une fenêtre idle pour ne pas
+   * concurrencer LCP / images ; poster + preload=none gardent le premier rendu léger.
    */
   function initHeroVideoDeferred() {
     const video = $('.hero__video[data-hero-src]');
@@ -1263,8 +1267,6 @@
     const src = video.getAttribute('data-hero-src');
     if (!src) return;
 
-    // Ne pas charger la vidéo si l’utilisateur préfère réduire les animations,
-    // si le mode économie de données est actif, ou si l’écran est petit.
     try {
       if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     } catch {}
@@ -1272,29 +1274,37 @@
       if (navigator.connection && navigator.connection.saveData) return;
       if (navigator.connection && typeof navigator.connection.effectiveType === 'string') {
         const t = navigator.connection.effectiveType;
-        if (t.includes('2g') || t.includes('3g')) return;
+        if (t === 'slow-2g' || t === '2g') return;
       }
     } catch {}
-    if (window.innerWidth && window.innerWidth < 1024) return;
 
-    // Déjà initialisée
     if (video.querySelector('source')) return;
 
-    // Différer réellement après l'UI interactive
     const start = () => {
       const source = document.createElement('source');
       source.src = src;
       source.type = 'video/mp4';
       video.appendChild(source);
-      // On tente lecture, sans forcer (autoplay peut être bloqué).
+      try {
+        video.load();
+      } catch (_) {}
       const playPromise = video.play();
       if (playPromise && typeof playPromise.catch === 'function') playPromise.catch(() => {});
     };
 
-    if (window.requestIdleCallback) {
-      requestIdleCallback(start, { timeout: 2500 });
+    const runAfterQuiet = () => {
+      if (window.requestIdleCallback) {
+        requestIdleCallback(start, { timeout: 4000 });
+      } else {
+        setTimeout(start, 900);
+      }
+    };
+
+    // Après `load` : le navigateur a fini les ressources synchrones du document (meilleur pour perf / LCP).
+    if (document.readyState === 'complete') {
+      runAfterQuiet();
     } else {
-      setTimeout(start, 600);
+      window.addEventListener('load', runAfterQuiet, { once: true });
     }
   }
 
