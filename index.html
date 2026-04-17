@@ -15,7 +15,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Parodontia">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="manifest" href="site.webmanifest"><!-- Optimisations critiques pour FCP/LCP -->
+    <!-- Manifest PWA : injecté après window.load dans le script principal (réduit la chaîne critique). -->
     <link rel="preload" href="assets/logo-b-raphael-brochand.svg" as="image">
     <meta name="description" content="Clinique Parodontia, cabinet dentaire du Dr Raphaël BROCHAND à Châtenay-Malabry. Chirurgie orale, parodontologie, implantologie. Technologies modernes, équipe expérimentée. Prise de rendez-vous en ligne.">
     <meta name="author" content="Dr Raphaël BROCHAND">
@@ -363,7 +363,7 @@
                                 assets/team/raphael-brochand-chirurgien-dentiste-720w.jpg 720w,
                                 assets/team/raphael-brochand-chirurgien-dentiste-1080w.jpg 1080w
                               "
-                              sizes="(max-width: 768px) 92vw, 360px"
+                              sizes="(max-width: 768px) 92vw, calc(362px - 4rem)"
                               alt=""
                               loading="lazy"
                               decoding="async"
@@ -386,7 +386,7 @@
                                 assets/team/specialist-2-chirurgien-dentiste-720w.jpg 720w,
                                 assets/team/specialist-2-chirurgien-dentiste-1080w.jpg 1080w
                               "
-                              sizes="(max-width: 768px) 92vw, 360px"
+                              sizes="(max-width: 768px) 92vw, calc(362px - 4rem)"
                               alt=""
                               loading="lazy"
                               decoding="async"
@@ -414,7 +414,7 @@
                                 assets/team/alicia-assistante-dentaire-720w.jpg 720w,
                                 assets/team/alicia-assistante-dentaire-1080w.jpg 1080w
                               "
-                              sizes="(max-width: 768px) 92vw, 360px"
+                              sizes="(max-width: 768px) 92vw, calc(362px - 4rem)"
                               alt="Portrait d'Alicia"
                               loading="lazy"
                               decoding="async"
@@ -446,14 +446,14 @@
                                     <div class="cabinet-media-carousel__slide-inner">
                                         <div class="cabinet-media-carousel__media">
                                             <img
-                                              src="assets/cabinet-gallery/salle-attente-960w.avif"
+                                              src="assets/cabinet-gallery/salle-attente-640w.avif"
                                               srcset="
                                                 assets/cabinet-gallery/salle-attente-480w.avif 480w,
                                                 assets/cabinet-gallery/salle-attente-640w.avif 640w,
                                                 assets/cabinet-gallery/salle-attente-960w.avif 960w,
                                                 assets/cabinet-gallery/salle-attente-1600w.avif 1600w
                                               "
-                                              sizes="(max-width: 768px) 92vw, 900px"
+                                              sizes="calc((min(100vw, 1200px) - 3rem) / 1.4)"
                                               alt="Salle d’attente de la Clinique Parodontia à Châtenay-Malabry"
                                               width="1600"
                                               height="900"
@@ -477,7 +477,7 @@
                                                 assets/cabinet-gallery/accueil-parodontia-960w.avif 960w,
                                                 assets/cabinet-gallery/accueil-parodontia-1600w.avif 1600w
                                               "
-                                              sizes="(max-width: 768px) 92vw, 900px"
+                                              sizes="calc((min(100vw, 1200px) - 3rem) / 1.4)"
                                               alt="Accueil de la Clinique Parodontia à Châtenay-Malabry"
                                               width="1600"
                                               height="900"
@@ -500,7 +500,7 @@
                                                 assets/cabinet-gallery/equipe-parodontia-960w.avif 960w,
                                                 assets/cabinet-gallery/equipe-parodontia-1600w.avif 1600w
                                               "
-                                              sizes="(max-width: 768px) 92vw, 900px"
+                                              sizes="calc((min(100vw, 1200px) - 3rem) / 1.4)"
                                               alt="Équipe de la Clinique Parodontia à Châtenay-Malabry"
                                               width="1600"
                                               height="900"
@@ -523,7 +523,7 @@
                                                 assets/cabinet-gallery/salle-soin-1-960w.avif 960w,
                                                 assets/cabinet-gallery/salle-soin-1-1600w.avif 1600w
                                               "
-                                              sizes="(max-width: 768px) 92vw, 900px"
+                                              sizes="calc((min(100vw, 1200px) - 3rem) / 1.4)"
                                               alt="Salle de soin 1 de la Clinique Parodontia à Châtenay-Malabry"
                                               width="1600"
                                               height="900"
@@ -546,7 +546,7 @@
                                                 assets/cabinet-gallery/salle-soin-2-960w.avif 960w,
                                                 assets/cabinet-gallery/salle-soin-2-1600w.avif 1600w
                                               "
-                                              sizes="(max-width: 768px) 92vw, 900px"
+                                              sizes="calc((min(100vw, 1200px) - 3rem) / 1.4)"
                                               alt="Salle de soin 2 de la Clinique Parodontia à Châtenay-Malabry"
                                               width="1600"
                                               height="900"
@@ -569,7 +569,7 @@
                                                 assets/cabinet-gallery/salle-soin-ecrans-960w.avif 960w,
                                                 assets/cabinet-gallery/salle-soin-ecrans-1600w.avif 1600w
                                               "
-                                              sizes="(max-width: 768px) 92vw, 900px"
+                                              sizes="calc((min(100vw, 1200px) - 3rem) / 1.4)"
                                               alt="Salle de soin avec écrans de la Clinique Parodontia à Châtenay-Malabry"
                                               width="1600"
                                               height="900"
@@ -592,7 +592,7 @@
                                                 assets/cabinet-gallery/cabinet-parodontia-960w.avif 960w,
                                                 assets/cabinet-gallery/cabinet-parodontia-1600w.avif 1600w
                                               "
-                                              sizes="(max-width: 768px) 92vw, 900px"
+                                              sizes="calc((min(100vw, 1200px) - 3rem) / 1.4)"
                                               alt="Clinique Parodontia à Châtenay-Malabry : vue du cabinet"
                                               width="1600"
                                               height="900"
@@ -615,7 +615,7 @@
                                                 assets/cabinet-gallery/radio-3d-cbct-960w.avif 960w,
                                                 assets/cabinet-gallery/radio-3d-cbct-1600w.avif 1600w
                                               "
-                                              sizes="(max-width: 768px) 92vw, 900px"
+                                              sizes="calc((min(100vw, 1200px) - 3rem) / 1.4)"
                                               alt="Équipement de radiologie 3D (CBCT) de la Clinique Parodontia à Châtenay-Malabry"
                                               width="1600"
                                               height="900"
@@ -638,7 +638,7 @@
                                                 assets/cabinet-gallery/sterilisateur-960w.avif 960w,
                                                 assets/cabinet-gallery/sterilisateur-1600w.avif 1600w
                                               "
-                                              sizes="(max-width: 768px) 92vw, 900px"
+                                              sizes="calc((min(100vw, 1200px) - 3rem) / 1.4)"
                                               alt="Zone de stérilisation et stérilisateur de la Clinique Parodontia à Châtenay-Malabry"
                                               width="1600"
                                               height="900"
@@ -1076,8 +1076,8 @@
 
     <div id="toast-host" class="toast-host" aria-live="polite"></div>
 
-    <script src="js/script.js" defer></script>
-    <script src="js/cabinet-media-carousel.js" defer></script>
+    <script src="js/script.min.js" defer></script>
+    <script src="js/cabinet-media-carousel.min.js" defer></script>
 
   </body>
 </html>

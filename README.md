@@ -58,11 +58,13 @@ npm run deploy:prepare
 
 ### En dev (actualiser les assets)
 
-Régénère simplement le bundle CSS + resynchronise le sprite inline (utile quand tu modifies `assets/Icones/icons.svg` en test `file://`) :
+Régénère le **bundle CSS minifié** (`css/bundle.css`), resynchronise le sprite inline dans **`js/script.js`**, puis produit les fichiers **`js/script.min.js`** et **`js/cabinet-media-carousel.min.js`** (c’est ce que charge le HTML en prod).
 
 ```bash
 npm run dev:refresh
 ```
+
+Après toute modification de **`js/script.js`** ou du CSS source, relance cette commande avant commit / déploiement.
 
 ### Images responsive (vérifier / corriger)
 
@@ -87,7 +89,7 @@ Le site utilise un sprite `assets/Icones/icons.svg` et des `<use href="assets/Ic
 
 ### Cas `file://` (ou environnement qui bloque `assets/Icones/icons.svg`)
 
-En `file://`, les références externes SVG sont bloquées par le navigateur. Pour garantir l’affichage, `js/script.js` contient une **copie inline** du sprite (`INLINE_SPRITE_SVG`) utilisée en fallback.
+En `file://`, les références externes SVG sont bloquées par le navigateur. Pour garantir l’affichage, `js/script.js` (puis `script.min.js` après `npm run dev:refresh`) contient une **copie inline** du sprite (`INLINE_SPRITE_SVG`) utilisée en fallback.
 
 Donc, si tu modifies `assets/Icones/icons.svg`, il faut **synchroniser** cette copie inline :
 
@@ -110,15 +112,17 @@ Si tu ne vois pas un changement après refresh :
 
 ## PWA / Service Worker
 
-- **Manifest** : `site.webmanifest`
+- **Manifest** : `site.webmanifest` — sur **`index.html`**, le lien est injecté après `window.load` (chaîne critique plus courte) ; les autres pages gardent un `<link rel="manifest">` classique.
 - **Service worker** : `sw.js`
 
 Le SW applique :
 
 - **HTML** : network-first (toujours à jour, fallback cache/offline)
-- **Assets (`.css/.js/.svg/...`)** : cache-first
+- **Assets (`.css/.js/.svg/.mp4/...`)** : cache-first (visites répétées plus rapides même si GitHub Pages envoie un `Cache-Control` court côté HTTP).
 
-Si tu modifies un asset (ex: `assets/Icones/icons.svg`, `js/script.js`, `css/bundle.css`) et que ça ne se reflète pas, il faut **invalider le cache** :
+**TTL HTTP (Lighthouse « durée de mise en cache »)** : sur `github.io`, les en-têtes `Cache-Control` (~10 min) sont **imposés par GitHub** ; on ne peut pas les allonger depuis le dépôt. Pour un TTL long au premier chargement, il faut un **CDN** (ex. Cloudflare) devant le site.
+
+Si tu modifies un asset (ex: `assets/Icones/icons.svg`, `js/script.js` puis `dev:refresh`, `css/` sources puis `dev:refresh`) et que ça ne se reflète pas, il faut **invalider le cache** :
 
 - soit en bumpant `CACHE_VERSION` dans `sw.js`
 - soit via la commande :
@@ -133,5 +137,5 @@ npm run sw:bump
 - `index.html` : page principale + galerie + formulaire
 - `*.html` : pages “traitement” / “spécialiste”
 - `css/` : styles modulaires
-- `js/script.js` : navigation, galerie, formulaire, toasts, optimisations
+- `js/script.js` : source ; **`js/script.min.js`** : livré en prod (généré par `npm run dev:refresh`)
 - `assets/` : médias (noms web-safe) + variantes `*-{...}w.*`

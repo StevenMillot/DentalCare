@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "css:bundle": "cat css/variables.css css/reset.css css/layout.css css/typography.css css/atomes.css css/navigation.css css/hero.css css/sections.css css/cabinet-carousel.css css/contact.css css/footer.css css/sidebar.css css/utilities.css > css/bundle.css",
+    "css:minify": "esbuild css/bundle.css --minify --allow-overwrite --outfile=css/bundle.css",
+    "js:minify": "esbuild js/script.js --minify --legal-comments=none --outfile=js/script.min.js && esbuild js/cabinet-media-carousel.js --minify --legal-comments=none --outfile=js/cabinet-media-carousel.min.js",
     "images:responsive": "node tools/generate-responsive-images.mjs",
     "images:check": "node scripts/check-responsive-images.mjs",
     "images:cleanup": "node scripts/cleanup-responsive-images.mjs",
     "icons:sync-inline": "node scripts/sync-inline-sprite.mjs",
     "sw:bump": "node scripts/bump-sw-cache-version.mjs",
-    "dev:refresh": "npm run -s css:bundle && npm run -s icons:sync-inline",
+    "dev:refresh": "npm run -s css:bundle && npm run -s css:minify && npm run -s icons:sync-inline && npm run -s js:minify",
     "deploy:prepare": "npm run -s dev:refresh && npm run -s images:responsive && npm run -s images:cleanup && npm run -s images:check && npm run -s sw:bump",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,6 +24,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "esbuild": "^0.25.9",
     "sharp": "^0.34.5"
   }
 }
