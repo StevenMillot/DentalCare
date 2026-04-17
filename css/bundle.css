@@ -1,6 +1,3 @@
-/* bundle.css — généré par script (concat). */
-
-/* ---- css/variables.css ---- */
 /* ========================================================================== */
 /* VARIABLES CSS - Système de design                                        */
 /* ========================================================================== */
@@ -51,8 +48,6 @@
   --transition-slow: 0.3s ease;
   --transition-very-slow: 0.5s ease;
 }
-
-/* ---- css/reset.css ---- */
 /* ========================================================================== */
 /* RESET CSS - Styles de base                                               */
 /* ========================================================================== */
@@ -80,8 +75,6 @@ img {
   height: auto;
   display: block;
 }
-
-/* ---- css/layout.css ---- */
 /* ========================================================================== */
 /* LAYOUT CSS - Classes utilitaires de mise en page                          */
 /* ========================================================================== */
@@ -144,8 +137,6 @@ img {
     padding: 0 var(--space-2xl);
   }
 }
-
-/* ---- css/typography.css ---- */
 /* ========================================================================== */
 /* TYPOGRAPHY CSS - Styles de texte                                          */
 /* ========================================================================== */
@@ -196,8 +187,6 @@ img {
   background-clip: text;
   color: transparent;
 }
-
-/* ---- css/atomes.css ---- */
 /* ========================================================================== */
 /* COMPONENTS CSS - Composants réutilisables                                 */
 /* ========================================================================== */
@@ -297,23 +286,56 @@ img {
   justify-content: center;
   width: auto;
   height: 1em;
-  color: #fff;
+  color: inherit;
 }
 
 /* SVG icons (sprite) */
 svg.icon {
-  width: 1em;
-  height: 1em;
+  width: 1.4em;
+  height: 1.4em;
   fill: currentColor;
   flex: 0 0 auto;
   display: inline-block;
   vertical-align: -0.125em;
 }
 
+/* Taille fixe (override) pour quelques cas spécifiques */
+.technologies__grid svg.icon.icon--size-4rem {
+  width: 4rem;
+  height: 4rem;
+}
+
+.technologies__grid svg.icon.icon--size-2em {
+  width: 2em;
+  height: 2em;
+}
+
+.technologies__grid svg.icon.icon--size-3rem {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Ajustement optique : certains symboles (ex: i-extraction) sont “petits” dans leur viewBox.
+   On applique un zoom ciblé au <use> sans toucher aux autres icônes. */
+svg.icon use {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+svg.icon use[href*="#i-extraction"],
+svg.icon use[xlink\:href*="#i-extraction"] {
+  transform: scale(1.7);
+}
+
 /* <img class="icon"> (SVG fichier) : forcer en blanc */
 img.icon {
-  width: 1em;
-  height: 1em;
+  width: 1.5em;
+  height: 1.5em;
+  filter: none;
+}
+
+/* Conserver l'option "icône blanche" si explicitement demandée */
+img.icon.icon--white {
   filter: brightness(0) invert(1);
 }
 
@@ -345,8 +367,6 @@ img.icon {
   box-shadow: var(--shadow-md);
   transform: none !important;
 }
-
-/* ---- css/navigation.css ---- */
 /* ========================================================================== */
 /* NAVIGATION CSS - Styles de la navigation                                  */
 /* ========================================================================== */
@@ -497,8 +517,6 @@ img.icon {
 #map {
   scroll-margin-top: calc(var(--header-height) + 20px);
 }
-
-/* ---- css/hero.css ---- */
 /* ========================================================================== */
 /* HERO CSS - Section d'accueil                                              */
 /* ========================================================================== */
@@ -592,6 +610,20 @@ img.icon {
   background: rgba(0, 0, 0, 0.3);
 }
 
+.hero__value-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.hero__value-title > svg.icon {
+  flex: 0 0 auto;
+  display: block;
+}
+
 /* Tablettes */
 @media (max-width: 1248px) {
   .hero__container {
@@ -641,8 +673,6 @@ img.icon {
     font-size: var(--font-size-2xl);
   }
 }
-
-/* ---- css/sections.css ---- */
 /* ========================================================================== */
 /* SECTIONS CSS - Sections principales                                       */
 /* ========================================================================== */
@@ -685,6 +715,18 @@ img.icon {
   align-items: center;
   justify-content: center;
   margin: 0 auto var(--space-lg);
+  overflow: hidden;
+}
+
+/* Garantit qu’une icône SVG ne dépasse jamais du cercle */
+.traitement-card__icon > .icon,
+.traitement-card__icon > svg.icon {
+  width: 2.7rem;
+  height: 2.7rem;
+  display: block;
+  flex: 0 0 auto;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .traitement-card__title {
@@ -1299,8 +1341,6 @@ body.treatment-page--specialist .treatment-page__media img {
     grid-template-columns: 1fr;
   }
 }
-
-/* ---- css/cabinet-carousel.css ---- */
 /* ==========================================================================
    Cabinet — Carrousel média (images + vidéos)
    ========================================================================== */
@@ -1489,7 +1529,6 @@ body.treatment-page--specialist .treatment-page__media img {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  vertical-align: middle;
 }
 
 .cabinet-media-carousel__media img,
@@ -1781,8 +1820,6 @@ body.treatment-page--specialist .treatment-page__media img {
     width: 100%;
   }
 }
-
-/* ---- css/contact.css ---- */
 /* ========================================================================== */
 /* CONTACT CSS - Section contact et formulaires                              */
 /* ========================================================================== */
@@ -1884,7 +1921,6 @@ body.treatment-page--specialist .treatment-page__media img {
   display: grid;
   place-items: center;
   text-align: center;
-  gap: var(--space-md);
   background:
     radial-gradient(1200px 420px at 50% 0%, rgba(102, 126, 234, 0.10), transparent 55%),
     linear-gradient(180deg, rgba(102, 126, 234, 0.06), rgba(0, 0, 0, 0) 55%),
@@ -1898,17 +1934,29 @@ body.treatment-page--specialist .treatment-page__media img {
   max-width: 44ch;
   margin: 0;
   color: var(--color-light);
+  line-height: 2;
+}
+
+.map__placeholder-text {
+  margin: 0 0 var(--space-md);
+}
+
+.map__placeholder-noscript {
+  margin: var(--space-md) 0 0;
 }
 
 .map__placeholder::before {
   content: '';
   width: 56px;
   height: 56px;
-  border-radius: 16px;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)),
-    linear-gradient(135deg, rgba(102, 126, 234, 0.35), rgba(0, 212, 170, 0.28));
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  background-image: url("../assets/icones/google-maps.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 78% 78%;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  margin-bottom: var(--space-md);
 }
 
 .map__activate {
@@ -1916,7 +1964,36 @@ body.treatment-page--specialist .treatment-page__media img {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  min-width: min(360px, 100%);
+  line-height: 1.7;
+}
+
+.map__link {
+  margin-top: var(--space-lg);
+}
+
+.map__external-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.map__external-link:hover,
+.map__external-link:focus-visible {
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-secondary);
+}
+
+.map__external-link-arrow {
+  font-weight: 600;
+  transform: translateX(0);
+  transition: transform 0.2s ease;
+}
+
+.map__external-link:hover .map__external-link-arrow,
+.map__external-link:focus-visible .map__external-link-arrow {
+  transform: translateX(4px);
 }
 
 .contact__map-section {
@@ -2183,7 +2260,7 @@ body.treatment-page--specialist .treatment-page__media img {
 }
 
 .doctolib__main-icon {
-  font-size: 4rem;
+  font-size: 7rem;
   color: var(--color-primary);
 }
 
@@ -2208,8 +2285,13 @@ body.treatment-page--specialist .treatment-page__media img {
   flex-wrap: wrap;
 }
 
-.doctolib__actions .btn .fas {
-  margin-right: var(--space-sm);
+.doctolib__actions .btn {
+  gap: 0.6rem;
+}
+
+.doctolib__actions .btn .icon {
+  font-size: 1.4em;
+  flex: 0 0 auto;
 }
 
 .doctolib__alternative {
@@ -2220,7 +2302,8 @@ body.treatment-page--specialist .treatment-page__media img {
   border-left-width: 3px;
 }
 
-.doctolib__alternative .fas {
+.doctolib__alternative .icon,
+.doctolib__alternative svg.icon {
   margin-right: var(--space-xs);
 }
 
@@ -2285,8 +2368,6 @@ a.contact__link:hover {
     max-width: 300px;
   }
 }
-
-/* ---- css/footer.css ---- */
 /* ========================================================================== */
 /* FOOTER CSS - Pied de page                                                 */
 /* ========================================================================== */
@@ -2357,8 +2438,9 @@ a.contact__link:hover {
   width: 100%;
 }
 
-.footer__contact-link .fas {
-  margin-right: 1rem;
+.footer__contact-link > .icon,
+.footer__contact-link > svg.icon {
+  margin-right: 0.5rem;
 }
 
 .footer__social {
@@ -2385,10 +2467,11 @@ a.contact__link:hover {
   color: var(--color-white);
 }
 
-.footer__social-link .fab,
-.footer__social-link .fas {
+.footer__social-link > .icon,
+.footer__social-link > svg.icon {
   color: inherit;
-  font-size: 1.3em;
+  width: 1.3em;
+  height: 1.3em;
   transition: color 0.2s;
 }
 
@@ -2397,6 +2480,11 @@ a.contact__link:hover {
   padding-top: var(--space-xl);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   color: #a0aec0;
+}
+
+.footer__legal {
+  margin-top: 0.5rem;
+  font-size: var(--font-size-sm);
 }
 
 .footer__section {
@@ -2469,8 +2557,6 @@ a.contact__link:hover {
     padding-top: var(--space-lg);
   }
 }
-
-/* ---- css/sidebar.css ---- */
 /* ========================================================================== */
 /* SIDEBAR CSS - Actions flottantes accessibles                              */
 /* ========================================================================== */
@@ -2497,8 +2583,6 @@ a.contact__link:hover {
     font-size: 1.2rem;
   }
 }
-
-/* ---- css/utilities.css ---- */
 /* ==========================================================================
     UTILITIES CSS - Classes utilitaires et accessibilité
    ========================================================================== */
@@ -2536,4 +2620,156 @@ a.contact__link:hover {
 
 .skip-link:focus {
   top: 6px;
+}
+
+/* ==========================================================================
+   Inline styles -> classes (HTML cleanup)
+   ========================================================================== */
+
+.svg-sprite {
+  display: none;
+}
+
+.icon--mr-md {
+  margin-right: var(--space-md);
+}
+
+.icon--mr-sm {
+  margin-right: 0.5rem;
+}
+
+.section--nav-offset {
+  padding-top: 110px;
+}
+
+.u-actions-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Pages légales */
+.legal__container {
+  max-width: 880px;
+}
+
+.legal__h2 {
+  margin-top: var(--space-xl);
+}
+
+.legal__list {
+  padding-left: 1.25rem;
+}
+
+.legal__actions {
+  margin-top: var(--space-2xl);
+}
+
+/* 404 */
+.page-404__hero-content {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.page-404__title {
+  font-size: 8rem;
+  margin-bottom: 1rem;
+}
+
+.page-404__subtitle {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  border: none;
+  pointer-events: none;
+}
+
+.page-404__lead {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.page-404__actions {
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.page-404__btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-white);
+}
+
+.page-404__popular {
+  background: var(--color-white);
+}
+
+.page-404__popular-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--color-dark);
+}
+
+.page-404__popular-grid {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.page-404__popular-card {
+  text-decoration: none;
+  text-align: center;
+}
+
+.page-404__popular-icon {
+  margin-bottom: 1rem;
+}
+
+.page-404__popular-h3 {
+  color: var(--color-dark);
+  margin-bottom: 0.5rem;
+}
+
+.page-404__popular-p {
+  color: var(--color-light);
+}
+
+/* ==========================================================================
+   Animations d'apparition (sans styles inline)
+   ========================================================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: reveal-in 0.4s ease both;
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Navbar: état après scroll (remplace styles JS) */
+.navbar.navbar--scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Carte Google Maps (remplace styles JS sur iframe) */
+.map__iframe {
+  border: 0;
+  border-radius: var(--border-radius);
 }

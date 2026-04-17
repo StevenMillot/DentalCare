@@ -68,10 +68,13 @@ async function generateVariants(inputAbs, widths, { format, quality }) {
 async function listFiles(dirRel, allowedExts) {
   const dirAbs = path.join(ROOT, dirRel);
   const entries = await fs.readdir(dirAbs, { withFileTypes: true });
+  const reVariant = /-\d+w\.(?:avif|jpe?g)$/i;
   return entries
     .filter((e) => e.isFile())
     .map((e) => path.join(dirAbs, e.name))
-    .filter((p) => allowedExts.includes(ext(p)));
+    .filter((p) => allowedExts.includes(ext(p)))
+    // Ne pas générer des "variants de variants" (ex: -960w-640w.*)
+    .filter((p) => !reVariant.test(p));
 }
 
 async function main() {

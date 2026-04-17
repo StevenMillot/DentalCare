@@ -91,6 +91,20 @@
   background: rgba(0, 0, 0, 0.3);
 }
 
+.hero__value-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.hero__value-title > svg.icon {
+  flex: 0 0 auto;
+  display: block;
+}
+
 /* Tablettes */
 @media (max-width: 1248px) {
   .hero__container {

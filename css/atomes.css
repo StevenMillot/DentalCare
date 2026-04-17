@@ -97,23 +97,56 @@
   justify-content: center;
   width: auto;
   height: 1em;
-  color: #fff;
+  color: inherit;
 }
 
 /* SVG icons (sprite) */
 svg.icon {
-  width: 1em;
-  height: 1em;
+  width: 1.4em;
+  height: 1.4em;
   fill: currentColor;
   flex: 0 0 auto;
   display: inline-block;
   vertical-align: -0.125em;
 }
 
+/* Taille fixe (override) pour quelques cas spécifiques */
+.technologies__grid svg.icon.icon--size-4rem {
+  width: 4rem;
+  height: 4rem;
+}
+
+.technologies__grid svg.icon.icon--size-2em {
+  width: 2em;
+  height: 2em;
+}
+
+.technologies__grid svg.icon.icon--size-3rem {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Ajustement optique : certains symboles (ex: i-extraction) sont “petits” dans leur viewBox.
+   On applique un zoom ciblé au <use> sans toucher aux autres icônes. */
+svg.icon use {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+svg.icon use[href*="#i-extraction"],
+svg.icon use[xlink\:href*="#i-extraction"] {
+  transform: scale(1.7);
+}
+
 /* <img class="icon"> (SVG fichier) : forcer en blanc */
 img.icon {
-  width: 1em;
-  height: 1em;
+  width: 1.5em;
+  height: 1.5em;
+  filter: none;
+}
+
+/* Conserver l'option "icône blanche" si explicitement demandée */
+img.icon.icon--white {
   filter: brightness(0) invert(1);
 }
 

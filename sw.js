@@ -1,7 +1,7 @@
 /* Service worker — cache simple pour GH Pages (TTL court côté serveur). */
 /* global self */
 
-const CACHE_VERSION = 'dc-v1';
+const CACHE_VERSION = 'dc-v5';
 const CACHE_NAME = `dentalcare-${CACHE_VERSION}`;
 
 // On reste volontairement conservateur : cache-first pour assets statiques,

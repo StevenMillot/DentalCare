@@ -11,8 +11,11 @@
     <!-- Optimisations de performance -->
     <meta name="format-detection" content="telephone=no">
     <meta name="theme-color" content="#667eea">
-
-    <!-- Optimisations critiques pour FCP/LCP -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Parodontia">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="site.webmanifest"><!-- Optimisations critiques pour FCP/LCP -->
     <link rel="preload" href="assets/logo-b-raphael-brochand.svg" as="image">
     <meta name="description" content="Clinique Parodontia, cabinet dentaire du Dr Raphaël BROCHAND à Châtenay-Malabry. Chirurgie orale, parodontologie, implantologie. Technologies modernes, équipe expérimentée. Prise de rendez-vous en ligne.">
     <meta name="author" content="Dr Raphaël BROCHAND">
@@ -309,26 +312,26 @@
                     <h3 class="hero__values-title">Nos Valeurs</h3>
                     <div class="hero__values-grid">
                         <div class="hero__value-item">
-                            <span class="hero__value-title"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-heart"></use></svg> Empathie</span>
+                            <span class="hero__value-title"><svg class="icon icon--sm" aria-hidden="true"><use href="assets/icones/icons.svg#i-heart"></use></svg> Empathie</span>
                             <p class="hero__value-subtitle">
                                 L’écoute et l’empathie sont au cœur de notre approche. Notre équipe met tout en œuvre
                         pour instaurer une relation rassurante et bienveillante.
                             </p>
                         </div>
                         <div class="hero__value-item">
-                            <span class="hero__value-title"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-award"></use></svg> Excellence</span>
+                            <span class="hero__value-title"><svg class="icon icon--sm" aria-hidden="true"><use href="assets/icones/icons.svg#i-award"></use></svg> Excellence</span>
                             <p class="hero__value-subtitle">
                                 Animés par une exigence constante de qualité, chaque traitement s’appuie sur les avancées scientifiques les plus récentes et une technologie de pointe afin de garantir des résultats fiables et durables.
                             </p>
                         </div>
                         <div class="hero__value-item">
-                            <span class="hero__value-title"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-comments"></use></svg> Communication</span>
+                            <span class="hero__value-title"><svg class="icon icon--sm" aria-hidden="true"><use href="assets/icones/icons.svg#i-comments"></use></svg> Communication</span>
                             <p class="hero__value-subtitle">
                                 Chaque patient bénéficie d’une information claire, complète, compréhensible et appropriée à la situation (diagnostic, recommandations, plan de traitement et bénéfices attendus).
                             </p>
                         </div>
                         <div class="hero__value-item">
-                            <span class="hero__value-title"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-users"></use></svg> Travail en équipe</span>
+                            <span class="hero__value-title"><svg class="icon icon--sm" aria-hidden="true"><use href="assets/icones/icons.svg#i-users"></use></svg> Travail en équipe</span>
                             <p class="hero__value-subtitle">
                                 Notre cabinet s’appuie sur une collaboration, en interne comme avec nos confrères correspondants, afin d’offrir à chaque patient une prise en charge cohérente et optimale.
                             </p>
@@ -652,7 +655,7 @@
                                             <video poster="assets/cabinet-gallery/poster-video-presentation-parodontia-960w.avif" preload="none" muted playsinline>
                                                 <source src="assets/cabinet-gallery/presentation-cabinet-parodontia-1080p.mp4" type="video/mp4">
                                             </video>
-                                            <span class="cabinet-media-carousel__badge-video" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-play"></use></svg></span>
+                                            <span class="cabinet-media-carousel__badge-video" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="assets/icones/icons.svg#i-play"></use></svg></span>
                                             <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Vidéo · présentation du cabinet"></button>
                                         </div>
                                     </div>
@@ -677,7 +680,7 @@
         <div class="traitements__grid grid grid--3">
             <article class="traitement-card card card--padded card--floating">
                     <div class="traitement-card__icon" aria-hidden="true">
-                        <svg class="icon icon--lg icon--white" aria-hidden="true"><use href="#i-stethoscope"></use></svg>
+                        <svg class="icon icon--lg icon--white" aria-hidden="true"><use href="assets/icones/icons.svg#i-extraction"></use></svg>
                     </div>
                     <h3 class="traitement-card__title" id="chirurgie-orale">Chirurgie Orale</h3>
                     <ul class="traitement-card__list" aria-labelledby="chirurgie-orale">
@@ -695,7 +698,7 @@
 
             <article class="traitement-card card card--padded card--floating">
                     <div class="traitement-card__icon" aria-hidden="true">
-                        <svg class="icon icon--lg icon--white" aria-hidden="true"><use href="#i-smile"></use></svg>
+                        <svg class="icon icon--lg icon--white icon--size-4rem" aria-hidden="true"><use href="assets/icones/icons.svg#i-parodontologie"></use></svg>
                     </div>
                     <h3 class="traitement-card__title" id="parodontologie">Parodontologie</h3>
                     <ul class="traitement-card__list" aria-labelledby="parodontologie">
@@ -713,7 +716,7 @@
 
             <article class="traitement-card card card--padded card--floating">
                     <div class="traitement-card__icon" aria-hidden="true">
-                        <svg class="icon icon--lg icon--white" aria-hidden="true"><use href="#i-tooth"></use></svg>
+                        <svg class="icon icon--lg icon--white" aria-hidden="true"><use href="assets/icones/icons.svg#i-implant"></use></svg>
                     </div>
                     <h3 class="traitement-card__title" id="implantologie">Implantologie</h3>
                     <ul class="traitement-card__list" aria-labelledby="implantologie">
@@ -743,7 +746,7 @@
             <div class="technologies__grid">
                 <article class="tech-item card card--padded">
                     <div class="tech-item__icon">
-                        <img src="assets/Icones/CBCT3D.svg" class="icon icon--lg icon--white" alt="" aria-hidden="true" width="32" height="32" loading="lazy" decoding="async">
+                        <svg class="icon icon--lg icon--white icon--size-2rem" aria-hidden="true"><use href="assets/icones/icons.svg#i-technologie"></use></svg>
                     </div>
                     <h3 class="tech-item__title" id="tech-cbct">Technologie</h3>
                     <p class="tech-item__description" aria-labelledby="tech-cbct">Les dernières techniques en odontologie visent plus de précision avec un minimum de traumatisme.</p>
@@ -751,7 +754,7 @@
 
                 <article class="tech-item card card--padded">
                     <div class="tech-item__icon">
-                        <img src="assets/Icones/CBCT3D.svg" class="icon icon--lg icon--white" alt="" aria-hidden="true" width="32" height="32" loading="lazy" decoding="async">
+                        <svg class="icon icon--lg icon--white" aria-hidden="true"><use href="assets/icones/icons.svg#i-cbct3d"></use></svg>
                     </div>
                     <h3 class="tech-item__title" id="tech-cbct">Radio 3D/CBCT</h3>
                     <p class="tech-item__description" aria-labelledby="tech-cbct">La radio 3D permet d'obtenir des images tridimensionnelles précises des dents, des structures osseuses et de certains tissus mous, indispensables au diagnostic et à la planification des traitements.</p>
@@ -767,7 +770,7 @@
 
                 <article class="tech-item card card--padded">
                     <div class="tech-item__icon">
-                        <img src="assets/Icones/Microchirurgie.svg" class="icon icon--lg icon--white" alt="" aria-hidden="true" width="32" height="32" loading="lazy" decoding="async">
+                        <svg class="icon icon--lg icon--white" aria-hidden="true"><use href="assets/icones/icons.svg#i-piezochirurgie"></use></svg>
                     </div>
                     <h3 class="tech-item__title" id="tech-piezo">Piezo chirurgie</h3>
                     <p class="tech-item__description" aria-labelledby="tech-piezo">La piézochirurgie offre une coupe osseuse fine, précise et moins traumatisante.</p>
@@ -775,7 +778,7 @@
 
                 <article class="tech-item card card--padded">
                     <div class="tech-item__icon">
-                        <img src="assets/Icones/Microchirurgie.svg" class="icon icon--lg icon--white" alt="" aria-hidden="true" width="32" height="32" loading="lazy" decoding="async">
+                        <svg class="icon icon--lg icon--white" aria-hidden="true"><use href="assets/icones/icons.svg#i-microchirurgie"></use></svg>
                     </div>
                     <h3 class="tech-item__title" id="tech-micro">Microchirurgie</h3>
                     <p class="tech-item__description" aria-labelledby="tech-micro">La microchirurgie améliore la précision, réduit le traumatisme tissulaire et permet une meilleure cicatrisation.</p>
@@ -783,7 +786,7 @@
 
                 <article class="tech-item card card--padded">
                     <div class="tech-item__icon">
-                        <img src="assets/Icones/Photo.svg" class="icon icon--lg icon--white" alt="" aria-hidden="true" width="32" height="32" loading="lazy" decoding="async">
+                        <svg class="icon icon--lg icon--white" aria-hidden="true"><use href="assets/icones/icons.svg#i-photo"></use></svg>
                     </div>
                     <h3 class="tech-item__title" id="tech-photo">Photo</h3>
                     <p class="tech-item__description" aria-labelledby="tech-photo">La photographie favorise la communication avec les patients et permet un suivi des traitements.</p>
@@ -791,7 +794,7 @@
 
                 <article class="tech-item card card--padded">
                     <div class="tech-item__icon">
-                        <img src="assets/Icones/hygiene.svg" class="icon icon--lg icon--white" alt="" aria-hidden="true" width="32" height="32" loading="lazy" decoding="async">
+                        <svg class="icon icon--lg icon--white icon--size-2em" aria-hidden="true"><use href="assets/icones/icons.svg#i-hygiene"></use></svg>
                     </div>
                     <h3 class="tech-item__title" id="tech-hygiene">Hygiène</h3>
                     <p class="tech-item__description" aria-labelledby="tech-hygiene">Notre chaîne de stérilisation fait l'objet de contrôles quotidiens afin de garantir au patient un environnement parfaitement sûr et stérile.</p>
@@ -814,7 +817,7 @@
             <div class="contact__content grid grid--2">
                 <div class="contact__info">
                     <a href="tel:0675173880" class="contact__item card card--padded contact__item--clickable">
-                        <svg class="icon icon--md icon--primary" aria-hidden="true"><use href="#i-phone"></use></svg>
+                        <svg class="icon icon--md icon--primary" aria-hidden="true"><use href="assets/icones/icons.svg#i-phone"></use></svg>
                         <div class="contact__item-content">
                             <h3>Téléphone</h3>
                             <p class="contact__link">06 75 17 38 80</p>
@@ -822,7 +825,7 @@
                     </a>
 
                     <a href="mailto:contact@parodontia.fr" class="contact__item card card--padded contact__item--clickable">
-                        <svg class="icon icon--md icon--primary" aria-hidden="true"><use href="#i-envelope"></use></svg>
+                        <svg class="icon icon--md icon--primary" aria-hidden="true"><use href="assets/icones/icons.svg#i-envelope"></use></svg>
                         <div class="contact__item-content">
                             <h3>Email</h3>
                             <p class="contact__link">contact@parodontia.fr</p>
@@ -830,7 +833,7 @@
                     </a>
 
                     <div class="contact__item card card--padded">
-                        <svg class="icon icon--md icon--primary" aria-hidden="true"><use href="#i-clock"></use></svg>
+                        <svg class="icon icon--md icon--primary" aria-hidden="true"><use href="assets/icones/icons.svg#i-clock"></use></svg>
                         <div class="contact__item-content">
                             <h3>Horaires</h3>
                             <p>Du Lundi au Jeudi, de 09h00 à 18h00
@@ -839,7 +842,7 @@
                     </div>
 
                     <a href="https://www.google.com/maps/search/?api=1&query=40+Avenue+de+la+Division+Leclerc+92290+Châtenay-Malabry+France" target="_blank" rel="noopener noreferrer" class="contact__item card card--padded contact__item--clickable">
-                        <svg class="icon icon--md icon--primary" aria-hidden="true"><use href="#i-pin"></use></svg>
+                        <svg class="icon icon--md icon--primary" aria-hidden="true"><use href="assets/icones/icons.svg#i-pin"></use></svg>
                         <div class="contact__item-content">
                             <h3>Adresse</h3>
                             <p class="contact__link" href="https://www.google.com/maps/search/?api=1&query=40+Avenue+de+la+Division+Leclerc+92290+Châtenay-Malabry+France" title="Google Maps">40 Avenue de la Division Leclerc<br>92290 Châtenay-Malabry, France</p>
@@ -847,7 +850,7 @@
                     </a>
 
                     <div class="contact__item card card--padded">
-                        <svg class="icon icon--md icon--primary" aria-hidden="true"><use href="#i-car"></use></svg>
+                        <svg class="icon icon--md icon--primary" aria-hidden="true"><use href="assets/icones/icons.svg#i-car"></use></svg>
                         <div class="contact__item-content">
                             <h3>Accès</h3>
                             <p><strong>Moyens de transport</strong>
@@ -944,7 +947,7 @@
                 <div class="container">
                     <div class="contact__doctolib-content">
                         <div class="doctolib__header">
-                            <svg class="doctolib__main-icon" aria-hidden="true"><use href="#i-calendar-check"></use></svg>
+                            <svg class="icon icon--primary doctolib__main-icon" aria-hidden="true"><use href="assets/icones/icons.svg#i-calendar-check"></use></svg>
                             <h3>Prendre RDV via Doctolib</h3>
                         </div>
                         <p class="doctolib__description">
@@ -952,13 +955,13 @@
                         </p>
                         <div class="doctolib__actions">
                             <a href="https://www.doctolib.fr/dentiste/chatenay-malabry/raphael-brochand/booking" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
-                                <svg aria-hidden="true" style="width:1em;height:1em;fill:currentColor;vertical-align:-0.125em;"><use href="#i-calendar-plus"></use></svg>
+                                <svg class="icon icon--sm" aria-hidden="true"><use href="assets/icones/icons.svg#i-calendar-plus"></use></svg>
                                 Prendre RDV sur Doctolib
                             </a>
                         </div>
                         <div class="doctolib__alternative">
                             <p class="text text--sm">
-                                <svg class="icon icon--sm icon--primary" aria-hidden="true"><use href="#i-info"></use></svg>
+                                <svg class="icon icon--sm icon--primary" aria-hidden="true"><use href="assets/icones/icons.svg#i-info"></use></svg>
                                 Si aucun créneau ne vous convient en ligne, n'hésitez pas à nous contacter directement par téléphone au
                                 <a href="tel:0675173880" class="contact__phone-link">06&nbsp;75&nbsp;17&nbsp;38&nbsp;80</a>.
                                 <br>Alicia se tient à votre disposition pour vous proposer un rendez-vous adapté.
@@ -979,22 +982,23 @@
                             data-map-consent
                             data-map-src="https://www.google.com/maps?q=40%20Avenue%20de%20la%20Division%20Leclerc%2C%2092290%20Ch%C3%A2tenay-Malabry%2C%20France&hl=fr&region=FR&z=18&output=embed"
                         >
-                            <p class="text text--sm" style="margin:0 0 var(--space-md);">
-                                La carte Google Maps est désactivée par défaut (contenu tiers).
-                                Cliquez pour la charger.
+                            <p class="text text--sm map__placeholder-text">
+                                Google Maps est désactivée par défaut.
+                                <br>Cliquez pour afficher le cabinet sur la carte.
                             </p>
                             <button type="button" class="btn btn--primary map__activate">
-                                Charger Google Maps
+                                Charger Google&nbsp;Maps
                             </button>
                             <noscript>
-                                <p class="text text--sm" style="margin: var(--space-md) 0 0;">
+                                <p class="text text--sm map__placeholder-noscript">
                                     JavaScript est désactivé. Utilisez le lien “Voir sur Google Maps”.
                                 </p>
                             </noscript>
                         </div>
                     <div class="map__link">
-                        <a href="https://www.google.com/maps/place/40+Avenue+de+la+Division+Leclerc,+92290+Châtenay-Malabry,+France" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="margin-top: 1rem;">
-                            Voir sur Google Maps
+                        <a href="https://www.google.com/maps/place/40+Avenue+de+la+Division+Leclerc,+92290+Châtenay-Malabry,+France" target="_blank" rel="noopener noreferrer" class="map__external-link link--bold">
+                            Voir sur Google&nbsp;Maps
+                            <span class="map__external-link-arrow" aria-hidden="true">→</span>
                         </a>
                     </div>
                     </div>
@@ -1019,15 +1023,15 @@
                     <h3>Contact</h3>
                     <div>
                         <a href="tel:0675173880" class="footer__contact-link">
-                            <svg class="icon icon--sm icon--primary" aria-hidden="true"><use href="#i-phone"></use></svg>06 75 17 38 80
+                            <svg class="icon icon--sm icon--primary" aria-hidden="true"><use href="assets/icones/icons.svg#i-phone"></use></svg>06 75 17 38 80
                         </a>
                         <br>
                         <a href="mailto:contact@parodontia.fr" class="footer__contact-link">
-                            <svg class="icon icon--sm icon--primary" aria-hidden="true"><use href="#i-envelope"></use></svg>contact@parodontia.fr
+                            <svg class="icon icon--sm icon--primary" aria-hidden="true"><use href="assets/icones/icons.svg#i-envelope"></use></svg>contact@parodontia.fr
                         </a>
                         <br>
                         <a href="https://www.google.com/maps/search/?api=1&query=40+Avenue+de+la+Division+Leclerc+92290+Châtenay-Malabry+France" target="_blank" rel="noopener noreferrer" class="footer__contact-link">
-                            <svg class="icon icon--sm icon--primary" aria-hidden="true"><use href="#i-pin"></use></svg>40 Avenue de la Division Leclerc, Châtenay-Malabry
+                            <svg class="icon icon--sm icon--primary" aria-hidden="true"><use href="assets/icones/icons.svg#i-pin"></use></svg>40 Avenue de la Division Leclerc, Châtenay-Malabry
                         </a>
                     </div>
                 </div>
@@ -1035,14 +1039,14 @@
                     <h3>Suivez-nous</h3>
                     <div class="footer__social">
                         <a href="#" class="footer__social-link" aria-label="Instagram">
-                            <svg class="icon" aria-hidden="true"><use href="#i-instagram"></use></svg>
+                            <svg class="icon" aria-hidden="true"><use href="assets/icones/icons.svg#i-instagram"></use></svg>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="footer__bottom">
                 <p>&copy; <span class="copyright-year"></span> Cabinet Parodontia. Tous droits réservés.</p>
-                <div class="footer__legal" style="margin-top: .5rem; font-size: var(--font-size-sm);">
+                <div class="footer__legal">
                     <a class="link--bold" href="mentions-legales.html">Mentions légales</a>
                     <span aria-hidden="true"> · </span>
                     <a class="link--bold" href="politique-de-confidentialite.html">Politique de confidentialité</a>
@@ -1054,16 +1058,16 @@
     <!-- Sidebar avec tous les boutons initiaux -->
     <div class="sidebar" role="navigation" aria-label="Actions rapides">
         <a href="tel:0675173880" class="sidebar__action" aria-label="Appeler le cabinet">
-            <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg>
+            <svg class="icon" aria-hidden="true"><use href="assets/icones/icons.svg#i-phone"></use></svg>
         </a>
         <a href="#doctolib" class="sidebar__action" aria-label="Prendre rendez-vous">
-            <svg class="icon" aria-hidden="true"><use href="#i-calendar-check"></use></svg>
+            <svg class="icon" aria-hidden="true"><use href="assets/icones/icons.svg#i-calendar-check-alt"></use></svg>
         </a>
         <a href="#map" class="sidebar__action" aria-label="Voir l'accès sur Google Maps">
-            <svg class="icon" aria-hidden="true"><use href="#i-pin"></use></svg>
+            <svg class="icon" aria-hidden="true"><use href="assets/icones/icons.svg#i-pin"></use></svg>
         </a>
         <button class="sidebar__action" aria-label="Retour en haut" id="scrollToTop">
-            <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"></use></svg>
+            <svg class="icon" aria-hidden="true"><use href="assets/icones/icons.svg#i-arrow-up"></use></svg>
         </button>
     </div>
 
@@ -1071,113 +1075,6 @@
 
     <script src="js/script.js" defer></script>
     <script src="js/cabinet-media-carousel.js" defer></script>
-  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-  <!-- Minimal icon sprite (fill: currentColor via CSS) -->
 
-  <symbol id="i-heart" viewBox="0 0 24 24">
-    <path d="M12 21s-7-4.35-10-9.35C-0.1 7.1 2.4 3.5 6.1 3.5c2 0 3.4 1 3.9 1.6.5-.6 1.9-1.6 3.9-1.6 3.7 0 6.2 3.6 4.1 8.15C19 16.65 12 21 12 21z"/>
-  </symbol>
-
-  <symbol id="i-award" viewBox="0 0 24 24">
-    <path d="M12 2a6 6 0 0 0-3.8 10.6L6 22l6-3 6 3-2.2-9.4A6 6 0 0 0 12 2zm0 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8z"/>
-  </symbol>
-
-  <symbol id="i-comments" viewBox="0 0 24 24">
-    <path d="M20 2H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h3v4l5-4h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/>
-  </symbol>
-
-  <symbol id="i-users" viewBox="0 0 24 24">
-    <path d="M16 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4zM8 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3z"/>
-    <path d="M16 13c-3.3 0-6 1.7-6 4v3h12v-3c0-2.3-2.7-4-6-4zM8 13c-2.8 0-5 1.4-5 3.2V20h5.2c-.1-.3-.2-.7-.2-1v-2c0-1.5.8-2.8 2-3.7A8.2 8.2 0 0 0 8 13z"/>
-  </symbol>
-
-  <symbol id="i-play" viewBox="0 0 24 24">
-    <path d="M8 5v14l11-7z"/>
-  </symbol>
-
-  <symbol id="i-stethoscope" viewBox="0 0 24 24">
-    <path d="M6 2v6a4 4 0 0 0 8 0V2h2v6a6 6 0 0 1-5 5.9V17a3 3 0 1 0 6 0v-3.1a3.5 3.5 0 1 1 2 0V17a5 5 0 0 1-10 0v-3.1A6 6 0 0 1 4 8V2h2z"/>
-  </symbol>
-
-  <symbol id="i-smile" viewBox="0 0 24 24">
-    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-4 9a1.2 1.2 0 1 1 1.2-1.2A1.2 1.2 0 0 1 8 11zm8 0a1.2 1.2 0 1 1 1.2-1.2A1.2 1.2 0 0 1 16 11zm-8.2 2.7h8.4a4.4 4.4 0 0 1-8.4 0z"/>
-  </symbol>
-
-  <symbol id="i-tooth" viewBox="0 0 24 24">
-    <path d="M12 2c-3.9 0-7 2.7-7 6.7 0 1.8.6 3.7 1.2 5.1.6 1.5 1.2 2.7 1.4 4.3.2 1.6.9 3.9 2.4 3.9 1.4 0 1.8-2.3 2-3.6.2-1.2.4-2.4 2-2.4s1.8 1.2 2 2.4c.2 1.3.6 3.6 2 3.6 1.5 0 2.2-2.3 2.4-3.9.2-1.6.8-2.8 1.4-4.3.6-1.4 1.2-3.3 1.2-5.1C19 4.7 15.9 2 12 2z"/>
-  </symbol>
-
-  <symbol id="i-phone" viewBox="0 0 24 24">
-    <path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A18 18 0 0 1 3 4a1 1 0 0 1 1-1h3.2a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .6 3.6 1 1 0 0 1-.25 1z"/>
-  </symbol>
-
-  <symbol id="i-envelope" viewBox="0 0 24 24">
-    <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5L4 8V6l8 5 8-5z"/>
-  </symbol>
-
-  <symbol id="i-clock" viewBox="0 0 24 24">
-    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 11h5v-2h-4V6h-2v7z"/>
-  </symbol>
-
-  <symbol id="i-pin" viewBox="0 0 24 24">
-    <path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5z"/>
-  </symbol>
-
-  <symbol id="i-car" viewBox="0 0 24 24">
-    <path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11v8h-2v-2H7v2H5v-8zm3.1-4L7 10h10l-1.1-3zM8 16a1.5 1.5 0 1 0-1.5-1.5A1.5 1.5 0 0 0 8 16zm8 0a1.5 1.5 0 1 0-1.5-1.5A1.5 1.5 0 0 0 16 16z"/>
-  </symbol>
-
-  <symbol id="i-calendar-check" viewBox="0 0 24 24">
-    <path d="M7 2h2v2h6V2h2v2h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h4V2zm15 8H2v10h20V10z"/>
-    <path d="M10.5 16.2 8.3 14l-1.4 1.4 3.6 3.6 6.6-6.6-1.4-1.4z"/>
-  </symbol>
-
-  <symbol id="i-calendar-plus" viewBox="0 0 24 24">
-    <path d="M7 2h2v2h6V2h2v2h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h4V2zm15 8H2v10h20V10z"/>
-    <path d="M11 12h2v3h3v2h-3v3h-2v-3H8v-2h3z"/>
-  </symbol>
-
-  <symbol id="i-info" viewBox="0 0 24 24">
-    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-  </symbol>
-
-  <symbol id="i-home" viewBox="0 0 24 24">
-    <path d="M12 3 2 11h3v10h6v-6h2v6h6V11h3z"/>
-  </symbol>
-
-  <symbol id="i-user-md" viewBox="0 0 24 24">
-    <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4z"/>
-    <path d="M4 22v-2c0-3.3 3.6-6 8-6s8 2.7 8 6v2h-6v-3h-2v3H4z"/>
-    <path d="M19 7h-1V6h-2v1h-1v2h1v1h2V9h1z"/>
-  </symbol>
-
-  <symbol id="i-arrow-left" viewBox="0 0 24 24">
-    <path d="M14 6 8 12l6 6 1.4-1.4L10.8 12l4.6-4.6z"/>
-  </symbol>
-
-  <symbol id="i-arrow-up" viewBox="0 0 24 24">
-    <path d="M12 4l-7 7 1.4 1.4L11 7.8V20h2V7.8l4.6 4.6L19 11z"/>
-  </symbol>
-
-  <symbol id="i-x" viewBox="0 0 24 24">
-    <path d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7 4.3 4.3l6.3 6.3 6.3-6.3z"/>
-  </symbol>
-
-  <symbol id="i-check-circle" viewBox="0 0 24 24">
-    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-1.1 14.2L6.8 12l1.4-1.4 2.7 2.7 5.9-5.9 1.4 1.4z"/>
-  </symbol>
-
-  <symbol id="i-alert-circle" viewBox="0 0 24 24">
-    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-  </symbol>
-
-  <symbol id="i-alert-triangle" viewBox="0 0 24 24">
-    <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
-  </symbol>
-
-  <symbol id="i-instagram" viewBox="0 0 24 24">
-    <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4a4 4 0 1 1-4 4 4 4 0 0 1 4-4zm0 2a2 2 0 1 0 2 2 2 2 0 0 0-2-2zm5.2-2.3a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/>
-  </symbol>
-</svg>
-</body>
+  </body>
 </html>

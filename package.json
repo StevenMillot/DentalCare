@@ -4,7 +4,14 @@
   "description": "Un site vitrine moderne et dynamique pour un cabinet dentaire, inspiré de la structure du site CTC Vienne mais avec un design original et des animations avancées.",
   "main": "index.js",
   "scripts": {
+    "css:bundle": "cat css/variables.css css/reset.css css/layout.css css/typography.css css/atomes.css css/navigation.css css/hero.css css/sections.css css/cabinet-carousel.css css/contact.css css/footer.css css/sidebar.css css/utilities.css > css/bundle.css",
     "images:responsive": "node tools/generate-responsive-images.mjs",
+    "images:check": "node scripts/check-responsive-images.mjs",
+    "images:cleanup": "node scripts/cleanup-responsive-images.mjs",
+    "icons:sync-inline": "node scripts/sync-inline-sprite.mjs",
+    "sw:bump": "node scripts/bump-sw-cache-version.mjs",
+    "dev:refresh": "npm run -s css:bundle && npm run -s icons:sync-inline",
+    "deploy:prepare": "npm run -s dev:refresh && npm run -s images:responsive && npm run -s images:cleanup && npm run -s images:check && npm run -s sw:bump",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

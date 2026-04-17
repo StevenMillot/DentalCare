@@ -14,8 +14,6 @@ Puis ouvre `http://127.0.0.1:8000/`.
 
 ## Déploiement GitHub Pages (important)
 
-- **Noms de fichiers “web-safe”** : les assets sont volontairement renommés **sans accents** et **sans espaces**.
-  - Pourquoi : sur GitHub Pages, un fichier `équipe.avif` / `Présentation.mp4` peut 404 selon la normalisation Unicode (NFD/NFC), même si ça marche en local sur macOS.
 - **Manifest** : `site.webmanifest` utilise `start_url: "./"` et `scope: "./"` pour fonctionner correctement dans un sous-dossier (`/DentalCare/`).
 
 ## Images responsive (`srcset`)
@@ -38,10 +36,97 @@ Génère automatiquement :
 
 Script : `tools/generate-responsive-images.mjs`
 
+## CSS bundle
+
+Le site charge `css/bundle.css` (une seule feuille) pour réduire les requêtes bloquantes.
+
+### Générer / régénérer le bundle
+
+```bash
+npm run css:bundle
+```
+
+## Commandes rapides
+
+### Avant de déployer (recommandé)
+
+Régénère les assets “buildés” (CSS + sprite inline) **et** bump la version du cache du service worker (pour forcer la mise à jour côté utilisateurs) :
+
+```bash
+npm run deploy:prepare
+```
+
+### En dev (actualiser les assets)
+
+Régénère simplement le bundle CSS + resynchronise le sprite inline (utile quand tu modifies `assets/icones/icons.svg` en test `file://`) :
+
+```bash
+npm run dev:refresh
+```
+
+### Images responsive (vérifier / corriger)
+
+Le site attend des déclinaisons :
+
+- **Team (JPG)** : 360 / 540 / 720 / 1080
+- **Cabinet carousel (AVIF)** : 240 / 480 / 640 / 960 / 1600
+
+Commandes :
+
+```bash
+# Génère les variantes manquantes (idempotent)
+npm run images:responsive
+
+# Vérifie que toutes les variantes attendues existent
+npm run images:check
+```
+
+## Icônes SVG (sprite) — important
+
+Le site utilise un sprite `assets/icones/icons.svg` et des `<use href="assets/icones/icons.svg#...">` dans les pages.
+
+### Cas `file://` (ou environnement qui bloque `assets/icones/icons.svg`)
+
+En `file://`, les références externes SVG sont bloquées par le navigateur. Pour garantir l’affichage, `js/script.js` contient une **copie inline** du sprite (`INLINE_SPRITE_SVG`) utilisée en fallback.
+
+Donc, si tu modifies `assets/icones/icons.svg`, il faut **synchroniser** cette copie inline :
+
+```bash
+npm run icons:sync-inline
+```
+
+### Cas HTTP/HTTPS (localhost, GitHub Pages, prod)
+
+Le sprite est chargé “normalement” via `assets/icones/icons.svg` (et peut être mis en cache par le service worker).  
+Si tu ne vois pas un changement après refresh :
+
+- vérifie le cache/service worker (voir section PWA ci-dessous)
+- ou fais un hard refresh / désenregistre le SW le temps de valider
+
 ## Formulaire de contact
 
 - **Validation JS dédiée** (messages inline + toast) : pas de dépendance aux comportements `checkValidity()` du navigateur.
 - **Envoi** : FormSubmit (ou Web3Forms si configuré), avec fallback `mailto:` en cas d’échec.
+
+## PWA / Service Worker
+
+- **Manifest** : `site.webmanifest`
+- **Service worker** : `sw.js`
+
+Le SW applique :
+
+- **HTML** : network-first (toujours à jour, fallback cache/offline)
+- **Assets (`.css/.js/.svg/...`)** : cache-first
+
+Si tu modifies un asset (ex: `assets/icones/icons.svg`, `js/script.js`, `css/bundle.css`) et que ça ne se reflète pas, il faut **invalider le cache** :
+
+- soit en bumpant `CACHE_VERSION` dans `sw.js`
+- soit via la commande :
+
+```bash
+npm run sw:bump
+```
+- soit en désenregistrant le service worker (DevTools → Application → Service Workers) puis refresh
 
 ## Structure (repères)
 
