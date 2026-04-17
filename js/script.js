@@ -809,7 +809,7 @@
     // Sprite SVG: chargement non bloquant + injection same-origin (évite les blocages "origine").
     // Charge uniquement quand des icônes sont proches du viewport.
     (function initSvgSpriteLoader() {
-      const SPRITE_URL = 'assets/icones/icons.svg';
+      const SPRITE_URL = 'assets/Icones/icons.svg';
       const XLINK_NS = 'http://www.w3.org/1999/xlink';
       const SPRITE_ID = 'svg-sprite-runtime';
       const INLINE_SPRITE_SVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -1063,7 +1063,7 @@
 
       function hasExternalSpriteUse() {
         return document.querySelector(
-          'svg use[href*="assets/icones/icons.svg#"], svg use[xlink\\:href*="assets/icones/icons.svg#"]'
+          'svg use[href*="assets/Icones/icons.svg#"], svg use[xlink\\:href*="assets/Icones/icons.svg#"]'
         );
       }
 
@@ -1073,7 +1073,7 @@
           .forEach((u) => {
             const raw = u.getAttribute('href') || u.getAttribute('xlink:href');
             if (!raw) return;
-            const m = raw.match(/(?:^|\/)assets\/icones\/icons\.svg#(.+)$/);
+            const m = raw.match(/(?:^|\/)assets\/Icones\/icons\.svg#(.+)$/);
             if (!m) return;
             const local = `#${m[1]}`;
             u.setAttribute('href', local);

@@ -58,7 +58,7 @@ npm run deploy:prepare
 
 ### En dev (actualiser les assets)
 
-Régénère simplement le bundle CSS + resynchronise le sprite inline (utile quand tu modifies `assets/icones/icons.svg` en test `file://`) :
+Régénère simplement le bundle CSS + resynchronise le sprite inline (utile quand tu modifies `assets/Icones/icons.svg` en test `file://`) :
 
 ```bash
 npm run dev:refresh
@@ -83,13 +83,13 @@ npm run images:check
 
 ## Icônes SVG (sprite) — important
 
-Le site utilise un sprite `assets/icones/icons.svg` et des `<use href="assets/icones/icons.svg#...">` dans les pages.
+Le site utilise un sprite `assets/Icones/icons.svg` et des `<use href="assets/Icones/icons.svg#...">` dans les pages.
 
-### Cas `file://` (ou environnement qui bloque `assets/icones/icons.svg`)
+### Cas `file://` (ou environnement qui bloque `assets/Icones/icons.svg`)
 
 En `file://`, les références externes SVG sont bloquées par le navigateur. Pour garantir l’affichage, `js/script.js` contient une **copie inline** du sprite (`INLINE_SPRITE_SVG`) utilisée en fallback.
 
-Donc, si tu modifies `assets/icones/icons.svg`, il faut **synchroniser** cette copie inline :
+Donc, si tu modifies `assets/Icones/icons.svg`, il faut **synchroniser** cette copie inline :
 
 ```bash
 npm run icons:sync-inline
@@ -97,7 +97,7 @@ npm run icons:sync-inline
 
 ### Cas HTTP/HTTPS (localhost, GitHub Pages, prod)
 
-Le sprite est chargé “normalement” via `assets/icones/icons.svg` (et peut être mis en cache par le service worker).  
+Le sprite est chargé “normalement” via `assets/Icones/icons.svg` (et peut être mis en cache par le service worker).  
 Si tu ne vois pas un changement après refresh :
 
 - vérifie le cache/service worker (voir section PWA ci-dessous)
@@ -118,7 +118,7 @@ Le SW applique :
 - **HTML** : network-first (toujours à jour, fallback cache/offline)
 - **Assets (`.css/.js/.svg/...`)** : cache-first
 
-Si tu modifies un asset (ex: `assets/icones/icons.svg`, `js/script.js`, `css/bundle.css`) et que ça ne se reflète pas, il faut **invalider le cache** :
+Si tu modifies un asset (ex: `assets/Icones/icons.svg`, `js/script.js`, `css/bundle.css`) et que ça ne se reflète pas, il faut **invalider le cache** :
 
 - soit en bumpant `CACHE_VERSION` dans `sw.js`
 - soit via la commande :

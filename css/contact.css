@@ -94,7 +94,7 @@
 
 .map__placeholder {
   width: 100%;
-  min-height: 400px;
+  min-height: 340px;
   padding: clamp(var(--space-lg), 3vw, var(--space-2xl));
   display: grid;
   place-items: center;
@@ -112,7 +112,7 @@
   max-width: 44ch;
   margin: 0;
   color: var(--color-light);
-  line-height: 2;
+  line-height: 3;
 }
 
 .map__placeholder-text {
@@ -129,7 +129,7 @@
   height: 56px;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.92);
-  background-image: url("../assets/icones/google-maps.svg");
+  background-image: url("../assets/Icones/google-maps.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 78% 78%;
@@ -244,8 +244,8 @@
   line-height: 1.4;
 }
 
-.form__help,
-.form__submit {
+.form__submit,
+.form__help--doctolib {
   margin-top: var(--space-lg);
 }
 
