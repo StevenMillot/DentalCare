@@ -340,7 +340,7 @@ img.icon.icon--white {
 }
 
 .icon--lg {
-  font-size: 2rem;
+  font-size: 2.3rem;
 }
 
 .icon--md {
@@ -721,8 +721,8 @@ img.icon.icon--white {
 /* Garantit qu’une icône SVG ne dépasse jamais du cercle */
 .traitement-card__icon > .icon,
 .traitement-card__icon > svg.icon {
-  width: 2.7rem;
-  height: 2.7rem;
+  width:3.7rem;
+  height: 3.7rem;
   display: block;
   flex: 0 0 auto;
   max-width: 100%;
