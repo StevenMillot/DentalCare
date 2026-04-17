@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';
 
-const SPRITE_PATH = new URL('../assets/icones/icons.svg', import.meta.url);
+const SPRITE_PATH = new URL('../assets/Icones/icons.svg', import.meta.url);
 const SCRIPT_PATH = new URL('../js/script.js', import.meta.url);
 
 const START = 'const INLINE_SPRITE_SVG = `';
