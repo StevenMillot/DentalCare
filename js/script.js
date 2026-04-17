@@ -1390,4 +1390,30 @@
     initDeferredGoogleMap();
   }
 
+  // Manifest PWA : après load + idle pour ne pas allonger la chaîne critique (Lighthouse).
+  (function initDeferredWebManifest() {
+    if (document.querySelector('link[rel="manifest"]')) return;
+
+    function inject() {
+      const link = document.createElement('link');
+      link.rel = 'manifest';
+      link.href = 'site.webmanifest';
+      document.head.appendChild(link);
+    }
+
+    function schedule() {
+      if (window.requestIdleCallback) {
+        requestIdleCallback(inject, { timeout: 3500 });
+      } else {
+        setTimeout(inject, 0);
+      }
+    }
+
+    if (document.readyState === 'complete') {
+      schedule();
+    } else {
+      window.addEventListener('load', schedule, { once: true });
+    }
+  })();
+
 })();

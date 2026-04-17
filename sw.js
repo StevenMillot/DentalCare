@@ -1,12 +1,12 @@
 /* Service worker — cache simple pour GH Pages (TTL court côté serveur). */
 /* global self */
 
-const CACHE_VERSION = 'dc-v12';
+const CACHE_VERSION = 'dc-v14';
 const CACHE_NAME = `dentalcare-${CACHE_VERSION}`;
 
 // On reste volontairement conservateur : cache-first pour assets statiques,
 // network-first pour les pages HTML.
-const ASSET_EXT_RE = /\.(?:css|js|png|jpg|jpeg|webp|avif|svg|ico|woff2?)$/i;
+const ASSET_EXT_RE = /\.(?:css|js|mjs|png|jpg|jpeg|webp|avif|svg|ico|woff2?|mp4|webm)$/i;
 
 self.addEventListener('install', (event) => {
   event.waitUntil(self.skipWaiting());
