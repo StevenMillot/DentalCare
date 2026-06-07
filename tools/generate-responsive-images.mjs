@@ -1,6 +1,29 @@
+/**
+ * Génère les variantes responsive manquantes pour le srcset HTML.
+ *
+ * Usage : npm run images:responsive
+ * Inclus dans : npm run deploy:prepare
+ *
+ * Comportement idempotent :
+ * - Ne traite que les originaux (`photo.jpg`), jamais les variantes (`photo-360w.jpg`).
+ * - Ignore un original si toutes ses variantes existent déjà.
+ * - Ne régénère pas une variante déjà présente sur disque.
+ *
+ * Prérequis : Node.js, `npm install` (sharp).
+ *
+ * Vérifier ensuite : `npm run images:check`
+ * Nettoyer les doublons : `npm run images:cleanup`
+ */
+
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
+import {
+  TARGETS,
+  isOriginal,
+  expectedVariantName,
+  missingWidthsFor,
+} from './responsive-images-config.mjs';
 
 const ROOT = process.cwd();
 
@@ -17,84 +40,108 @@ async function exists(p) {
 }
 
 /**
- * @param {string} filePath
+ * @param {string} dirRel
+ * @param {string[]} allowedExts
  */
-function ext(filePath) {
-  return path.extname(filePath).toLowerCase();
+async function listOriginals(dirRel, allowedExts) {
+  const dirAbs = path.join(ROOT, dirRel);
+  const entries = await fs.readdir(dirAbs, { withFileTypes: true });
+  return entries
+    .filter((e) => e.isFile() && !e.name.startsWith('.'))
+    .filter((e) => isOriginal(e.name, allowedExts))
+    .map((e) => ({
+      name: e.name,
+      abs: path.join(dirAbs, e.name),
+      ext: path.extname(e.name).toLowerCase(),
+    }));
 }
 
 /**
- * @param {string} filePath
+ * @param {string} dirRel
  */
-function baseNoExt(filePath) {
-  return filePath.slice(0, -path.extname(filePath).length);
+async function listDirNames(dirRel) {
+  const dirAbs = path.join(ROOT, dirRel);
+  const entries = await fs.readdir(dirAbs, { withFileTypes: true });
+  return new Set(entries.filter((e) => e.isFile()).map((e) => e.name));
 }
 
 /**
  * @param {string} inputAbs
- * @param {number[]} widths
- * @param {object} options
- * @param {'avif'|'jpeg'} options.format
- * @param {number} options.quality
+ * @param {string} baseName
+ * @param {number[]} widthsToCreate
+ * @param {{ format: 'avif'|'jpeg', quality: number, ext: string, dirRel: string }} opts
  */
-async function generateVariants(inputAbs, widths, { format, quality }) {
-  const rel = path.relative(ROOT, inputAbs);
-  const inputExt = ext(rel);
-  const outExt = format === 'jpeg' ? '.jpg' : '.avif';
-
-  if (inputExt !== outExt) {
-    // On garde les originaux (pas de conversion de format ici).
-  }
-
+async function generateMissingVariants(inputAbs, baseName, widthsToCreate, opts) {
   const input = sharp(inputAbs, { failOn: 'none' });
+  let created = 0;
 
-  for (const w of widths) {
-    const outRel = `${baseNoExt(rel)}-${w}w${outExt}`;
-    const outAbs = path.join(ROOT, outRel);
+  for (const w of widthsToCreate) {
+    const variantName = expectedVariantName(baseName, w, opts.ext);
+    const outAbs = path.join(ROOT, opts.dirRel, variantName);
+
     if (await exists(outAbs)) continue;
 
-    const pipeline = input
-      .clone()
-      .resize({ width: w, withoutEnlargement: true });
+    const pipeline = input.clone().resize({ width: w, withoutEnlargement: true });
 
-    if (format === 'avif') {
-      await pipeline.avif({ quality }).toFile(outAbs);
+    if (opts.format === 'avif') {
+      await pipeline.avif({ quality: opts.quality }).toFile(outAbs);
     } else {
-      await pipeline.jpeg({ quality, mozjpeg: true }).toFile(outAbs);
+      await pipeline.jpeg({ quality: opts.quality, mozjpeg: true }).toFile(outAbs);
     }
+    created += 1;
   }
-}
 
-async function listFiles(dirRel, allowedExts) {
-  const dirAbs = path.join(ROOT, dirRel);
-  const entries = await fs.readdir(dirAbs, { withFileTypes: true });
-  const reVariant = /-\d+w\.(?:avif|jpe?g)$/i;
-  return entries
-    .filter((e) => e.isFile())
-    .map((e) => path.join(dirAbs, e.name))
-    .filter((p) => allowedExts.includes(ext(p)))
-    // Ne pas générer des "variants de variants" (ex: -960w-640w.*)
-    .filter((p) => !reVariant.test(p));
+  return created;
 }
 
 async function main() {
-  // Galerie cabinet (AVIF) : 240/480/640/960/1600
-  const gallery = await listFiles('assets/cabinet-gallery', ['.avif']);
-  for (const f of gallery) {
-    await generateVariants(f, [240, 480, 640, 960, 1600], { format: 'avif', quality: 50 });
+  let totalCreated = 0;
+  let totalSkippedComplete = 0;
+
+  for (const target of TARGETS) {
+    const existingNames = await listDirNames(target.dir);
+    const originals = await listOriginals(target.dir, target.exts);
+    let dirCreated = 0;
+    let dirSkipped = 0;
+
+    for (const file of originals) {
+      const missing = missingWidthsFor(file.name, target.widths, file.ext, existingNames);
+
+      if (missing.length === 0) {
+        dirSkipped += 1;
+        continue;
+      }
+
+      const created = await generateMissingVariants(file.abs, file.name, missing, {
+        format: target.format,
+        quality: target.quality,
+        ext: file.ext,
+        dirRel: target.dir,
+      });
+
+      dirCreated += created;
+      for (const w of missing) {
+        existingNames.add(expectedVariantName(file.name, w, file.ext));
+      }
+    }
+
+    totalCreated += dirCreated;
+    totalSkippedComplete += dirSkipped;
+
+    const parts = [];
+    if (dirSkipped) parts.push(`${dirSkipped} original(aux) déjà complet(s)`);
+    if (dirCreated) parts.push(`${dirCreated} variante(s) créée(s)`);
+    if (parts.length) console.log(`[${target.dir}] ${parts.join(', ')}`);
   }
 
-  // Portraits équipe (JPG) : 360/540/720/1080
-  const team = await listFiles('assets/team', ['.jpg', '.jpeg']);
-  for (const f of team) {
-    await generateVariants(f, [360, 540, 720, 1080], { format: 'jpeg', quality: 78 });
+  if (totalCreated === 0) {
+    console.log('OK: aucune variante à créer (srcset déjà à jour).');
+  } else {
+    console.log(`OK: ${totalCreated} variante(s) générée(s).`);
   }
-
-  console.log('OK: variants générées');
 }
 
 main().catch((err) => {
   console.error(err);
   process.exit(1);
 });
-

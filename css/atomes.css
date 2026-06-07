@@ -110,22 +110,6 @@ svg.icon {
   vertical-align: -0.125em;
 }
 
-/* Taille fixe (override) pour quelques cas spécifiques */
-.technologies__grid svg.icon.icon--size-4rem {
-  width: 4rem;
-  height: 4rem;
-}
-
-.technologies__grid svg.icon.icon--size-2em {
-  width: 2em;
-  height: 2em;
-}
-
-.technologies__grid svg.icon.icon--size-3rem {
-  width: 3rem;
-  height: 3rem;
-}
-
 /* Ajustement optique : certains symboles (ex: i-extraction) sont “petits” dans leur viewBox.
    On applique un zoom ciblé au <use> sans toucher aux autres icônes. */
 svg.icon use {

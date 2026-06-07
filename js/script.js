@@ -1,36 +1,30 @@
+/**
+ * Script principal du site — interactions UI (IIFE, pas de bundler).
+ *
+ * Charge en prod : `js/script.min.js` (généré par `npm run dev:refresh`).
+ *
+ * Responsabilités :
+ * - Navigation mobile (burger, fermeture, sticky)
+ * - Scroll fluide vers les ancres
+ * - Formulaire de contact (validation, envoi FormSubmit / Web3Forms, toasts)
+ * - Sprite SVG (fetch + fallback inline)
+ * - Carte Google (consentement), vidéo hero différée, service worker, manifest PWA
+ *
+ * Carrousel cabinet : module séparé dans `js/src/carousel/` → `js/cabinet-media-carousel.min.js`.
+ *
+ * Modifier ce fichier puis lancer :
+ *   npm run dev:refresh
+ */
 (function() {
   'use strict';
 
   // ============================================================================
-  // UTILITAIRES LÉGERS
+  // UTILITAIRES
   // ============================================================================
 
-  /**
-   * Sélecteur d'élément unique optimisé
-   * @param {string} selector - Sélecteur CSS
-   * @returns {Element|null} Premier élément correspondant ou null
-   * @example
-   * const navbar = $('.navbar');
-   */
   const $ = (selector) => document.querySelector(selector);
-
-  /**
-   * Sélecteur d'éléments multiples optimisé
-   * @param {string} selector - Sélecteur CSS
-   * @returns {NodeList} Liste des éléments correspondants
-   * @example
-   * const cards = $$('.card');
-   */
   const $$ = (selector) => document.querySelectorAll(selector);
 
-  /**
-   * Fonction debounce optimisée pour limiter les appels fréquents
-   * @param {Function} func - Fonction à débouncer
-   * @param {number} wait - Délai d'attente en millisecondes
-   * @returns {Function} Fonction débouncée
-   * @example
-   * const debouncedScroll = debounce(handleScroll, 100);
-   */
   function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -39,17 +33,20 @@
     };
   }
 
-  /**
-   * Reporter l'exécution après le rendu critique pour optimiser les performances
-   * @param {Function} fn - Fonction à exécuter de manière différée
-   * @example
-   * defer(() => initAnimations());
-   */
   function defer(fn) {
     if (window.requestIdleCallback) {
       requestIdleCallback(fn, { timeout: 100 });
     } else {
       setTimeout(fn, 1);
+    }
+  }
+
+  /** Exécute `fn` dès que le DOM est prêt (compatible script defer). */
+  function onDomReady(fn) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', fn);
+    } else {
+      fn();
     }
   }
 
@@ -174,8 +171,6 @@
     const navbar = $('.navbar');
     const navbarToggle = $('.navbar__toggle');
     const navbarMenu = $('.navbar__menu--mobile');
-    const navbarLinks = $$('.navbar__link');
-
     /* Listeners document (Escape / clic extérieur) uniquement quand le menu est ouvert
      * — évite deux écouteurs permanents sur document. */
     if (navbarToggle && navbarMenu) {
@@ -190,8 +185,13 @@
 
       releaseMobileMenuDocListeners = removeMobileMenuDocListeners;
 
+      function setMobileToggleOpen(isOpen) {
+        navbarToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        navbarToggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+      }
+
       function closeMobileMenu() {
-        navbarToggle.setAttribute('aria-expanded', 'false');
+        setMobileToggleOpen(false);
         navbarMenu.classList.remove('navbar__menu--active');
         removeMobileMenuDocListeners();
       }
@@ -223,7 +223,7 @@
       navbarToggle.addEventListener('click', () => {
         const isExpanded = navbarToggle.getAttribute('aria-expanded') === 'true';
         const willOpen = !isExpanded;
-        navbarToggle.setAttribute('aria-expanded', willOpen);
+        setMobileToggleOpen(willOpen);
         navbarMenu.classList.toggle('navbar__menu--active', willOpen);
 
         if (willOpen) {
@@ -236,7 +236,7 @@
         }
       });
 
-      navbarLinks.forEach(link => {
+      navbarMenu.querySelectorAll('a[href]').forEach((link) => {
         link.addEventListener('click', () => {
           if (navbarMenu.classList.contains('navbar__menu--active')) {
             closeMobileMenu();
@@ -670,6 +670,7 @@
       if (window.innerWidth > 768) {
         if (navbarToggle && navbarMenu) {
           navbarToggle.setAttribute('aria-expanded', 'false');
+          navbarToggle.setAttribute('aria-label', 'Ouvrir le menu');
           navbarMenu.classList.remove('navbar__menu--active');
           releaseMobileMenuDocListeners();
         }
@@ -1362,33 +1363,10 @@
     btn.addEventListener('click', loadMap, { once: true });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', runDeferredHeadWork);
-  } else {
-    runDeferredHeadWork();
-  }
-
-  /* Dès le DOM prêt (script en defer : souvent déjà « interactive » ici). Ne pas attendre window « load » :
-   * le formulaire doit être initialisé tout de suite, sans quoi soumission / validation / toasts ne fonctionnent pas. */
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', startApp);
-  } else {
-    startApp();
-  }
-
-  // SW : enregistre après l'initialisation (sans bloquer le rendu).
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initServiceWorker);
-  } else {
-    initServiceWorker();
-  }
-
-  // Carte Google Maps : chargement uniquement après action utilisateur.
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initDeferredGoogleMap);
-  } else {
-    initDeferredGoogleMap();
-  }
+  onDomReady(runDeferredHeadWork);
+  onDomReady(startApp);
+  onDomReady(initServiceWorker);
+  onDomReady(initDeferredGoogleMap);
 
   // Manifest PWA : après load + idle pour ne pas allonger la chaîne critique (Lighthouse).
   (function initDeferredWebManifest() {

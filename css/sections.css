@@ -17,8 +17,8 @@
 }
 
 .traitements__grid > .traitement-card {
-  flex: 1 1 320px;
-  max-width: 380px;
+  flex: 1 1 min(100%, 320px);
+  max-width: min(380px, 100%);
 }
 
 .traitements__link {
@@ -43,15 +43,51 @@
   overflow: hidden;
 }
 
-/* Garantit qu’une icône SVG ne dépasse jamais du cercle */
-.traitement-card__icon > .icon,
-.traitement-card__icon > svg.icon {
-  width:3.7rem;
+/* Pictos décoratifs : fichiers SVG en <img class="section-picto"> */
+img.section-picto {
+  width: 3.7rem;
   height: 3.7rem;
+  object-fit: contain;
+  object-position: center;
   display: block;
   flex: 0 0 auto;
-  max-width: 100%;
-  max-height: 100%;
+  margin: 0;
+  min-width: 0;
+  filter: brightness(0) invert(1);
+}
+
+/* Couleurs définies dans le fichier SVG (cercle transparent) */
+img.section-picto[src*='microchirurgie'],
+img.section-picto[src*='traitements/']:not([src*='parodontologie']) {
+  width: 5.7rem;
+  height: 5.7rem;
+  filter: none;
+}
+
+/* Parodontologie : rond dégradé 80px, picto recadré au bord du cercle */
+.traitement-card__icon:has(img[src*='parodontologie']) {
+  overflow: visible;
+}
+
+img.section-picto[src*='parodontologie'] {
+  width: 80px;
+  height: 80px;
+  max-width: none;
+  flex: 0 0 80px;
+  filter: none;
+}
+
+/* Piezochirurgie : même recadrage viewBox que parodontologie */
+.tech-item__icon:has(img[src*='piezochirurgie']) {
+  overflow: visible;
+}
+
+img.section-picto[src*='piezochirurgie'] {
+  width: 80px;
+  height: 80px;
+  max-width: none;
+  flex: 0 0 80px;
+  filter: none;
 }
 
 .traitement-card__title {
@@ -171,8 +207,8 @@
 }
 
 .team__grid > .team-card {
-  flex: 1 1 330px;
-  max-width: 362px;
+  flex: 1 1 min(100%, 330px);
+  max-width: min(362px, 100%);
 }
 
 .team-card {
@@ -407,8 +443,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1 1 280px;
-  max-width: 360px;
+  flex: 1 1 min(100%, 280px);
+  max-width: min(360px, 100%);
 }
 
 .tech-item__icon {
@@ -420,7 +456,9 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto var(--space-lg);
+  overflow: hidden;
 }
+
 
 .tech-item__title {
   font-size: var(--font-size-xl);
@@ -601,11 +639,8 @@ body.treatment-page--specialist .treatment-page__media img {
 .treatment-page__content {
   color: var(--color-light);
   line-height: 1.75;
-  background: var(--color-white);
-  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: var(--border-radius-lg);
   padding: clamp(var(--space-lg), 2.5vw, var(--space-2xl));
-  box-shadow: var(--shadow-sm);
 }
 
 .treatment-page__content h2 {

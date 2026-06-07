@@ -1,3 +1,20 @@
+/**
+ * Génère les icônes PWA à partir du logo SVG du cabinet.
+ *
+ * Usage :
+ *   npm run pwa:icons
+ *
+ * Prérequis : `npm install` (sharp).
+ * Source : `assets/logo-b-raphael-brochand.svg`
+ *
+ * Produits à la racine du projet :
+ * - `apple-touch-icon.png` (180×180)
+ * - `web-app-manifest-192x192.png`, `web-app-manifest-512x512.png`
+ * - variantes maskable (fond blanc, zone sûre ~20 %)
+ *
+ * À relancer si le logo change, puis vérifier `site.webmanifest`.
+ */
+
 import fs from 'node:fs';
 import sharp from 'sharp';
 

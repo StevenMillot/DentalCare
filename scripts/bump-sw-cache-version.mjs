@@ -1,3 +1,11 @@
+/**
+ * Incrémente `CACHE_VERSION` dans `sw.js` pour invalider le cache PWA.
+ *
+ * Usage : npm run sw:bump
+ * Inclus dans : npm run deploy:prepare
+ * Les visiteurs récupèrent ainsi les nouveaux `.css` / `.js` / images au prochain chargement.
+ */
+
 import fs from 'node:fs/promises';
 
 const SW_PATH = new URL('../sw.js', import.meta.url);

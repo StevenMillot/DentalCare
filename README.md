@@ -1,141 +1,191 @@
-# DentalCare (Parodontia) — site statique
+# DentalCare (Parodontia)
 
-Site vitrine statique (HTML/CSS/JS) avec pages “traitement”, formulaire de contact, et optimisations perf/SEO adaptées à un déploiement **GitHub Pages** et/ou domaine.
+Site vitrine statique — HTML, CSS, JS — optimisé pour **GitHub Pages** et domaine custom.
 
-## Lancer en local
+---
 
-Évite `file://` (certaines APIs et chemins se comportent différemment). Utilise un serveur statique :
-
-```bash
-python3 -m http.server 8000
-```
-
-Puis ouvre `http://127.0.0.1:8000/`.
-
-## Déploiement GitHub Pages (important)
-
-- **Manifest** : `site.webmanifest` utilise `start_url: "./"` et `scope: "./"` pour fonctionner correctement dans un sous-dossier (`/DentalCare/`).
-
-## Images responsive (`srcset`)
-
-Les photos (équipe, galerie) sont servies avec `srcset` + `sizes` pour éviter de télécharger des images trop lourdes sur mobile.
-
-### Générer / régénérer les variantes
-
-Prérequis : Node.js + npm (dépendance dev `sharp`).
+## Démarrage rapide
 
 ```bash
 npm install
-npm run images:responsive
+python3 -m http.server 8000
 ```
 
-Génère automatiquement :
+Ouvrir [http://127.0.0.1:8000/](http://127.0.0.1:8000/) — éviter `file://` (sprite SVG, service worker, fetch).
 
-- **Galerie cabinet (AVIF)** : `assets/cabinet-gallery/*-{480,960,1600}w.avif`
-- **Portraits équipe (JPG)** : `assets/team/*-{360,720,1080}w.jpg`
+---
 
-Script : `tools/generate-responsive-images.mjs`
+## Les 2 commandes à retenir
 
-## CSS bundle
+| Commande | Quand |
+|----------|-------|
+| **`npm run dev:refresh`** | Après modif CSS, JS ou sprite `icons.svg` |
+| **`npm run deploy:prepare`** | Juste avant `git push` (déploiement) |
 
-Le site charge `css/bundle.css` (une seule feuille) pour réduire les requêtes bloquantes.
+C’est tout pour le travail courant.
 
-### Générer / régénérer le bundle
+### Ce que chaque « super-commande » fait déjà
 
-```bash
-npm run css:bundle
-```
+**`dev:refresh`** enchaîne automatiquement :
+`css:bundle` → `css:minify` → `icons:sync-inline` → `js:bundle` → `js:minify`
 
-## Commandes rapides
+**`deploy:prepare`** enchaîne automatiquement :
+`dev:refresh` → `images:responsive` → `images:cleanup` → `images:check` → `sw:bump`
 
-### Avant de déployer (recommandé)
+Tu n’as donc **pas** à lancer à la main : `css:*`, `js:*`, `icons:sync-inline`, `images:*`, `sw:bump` — sauf cas particulier ci-dessous.
 
-Régénère les assets “buildés” (CSS + sprite inline) **et** bump la version du cache du service worker (pour forcer la mise à jour côté utilisateurs) :
+### Commandes à lancer seules (rare)
 
-```bash
-npm run deploy:prepare
-```
+| Commande | Cas précis |
+|----------|------------|
+| `npm run pwa:head` | Tu crées une **nouvelle** page `.html` à la racine |
+| `npm run pwa:icons` | Tu changes le **logo** (`assets/logo-b-raphael-brochand.svg`) |
+| `npm run images:responsive` | Tu veux générer les variantes photo **sans** tout le pipeline deploy (ex. test local après ajout d’images) |
 
-### En dev (actualiser les assets)
+---
 
-Régénère le **bundle CSS minifié** (`css/bundle.css`), resynchronise le sprite inline dans **`js/script.js`**, puis produit les fichiers **`js/script.min.js`** et **`js/cabinet-media-carousel.min.js`** (c’est ce que charge le HTML en prod).
+## Workflows courants
+
+### Modifier le site (CSS / JS)
+
+1. Éditer les **sources** :
+   - CSS → fichiers dans `css/` (pas `bundle.css` directement)
+   - JS global → `js/script.js`
+   - Carrousel → `js/src/carousel/`
+2. Lancer :
 
 ```bash
 npm run dev:refresh
 ```
 
-Après toute modification de **`js/script.js`** ou du CSS source, relance cette commande avant commit / déploiement.
+3. Le HTML charge `css/bundle.css`, `js/script.min.js`, `js/cabinet-media-carousel.min.js`.
 
-### Images responsive (vérifier / corriger)
-
-Le site attend des déclinaisons :
-
-- **Team (JPG)** : 360 / 540 / 720 / 1080
-- **Cabinet carousel (AVIF)** : 240 / 480 / 640 / 960 / 1600
-
-Commandes :
+### Déployer
 
 ```bash
-# Génère les variantes manquantes (idempotent)
-npm run images:responsive
-
-# Vérifie que toutes les variantes attendues existent
-npm run images:check
+npm run deploy:prepare
+git add -A && git commit -m "…" && git push
 ```
 
-## Icônes SVG (sprite) — important
+`deploy:prepare` enchaîne : build CSS/JS → images responsive → vérification → bump cache SW.
 
-Le site utilise un sprite `assets/Icones/icons.svg` et des `<use href="assets/Icones/icons.svg#...">` dans les pages.
+### Ajouter une photo (équipe ou galerie)
 
-### Cas `file://` (ou environnement qui bloque `assets/Icones/icons.svg`)
+1. Déposer l’**original** (sans suffixe `-360w`, etc.) :
+   - Équipe → `assets/team/nom.jpg`
+   - Galerie → `assets/cabinet-gallery/nom.avif`
+2. Référencer le `srcset` dans le HTML.
+3. Au déploiement, `deploy:prepare` génère et vérifie les variantes tout seul.
 
-En `file://`, les références externes SVG sont bloquées par le navigateur. Pour garantir l’affichage, `js/script.js` (puis `script.min.js` après `npm run dev:refresh`) contient une **copie inline** du sprite (`INLINE_SPRITE_SVG`) utilisée en fallback.
+Pour tester en local avant le push : `npm run images:responsive` (optionnel).
 
-Donc, si tu modifies `assets/Icones/icons.svg`, il faut **synchroniser** cette copie inline :
+| Dossier | Format | Largeurs générées |
+|---------|--------|-------------------|
+| `assets/team/` | JPG | 360, 540, 720, 1080 |
+| `assets/cabinet-gallery/` | AVIF | 240, 480, 640, 960, 1600 |
+
+Le générateur est **idempotent** : il ne recrée pas une variante déjà présente.
+
+Config partagée : `tools/responsive-images-config.mjs`.
+
+### Modifier une icône UI (sprite)
+
+Le site utilise `assets/Icones/icons.svg` via `<use href="…#i-nom">`.
+
+Éditer le sprite, puis `npm run dev:refresh` — la synchro inline est incluse.
+
+### Nouvelle page HTML
 
 ```bash
-npm run icons:sync-inline
+npm run pwa:head
 ```
 
-### Cas HTTP/HTTPS (localhost, GitHub Pages, prod)
+Ajoute manifest, apple-touch-icon et meta PWA si manquants.
 
-Le sprite est chargé “normalement” via `assets/Icones/icons.svg` (et peut être mis en cache par le service worker).  
-Si tu ne vois pas un changement après refresh :
+---
 
-- vérifie le cache/service worker (voir section PWA ci-dessous)
-- ou fais un hard refresh / désenregistre le SW le temps de valider
+## Structure du projet
 
-## Formulaire de contact
+```
+index.html              Page principale
+*.html                  Pages traitement / spécialiste / légales
+css/                    Sources CSS modulaires
+css/bundle.css          CSS livré (généré)
+js/script.js            JS principal (source)
+js/script.min.js        JS livré (généré)
+js/src/carousel/        Carrousel cabinet (source)
+js/cabinet-media-carousel.min.js
+assets/Icones/
+  icons.svg             Sprite UI (cœur, téléphone, flèches…)
+  technologies/         Icônes raster section Technologies
+  traitements/          Icônes raster section Traitements
+assets/team/            Portraits + variantes *-{360,540,720,1080}w.jpg
+assets/cabinet-gallery/ Photos + variantes *-{240…1600}w.avif
+sw.js                   Service worker
+site.webmanifest        Manifest PWA
+scripts/                Scripts Node (maintenance / build)
+tools/                  Génération images responsive
+```
 
-- **Validation JS dédiée** (messages inline + toast) : pas de dépendance aux comportements `checkValidity()` du navigateur.
-- **Envoi** : FormSubmit (ou Web3Forms si configuré), avec fallback `mailto:` en cas d’échec.
+---
 
-## PWA / Service Worker
+## Scripts (`scripts/` et `tools/`) — référence
 
-- **Manifest** : `site.webmanifest` — sur **`index.html`**, le lien est injecté après `window.load` (chaîne critique plus courte) ; les autres pages gardent un `<link rel="manifest">` classique.
-- **Service worker** : `sw.js`
+Détail pour comprendre ce qui tourne sous le capot. En usage normal : seulement `dev:refresh` et `deploy:prepare`.
 
-Le SW applique :
+| npm | Inclus dans | Rôle |
+|-----|-------------|------|
+| `dev:refresh` | — | **Commande principale dev** |
+| `deploy:prepare` | — | **Commande principale deploy** |
+| `css:bundle` / `css:minify` | `dev:refresh` | Assemble et minifie le CSS |
+| `js:bundle` / `js:minify` | `dev:refresh` | Assemble et minifie le JS |
+| `icons:sync-inline` | `dev:refresh` | Sprite → fallback dans `script.js` |
+| `images:responsive` | `deploy:prepare` | Variantes `srcset` manquantes |
+| `images:cleanup` | `deploy:prepare` | Supprime doublons corrompus |
+| `images:check` | `deploy:prepare` | Vérifie les variantes |
+| `sw:bump` | `deploy:prepare` | Incrémente le cache SW |
+| `pwa:head` | *(manuel, rare)* | Balises PWA sur nouvelle page HTML |
+| `pwa:icons` | *(manuel, rare)* | Régénère les PNG PWA depuis le logo |
 
-- **HTML** : network-first (toujours à jour, fallback cache/offline)
-- **Assets (`.css/.js/.svg/.mp4/...`)** : cache-first (visites répétées plus rapides même si GitHub Pages envoie un `Cache-Control` court côté HTTP).
+---
 
-**TTL HTTP (Lighthouse « durée de mise en cache »)** : sur `github.io`, les en-têtes `Cache-Control` (~10 min) sont **imposés par GitHub** ; on ne peut pas les allonger depuis le dépôt. Pour un TTL long au premier chargement, il faut un **CDN** (ex. Cloudflare) devant le site.
+## JavaScript runtime
 
-Si tu modifies un asset (ex: `assets/Icones/icons.svg`, `js/script.js` puis `dev:refresh`, `css/` sources puis `dev:refresh`) et que ça ne se reflète pas, il faut **invalider le cache** :
+| Fichier | Rôle |
+|---------|------|
+| `js/script.js` | Nav, formulaire, toasts, sprite, carte, SW, vidéo hero |
+| `js/src/carousel/` | Carrousel + lightbox cabinet |
+| `sw.js` | Cache : HTML network-first, assets cache-first |
 
-- soit en bumpant `CACHE_VERSION` dans `sw.js`
-- soit via la commande :
+**Ne pas éditer** `*.min.js` ni `cabinet-media-carousel.js` — fichiers générés.
+
+---
+
+## PWA / cache
+
+- **Manifest** : injecté après `load` sur `index.html` ; `<link rel="manifest">` classique sur les autres pages.
+- **Service worker** : après déploiement, les visiteurs peuvent garder d’anciens assets en cache.
+
+Si un changement ne apparaît pas :
 
 ```bash
 npm run sw:bump
 ```
-- soit en désenregistrant le service worker (DevTools → Application → Service Workers) puis refresh
 
-## Structure (repères)
+Ou DevTools → Application → Service Workers → Unregister.
 
-- `index.html` : page principale + galerie + formulaire
-- `*.html` : pages “traitement” / “spécialiste”
-- `css/` : styles modulaires
-- `js/script.js` : source ; **`js/script.min.js`** : livré en prod (généré par `npm run dev:refresh`)
-- `assets/` : médias (noms web-safe) + variantes `*-{...}w.*`
+> Sur `github.io`, le `Cache-Control` HTTP (~10 min) est imposé par GitHub. Le SW compense pour les visites répétées.
+
+---
+
+## Formulaire de contact
+
+- Validation JS dédiée (messages inline + toasts).
+- Envoi : FormSubmit par défaut, Web3Forms si `data-web3forms-access-key` est renseigné.
+- Fallback `mailto:` si l’envoi réseau échoue.
+
+---
+
+## GitHub Pages
+
+`site.webmanifest` utilise `start_url: "./"` et `scope: "./"` pour fonctionner en sous-dossier (`/DentalCare/`).
