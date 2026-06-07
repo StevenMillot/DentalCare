@@ -11,6 +11,7 @@
     <!-- Optimisations de performance -->
     <meta name="format-detection" content="telephone=no">
     <meta name="theme-color" content="#667eea">
+    <link rel="manifest" href="site.webmanifest">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Parodontia">
@@ -216,45 +217,45 @@
 </head>
 <body>
 <!-- Navigation -->
-    <nav class="navbar" role="navigation" aria-label="Navigation principale">
+    <nav class="navbar" aria-label="Navigation principale">
         <div class="container navbar__container">
             <a href="#accueil" class="navbar__logo" title="Retour à l'accueil">
                 <img
                     src="assets/logo-b-raphael-brochand.svg"
-                    alt="Logo du cabinet Parodontia, du Dr Raphaël BROCHAND"
+                    alt=""
                     class="navbar__logo-img"
                     aria-hidden="true"
                     width="40px"
                     height="40px"
                 >
-                <span>PARODONTIA</span>
+                <span>PARO-SPÉ</span>
             </a>
 
-            <ul class="navbar__menu navbar__menu--desktop" role="menubar">
+            <ul class="navbar__menu navbar__menu--desktop">
                 <li>
-                    <a href="#accueil" class="navbar__link" role="menuitem" aria-label="Retour à l'accueil">Accueil</a>
+                    <a href="#accueil" class="navbar__link">Accueil</a>
                 </li>
                 <li>
-                    <a href="#equipe" class="navbar__link" role="menuitem" aria-label="Découvrez l'équipe de professionnels du cabinet">Équipe</a>
+                    <a href="#equipe" class="navbar__link">Équipe</a>
                 </li>
                 <li>
-                    <a href="#cabinet" class="navbar__link" role="menuitem" aria-label="Découvrez le cabinet en photos">Cabinet</a>
+                    <a href="#cabinet" class="navbar__link">Cabinet</a>
                 </li>
                 <li>
-                    <a href="#traitements" class="navbar__link" role="menuitem">Traitements</a>
+                    <a href="#traitements" class="navbar__link">Traitements</a>
                 </li>
                 <li>
-                    <a href="#technologies" class="navbar__link" role="menuitem">Technologies</a>
+                    <a href="#technologies" class="navbar__link">Technologies</a>
                 </li>
                 <li>
-                    <a href="#contact" class="navbar__link" role="menuitem">Contact</a>
+                    <a href="#contact" class="navbar__link">Contact</a>
                 </li>
                 <li>
-                    <a href="#doctolib" class="navbar__btn btn btn--primary" aria-label="Aller à la section Doctolib pour prendre rendez-vous">Prendre&nbsp;RDV</a>
+                    <a href="#doctolib" class="navbar__btn btn btn--primary">Prendre&nbsp;RDV</a>
                 </li>
             </ul>
 
-            <button class="navbar__toggle" aria-label="Menu mobile" aria-expanded="false">
+            <button class="navbar__toggle" aria-label="Ouvrir le menu" aria-expanded="false">
                 <span class="navbar__toggle-line"></span>
                 <span class="navbar__toggle-line"></span>
                 <span class="navbar__toggle-line"></span>
@@ -263,27 +264,27 @@
     </nav>
 
     <!-- Menu mobile -->
-    <ul class="navbar__menu navbar__menu--mobile" role="menubar">
-        <li role="none">
-            <a href="#accueil" class="navbar__link" role="menuitem" aria-label="Retour à l'accueil">Accueil</a>
+    <ul class="navbar__menu navbar__menu--mobile">
+        <li>
+            <a href="#accueil" class="navbar__link">Accueil</a>
         </li>
-        <li role="none">
-            <a href="#traitements" class="navbar__link" role="menuitem">Traitements</a>
+        <li>
+            <a href="#traitements" class="navbar__link">Traitements</a>
         </li>
-        <li role="none">
-            <a href="#equipe" class="navbar__link" role="menuitem" aria-label="Découvrez l'équipe de professionnels du cabinet">Équipe</a>
+        <li>
+            <a href="#equipe" class="navbar__link">Équipe</a>
         </li>
-        <li role="none">
-            <a href="#cabinet" class="navbar__link" role="menuitem" aria-label="Découvrez le cabinet en photos">Cabinet</a>
+        <li>
+            <a href="#cabinet" class="navbar__link">Cabinet</a>
         </li>
-        <li role="none">
-            <a href="#technologies" class="navbar__link" role="menuitem">Technologies</a>
+        <li>
+            <a href="#technologies" class="navbar__link">Technologies</a>
         </li>
-        <li role="none">
-            <a href="#contact" class="navbar__link" role="menuitem">Contact</a>
+        <li>
+            <a href="#contact" class="navbar__link">Contact</a>
         </li>
-        <li role="none">
-            <a href="#doctolib" class="navbar__btn btn btn--primary" aria-label="Aller à la section Doctolib pour prendre rendez-vous">Prendre&nbsp;RDV</a>
+        <li>
+            <a href="#doctolib" class="navbar__btn btn btn--primary">Prendre&nbsp;RDV</a>
         </li>
     </ul>
 
@@ -303,10 +304,10 @@
         <div class="container hero__container">
             <div class="hero__content">
                 <h1 id="hero-title" class="hero__title">
-                    Clinique <span class="hero__title-main">Parodontia</span>
+                    Clinique <span class="hero__title-main">Paro-Spé</span>
                 </h1>
                 <p class="hero__subtitle">
-                    La clinique Parodontia est spécialisée et entièrement dédiée à la parodontie, à l’implantologie et à la chirurgie orale.
+                    Situé à proximité du Parc de Sceaux, à Châtenay Malabry, La clinique Parodontia est spécialisée et entièrement dédiée à la parodontie, à l’implantologie et à la chirurgie orale
                 </p>
 
                 <div class="hero__values">
@@ -356,7 +357,7 @@
                     <a class="team-card team-card--link card card--padded" href="specialiste-raphael-brochand.html" aria-labelledby="team-spec-name-1">
                         <div class="team-card__media">
                             <img
-                              src="assets/team/raphael-brochand-chirurgien-dentiste-720w.jpg"
+                              src="assets/team/raphael-brochand-chirurgien-dentiste.jpg"
                               srcset="
                                 assets/team/raphael-brochand-chirurgien-dentiste-360w.jpg 360w,
                                 assets/team/raphael-brochand-chirurgien-dentiste-540w.jpg 540w,
@@ -364,7 +365,7 @@
                                 assets/team/raphael-brochand-chirurgien-dentiste-1080w.jpg 1080w
                               "
                               sizes="(max-width: 768px) 92vw, calc(362px - 4rem)"
-                              alt=""
+                              alt="Portrait du Dr Raphaël Brochand"
                               loading="lazy"
                               decoding="async"
                               width="720"
@@ -376,18 +377,18 @@
                         <p class="team-card__status">Chirurgien-dentiste</p>
                     </a>
 
-                    <a class="team-card team-card--link card card--padded" href="specialiste-2.html" aria-labelledby="team-spec-name-2">
+                    <a class="team-card team-card--link card card--padded" href="specialiste-cecile-guelaud.html" aria-labelledby="team-spec-name-2">
                         <div class="team-card__media">
                             <img
-                              src="assets/team/specialist-2-chirurgien-dentiste-720w.jpg"
+                              src="assets/team/cecile-guelaud-chirurgien-dentiste.jpg"
                               srcset="
-                                assets/team/specialist-2-chirurgien-dentiste-360w.jpg 360w,
-                                assets/team/specialist-2-chirurgien-dentiste-540w.jpg 540w,
-                                assets/team/specialist-2-chirurgien-dentiste-720w.jpg 720w,
-                                assets/team/specialist-2-chirurgien-dentiste-1080w.jpg 1080w
+                                assets/team/cecile-guelaud-chirurgien-dentiste-360w.jpg 360w,
+                                assets/team/cecile-guelaud-chirurgien-dentiste-540w.jpg 540w,
+                                assets/team/cecile-guelaud-chirurgien-dentiste-720w.jpg 720w,
+                                assets/team/cecile-guelaud-chirurgien-dentiste-1080w.jpg 1080w
                               "
                               sizes="(max-width: 768px) 92vw, calc(362px - 4rem)"
-                              alt=""
+                              alt="Portrait du Dr Cécile Guélaud"
                               loading="lazy"
                               decoding="async"
                               width="720"
@@ -395,7 +396,7 @@
                             >
                             <span class="btn btn--primary team-card__cta">Son parcours</span>
                         </div>
-                        <h4 id="team-spec-name-2" class="team-card__name">Spécialiste 2</h4>
+                        <h4 id="team-spec-name-2" class="team-card__name">Dr Cécile Guélaud</h4>
                         <p class="team-card__status">Chirurgien-dentiste</p>
                     </a>
                 </div>
@@ -407,7 +408,7 @@
                     <article class="team-card team-card--assistant card card--padded">
                         <div class="team-card__media">
                             <img
-                              src="assets/team/alicia-assistante-dentaire-720w.jpg"
+                              src="assets/team/alicia-assistante-dentaire.jpg"
                               srcset="
                                 assets/team/alicia-assistante-dentaire-360w.jpg 360w,
                                 assets/team/alicia-assistante-dentaire-540w.jpg 540w,
@@ -435,7 +436,7 @@
         <div class="container">
             <header class="cabinet__header">
                 <h2 id="cabinet-title" class="heading heading--lg gradient-text">Cabinet</h2>
-                <p class="text text--lg subtitle">Un environnement moderne et confortable pour vos soins dentaires</p>
+                <p class="text text--lg subtitle">Un environnement moderne et confortable pour vos soins</p>
             </header>
 
                 <div id="cabinet-media-carousel" class="cabinet-media-carousel" data-autoplay-interval="5200" aria-label="Galerie photos et vidéos du cabinet">
@@ -656,7 +657,7 @@
                                             <video poster="assets/cabinet-gallery/poster-video-presentation-parodontia-960w.avif" preload="none" muted playsinline>
                                                 <source src="assets/cabinet-gallery/presentation-cabinet-parodontia-1080p.mp4" type="video/mp4">
                                             </video>
-                                            <span class="cabinet-media-carousel__badge-video" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="assets/Icones/icons.svg#i-play"></use></svg></span>
+                                            <span class="cabinet-media-carousel__badge-video" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
                                             <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Vidéo · présentation du cabinet"></button>
                                         </div>
                                     </div>
@@ -681,7 +682,7 @@
         <div class="traitements__grid grid grid--3">
             <article class="traitement-card card card--padded card--floating">
                     <div class="traitement-card__icon" aria-hidden="true">
-                        <svg class="icon icon--lg icon--white" aria-hidden="true"><use href="assets/Icones/icons.svg#i-extraction"></use></svg>
+                        <img src="assets/Icones/traitements/chirurgie-orale.svg" class="section-picto" alt="" loading="lazy" decoding="async">
                     </div>
                     <h3 class="traitement-card__title" id="chirurgie-orale">Chirurgie Orale</h3>
                     <ul class="traitement-card__list" aria-labelledby="chirurgie-orale">
@@ -699,7 +700,7 @@
 
             <article class="traitement-card card card--padded card--floating">
                     <div class="traitement-card__icon" aria-hidden="true">
-                        <svg class="icon icon--lg icon--white icon--size-4rem" aria-hidden="true"><use href="assets/Icones/icons.svg#i-parodontologie"></use></svg>
+                        <img src="assets/Icones/traitements/parodontologie.svg" class="section-picto" alt="" loading="lazy" decoding="async">
                     </div>
                     <h3 class="traitement-card__title" id="parodontologie">Parodontologie</h3>
                     <ul class="traitement-card__list" aria-labelledby="parodontologie">
@@ -717,7 +718,7 @@
 
             <article class="traitement-card card card--padded card--floating">
                     <div class="traitement-card__icon" aria-hidden="true">
-                        <svg class="icon icon--lg icon--white" aria-hidden="true"><use href="assets/Icones/icons.svg#i-implant"></use></svg>
+                        <img src="assets/Icones/traitements/implantologie.svg" class="section-picto" alt="" loading="lazy" decoding="async">
                     </div>
                     <h3 class="traitement-card__title" id="implantologie">Implantologie</h3>
                     <ul class="traitement-card__list" aria-labelledby="implantologie">
@@ -741,64 +742,59 @@
         <div class="container">
             <header class="technologies__header">
                 <h2 id="tech-title" class="heading heading--lg gradient-text">Technologies</h2>
-                <p class="text text--lg subtitle">Équipements et protocoles au service d’un diagnostic précis, de soins maîtrisés et d’un environnement sûr.</p>
+                <p class="text text--lg subtitle">Les dernières techniques en odontologie visent plus de précision avec un minimum de traumatisme.</p>
             </header>
 
             <div class="technologies__grid">
                 <article class="tech-item card card--padded">
-                    <div class="tech-item__icon">
-                        <svg class="icon icon--lg icon--white icon--size-2rem" aria-hidden="true"><use href="assets/Icones/icons.svg#i-technologie"></use></svg>
-                    </div>
-                    <h3 class="tech-item__title" id="tech-cbct">Technologie</h3>
-                    <p class="tech-item__description" aria-labelledby="tech-cbct">Les dernières techniques en odontologie visent plus de précision avec un minimum de traumatisme.</p>
-                </article>
-
-                <article class="tech-item card card--padded">
-                    <div class="tech-item__icon">
-                        <svg class="icon icon--lg icon--white" aria-hidden="true"><use href="assets/Icones/icons.svg#i-cbct3d"></use></svg>
+                    <div class="tech-item__icon" aria-hidden="true">
+                        <img src="assets/Icones/technologies/cbct3d.svg" class="section-picto" alt="" loading="lazy" decoding="async">
                     </div>
                     <h3 class="tech-item__title" id="tech-cbct">Radio 3D/CBCT</h3>
-                    <p class="tech-item__description" aria-labelledby="tech-cbct">La radio 3D permet d'obtenir des images tridimensionnelles précises des dents, des structures osseuses et de certains tissus mous, indispensables au diagnostic et à la planification des traitements.</p>
+                    <p class="tech-item__description" aria-labelledby="tech-cbct">
+                        La radio 3D permet d'obtenir des images tridimensionnelles précises des dents, des structures osseuses et de certains tissus mous, indispensables au diagnostic et à la planification des traitements.
+                    </p>
                 </article>
 
                 <article class="tech-item card card--padded">
-                    <div class="tech-item__icon">
-                        <img src="assets/Icones/aides-optiques.svg" class="icon icon--lg icon--white" alt="" aria-hidden="true" width="32" height="32" loading="lazy" decoding="async">
+                    <div class="tech-item__icon" aria-hidden="true">
+                        <img src="assets/Icones/aides-optiques.svg" class="section-picto" alt="" loading="lazy" decoding="async">
                     </div>
                     <h3 class="tech-item__title" id="tech-optique">Aides optiques</h3>
-                    <p class="tech-item__description" aria-labelledby="tech-optique">Les loupes opératoires, grâce à leur grossissement et leur éclairage, améliore la précision et la qualité des soins..</p>
+                    <p class="tech-item__description" aria-labelledby="tech-optique">Les loupes opératoires, grâce à leur grossissement et leur éclairage, améliore le diagnostic et la qualité des soins en augmentant significativement la précision des gestes opératoires.
+                    </p>
                 </article>
 
                 <article class="tech-item card card--padded">
-                    <div class="tech-item__icon">
-                        <svg class="icon icon--lg icon--white" aria-hidden="true"><use href="assets/Icones/icons.svg#i-piezochirurgie"></use></svg>
+                    <div class="tech-item__icon" aria-hidden="true">
+                        <img src="assets/Icones/technologies/piezochirurgie.svg" class="section-picto" alt="" loading="lazy" decoding="async">
                     </div>
                     <h3 class="tech-item__title" id="tech-piezo">Piezo chirurgie</h3>
-                    <p class="tech-item__description" aria-labelledby="tech-piezo">La piézochirurgie offre une coupe osseuse fine, précise et moins traumatisante.</p>
+                    <p class="tech-item__description" aria-labelledby="tech-piezo">La piézochirurgie (ou chirurgie piézoélectrique) permet une découpe osseuse fine utilisant les ultrasons. Elle permet une grande précision opératoire et préserve des tissus mous environnants.</p>
                 </article>
 
                 <article class="tech-item card card--padded">
-                    <div class="tech-item__icon">
-                        <svg class="icon icon--lg icon--white" aria-hidden="true"><use href="assets/Icones/icons.svg#i-microchirurgie"></use></svg>
+                    <div class="tech-item__icon" aria-hidden="true">
+                        <img src="assets/Icones/technologies/microchirurgie.svg" class="section-picto" alt="" loading="lazy" decoding="async">
                     </div>
                     <h3 class="tech-item__title" id="tech-micro">Microchirurgie</h3>
-                    <p class="tech-item__description" aria-labelledby="tech-micro">La microchirurgie améliore la précision, réduit le traumatisme tissulaire et permet une meilleure cicatrisation.</p>
+                    <p class="tech-item__description" aria-labelledby="tech-micro">La microchirurgie améliore la précision, réduit le traumatisme tissulaire et favorise une meilleure cicatrisation. Cette approche améliore la qualité des résultats cliniques et le confort du patient.</p>
                 </article>
 
                 <article class="tech-item card card--padded">
-                    <div class="tech-item__icon">
-                        <svg class="icon icon--lg icon--white" aria-hidden="true"><use href="assets/Icones/icons.svg#i-photo"></use></svg>
+                    <div class="tech-item__icon" aria-hidden="true">
+                        <img src="assets/Icones/technologies/photo.svg" class="section-picto" alt="" loading="lazy" decoding="async">
                     </div>
                     <h3 class="tech-item__title" id="tech-photo">Photo</h3>
-                    <p class="tech-item__description" aria-labelledby="tech-photo">La photographie favorise la communication avec les patients et permet un suivi des traitements.</p>
+                    <p class="tech-item__description" aria-labelledby="tech-photo">La photographie favorise la communication avec les patients et les correspondants. Elle permet d’assurer un suivi précis des traitements grâce à des clichés comparatifs réalisés au fil du temps.</p>
                 </article>
 
                 <article class="tech-item card card--padded">
-                    <div class="tech-item__icon">
-                        <svg class="icon icon--lg icon--white icon--size-2em" aria-hidden="true"><use href="assets/Icones/icons.svg#i-hygiene"></use></svg>
+                    <div class="tech-item__icon" aria-hidden="true">
+                        <img src="assets/Icones/technologies/hygiene.svg" class="section-picto" alt="" loading="lazy" decoding="async">
                     </div>
                     <h3 class="tech-item__title" id="tech-hygiene">Hygiène</h3>
-                    <p class="tech-item__description" aria-labelledby="tech-hygiene">Notre chaîne de stérilisation fait l'objet de contrôles quotidiens afin de garantir au patient un environnement parfaitement sûr et stérile.</p>
+                    <p class="tech-item__description" aria-labelledby="tech-hygiene">Les protocoles de stérilisation et de désinfection sont strictement appliqués. Le matériel est nettoyé, stérilisé et contrôlé afin de garantir au patient un environnement parfaitement sûr et stérile.</p>
                 </article>
             </div>
         </div>
@@ -1041,7 +1037,7 @@
                 <div class="footer__section footer__section--social">
                     <h3>Suivez-nous</h3>
                     <div class="footer__social">
-                        <a href="#" class="footer__social-link" aria-label="Instagram">
+                        <a href="#" class="footer__social-link" title="Suivez-nous sur Instagram" aria-label="Instagram">
                             <svg class="icon" aria-hidden="true"><use href="assets/Icones/icons.svg#i-instagram"></use></svg>
                         </a>
                     </div>
@@ -1059,7 +1055,7 @@
     </footer>
 
     <!-- Sidebar avec tous les boutons initiaux -->
-    <div class="sidebar" role="navigation" aria-label="Actions rapides">
+    <div class="sidebar" aria-label="Actions rapides">
         <a href="tel:0675173880" class="sidebar__action" aria-label="Appeler le cabinet">
             <svg class="icon" aria-hidden="true"><use href="assets/Icones/icons.svg#i-phone"></use></svg>
         </a>

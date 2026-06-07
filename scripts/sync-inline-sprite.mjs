@@ -1,3 +1,12 @@
+/**
+ * Copie `assets/Icones/icons.svg` dans le fallback inline de `js/script.js`.
+ *
+ * Usage : npm run icons:sync-inline
+ * Inclus dans : npm run dev:refresh
+ *
+ * Met à jour INLINE_SPRITE_SVG dans js/script.js (fallback file:// / CORS).
+ */
+
 import fs from 'node:fs/promises';
 
 const SPRITE_PATH = new URL('../assets/Icones/icons.svg', import.meta.url);

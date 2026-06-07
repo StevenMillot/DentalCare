@@ -1,7 +1,19 @@
-/* Service worker — cache simple pour GH Pages (TTL court côté serveur). */
+/**
+ * Service worker — cache pour GitHub Pages.
+ *
+ * Stratégie :
+ * - HTML : network-first (contenu à jour, fallback cache hors-ligne)
+ * - Assets (.css, .js, images, .mp4…) : cache-first
+ *
+ * Après modification d’un asset statique, invalider le cache :
+ *   npm run sw:bump
+ * (ou incrémenter `CACHE_VERSION` manuellement)
+ *
+ * Enregistré depuis `js/script.js` après idle (`navigator.serviceWorker.register('sw.js')`).
+ */
 /* global self */
 
-const CACHE_VERSION = 'dc-v14';
+const CACHE_VERSION = 'dc-v21';
 const CACHE_NAME = `dentalcare-${CACHE_VERSION}`;
 
 // On reste volontairement conservateur : cache-first pour assets statiques,

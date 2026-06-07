@@ -50,7 +50,11 @@
 }
 
 .icon--mr-sm {
-  margin-right: 0.5rem;
+  margin-right: var(--space-sm);
+}
+
+.icon--mr-xs {
+  margin-right: var(--space-xs);
 }
 
 .section--nav-offset {
