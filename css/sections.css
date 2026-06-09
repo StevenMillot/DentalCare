@@ -477,72 +477,10 @@ img.section-picto[src*='piezochirurgie'] {
 /* PAGES TRAITEMENTS (liens sous "Nos Traitements")                           */
 /* ========================================================================== */
 
-/* Variante Implantologie */
-body.treatment-page--implantologie {
+body.treatment-page {
   background: var(--color-bg);
-}
-
-.treatment-page--implantologie .treatment-page__kicker {
-  font-size: var(--font-size-base);
-}
-
-.treatment-page--implantologie .treatment-page__gallery {
-  position: relative;
-  gap: 0;
-  padding-top: var(--space-md);
-}
-
-.treatment-page--specialist .treatment-page__gallery {
-  grid-template-columns: 1fr;
-}
-
-.treatment-page--implantologie .treatment-page__media {
-  width: min(360px, 100%);
-}
-
-.treatment-page--implantologie .treatment-page__media + .treatment-page__media {
-  margin-top: -140px;
-  margin-left: 60px;
-}
-
-.treatment-page--implantologie .treatment-page__media {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  position: relative;
-  z-index: 1;
-}
-
-.treatment-page--implantologie .treatment-page__media:hover {
-  z-index: 3;
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
-}
-
-.treatment-page--implantologie .treatment-page__media + .treatment-page__media:hover {
-  z-index: 4;
-}
-
-.treatment-page--implantologie .treatment-page__media img {
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-}
-
-.treatment-page--implantologie .treatment-page__layout {
-  grid-template-columns: minmax(260px, 460px) 1fr;
-}
-
-@media (max-width: 900px) {
-  .treatment-page--implantologie .treatment-page__gallery {
-    padding-top: 0;
-  }
-
-  .treatment-page--implantologie .treatment-page__media {
-    width: 100%;
-  }
-
-  .treatment-page--implantologie .treatment-page__media + .treatment-page__media {
-    margin-top: var(--space-lg);
-    margin-left: 0;
-  }
+  --treatment-text: #3d4f63;
+  --treatment-text-muted: #526173;
 }
 
 .treatment-page__header {
@@ -567,26 +505,356 @@ body.treatment-page--implantologie {
   letter-spacing: -0.02em;
 }
 
-.treatment-page__layout {
-  display: grid;
-  grid-template-columns: minmax(260px, 420px) 1fr;
-  gap: var(--space-2xl);
-  align-items: start;
-}
-.treatment-page--specialist .treatment-page__layout {
-  grid-template-columns: minmax(260px, 365px) 1fr;
+/* --- Prose commune ------------------------------------------------------ */
+
+.treatment-page__prose {
+  color: var(--treatment-text);
+  line-height: 1.75;
+  font-size: var(--font-size-base);
 }
 
-/* Variante "spécialiste" : contenu centré par rapport à la photo */
-body.treatment-page--specialist .treatment-page__layout {
+.treatment-page__prose > :first-child {
+  margin-top: 0;
+}
+
+.treatment-page__prose > :last-child {
+  margin-bottom: 0;
+}
+
+.treatment-page__prose p {
+  margin: 0 0 var(--space-md);
+}
+
+.treatment-page__prose p:has(+ .treatment-page__bullets),
+.treatment-page__prose p:has(+ ul),
+.treatment-page__prose p:has(+ ol) {
+  margin-bottom: var(--space-xs);
+}
+
+.treatment-page__prose p + .treatment-page__bullets {
+  margin-top: 0;
+}
+
+.treatment-page__prose h2 {
+  color: var(--color-dark);
+  margin: var(--space-xl) 0 var(--space-md);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+}
+
+.treatment-page__prose h2:first-child {
+  margin-top: 0;
+}
+
+.treatment-page__bullets {
+  margin: 0 0 var(--space-md);
+  padding-left: 1.25rem;
+}
+
+.treatment-page__bullets li {
+  margin-bottom: var(--space-sm);
+}
+
+.treatment-page__bullets li:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Figures ------------------------------------------------------------ */
+
+.treatment-page__figure {
+  margin: 0;
+}
+
+.treatment-page__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius-lg);
+}
+
+/* --- Layout : texte seul ------------------------------------------------ */
+
+.treatment-page__body--text {
+  max-width: 46rem;
+  margin-inline: auto;
+}
+
+/* --- Layout : 1 visuel -------------------------------------------------- */
+
+.treatment-page__body--media-1 {
+  display: grid;
+  grid-template-columns: minmax(240px, 380px) minmax(0, 1fr);
+  gap: clamp(var(--space-xl), 4vw, var(--space-2xl));
+  align-items: start;
+}
+
+.treatment-page__body--media-1 .treatment-page__figures {
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-lg));
+}
+
+/* --- Layout : 2 visuels empilés ----------------------------------------- */
+
+.treatment-page__body--media-2 {
+  display: grid;
+  grid-template-columns: minmax(240px, 400px) minmax(0, 1fr);
+  gap: clamp(var(--space-xl), 4vw, var(--space-2xl));
+  align-items: center;
+}
+
+.treatment-page__figures {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.treatment-page__body--media-2 .treatment-page__figures {
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-lg));
+}
+
+/* --- Page parodontologie (layout maquette) -------------------------------- */
+
+.treatment-page__header--parodontal {
+  margin-bottom: var(--space-lg);
+}
+
+.treatment-page__header--parodontal .treatment-page__title {
+  max-width: 20ch;
+  margin-inline: auto;
+}
+
+.treatment-page__body--parodontal {
+  display: grid;
+  gap: var(--space-xl);
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+.paro-lead {
+  margin: 0;
+  text-align: center;
+  font-size: var(--font-size-base);
+  line-height: 1.7;
+  color: var(--treatment-text);
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+.paro-rule {
+  border: 0;
+  height: 1px;
+  margin: calc(var(--space-sm) * -1) 0;
+  background: rgba(45, 55, 72, 0.12);
+}
+
+.paro-section {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.paro-section__label {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-dark);
+}
+
+.paro-section__intro {
+  margin: 0 0 var(--space-xs);
+  color: var(--treatment-text);
+  line-height: 1.7;
+  font-size: var(--font-size-sm);
+}
+
+/* Tissus de soutien */
+.paro-tissues {
+  display: grid;
+  grid-template-columns: minmax(0, 34%) minmax(0, 66%);
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+.paro-tissues__list {
+  display: grid;
+}
+
+.paro-tissue {
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid rgba(45, 55, 72, 0.1);
+}
+
+.paro-tissue:first-child {
+  padding-top: 0;
+}
+
+.paro-tissue:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.paro-tissue__name {
+  margin: 0 0 0.15rem;
+  color: var(--color-dark);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+}
+
+.paro-tissue__desc {
+  margin: 0;
+  color: var(--treatment-text);
+  line-height: 1.55;
+  font-size: var(--font-size-sm);
+}
+
+.paro-tissues__figure {
+  margin: 0;
+  padding: var(--space-sm);
+  background: var(--color-dark);
+  border-radius: var(--border-radius-lg);
+}
+
+.paro-tissues__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: calc(var(--border-radius-lg) - 4px);
+}
+
+/* Maladies parodontales */
+.paro-diseases {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.paro-disease {
+  padding: var(--space-lg);
+  background: var(--color-white);
+  border: 1px solid rgba(45, 55, 72, 0.08);
+  border-radius: var(--border-radius-lg);
+}
+
+.paro-disease__tag {
+  margin: 0 0 var(--space-xs);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.paro-disease--reversible .paro-disease__tag {
+  color: #38a169;
+}
+
+.paro-disease--chronic .paro-disease__tag {
+  color: #c05621;
+}
+
+.paro-disease__name {
+  margin: 0 0 var(--space-xs);
+  color: var(--color-dark);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+}
+
+.paro-disease__desc {
+  margin: 0;
+  color: var(--treatment-text);
+  line-height: 1.65;
+  font-size: var(--font-size-sm);
+}
+
+/* Protocole de traitement */
+.paro-protocol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+}
+
+.paro-protocol__item {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  gap: var(--space-sm);
+  align-items: start;
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid rgba(45, 55, 72, 0.1);
+}
+
+.paro-protocol__item:first-child {
+  padding-top: 0;
+}
+
+.paro-protocol__item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.paro-protocol__num {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--treatment-text-muted);
+  font-variant-numeric: tabular-nums;
+  padding-top: 0.1em;
+}
+
+.paro-protocol__text {
+  margin: 0;
+  color: var(--treatment-text);
+  line-height: 1.65;
+  font-size: var(--font-size-sm);
+}
+
+.paro-protocol__text strong {
+  color: var(--color-dark);
+  font-weight: 600;
+}
+
+@media (max-width: 960px) {
+  .paro-tissues {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .paro-tissues__figure {
+    order: -1;
+    max-width: none;
+    width: 100%;
+  }
+
+  .paro-diseases {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .paro-lead {
+    text-align: left;
+  }
+
+  .treatment-page__header--parodontal .treatment-page__title {
+    max-width: none;
+  }
+
+  .paro-disease {
+    padding: var(--space-md);
+  }
+}
+
+/* --- Pages spécialiste (portrait + liste) --------------------------------- */
+
+.treatment-page__layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 365px) 1fr;
+  gap: clamp(var(--space-xl), 4vw, var(--space-2xl));
   align-items: center;
 }
 
 .treatment-page__gallery {
-  position: relative;
   display: grid;
-  gap: 0;
-  padding-top: var(--space-md);
+  justify-items: center;
 }
 
 .treatment-page__media {
@@ -594,110 +862,57 @@ body.treatment-page--specialist .treatment-page__layout {
   overflow: hidden;
   box-shadow: var(--shadow-md);
   background: var(--color-bg);
-  width: min(360px, 100%);
-  position: relative;
-  z-index: 2;
-  transition:
-    transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    box-shadow 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
-  will-change: transform;
-}
-
-.treatment-page__media + .treatment-page__media {
-  margin-top: -140px;
-  margin-left: 60px;
-  z-index: 1;
-  transform: rotate(1deg);
-}
-
-.treatment-page__media:hover,
-.treatment-page__media:focus-within {
-  z-index: 6;
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: var(--shadow-lg);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .treatment-page__media {
-    transition: none;
-  }
+  width: min(320px, 100%);
 }
 
 .treatment-page__media img {
   width: 100%;
   height: auto;
   display: block;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-}
-
-/* La page spécialiste conserve un portrait (3:4) */
-body.treatment-page--specialist .treatment-page__media img {
-  aspect-ratio: 3 / 4;
+  object-fit: contain;
 }
 
 .treatment-page__content {
-  color: var(--color-light);
+  color: var(--treatment-text);
   line-height: 1.75;
-  border-radius: var(--border-radius-lg);
-  padding: clamp(var(--space-lg), 2.5vw, var(--space-2xl));
-}
-
-.treatment-page__content h2 {
-  color: var(--color-dark);
-  margin: 0 0 var(--space-md);
-  font-size: var(--font-size-xl);
-}
-
-.treatment-page__content p {
-  margin: 0 0 var(--space-md);
-}
-
-.treatment-page__bullets {
-  margin: 0;
-  padding-left: 1.2rem;
-}
-
-.treatment-page__bullets li {
-  margin-bottom: var(--space-sm);
 }
 
 .treatment-page__cta {
   display: none;
 }
 
-@media (max-width: 900px) {
-  .treatment-page__layout {
+body.treatment-page--specialist .treatment-page__layout {
+  align-items: center;
+}
+
+body.treatment-page--specialist .treatment-page__media {
+  width: min(320px, 100%);
+  margin-inline: auto;
+}
+
+/* --- Responsive --------------------------------------------------------- */
+
+@media (max-width: 960px) {
+  .treatment-page__body--media-1,
+  .treatment-page__body--media-2 {
     grid-template-columns: 1fr;
+    align-items: start;
   }
 
-  .treatment-page__gallery {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-lg);
-    padding-top: 0;
+  .treatment-page__body--media-1 .treatment-page__figures,
+  .treatment-page__body--media-2 .treatment-page__figures {
+    position: static;
+    max-width: 28rem;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .treatment-page__layout {
+    grid-template-columns: 1fr;
+    align-items: start;
   }
 
   .treatment-page__media {
-    width: 100%;
-    transform: none;
-  }
-
-  .treatment-page__media + .treatment-page__media {
-    margin-top: 0;
-    margin-left: 0;
-    z-index: 1;
-    transform: none;
-  }
-}
-
-@media (max-width: 850px) {
-  .treatment-page--specialist .treatment-page__layout {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 520px) {
-  .treatment-page__gallery {
-    grid-template-columns: 1fr;
+    margin-inline: auto;
   }
 }
