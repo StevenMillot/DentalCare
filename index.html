@@ -92,6 +92,14 @@
 
 <!-- CSS critique accueil : hero (LCP), navigation fixe, sidebar -->
     <style>
+    :root {
+  --color-primary: #00d4aa;
+  --color-primary-text: #007a63;
+  --color-dark: #2d3748;
+  --color-white: #ffffff;
+  --gradient-primary: linear-gradient(135deg, #00d4aa, #4aa3eb);
+  --header-height: 70px;
+}
     * { box-sizing: border-box; }
     body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
 
@@ -165,7 +173,7 @@
         margin: -10px;
     }
     .sidebar__action {
-        background: var(--color-primary);
+        background: var(--color-primary-text);
         color: var(--color-white);
         width: 52px;
         height: 52px;

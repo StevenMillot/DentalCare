@@ -48,11 +48,11 @@
 }
 
 .treatment-page .navbar__link {
-  color: var(--color-primary);
+  color: var(--color-primary-text);
 }
 
 .navbar__link:hover {
-  color: var(--color-primary);
+  color: var(--color-primary-text);
 }
 
 .navbar__link::after {

@@ -58,13 +58,23 @@
     <link rel="stylesheet" href="css/bundle.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
-<!-- CSS critique : barre de navigation fixe uniquement (pas de section .hero) -->
+<!-- CSS critique : navigation + offset above-the-fold -->
     <style>
-        * { box-sizing: border-box; }
-        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-        .navbar { position: fixed; top:0; left:0; right:0; z-index:1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); }
-        .navbar__container { display:flex; justify-content:space-between; align-items:center; padding:1rem 1.5rem; max-width:1200px; margin:0 auto; }
-        .navbar__logo { display:flex; align-items:center; gap:.5rem; text-decoration:none; color: var(--color-dark); font-weight:600; font-size:1.1rem; }
+:root {
+  --color-primary: #00d4aa;
+  --color-primary-text: #007a63;
+  --color-dark: #2d3748;
+  --color-white: #ffffff;
+  --gradient-primary: linear-gradient(135deg, #00d4aa, #4aa3eb);
+  --header-height: 70px;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f7fafc; }
+.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: var(--header-height); background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); }
+.navbar__container { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; max-width: 1200px; margin: 0 auto; }
+.navbar__logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--color-dark); font-weight: 600; font-size: 1.1rem; }
+.section--nav-offset { padding-top: 110px; }
 .navbar { contain: layout style paint; }
     </style>
 </head>
