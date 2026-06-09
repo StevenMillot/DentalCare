@@ -73,34 +73,86 @@
 
     <main class="section section--nav-offset">
         <div class="container">
-            <header class="treatment-page__header">
-                <p class="treatment-page__kicker">Parodontie</p>
+            <header class="treatment-page__header treatment-page__header--parodontal">
+                <p class="treatment-page__kicker">Parodontologie</p>
                 <h1 class="treatment-page__title">Traitement des maladies parodontales</h1>
             </header>
 
-            <div class="treatment-page__layout">
-                <div class="treatment-page__gallery">
-                    <div class="treatment-page__media">
-                        <img src="assets/traitements/parodontie-1.svg" alt="" width="900" height="1200" loading="eager" fetchpriority="high">
-                    </div>
-                    <div class="treatment-page__media">
-                        <img src="assets/traitements/parodontie-1.svg" alt="" width="900" height="1200" loading="lazy">
-                    </div>
-                </div>
+            <article class="treatment-page__body treatment-page__body--parodontal">
+                <p class="paro-lead">La parodontologie est la discipline dentaire consacrée à la prévention, au diagnostic et au traitement des maladies parodontales et des lésions parodontales, notamment les récessions parodontales.</p>
 
-                <div class="treatment-page__content">
-                    <h2>Objectif</h2>
-                    <p>Les maladies parodontales (gingivite, parodontite) touchent les tissus de soutien des dents. L’objectif est de réduire l’inflammation, contrôler l’infection et stabiliser la situation dans la durée.</p>
+                <hr class="paro-rule" aria-hidden="true">
 
-                    <h2>Étapes fréquentes</h2>
-                    <ul class="treatment-page__bullets">
-                        <li>Bilan parodontal : mesures, saignements, mobilité, imagerie si nécessaire.</li>
-                        <li>Traitement initial : débridement, contrôle de plaque, conseils d’hygiène personnalisés.</li>
-                        <li>Réévaluation et adaptation du plan de traitement.</li>
-                        <li>Maintenance : prévention des récidives et suivi à long terme.</li>
-                    </ul>
-                </div>
-            </div>
+                <section class="paro-section" aria-labelledby="paro-tissus">
+                    <h2 id="paro-tissus" class="paro-section__label">Les tissus de soutien</h2>
+                    <div class="paro-tissues">
+                        <div class="paro-tissues__list">
+                            <div class="paro-tissue">
+                                <p class="paro-tissue__name">La gencive</p>
+                                <p class="paro-tissue__desc">Tissu épithélial corné qui entoure les dents.</p>
+                            </div>
+                            <div class="paro-tissue">
+                                <p class="paro-tissue__name">Le ligament parodontal</p>
+                                <p class="paro-tissue__desc">Tissu conjonctif fibreux (desmodonte) qui relie la dent à l’os alvéolaire.</p>
+                            </div>
+                            <div class="paro-tissue">
+                                <p class="paro-tissue__name">Le cément</p>
+                                <p class="paro-tissue__desc">Tissu qui recouvre la racine des dents.</p>
+                            </div>
+                            <div class="paro-tissue">
+                                <p class="paro-tissue__name">L’os alvéolaire</p>
+                                <p class="paro-tissue__desc">Os qui entoure et maintient la dent en place.</p>
+                            </div>
+                        </div>
+                        <figure class="paro-tissues__figure">
+                            <img src="assets/traitements/parodontologie-schema-sain-parodontite.webp" alt="Schéma comparatif d’un parodonte sain et d’une parodontite : gencive saine, ligament, os sain versus récession, poche parodontale et destruction osseuse" width="1584" height="993" loading="eager" fetchpriority="high" decoding="async">
+                        </figure>
+                    </div>
+                </section>
+
+                <section class="paro-section" aria-labelledby="paro-maladies">
+                    <h2 id="paro-maladies" class="paro-section__label">Les maladies parodontales</h2>
+                    <div class="paro-diseases">
+                        <article class="paro-disease paro-disease--reversible">
+                            <p class="paro-disease__tag">Réversible</p>
+                            <h3 class="paro-disease__name">Gingivite</h3>
+                            <p class="paro-disease__desc">Inflammation de la gencive liée à l’accumulation de plaque dentaire. Réversible avec un traitement adapté.</p>
+                        </article>
+                        <article class="paro-disease paro-disease--chronic">
+                            <p class="paro-disease__tag">Chronique</p>
+                            <h3 class="paro-disease__name">Parodontite</h3>
+                            <p class="paro-disease__desc">Maladie inflammatoire chronique entraînant une destruction progressive des tissus de soutien.</p>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="paro-section" aria-labelledby="paro-protocole">
+                    <h2 id="paro-protocole" class="paro-section__label">Protocole de traitement</h2>
+                    <p class="paro-section__intro">La prise en charge repose sur plusieurs étapes complémentaires, adaptées à chaque patient.</p>
+                    <ol class="paro-protocol">
+                        <li class="paro-protocol__item">
+                            <span class="paro-protocol__num" aria-hidden="true">01</span>
+                            <p class="paro-protocol__text"><strong>Perfectionnement de l’hygiène bucco-dentaire</strong> — Brossage, interdentaires et produits adaptés.</p>
+                        </li>
+                        <li class="paro-protocol__item">
+                            <span class="paro-protocol__num" aria-hidden="true">02</span>
+                            <p class="paro-protocol__text"><strong>Contrôle des facteurs de risque</strong> — Tabac, diabète, stress, etc.</p>
+                        </li>
+                        <li class="paro-protocol__item">
+                            <span class="paro-protocol__num" aria-hidden="true">03</span>
+                            <p class="paro-protocol__text"><strong>Assainissement parodontal</strong> — Détartrage et surfaçage radiculaire pour éliminer le biofilm et le tartre sous-gingival.</p>
+                        </li>
+                        <li class="paro-protocol__item">
+                            <span class="paro-protocol__num" aria-hidden="true">04</span>
+                            <p class="paro-protocol__text"><strong>Chirurgie parodontale</strong> — Lorsque l’assainissement seul ne suffit pas — non systématique.</p>
+                        </li>
+                        <li class="paro-protocol__item">
+                            <span class="paro-protocol__num" aria-hidden="true">05</span>
+                            <p class="paro-protocol__text"><strong>Maintenance parodontale</strong> — Contrôles réguliers pour stabiliser la situation et prévenir les récidives.</p>
+                        </li>
+                    </ol>
+                </section>
+            </article>
         </div>
     </main>
 
