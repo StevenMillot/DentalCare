@@ -37,7 +37,7 @@
 }
 
 .subtitle {
-  color: var(--color-light);
+  color: var(--color-muted);
   margin-top: var(--space-lg);
 }
 

@@ -18,7 +18,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <!-- Manifest PWA : injecté après window.load dans le script principal (réduit la chaîne critique). -->
     <link rel="preload" href="assets/logo-b-raphael-brochand.svg" as="image">
-    <meta name="description" content="Clinique Parodontia, cabinet dentaire du Dr Raphaël BROCHAND à Châtenay-Malabry. Chirurgie orale, parodontologie, implantologie. Technologies modernes, équipe expérimentée. Prise de rendez-vous en ligne.">
+    <meta name="description" content="Cabinet Parodontia à Châtenay-Malabry : parodontologie, implantologie et chirurgie orale. Équipe expérimentée, technologies modernes. RDV en ligne.">
     <meta name="author" content="Dr Raphaël BROCHAND">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://parodontia.fr">
@@ -26,16 +26,16 @@
     <!-- Open Graph / Twitter (image absolue pour le partage) -->
     <meta property="og:site_name" content="Parodontia">
     <meta property="og:title" content="Parodontia - cabinet Parodontia du Dr Raphaël BROCHAND - Chirurgien-Dentiste">
-    <meta property="og:description" content="Clinique Parodontia, cabinet dentaire du Dr Raphaël BROCHAND à Châtenay-Malabry. Chirurgie orale, parodontologie, implantologie.">
+    <meta property="og:description" content="Cabinet Parodontia à Châtenay-Malabry : parodontologie, implantologie et chirurgie orale. RDV en ligne.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://parodontia.fr">
     <meta property="og:locale" content="fr_FR">
-    <meta property="og:image" content="https://parodontia.fr/assets/team/Rapha%C3%ABl%20Brochand%20-%20Chirurgien%20Dentiste.jpg">
+    <meta property="og:image" content="https://parodontia.fr/assets/team/raphael-brochand-chirurgien-dentiste.jpg">
     <meta property="og:image:alt" content="Dr Raphaël BROCHAND — cabinet Parodontia, Châtenay-Malabry">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Parodontia - cabinet Parodontia du Dr Raphaël BROCHAND - Chirurgien-Dentiste">
-    <meta name="twitter:description" content="Clinique Parodontia, cabinet dentaire du Dr Raphaël BROCHAND à Châtenay-Malabry. Chirurgie orale, parodontologie, implantologie.">
-    <meta name="twitter:image" content="https://parodontia.fr/assets/team/Rapha%C3%ABl%20Brochand%20-%20Chirurgien%20Dentiste.jpg">
+    <meta name="twitter:description" content="Cabinet Parodontia à Châtenay-Malabry : parodontologie, implantologie et chirurgie orale. RDV en ligne.">
+    <meta name="twitter:image" content="https://parodontia.fr/assets/team/raphael-brochand-chirurgien-dentiste.jpg">
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="shortcut icon" href="favicon.ico">
@@ -49,7 +49,7 @@
             "description": "Cabinet spécialisé en parodontologie, implantologie et chirurgie orale",
             "url": "https://parodontia.fr",
             "logo": "https://parodontia.fr/favicon.svg",
-            "image": "https://parodontia.fr/assets/team/Rapha%C3%ABl%20Brochand%20-%20Chirurgien%20Dentiste.jpg",
+            "image": "https://parodontia.fr/assets/team/raphael-brochand-chirurgien-dentiste.jpg",
             "telephone": "+33 6 75 17 38 80",
             "email": "contact@parodontia.fr",
             "priceRange": "€€",
@@ -140,7 +140,7 @@
         align-items: center;
         gap: 0.5rem;
         text-decoration: none;
-        color: var(--color-primary);
+        color: var(--color-dark);
         font-weight: 600;
         font-size: 1.6rem;
     }
@@ -216,6 +216,7 @@
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 <!-- Navigation -->
     <nav class="navbar" aria-label="Navigation principale">
         <div class="container navbar__container">
@@ -225,10 +226,10 @@
                     alt=""
                     class="navbar__logo-img"
                     aria-hidden="true"
-                    width="40px"
-                    height="40px"
+                    width="40"
+                    height="40"
                 >
-                <span>PARO-SPÉ</span>
+                <span>PARODONTIA</span>
             </a>
 
             <ul class="navbar__menu navbar__menu--desktop">
@@ -289,6 +290,7 @@
     </ul>
 
 <!-- Section Accueil -->
+    <main id="main-content">
     <section id="accueil" class="hero" aria-labelledby="hero-title">
         <video
           class="hero__video"
@@ -304,14 +306,14 @@
         <div class="container hero__container">
             <div class="hero__content">
                 <h1 id="hero-title" class="hero__title">
-                    Clinique <span class="hero__title-main">Paro-Spé</span> Chatenay Malabry
+                    Clinique <span class="hero__title-main">Parodontia</span> Chatenay Malabry
                 </h1>
                 <p class="hero__subtitle">
                     Situé à proximité du Parc de Sceaux, à Châtenay Malabry, La clinique Parodontia est spécialisée et entièrement dédiée à la parodontie, à l’implantologie et à la chirurgie orale
                 </p>
 
                 <div class="hero__values">
-                    <h3 class="hero__values-title">Nos Valeurs</h3>
+                    <h2 class="hero__values-title">Nos Valeurs</h2>
                     <div class="hero__values-grid">
                         <div class="hero__value-item">
                             <span class="hero__value-title"><svg class="icon icon--sm" aria-hidden="true"><use href="assets/Icones/icons.svg#i-heart"></use></svg> Empathie</span>
@@ -351,7 +353,7 @@
                 <h2 id="team-title" class="heading heading--lg gradient-text">Équipe</h2>
             </header>
 
-            <div class="team__group" aria-labelledby="team-specialists-title">
+            <div class="team__group" role="group" aria-labelledby="team-specialists-title">
                 <h3 id="team-specialists-title" class="team__subtitle">Spécialistes</h3>
                 <div class="team__grid team__grid--specialists">
                     <a class="team-card team-card--link card card--padded" href="specialiste-raphael-brochand.html" aria-labelledby="team-spec-name-1">
@@ -402,7 +404,7 @@
                 </div>
             </div>
 
-            <div class="team__group" aria-labelledby="team-assistants-title">
+            <div class="team__group" role="group" aria-labelledby="team-assistants-title">
                 <h3 id="team-assistants-title" class="team__subtitle">Assistantes</h3>
                 <div class="team__grid team__grid--assistants">
                     <article class="team-card team-card--assistant card card--padded">
@@ -439,7 +441,7 @@
                 <p class="text text--lg subtitle">Un environnement moderne et confortable pour vos soins</p>
             </header>
 
-                <div id="cabinet-media-carousel" class="cabinet-media-carousel" data-autoplay-interval="5200" aria-label="Galerie photos et vidéos du cabinet">
+                <div id="cabinet-media-carousel" class="cabinet-media-carousel" role="region" data-autoplay-interval="5200" aria-label="Galerie photos et vidéos du cabinet">
                     <div class="cabinet-media-carousel__stage">
                         <div class="cabinet-media-carousel__viewport">
                             <div class="cabinet-media-carousel__track">
@@ -751,7 +753,7 @@
                         <img src="assets/Icones/technologies/cbct3d.svg" class="section-picto" alt="" loading="lazy" decoding="async">
                     </div>
                     <h3 class="tech-item__title" id="tech-cbct">Radio 3D/CBCT</h3>
-                    <p class="tech-item__description" aria-labelledby="tech-cbct">
+                    <p class="tech-item__description">
                         La radio 3D permet d'obtenir des images tridimensionnelles précises des dents, des structures osseuses et de certains tissus mous, indispensables au diagnostic et à la planification des traitements.
                     </p>
                 </article>
@@ -761,7 +763,7 @@
                         <img src="assets/Icones/aides-optiques.svg" class="section-picto" alt="" loading="lazy" decoding="async">
                     </div>
                     <h3 class="tech-item__title" id="tech-optique">Aides optiques</h3>
-                    <p class="tech-item__description" aria-labelledby="tech-optique">Les loupes opératoires, grâce à leur grossissement et leur éclairage, améliore le diagnostic et la qualité des soins en augmentant significativement la précision des gestes opératoires.
+                    <p class="tech-item__description">Les loupes opératoires, grâce à leur grossissement et leur éclairage, améliore le diagnostic et la qualité des soins en augmentant significativement la précision des gestes opératoires.
                     </p>
                 </article>
 
@@ -770,7 +772,7 @@
                         <img src="assets/Icones/technologies/piezochirurgie.svg" class="section-picto" alt="" loading="lazy" decoding="async">
                     </div>
                     <h3 class="tech-item__title" id="tech-piezo">Piezo chirurgie</h3>
-                    <p class="tech-item__description" aria-labelledby="tech-piezo">La piézochirurgie (ou chirurgie piézoélectrique) permet une découpe osseuse fine utilisant les ultrasons. Elle permet une grande précision opératoire et préserve des tissus mous environnants.</p>
+                    <p class="tech-item__description">La piézochirurgie (ou chirurgie piézoélectrique) permet une découpe osseuse fine utilisant les ultrasons. Elle permet une grande précision opératoire et préserve des tissus mous environnants.</p>
                 </article>
 
                 <article class="tech-item card card--padded">
@@ -778,7 +780,7 @@
                         <img src="assets/Icones/technologies/microchirurgie.svg" class="section-picto" alt="" loading="lazy" decoding="async">
                     </div>
                     <h3 class="tech-item__title" id="tech-micro">Microchirurgie</h3>
-                    <p class="tech-item__description" aria-labelledby="tech-micro">La microchirurgie améliore la précision, réduit le traumatisme tissulaire et favorise une meilleure cicatrisation. Cette approche améliore la qualité des résultats cliniques et le confort du patient.</p>
+                    <p class="tech-item__description">La microchirurgie améliore la précision, réduit le traumatisme tissulaire et favorise une meilleure cicatrisation. Cette approche améliore la qualité des résultats cliniques et le confort du patient.</p>
                 </article>
 
                 <article class="tech-item card card--padded">
@@ -786,7 +788,7 @@
                         <img src="assets/Icones/technologies/photo.svg" class="section-picto" alt="" loading="lazy" decoding="async">
                     </div>
                     <h3 class="tech-item__title" id="tech-photo">Photo</h3>
-                    <p class="tech-item__description" aria-labelledby="tech-photo">La photographie favorise la communication avec les patients et les correspondants. Elle permet d’assurer un suivi précis des traitements grâce à des clichés comparatifs réalisés au fil du temps.</p>
+                    <p class="tech-item__description">La photographie favorise la communication avec les patients et les correspondants. Elle permet d’assurer un suivi précis des traitements grâce à des clichés comparatifs réalisés au fil du temps.</p>
                 </article>
 
                 <article class="tech-item card card--padded">
@@ -794,7 +796,7 @@
                         <img src="assets/Icones/technologies/hygiene.svg" class="section-picto" alt="" loading="lazy" decoding="async">
                     </div>
                     <h3 class="tech-item__title" id="tech-hygiene">Hygiène</h3>
-                    <p class="tech-item__description" aria-labelledby="tech-hygiene">Les protocoles de stérilisation et de désinfection sont strictement appliqués. Le matériel est nettoyé, stérilisé et contrôlé afin de garantir au patient un environnement parfaitement sûr et stérile.</p>
+                    <p class="tech-item__description">Les protocoles de stérilisation et de désinfection sont strictement appliqués. Le matériel est nettoyé, stérilisé et contrôlé afin de garantir au patient un environnement parfaitement sûr et stérile.</p>
                 </article>
             </div>
         </div>
@@ -842,7 +844,7 @@
                         <svg class="icon icon--md icon--primary" aria-hidden="true"><use href="assets/Icones/icons.svg#i-pin"></use></svg>
                         <div class="contact__item-content">
                             <h3>Adresse</h3>
-                            <p class="contact__link" href="https://www.google.com/maps/search/?api=1&query=40+Avenue+de+la+Division+Leclerc+92290+Châtenay-Malabry+France" title="Google Maps">40 Avenue de la Division Leclerc<br>92290 Châtenay-Malabry, France</p>
+                            <p class="contact__link">40 Avenue de la Division Leclerc<br>92290 Châtenay-Malabry, France</p>
                         </div>
                     </a>
 
@@ -867,46 +869,46 @@
                         <h3 id="form-title">Contactez-nous</h3>
                         <!-- Envoi par défaut : FormSubmit → data-contact-email. Optionnel : clé https://web3forms.com dans data-web3forms-access-key pour utiliser Web3Forms à la place. -->
                         <form id="appointmentForm" aria-labelledby="form-title" method="post" action="#contact" autocomplete="on" novalidate data-contact-email="contact@parodontia.fr" data-web3forms-access-key="">
-                            <input type="checkbox" name="botcheck" class="form__hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+                            <input type="checkbox" name="botcheck" class="form__hp" tabindex="-1" aria-hidden="true">
                             <div id="appointmentForm-banner" class="form__banner form__banner--error" role="alert" aria-live="assertive" hidden></div>
                             <div class="form__grid grid grid--2">
                                 <div class="form__group">
-                                <label for="given-name" class="form__label">Prénom <span class="required" aria-label="Champ obligatoire">*</span></label>
+                                <label for="given-name" class="form__label">Prénom <span class="required" aria-hidden="true">*</span></label>
                                 <input type="text" id="given-name" name="given-name" class="form__input"
-                                        placeholder="Votre prénom" required aria-required="true" maxlength="80"
+                                        placeholder="Votre prénom" required maxlength="80"
                                         autocomplete="given-name" autocapitalize="words" aria-describedby="err-given-name">
                                 <p id="err-given-name" class="form__error-msg" hidden></p>
                                 </div>
 
                                 <div class="form__group">
-                                <label for="family-name" class="form__label">Nom <span class="required" aria-label="Champ obligatoire">*</span></label>
+                                <label for="family-name" class="form__label">Nom <span class="required" aria-hidden="true">*</span></label>
                                 <input type="text" id="family-name" name="family-name" class="form__input"
-                                        placeholder="Votre nom" required aria-required="true" maxlength="80"
+                                        placeholder="Votre nom" required maxlength="80"
                                         autocomplete="family-name" autocapitalize="words" aria-describedby="err-family-name">
                                 <p id="err-family-name" class="form__error-msg" hidden></p>
                                 </div>
 
                                 <div class="form__group">
-                                <label for="email" class="form__label">Email <span class="required" aria-label="Champ obligatoire">*</span></label>
+                                <label for="email" class="form__label">Email <span class="required" aria-hidden="true">*</span></label>
                                 <input type="email" id="email" name="email" class="form__input"
-                                        placeholder="Votre email" required aria-required="true" maxlength="120"
+                                        placeholder="Votre email" required maxlength="120"
                                         autocomplete="email" inputmode="email" spellcheck="false" aria-describedby="err-email">
                                 <p id="err-email" class="form__error-msg" hidden></p>
                                 </div>
 
                                 <div class="form__group">
-                                <label for="phone" class="form__label">Téléphone <span class="required" aria-label="Champ obligatoire">*</span></label>
+                                <label for="phone" class="form__label">Téléphone <span class="required" aria-hidden="true">*</span></label>
                                 <input type="tel" id="phone" name="phone" class="form__input"
-                                        placeholder="Ex. 06 xx xx xx xx" required aria-required="true" maxlength="30"
+                                        placeholder="Ex. 06 xx xx xx xx" required maxlength="30"
                                         autocomplete="tel" inputmode="tel" aria-describedby="err-phone">
                                 <p id="err-phone" class="form__error-msg" hidden></p>
                                 </div>
 
                                 <div class="form__group">
                                 <label for="service" class="form__label">
-                                    Traitement souhaité <span class="required" aria-label="Champ obligatoire">*</span>
+                                    Traitement souhaité <span class="required" aria-hidden="true">*</span>
                                 </label>
-                                <select id="service" name="service" class="form__select" required aria-required="true" aria-describedby="err-service">
+                                <select id="service" name="service" class="form__select" required aria-describedby="err-service">
                                     <option value="">Choisir un traitement</option>
                                     <option value="consultation">Consultation</option>
                                     <option value="consultation-desinclusion">Consultation pour désinclusion</option>
@@ -1006,14 +1008,15 @@
 
         </div>
     </section>
+    </main>
 
 <!-- Footer -->
-    <footer class="footer" role="contentinfo">
+    <footer class="footer">
         <div class="container">
             <div class="footer__content">
                 <div class="footer__section footer__section--logo">
                     <div class="footer__logo">
-                        <img src="assets/logo-w-raphael-brochand.svg" alt="Logo du cabinet Parodontia, du Dr Raphaël BROCHAND" class="navbar__logo-img" aria-hidden="true" width="50px" height="50px">
+                        <img src="assets/logo-w-raphael-brochand.svg" alt="Logo du cabinet Parodontia, du Dr Raphaël BROCHAND" class="navbar__logo-img" aria-hidden="true" width="50" height="50">
                         <span>PARODONTIA</span>
                     </div>
                     <p class="text text--sm">Le cabinet est entièrement dédié à la parodontologie, à l’implantologie et à la chirurgie orale.</p>
@@ -1034,14 +1037,6 @@
                         </a>
                     </div>
                 </div>
-                <div class="footer__section footer__section--social">
-                    <h3>Suivez-nous</h3>
-                    <div class="footer__social">
-                        <a href="#" class="footer__social-link" title="Suivez-nous sur Instagram" aria-label="Instagram">
-                            <svg class="icon" aria-hidden="true"><use href="assets/Icones/icons.svg#i-instagram"></use></svg>
-                        </a>
-                    </div>
-                </div>
             </div>
             <div class="footer__bottom">
                 <p>&copy; <span class="copyright-year"></span> Cabinet Parodontia. Tous droits réservés.</p>
@@ -1055,7 +1050,7 @@
     </footer>
 
     <!-- Sidebar avec tous les boutons initiaux -->
-    <div class="sidebar" aria-label="Actions rapides">
+    <div class="sidebar" role="complementary" aria-label="Actions rapides">
         <a href="tel:0675173880" class="sidebar__action" aria-label="Appeler le cabinet">
             <svg class="icon" aria-hidden="true"><use href="assets/Icones/icons.svg#i-phone"></use></svg>
         </a>

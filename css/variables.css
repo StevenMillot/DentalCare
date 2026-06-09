@@ -5,9 +5,12 @@
 :root {
   /* Colors */
   --color-primary: #00d4aa;
+  /* Texte sur fond clair : contraste WCAG AA (≠ #00d4aa réservé aux accents) */
+  --color-primary-text: #007a63;
   --color-secondary: #4aa3eb;
   --color-dark: #2d3748;
   --color-light: #718096;
+  --color-muted: #4a5568;
   --color-white: #ffffff;
   --color-bg: #f7fafc;
 

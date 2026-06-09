@@ -138,7 +138,7 @@ img.section-picto[src*='piezochirurgie'] {
 }
 
 .traitement-card__sub:hover {
-  color: var(--color-primary);
+  color: var(--color-primary-text);
 }
 
 .traitement-card__sub::before {
@@ -159,7 +159,7 @@ img.section-picto[src*='piezochirurgie'] {
 
 .traitement-card__sub::after {
   content: '→';
-  color: var(--color-primary);
+  color: var(--color-primary-text);
   font-weight: 600;
   margin-left: auto;
   transform: translateX(0);
@@ -295,7 +295,7 @@ img.section-picto[src*='piezochirurgie'] {
 
 .team-card__status {
   margin: 0;
-  color: var(--color-light);
+  color: var(--color-muted);
   font-size: var(--font-size-base);
 }
 
@@ -468,7 +468,7 @@ img.section-picto[src*='piezochirurgie'] {
 }
 
 .tech-item__description {
-  color: var(--color-light);
+  color: var(--color-muted);
   line-height: 1.6;
   max-width: 42ch;
 }
@@ -490,7 +490,7 @@ body.treatment-page {
 
 .treatment-page__kicker {
   margin: var(--space-sm) 0;
-  color: var(--color-primary);
+  color: var(--color-primary-text);
   font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -745,11 +745,11 @@ body.treatment-page {
 }
 
 .paro-disease--reversible .paro-disease__tag {
-  color: #38a169;
+  color: #276749;
 }
 
 .paro-disease--chronic .paro-disease__tag {
-  color: #c05621;
+  color: #9c4221;
 }
 
 .paro-disease__name {

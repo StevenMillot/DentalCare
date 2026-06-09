@@ -26,22 +26,32 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://parodontia.fr/chirurgie-orale-extraction-dents-sagesse.html">
     <meta property="og:locale" content="fr_FR">
-    <meta property="og:image" content="https://parodontia.fr/assets/team/Rapha%C3%ABl%20Brochand%20-%20Chirurgien%20Dentiste.jpg">
+    <meta property="og:image" content="https://parodontia.fr/assets/team/raphael-brochand-chirurgien-dentiste.jpg">
     <meta property="og:image:alt" content="Dr Raphaël BROCHAND — cabinet Parodontia, Châtenay-Malabry">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Extraction dentaire & dents de sagesse | Parodontia">
     <meta name="twitter:description" content="Indications, déroulement et conseils après extraction dentaire ou des dents de sagesse.">
-    <meta name="twitter:image" content="https://parodontia.fr/assets/team/Rapha%C3%ABl%20Brochand%20-%20Chirurgien%20Dentiste.jpg">
+    <meta name="twitter:image" content="https://parodontia.fr/assets/team/raphael-brochand-chirurgien-dentiste.jpg">
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
+      "@graph": [
+        {
       "@type": "MedicalProcedure",
       "@id": "https://parodontia.fr/chirurgie-orale-extraction-dents-sagesse.html#procedure",
       "name": "Extraction dentaire et extraction des dents de sagesse",
       "description": "Extraction dentaire et extraction des dents de sagesse : indication, déroulement et suite opératoire.",
-      "procedureType": "http://schema.org/SurgicalProcedure",
+      "procedureType": "https://schema.org/SurgicalProcedure",
       "provider": { "@id": "https://parodontia.fr/#dentist" }
+        },
+    {
+      "@type": "Dentist",
+      "@id": "https://parodontia.fr/#dentist",
+      "name": "Cabinet Parodontia",
+      "url": "https://parodontia.fr"
+    }
+      ]
     }
     </script>
 
@@ -81,7 +91,7 @@
         align-items: center;
         gap: 0.5rem;
         text-decoration: none;
-        color: var(--color-primary);
+        color: var(--color-dark);
         font-weight: 600;
         font-size: 1.1rem;
       }
@@ -89,7 +99,8 @@
     </style>
 </head>
 <body class="treatment-page">
-    <nav class="navbar" role="navigation" aria-label="Navigation principale">
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    <nav class="navbar" aria-label="Navigation principale">
         <div class="container navbar__container">
             <a href="index.html" class="navbar__logo">
                 <img
@@ -97,8 +108,8 @@
                     alt="Logo du cabinet Parodontia, du Dr Raphaël BROCHAND"
                     class="navbar__logo-img"
                     aria-hidden="true"
-                    width="50px"
-                    height="50px"
+                    width="50"
+                    height="50"
                 >
                 <span>PARODONTIA</span>
             </a>
@@ -110,7 +121,7 @@
         </div>
     </nav>
 
-    <main class="section section--nav-offset">
+    <main id="main-content" class="section section--nav-offset">
         <div class="container">
             <header class="treatment-page__header">
                 <p class="treatment-page__kicker">Chirurgie orale</p>

@@ -23,21 +23,31 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://parodontia.fr/chirurgie-orale-degagement-dents-incluses.html">
     <meta property="og:locale" content="fr_FR">
-    <meta property="og:image" content="https://parodontia.fr/assets/team/Rapha%C3%ABl%20Brochand%20-%20Chirurgien%20Dentiste.jpg">
+    <meta property="og:image" content="https://parodontia.fr/assets/team/raphael-brochand-chirurgien-dentiste.jpg">
     <meta property="og:image:alt" content="Dr Raphaël BROCHAND — cabinet Parodontia, Châtenay-Malabry">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Dégagement de dents incluses | Parodontia">
     <meta name="twitter:description" content="Indication, geste et suivi pour une dent incluse.">
-    <meta name="twitter:image" content="https://parodontia.fr/assets/team/Rapha%C3%ABl%20Brochand%20-%20Chirurgien%20Dentiste.jpg">
+    <meta name="twitter:image" content="https://parodontia.fr/assets/team/raphael-brochand-chirurgien-dentiste.jpg">
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
+      "@context": "https://schema.org",
+      "@graph": [
+        {
         "@type": "MedicalProcedure",
         "@id": "https://parodontia.fr/chirurgie-orale-degagement-dents-incluses.html#procedure",
         "name": "Dégagement de dents incluses",
         "description": "Exposition d’une dent incluse selon l’indication, avec suivi et conseils.",
-        "procedureType": "http://schema.org/SurgicalProcedure",
+        "procedureType": "https://schema.org/SurgicalProcedure",
         "provider": { "@id": "https://parodontia.fr/#dentist" }
+        },
+    {
+      "@type": "Dentist",
+      "@id": "https://parodontia.fr/#dentist",
+      "name": "Cabinet Parodontia",
+      "url": "https://parodontia.fr"
+    }
+      ]
     }
     </script>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -54,15 +64,16 @@
         body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
         .navbar { position: fixed; top:0; left:0; right:0; z-index:1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); }
         .navbar__container { display:flex; justify-content:space-between; align-items:center; padding:1rem 1.5rem; max-width:1200px; margin:0 auto; }
-        .navbar__logo { display:flex; align-items:center; gap:.5rem; text-decoration:none; color: var(--color-primary); font-weight:600; font-size:1.1rem; }
+        .navbar__logo { display:flex; align-items:center; gap:.5rem; text-decoration:none; color: var(--color-dark); font-weight:600; font-size:1.1rem; }
 .navbar { contain: layout style paint; }
     </style>
 </head>
 <body class="treatment-page">
-    <nav class="navbar" role="navigation" aria-label="Navigation principale">
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    <nav class="navbar" aria-label="Navigation principale">
         <div class="container navbar__container">
             <a href="index.html" class="navbar__logo">
-                <img src="assets/logo-b-raphael-brochand.svg" alt="Logo du cabinet Parodontia, du Dr Raphaël BROCHAND" class="navbar__logo-img" aria-hidden="true" width="50px" height="50px">
+                <img src="assets/logo-b-raphael-brochand.svg" alt="Logo du cabinet Parodontia, du Dr Raphaël BROCHAND" class="navbar__logo-img" aria-hidden="true" width="50" height="50">
                 <span>PARODONTIA</span>
             </a>
             <a href="index.html#traitements" class="navbar__link" aria-label="Retour aux traitements">
@@ -71,7 +82,7 @@
         </div>
     </nav>
 
-    <main class="section section--nav-offset">
+    <main id="main-content" class="section section--nav-offset">
         <div class="container">
             <header class="treatment-page__header">
                 <p class="treatment-page__kicker">Chirurgie orale</p>

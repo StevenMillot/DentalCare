@@ -14,7 +14,7 @@
 }
 
 .navbar__logo {
-  color: black;
+  color: var(--color-dark);
   font-size: var(--font-size-xl);
   font-weight: 700;
   transition: var(--transition);

@@ -70,7 +70,7 @@
 }
 
 .contact__item-content p {
-  color: var(--color-light);
+  color: var(--color-muted);
   line-height: 1.6;
 }
 
@@ -161,7 +161,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--color-primary);
+  color: var(--color-primary-text);
   text-decoration: none;
 }
 
@@ -248,7 +248,7 @@
 
 .form__help {
   font-size: var(--font-size-sm);
-  color: var(--color-light);
+  color: var(--color-muted);
   line-height: 1.4;
 }
 
@@ -506,7 +506,7 @@
 }
 
 .contact__card.card p.contact__link {
-  color: var(--color-primary);
+  color: var(--color-primary-text);
   text-decoration: none;
   transition: var(--transition);
 }
@@ -518,7 +518,7 @@
 
 p.contact__link,
 a.contact__link {
-  color: var(--color-primary);
+  color: var(--color-primary-text);
   text-decoration: none;
   transition: var(--transition);
 }

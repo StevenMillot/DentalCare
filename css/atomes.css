@@ -50,7 +50,7 @@
 }
 
 .link--bold {
-  color: var(--color-primary);
+  color: var(--color-primary-text);
   text-decoration: none;
   font-weight: 600;
   transition: var(--transition);
@@ -147,7 +147,7 @@ img.icon.icon--white {
 }
 
 .icon--primary {
-  color: var(--color-primary);
+  color: var(--color-primary-text);
 }
 
 .icon--white {
