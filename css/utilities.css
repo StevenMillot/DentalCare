@@ -37,6 +37,14 @@
   top: 6px;
 }
 
+/* Marque Paro-Spé : jamais de coupure sur deux lignes */
+.brand-name,
+.hero__title-main,
+.navbar__logo > span,
+.footer__logo > span {
+  white-space: nowrap;
+}
+
 /* ==========================================================================
    Inline styles -> classes (HTML cleanup)
    ========================================================================== */
