@@ -1,7 +1,7 @@
 {
   "name": "dentalcare",
   "version": "1.0.0",
-  "description": "Site vitrine statique du cabinet Parodontia (HTML/CSS/JS, GitHub Pages).",
+  "description": "Site vitrine statique du cabinet Paro-Spé (HTML/CSS/JS, GitHub Pages).",
   "scripts": {
     "dev:refresh": "npm run -s css:bundle && npm run -s css:minify && npm run -s icons:sync-inline && npm run -s js:bundle && npm run -s js:minify",
     "deploy:prepare": "npm run -s dev:refresh && npm run -s images:responsive && npm run -s images:cleanup && npm run -s images:check && npm run -s sw:bump",

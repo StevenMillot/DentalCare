@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://parodontia.fr/sitemap.xml
+Sitemap: https://paro-spe.fr/sitemap.xml

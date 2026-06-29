@@ -27,6 +27,7 @@
   box-shadow: var(--shadow-lg);
 }
 
+/* Sur fond sombre ou dégradé (ex. hero 404) */
 .btn--secondary {
   background: rgba(255, 255, 255, 0.1);
   color: var(--color-white);
@@ -36,6 +37,20 @@
 .btn--secondary:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
+}
+
+/* Sur fond clair (pages légales, cartes blanches) */
+.btn--secondary-light {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.btn--secondary-light:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 .btn--outline {
@@ -50,13 +65,14 @@
 }
 
 .link--bold {
-  color: var(--color-primary-text);
+  color: var(--color-primary);
   text-decoration: none;
   font-weight: 600;
   transition: var(--transition);
 }
 
-.link--bold:hover {
+.link--bold:hover,
+.link--bold:focus-visible {
   color: var(--color-secondary);
   text-decoration: underline;
 }
@@ -147,7 +163,7 @@ img.icon.icon--white {
 }
 
 .icon--primary {
-  color: var(--color-primary-text);
+  color: var(--color-primary);
 }
 
 .icon--white {

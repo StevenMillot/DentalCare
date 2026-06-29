@@ -500,7 +500,7 @@
       const serviceLabel = selectedOpt ? selectedOpt.text : serviceValue;
       const message = $('#message').value.trim();
 
-      const subject = `[parodontia.fr] Demande RDV — ${serviceLabel}`;
+      const subject = `[paro-spe.fr] Demande RDV — ${serviceLabel}`;
       const bodyLines = [
         'Bonjour,',
         '',
@@ -511,11 +511,11 @@
         `Motif : ${serviceLabel}`,
       ];
       if (message) bodyLines.push('', 'Message :', message);
-      bodyLines.push('', '— Message envoyé depuis parodontia.fr');
+      bodyLines.push('', '— Message envoyé depuis paro-spe.fr');
       const bodyText = bodyLines.join('\n');
 
       const accessKey = (appointmentForm.getAttribute('data-web3forms-access-key') || '').trim();
-      const to = appointmentForm.getAttribute('data-contact-email') || 'contact@parodontia.fr';
+      const to = appointmentForm.getAttribute('data-contact-email') || 'secretariat@paro-spe.fr';
 
       const originalText = submitBtn.textContent;
       submitBtn.disabled = true;
@@ -533,11 +533,11 @@
       const fallbackMailto = () => {
         const mailtoHref = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
         if (mailtoHref.length > MAX_MAILTO_CHARS) {
-          notify.warning('Message trop long pour un lien courriel. Raccourcissez ou écrivez à contact@parodontia.fr.');
+          notify.warning('Message trop long pour un lien courriel. Raccourcissez ou écrivez à secretariat@paro-spe.fr.');
           return;
         }
         notify.info(
-          'Ouverture de votre messagerie avec le message prérempli… Si rien ne s’affiche, écrivez à contact@parodontia.fr.'
+          'Ouverture de votre messagerie avec le message prérempli… Si rien ne s’affiche, écrivez à secretariat@paro-spe.fr.'
         );
         appointmentForm.reset();
         clearAllFormErrors();

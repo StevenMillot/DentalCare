@@ -1,4 +1,4 @@
-# DentalCare (Parodontia)
+# DentalCare (Paro-Spé)
 
 Site vitrine statique — HTML, CSS, JS — optimisé pour **GitHub Pages** et domaine custom.
 

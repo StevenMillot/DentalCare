@@ -47,7 +47,8 @@
   box-shadow: var(--shadow-lg);
 }
 
-.contact__item--clickable:hover p {
+.contact__item--clickable:hover p,
+.contact__item--clickable:focus-visible p {
   color: var(--color-primary);
 }
 
@@ -161,7 +162,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--color-primary-text);
+  color: var(--color-primary);
   text-decoration: none;
 }
 
@@ -500,31 +501,35 @@
 }
 
 
-.contact__phone-link:hover {
+.contact__phone-link:hover,
+.contact__phone-link:focus-visible {
   color: var(--color-secondary);
   text-decoration: underline;
 }
 
 .contact__card.card p.contact__link {
-  color: var(--color-primary-text);
+  color: var(--color-primary);
   text-decoration: none;
   transition: var(--transition);
 }
 
-.contact__item.card:hover p.contact__link{
+.contact__item.card:hover p.contact__link,
+.contact__item--clickable:focus-visible p.contact__link {
   color: var(--color-secondary);
   text-decoration: underline;
 }
 
 p.contact__link,
 a.contact__link {
-  color: var(--color-primary-text);
+  color: var(--color-primary);
   text-decoration: none;
   transition: var(--transition);
 }
 
 p.contact__link:hover,
-a.contact__link:hover {
+a.contact__link:hover,
+p.contact__link:focus-visible,
+a.contact__link:focus-visible {
   color: var(--color-secondary);
   text-decoration: underline;
 }

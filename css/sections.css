@@ -137,8 +137,9 @@ img.section-picto[src*='piezochirurgie'] {
   -webkit-box-orient: vertical;
 }
 
-.traitement-card__sub:hover {
-  color: var(--color-primary-text);
+.traitement-card__sub:hover,
+.traitement-card__sub:focus-visible {
+  color: var(--color-primary);
 }
 
 .traitement-card__sub::before {
@@ -159,7 +160,7 @@ img.section-picto[src*='piezochirurgie'] {
 
 .traitement-card__sub::after {
   content: '→';
-  color: var(--color-primary-text);
+  color: var(--color-primary);
   font-weight: 600;
   margin-left: auto;
   transform: translateX(0);
@@ -490,7 +491,7 @@ body.treatment-page {
 
 .treatment-page__kicker {
   margin: var(--space-sm) 0;
-  color: var(--color-primary-text);
+  color: var(--color-primary);
   font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: uppercase;

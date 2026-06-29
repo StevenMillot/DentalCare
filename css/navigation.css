@@ -48,11 +48,12 @@
 }
 
 .treatment-page .navbar__link {
-  color: var(--color-primary-text);
+  color: var(--color-primary);
 }
 
-.navbar__link:hover {
-  color: var(--color-primary-text);
+.navbar__link:hover,
+.navbar__link:focus-visible {
+  color: var(--color-primary);
 }
 
 .navbar__link::after {
@@ -66,7 +67,8 @@
   transition: width var(--transition);
 }
 
-.navbar__link:hover::after {
+.navbar__link:hover::after,
+.navbar__link:focus-visible::after {
   width: 100%;
 }
 

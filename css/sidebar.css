@@ -5,19 +5,22 @@
 /* Styles critiques de .sidebar et .sidebar__action définis dans le CSS inline du <head> */
 .sidebar__action:hover,
 .sidebar__action:focus {
-    background: var(--gradient-primary);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  background: var(--gradient-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
 .sidebar__action i {
   pointer-events: none;
 }
+
 @media (max-width: 768px) {
   .sidebar {
     right: 3vw;
     bottom: 3vw;
     gap: 0.7rem;
   }
+
   .sidebar__action {
     width: 44px;
     height: 44px;
