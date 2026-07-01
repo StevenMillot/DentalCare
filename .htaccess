@@ -1,0 +1,278 @@
+# =====================================================
+# CONFIGURATION APACHE POUR PARO-SPE.FR (OVH CLOUD)
+# Sécurité, Performance, SEO
+# =====================================================
+
+# ------------------------------------------------------
+# 1. REDIRECTIONS HTTPS ET WWW
+# ------------------------------------------------------
+
+# Activer le module de réécriture
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Forcer HTTPS
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Rediriger www vers non-www (ou inverse selon préférence)
+    # Option 1 : www vers non-www (recommandé pour paro-spe.fr)
+    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+    # Option 2 : non-www vers www (décommenter si préféré)
+    # RewriteCond %{HTTP_HOST} ^(?!www\.)(.+)$ [NC]
+    # RewriteRule ^ https://www.%1%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# ------------------------------------------------------
+# 2. SÉCURITÉ - HEADERS HTTP
+# ------------------------------------------------------
+
+<IfModule mod_headers.c>
+    # Protection contre le clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Protection XSS navigateur
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Empêcher le MIME sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Référer Policy (protège la vie privée)
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Permissions Policy (anciennement Feature Policy)
+    Header always set Permissions-Policy "geolocation=(self), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
+    
+    # Content Security Policy (CSP)
+    # Adapté pour Google Fonts, inline scripts/styles nécessaires au site
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self'; connect-src 'self' https://formsubmit.co https://api.web3forms.com; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co https://api.web3forms.com"
+    
+    # Strict Transport Security (HSTS) - Force HTTPS pendant 1 an
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    
+    # Désactiver les informations de version du serveur
+    Header unset X-Powered-By
+    Header unset Server
+    
+    # Cache Control pour différents types de fichiers
+    # HTML - Toujours vérifier (pour le SW)
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+    
+    # CSS et JavaScript - 1 an (avec versioning dans les noms)
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    
+    # Images et médias - 1 an
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|avif|svg|ico|mp4|webm)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    
+    # Fonts - 1 an
+    <FilesMatch "\.(woff|woff2|ttf|otf|eot)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+    
+    # Manifest et service worker - court cache
+    <FilesMatch "\.(webmanifest|manifest|json)$">
+        Header set Cache-Control "public, max-age=3600"
+    </FilesMatch>
+    
+    <FilesMatch "sw\.js$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Service-Worker-Allowed "/"
+    </FilesMatch>
+</IfModule>
+
+# ------------------------------------------------------
+# 3. COMPRESSION GZIP
+# ------------------------------------------------------
+
+<IfModule mod_deflate.c>
+    # Compresser les types de fichiers textuels
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/atom_xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE font/ttf
+    AddOutputFilterByType DEFLATE font/otf
+    AddOutputFilterByType DEFLATE font/woff
+    AddOutputFilterByType DEFLATE font/woff2
+    
+    # Désactiver la compression pour les navigateurs anciens
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+    
+    # S'assurer que les proxies ne délivrent pas de mauvaises versions
+    Header append Vary User-Agent env=!dont-vary
+</IfModule>
+
+# ------------------------------------------------------
+# 4. TYPES MIME
+# ------------------------------------------------------
+
+<IfModule mod_mime.c>
+    # Images modernes
+    AddType image/webp .webp
+    AddType image/avif .avif
+    AddType image/svg+xml .svg
+    
+    # Fonts
+    AddType font/woff .woff
+    AddType font/woff2 .woff2
+    AddType font/ttf .ttf
+    AddType font/otf .otf
+    AddType font/eot .eot
+    
+    # Manifeste et JSON
+    AddType application/manifest+json .webmanifest
+    AddType application/json .json
+    
+    # JavaScript
+    AddType application/javascript .js
+    
+    # Service Worker
+    AddType application/javascript .js
+    
+    # Définir le charset par défaut
+    AddDefaultCharset UTF-8
+    <FilesMatch "\.(html|htm|css|js|json|xml|txt)$">
+        AddCharset UTF-8 .html .htm .css .js .json .xml .txt
+    </FilesMatch>
+</IfModule>
+
+# ------------------------------------------------------
+# 5. PAGES D'ERREUR PERSONNALISÉES
+# ------------------------------------------------------
+
+ErrorDocument 404 /404.html
+ErrorDocument 403 /404.html
+ErrorDocument 500 /404.html
+
+# ------------------------------------------------------
+# 6. PROTECTION DES FICHIERS SENSIBLES
+# ------------------------------------------------------
+
+# Bloquer l'accès aux fichiers cachés (.htaccess, .git, etc.)
+<FilesMatch "^\.">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Autoriser l'accès à .well-known (pour les certificats Let's Encrypt)
+<IfModule mod_rewrite.c>
+    RewriteRule ^\.well-known/ - [L]
+</IfModule>
+
+# Bloquer l'accès aux fichiers de backup et temporaires
+<FilesMatch "(\.(bak|config|dist|fla|inc|ini|log|psd|sh|sql|swp)|~)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Bloquer l'accès aux fichiers package.json, README, etc.
+<FilesMatch "(package\.json|package-lock\.json|README\.md|\.gitignore)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Bloquer l'accès aux dossiers scripts, tools, node_modules
+<IfModule mod_rewrite.c>
+    RewriteRule ^(scripts|tools|node_modules)/ - [F,L]
+</IfModule>
+
+# ------------------------------------------------------
+# 7. PERFORMANCE - ETags
+# ------------------------------------------------------
+
+# Désactiver ETags (le cache-control est plus fiable)
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+FileETag None
+
+# ------------------------------------------------------
+# 8. URL REWRITING - URLs PROPRES
+# ------------------------------------------------------
+
+<IfModule mod_rewrite.c>
+    # Retirer les extensions .html des URLs (optionnel mais propre)
+    # Décommenter si souhaité
+    
+    # RewriteCond %{REQUEST_FILENAME} !-f
+    # RewriteCond %{REQUEST_FILENAME} !-d
+    # RewriteCond %{REQUEST_FILENAME}.html -f
+    # RewriteRule ^(.+)$ $1.html [L,QSA]
+    
+    # Rediriger les URLs avec .html vers sans .html
+    # RewriteCond %{THE_REQUEST} ^GET\ /[^?\s]+\.html
+    # RewriteRule ^(.*)\.html$ /$1 [R=301,L]
+    
+    # Forcer le trailing slash sur les dossiers
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} !(.*)/$
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1/ [L,R=301]
+</IfModule>
+
+# ------------------------------------------------------
+# 9. DÉSACTIVER LE LISTING DES RÉPERTOIRES
+# ------------------------------------------------------
+
+Options -Indexes
+
+# ------------------------------------------------------
+# 10. ENCODAGE ET CHARSET
+# ------------------------------------------------------
+
+<IfModule mod_mime.c>
+    AddCharset UTF-8 .html .css .js .xml .json .rss .atom
+</IfModule>
+
+# ------------------------------------------------------
+# 11. OPTIMISATIONS DIVERSES
+# ------------------------------------------------------
+
+# Désactiver la signature du serveur
+ServerSignature Off
+
+# Limiter la taille maximale des requêtes (protection DoS)
+<IfModule mod_security2.c>
+    SecRequestBodyLimit 13107200
+</IfModule>
+
+# ------------------------------------------------------
+# FIN DE LA CONFIGURATION
+# ------------------------------------------------------
