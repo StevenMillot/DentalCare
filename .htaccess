@@ -4,7 +4,7 @@
 # =====================================================
 
 # ------------------------------------------------------
-# 1. REDIRECTIONS HTTPS ET WWW
+# 1. REDIRECTIONS HTTPS ET MULTI-DOMAINES
 # ------------------------------------------------------
 
 # Activer le module de réécriture
@@ -12,18 +12,27 @@
     RewriteEngine On
     RewriteBase /
 
-    # Forcer HTTPS
+    # Forcer HTTPS (sauf pour .well-known - certificats Let's Encrypt)
     RewriteCond %{HTTPS} !=on
+    RewriteCond %{REQUEST_URI} !^/\.well-known/
     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-    # Rediriger www vers non-www (ou inverse selon préférence)
-    # Option 1 : www vers non-www (recommandé pour paro-spe.fr)
-    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-    RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+    # Rediriger tous les domaines secondaires vers paro-spe.fr
+    # paro-spe.com → paro-spe.fr
+    RewriteCond %{HTTP_HOST} ^(www\.)?paro-spe\.com$ [NC]
+    RewriteRule ^(.*)$ https://paro-spe.fr/$1 [R=301,L]
+    
+    # parospe.com → paro-spe.fr
+    RewriteCond %{HTTP_HOST} ^(www\.)?parospe\.com$ [NC]
+    RewriteRule ^(.*)$ https://paro-spe.fr/$1 [R=301,L]
+    
+    # parospe.fr → paro-spe.fr
+    RewriteCond %{HTTP_HOST} ^(www\.)?parospe\.fr$ [NC]
+    RewriteRule ^(.*)$ https://paro-spe.fr/$1 [R=301,L]
 
-    # Option 2 : non-www vers www (décommenter si préféré)
-    # RewriteCond %{HTTP_HOST} ^(?!www\.)(.+)$ [NC]
-    # RewriteRule ^ https://www.%1%{REQUEST_URI} [R=301,L]
+    # Rediriger www.paro-spe.fr vers paro-spe.fr (sans www)
+    RewriteCond %{HTTP_HOST} ^www\.paro-spe\.fr$ [NC]
+    RewriteRule ^(.*)$ https://paro-spe.fr/$1 [R=301,L]
 </IfModule>
 
 # ------------------------------------------------------
