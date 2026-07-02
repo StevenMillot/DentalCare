@@ -1,4 +1,23 @@
 User-agent: *
 Allow: /
 
+# Bloquer l'accès aux répertoires sensibles
+Disallow: /scripts/
+Disallow: /tools/
+Disallow: /node_modules/
+Disallow: /backups/
+
+# Bloquer l'accès aux fichiers de configuration
+Disallow: /*.json$
+Disallow: /*.md$
+Disallow: /*.sh$
+Disallow: /.env*
+Disallow: /.git
+
+# Fichiers autorisés pour les moteurs de recherche
+Allow: /assets/
+Allow: /css/
+Allow: /js/
+
+# Sitemap
 Sitemap: https://paro-spe.fr/sitemap.xml
