@@ -1,6 +1,6 @@
 # DentalCare (Paro-Spé)
 
-Site vitrine statique — HTML, CSS, JS — optimisé pour **GitHub Pages** et domaine custom.
+Site vitrine statique — HTML, CSS, JS — optimisé pour **OVH Cloud** avec domaine custom paro-spe.fr.
 
 ---
 
@@ -186,6 +186,47 @@ Ou DevTools → Application → Service Workers → Unregister.
 
 ---
 
-## GitHub Pages
+## 🚀 Déploiement sur OVH Cloud
 
-`site.webmanifest` utilise `start_url: "./"` et `scope: "./"` pour fonctionner en sous-dossier (`/DentalCare/`).
+### Guides de configuration
+
+Le projet inclut des guides complets pour déployer sur OVH :
+
+- **[DEMARRAGE-PARO-SPE.md](./DEMARRAGE-PARO-SPE.md)** - 🎯 **COMMENCER ICI** - Guide complet étape par étape
+- **[GUIDE-DNS-OVH.md](./GUIDE-DNS-OVH.md)** - Configuration DNS (4 domaines)
+- **[GUIDE-SSL-OVH.md](./GUIDE-SSL-OVH.md)** - Activation SSL Let's Encrypt
+- **[GUIDE-EMAILS-OVH.md](./GUIDE-EMAILS-OVH.md)** - Création des emails @paro-spe.fr
+- **[GUIDE-ANALYTICS-SANS-COOKIES.md](./GUIDE-ANALYTICS-SANS-COOKIES.md)** - Google Analytics anonyme
+- **[GUIDE-UPTIMEROBOT.md](./GUIDE-UPTIMEROBOT.md)** - Monitoring uptime
+- **[QUICKSTART-OVH.md](./QUICKSTART-OVH.md)** - Déploiement rapide
+- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Documentation complète (800+ lignes)
+- **[CHECKLIST-DEPLOIEMENT.md](./CHECKLIST-DEPLOIEMENT.md)** - 70+ points de vérification
+
+### Déploiement rapide
+
+```bash
+# 1. Configuration (une seule fois)
+# Le fichier .env.ovh est déjà configuré avec vos identifiants OVH ✅
+
+# 2. Installation
+npm install
+brew install lftp  # ou: sudo apt-get install lftp
+
+# 3. Déploiement
+chmod +x deploy-ovh.sh
+./deploy-ovh.sh production
+```
+
+✅ **Site en ligne sur https://paro-spe.fr**
+
+### Domaines configurés
+
+- **paro-spe.fr** (principal)
+- paro-spe.com → redirige vers paro-spe.fr
+- parospe.com → redirige vers paro-spe.fr
+- parospe.fr → redirige vers paro-spe.fr
+
+### Emails professionnels
+
+- secretariat@paro-spe.fr (contact site)
+- dr-brochand@paro-spe.fr (personnel)
