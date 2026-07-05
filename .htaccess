@@ -64,7 +64,6 @@
     
     # Désactiver les informations de version du serveur
     Header unset X-Powered-By
-    Header unset Server
     
     # Cache Control pour différents types de fichiers
     # HTML - Toujours vérifier (pour le SW)
@@ -131,7 +130,9 @@
     BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
     
     # S'assurer que les proxies ne délivrent pas de mauvaises versions
-    Header append Vary User-Agent env=!dont-vary
+    <IfModule mod_headers.c>
+        Header append Vary User-Agent env=!dont-vary
+    </IfModule>
 </IfModule>
 
 # ------------------------------------------------------
@@ -163,9 +164,7 @@
     
     # Définir le charset par défaut
     AddDefaultCharset UTF-8
-    <FilesMatch "\.(html|htm|css|js|json|xml|txt)$">
-        AddCharset UTF-8 .html .htm .css .js .json .xml .txt
-    </FilesMatch>
+    AddCharset UTF-8 .html .htm .css .js .json .xml .txt .rss .atom
 </IfModule>
 
 # ------------------------------------------------------
@@ -261,26 +260,6 @@ FileETag None
 # ------------------------------------------------------
 
 Options -Indexes
-
-# ------------------------------------------------------
-# 10. ENCODAGE ET CHARSET
-# ------------------------------------------------------
-
-<IfModule mod_mime.c>
-    AddCharset UTF-8 .html .css .js .xml .json .rss .atom
-</IfModule>
-
-# ------------------------------------------------------
-# 11. OPTIMISATIONS DIVERSES
-# ------------------------------------------------------
-
-# Désactiver la signature du serveur
-ServerSignature Off
-
-# Limiter la taille maximale des requêtes (protection DoS)
-<IfModule mod_security2.c>
-    SecRequestBodyLimit 13107200
-</IfModule>
 
 # ------------------------------------------------------
 # FIN DE LA CONFIGURATION
