@@ -12,27 +12,19 @@
     RewriteEngine On
     RewriteBase /
 
-    # Forcer HTTPS (sauf pour .well-known - certificats Let's Encrypt)
-    RewriteCond %{HTTPS} !=on
-    RewriteCond %{REQUEST_URI} !^/\.well-known/
-    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-    # Rediriger tous les domaines secondaires vers paro-spe.fr
-    # paro-spe.com → paro-spe.fr
-    RewriteCond %{HTTP_HOST} ^(www\.)?paro-spe\.com$ [NC]
-    RewriteRule ^(.*)$ https://paro-spe.fr/$1 [R=301,L]
-    
-    # parospe.com → paro-spe.fr
-    RewriteCond %{HTTP_HOST} ^(www\.)?parospe\.com$ [NC]
-    RewriteRule ^(.*)$ https://paro-spe.fr/$1 [R=301,L]
-    
-    # parospe.fr → paro-spe.fr
-    RewriteCond %{HTTP_HOST} ^(www\.)?parospe\.fr$ [NC]
-    RewriteRule ^(.*)$ https://paro-spe.fr/$1 [R=301,L]
-
-    # Rediriger www.paro-spe.fr vers paro-spe.fr (sans www)
+    # 1. Domaines secondaires + www → paro-spe.fr (AVANT la règle HTTPS)
+    #    Évite la double redirection http://www → https://www → https://paro-spe.fr
+    RewriteCond %{HTTP_HOST} ^(www\.)?paro-spe\.com$ [NC,OR]
+    RewriteCond %{HTTP_HOST} ^(www\.)?parospe\.com$ [NC,OR]
+    RewriteCond %{HTTP_HOST} ^(www\.)?parospe\.fr$ [NC,OR]
     RewriteCond %{HTTP_HOST} ^www\.paro-spe\.fr$ [NC]
-    RewriteRule ^(.*)$ https://paro-spe.fr/$1 [R=301,L]
+    RewriteRule ^ https://paro-spe.fr%{REQUEST_URI} [R=301,L]
+
+    # 2. Forcer HTTPS sur paro-spe.fr (sauf .well-known — certificats Let's Encrypt)
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP_HOST} ^paro-spe\.fr$ [NC]
+    RewriteCond %{REQUEST_URI} !^/\.well-known/
+    RewriteRule ^ https://paro-spe.fr%{REQUEST_URI} [R=301,L]
 </IfModule>
 
 # ------------------------------------------------------
@@ -233,33 +225,17 @@ ErrorDocument 500 /404.html
 FileETag None
 
 # ------------------------------------------------------
-# 8. URL REWRITING - URLs PROPRES
+# 8. URL REWRITING - URLs PROPRES (désactivé)
 # ------------------------------------------------------
-
-<IfModule mod_rewrite.c>
-    # Retirer les extensions .html des URLs (optionnel mais propre)
-    # Décommenter si souhaité
-    
-    # RewriteCond %{REQUEST_FILENAME} !-f
-    # RewriteCond %{REQUEST_FILENAME} !-d
-    # RewriteCond %{REQUEST_FILENAME}.html -f
-    # RewriteRule ^(.+)$ $1.html [L,QSA]
-    
-    # Rediriger les URLs avec .html vers sans .html
-    # RewriteCond %{THE_REQUEST} ^GET\ /[^?\s]+\.html
-    # RewriteRule ^(.*)\.html$ /$1 [R=301,L]
-    
-    # Forcer le trailing slash sur les dossiers
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_URI} !(.*)/$
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1/ [L,R=301]
-</IfModule>
+# Les règles ci-dessous (sans .html, trailing slash) sont désactivées
+# car Apache MultiViews sert déjà les .html et le trailing slash
+# n'est pas adapté à un site statique plat.
 
 # ------------------------------------------------------
 # 9. DÉSACTIVER LE LISTING DES RÉPERTOIRES
 # ------------------------------------------------------
 
-Options -Indexes
+Options -Indexes -MultiViews
 
 # ------------------------------------------------------
 # FIN DE LA CONFIGURATION
