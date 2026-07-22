@@ -48,8 +48,8 @@
     Header always set Permissions-Policy "geolocation=(self), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
     
     # Content Security Policy (CSP)
-    # Adapté pour Google Fonts, inline scripts/styles nécessaires au site
-    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self'; connect-src 'self' https://formsubmit.co https://api.web3forms.com; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co https://api.web3forms.com"
+    # Google Fonts + Google Analytics anonyme (gtag) + formulaires
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self'; connect-src 'self' https://formsubmit.co https://api.web3forms.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.googletagmanager.com; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co https://api.web3forms.com"
     
     # Strict Transport Security (HSTS) - Force HTTPS pendant 1 an
     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
