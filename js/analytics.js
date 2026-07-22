@@ -8,15 +8,13 @@
  * - Pas de données personnelles stockées
  * - Storage désactivé
  * 
- * ⚠️ IMPORTANT : Remplacez 'G-XXXXXXXXXX' par votre vrai ID de mesure Google Analytics
+ * ID de mesure : G-E7PCZ14ZZW (Paro-Spé Production)
  */
 
 (function() {
     'use strict';
 
-    // ⚠️ À REMPLACER par votre ID de mesure Google Analytics
-    // Exemple : 'G-ABC123DEF4' 
-    const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+    const GA_MEASUREMENT_ID = 'G-E7PCZ14ZZW';
 
     // Ne charger GA que sur le domaine de production
     const isProduction = window.location.hostname === 'paro-spe.fr' || 
