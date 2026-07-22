@@ -198,8 +198,8 @@ ErrorDocument 500 /404.html
     </IfModule>
 </FilesMatch>
 
-# Bloquer l'accès aux fichiers package.json, README, etc.
-<FilesMatch "(package\.json|package-lock\.json|README\.md|\.gitignore)$">
+# Bloquer l'accès aux fichiers package.json, docs Markdown, etc.
+<FilesMatch "(package(-lock)?\.json|\.md|\.gitignore|\.env.*)$">
     <IfModule mod_authz_core.c>
         Require all denied
     </IfModule>

@@ -35,7 +35,7 @@ Vous avez **4 domaines** à configurer :
 ### 1.2 Récupérer l'IP de l'hébergement
 
 1. Dans le menu de gauche, allez dans **Hébergements**
-2. Cliquez sur votre hébergement (celui avec le login FTP `REDACTED-FTP-LOGIN`)
+2. Cliquez sur votre hébergement (celui avec votre login FTP principal)
 3. Onglet **Informations générales**
 4. Notez l'**adresse IPv4** (quelque chose comme `213.186.33.XXX`)
 

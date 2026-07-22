@@ -12,8 +12,8 @@ Guide complet étape par étape pour déployer votre site sur OVH Cloud.
 
 ### Hébergement OVH
 - **Forfait** : Perso (10 Go)
-- **Serveur FTP** : ftp.cluster100.hosting.ovh.net
-- **Login FTP** : REDACTED-FTP-LOGIN
+- **Serveur FTP** : voir OVH Manager (onglet FTP-SSH) — configuré dans `.env.ovh`
+- **Login FTP** : voir OVH Manager (onglet FTP-SSH) — configuré dans `.env.ovh`
 - **Port** : 21
 
 ### Emails
@@ -137,7 +137,7 @@ Guide complet étape par étape pour déployer votre site sur OVH Cloud.
 
 ### 1. Changer le mot de passe FTP
 1. OVH Manager > Hébergements > FTP-SSH
-2. Modifier le mot de passe de `REDACTED-FTP-LOGIN`
+2. Modifier le mot de passe du compte FTP principal
 3. Mettre à jour le fichier `.env.ovh` avec le nouveau mot de passe
 
 ### 2. Activer FormSubmit pour le formulaire

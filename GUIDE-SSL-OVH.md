@@ -32,7 +32,7 @@ ping paro-spe.fr
 
 1. Connectez-vous à [ovh.com/manager](https://www.ovh.com/manager/)
 2. Allez dans **Hébergements** (menu de gauche)
-3. Cliquez sur votre hébergement (celui avec le login `REDACTED-FTP-LOGIN`)
+3. Cliquez sur votre hébergement (celui avec votre login FTP principal)
 4. Onglet **Informations générales**
 5. Descendez jusqu'à la section **Certificat SSL**
 

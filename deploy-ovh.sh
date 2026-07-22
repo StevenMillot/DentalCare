@@ -173,7 +173,7 @@ backups/
 .env*
 package.json
 package-lock.json
-README.md
+*.md
 deploy-ovh.sh
 .gitignore
 EOF
@@ -234,7 +234,7 @@ mirror --reverse \
        --exclude-glob .env* \
        --exclude-glob package.json \
        --exclude-glob package-lock.json \
-       --exclude-glob README.md \
+       --exclude-glob *.md \
        --exclude-glob deploy-ovh.sh \
        --exclude-glob .gitignore \
        --exclude-glob .nojekyll \

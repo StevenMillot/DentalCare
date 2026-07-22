@@ -47,7 +47,7 @@ git pull origin main
 
 cat .env.ovh
 # Exemple de contenu :
-# FTP_HOST=ftp.cluster100.hosting.ovh.net
+# FTP_HOST=[Ton serveur FTP OVH, ex. ftp.clusterXXX.hosting.ovh.net]
 # FTP_USER=[Ton login FTP]
 # FTP_PASS=[Ton mot de passe FTP]
 # FTP_PORT=21
@@ -216,9 +216,7 @@ curl https://paro-spe.fr/health-check.php
 **Webmail OVH :** https://webmail.ovh.net/
 
 ### Hébergement OVH
-- **Cluster :** cluster100
-- **FTP Host :** ftp.cluster100.hosting.ovh.net
-- **IP Serveur :** 5.135.23.164
+- **Cluster / FTP Host / IP Serveur :** voir OVH Manager (onglet FTP-SSH) — identifiants dans `.env.ovh` (non versionné)
 
 ### Domaines
 - **Principal :** paro-spe.fr (sans www)
