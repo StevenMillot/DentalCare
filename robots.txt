@@ -18,6 +18,8 @@ Disallow: /.git
 Allow: /assets/
 Allow: /css/
 Allow: /js/
+Allow: /sitemap.xml
+Allow: /robots.txt
 
 # Sitemap
 Sitemap: https://paro-spe.fr/sitemap.xml

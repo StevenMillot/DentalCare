@@ -147,6 +147,9 @@
     # Manifeste et JSON
     AddType application/manifest+json .webmanifest
     AddType application/json .json
+
+    # Sitemap XML (MIME classique attendu par les crawlers)
+    AddType application/xml .xml
     
     # JavaScript
     AddType application/javascript .js
