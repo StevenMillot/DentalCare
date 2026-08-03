@@ -109,11 +109,10 @@
           "closes": "18:00"
         }
       ],
-      "medicalSpecialty": ["Dentistry", "Periodontics"],
+      "medicalSpecialty": ["Dentistry"],
       "knowsAbout": [
         "Parodontie",
         "Parodontologie",
-        "Parodontiste",
         "Implantologie",
         "Implants dentaires",
         "Chirurgie orale",
@@ -124,7 +123,6 @@
       "areaServed": [
         { "@type": "City", "name": "Châtenay-Malabry" },
         { "@type": "AdministrativeArea", "name": "Hauts-de-Seine" },
-        { "@type": "AdministrativeArea", "name": "92" },
         { "@type": "City", "name": "Antony" },
         { "@type": "City", "name": "Sceaux" },
         { "@type": "City", "name": "Le Plessis-Robinson" },
@@ -133,34 +131,11 @@
         { "@type": "City", "name": "Fontenay-aux-Roses" },
         { "@type": "City", "name": "Verrières-le-Buisson" }
       ],
-      "founder": {
-        "@type": "Person",
-        "@id": "https://paro-spe.fr/specialiste-raphael-brochand.html#physician",
-        "name": "Dr Raphaël Brochand",
-        "jobTitle": "Chirurgien-dentiste"
-      },
+      "founder": { "@id": "https://paro-spe.fr/specialiste-raphael-brochand.html#physician" },
       "employee": [
-        {
-          "@type": "Person",
-          "@id": "https://paro-spe.fr/specialiste-raphael-brochand.html#physician",
-          "name": "Dr Raphaël Brochand",
-          "jobTitle": "Chirurgien-dentiste",
-          "url": "https://paro-spe.fr/specialiste-raphael-brochand.html"
-        },
-        {
-          "@type": "Person",
-          "@id": "https://paro-spe.fr/specialiste-cecile-guelaud.html#physician",
-          "name": "Dr Cécile Guélaud",
-          "jobTitle": "Chirurgien-dentiste",
-          "url": "https://paro-spe.fr/specialiste-cecile-guelaud.html"
-        },
-        {
-          "@type": "Person",
-          "@id": "https://paro-spe.fr/specialiste-cathy-birgy.html#physician",
-          "name": "Dr Cathy Birgy",
-          "jobTitle": "Chirurgien-dentiste",
-          "url": "https://paro-spe.fr/specialiste-cathy-birgy.html"
-        }
+        { "@id": "https://paro-spe.fr/specialiste-raphael-brochand.html#physician" },
+        { "@id": "https://paro-spe.fr/specialiste-cecile-guelaud.html#physician" },
+        { "@id": "https://paro-spe.fr/specialiste-cathy-birgy.html#physician" }
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -174,6 +149,7 @@
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "MedicalProcedure",
+                  "@id": "https://paro-spe.fr/parodontie-traitement-maladies-parodontales.html#procedure",
                   "name": "Traitement des maladies parodontales",
                   "url": "https://paro-spe.fr/parodontie-traitement-maladies-parodontales.html"
                 }
@@ -182,6 +158,7 @@
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "MedicalProcedure",
+                  "@id": "https://paro-spe.fr/parodontie-greffe-gingivale.html#procedure",
                   "name": "Greffe gingivale",
                   "url": "https://paro-spe.fr/parodontie-greffe-gingivale.html"
                 }
@@ -190,6 +167,7 @@
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "MedicalProcedure",
+                  "@id": "https://paro-spe.fr/parodontie-maintenance-suivi-parodontal.html#procedure",
                   "name": "Maintenance et suivi parodontal",
                   "url": "https://paro-spe.fr/parodontie-maintenance-suivi-parodontal.html"
                 }
@@ -204,6 +182,7 @@
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "MedicalProcedure",
+                  "@id": "https://paro-spe.fr/implantologie-pose-implants-dentaires.html#procedure",
                   "name": "Pose d’implants dentaires",
                   "url": "https://paro-spe.fr/implantologie-pose-implants-dentaires.html"
                 }
@@ -212,6 +191,7 @@
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "MedicalProcedure",
+                  "@id": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#procedure",
                   "name": "Reconstruction osseuse et gingivale",
                   "url": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html"
                 }
@@ -220,6 +200,7 @@
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "MedicalProcedure",
+                  "@id": "https://paro-spe.fr/implantologie-maintenance-suivi-implantaire.html#procedure",
                   "name": "Maintenance et suivi implantaire",
                   "url": "https://paro-spe.fr/implantologie-maintenance-suivi-implantaire.html"
                 }
@@ -234,6 +215,7 @@
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "MedicalProcedure",
+                  "@id": "https://paro-spe.fr/chirurgie-orale-extraction-dents-sagesse.html#procedure",
                   "name": "Extraction dentaire et dents de sagesse",
                   "url": "https://paro-spe.fr/chirurgie-orale-extraction-dents-sagesse.html"
                 }
@@ -242,6 +224,7 @@
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "MedicalProcedure",
+                  "@id": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html#procedure",
                   "name": "Dégagement de dents incluses",
                   "url": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html"
                 }
@@ -250,6 +233,7 @@
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "MedicalProcedure",
+                  "@id": "https://paro-spe.fr/chirurgie-orale-resection-frein.html#procedure",
                   "name": "Résection de frein",
                   "url": "https://paro-spe.fr/chirurgie-orale-resection-frein.html"
                 }
@@ -289,16 +273,28 @@
       ]
     },
     {
-      "@type": "BreadcrumbList",
-      "@id": "https://paro-spe.fr/#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Accueil",
-          "item": "https://paro-spe.fr/"
-        }
-      ]
+      "@type": "Physician",
+      "@id": "https://paro-spe.fr/specialiste-raphael-brochand.html#physician",
+      "name": "Dr Raphaël Brochand",
+      "jobTitle": "Chirurgien-dentiste",
+      "url": "https://paro-spe.fr/specialiste-raphael-brochand.html",
+      "worksFor": { "@id": "https://paro-spe.fr/#dentist" }
+    },
+    {
+      "@type": "Physician",
+      "@id": "https://paro-spe.fr/specialiste-cecile-guelaud.html#physician",
+      "name": "Dr Cécile Guélaud",
+      "jobTitle": "Chirurgien-dentiste",
+      "url": "https://paro-spe.fr/specialiste-cecile-guelaud.html",
+      "worksFor": { "@id": "https://paro-spe.fr/#dentist" }
+    },
+    {
+      "@type": "Physician",
+      "@id": "https://paro-spe.fr/specialiste-cathy-birgy.html#physician",
+      "name": "Dr Cathy Birgy",
+      "jobTitle": "Chirurgien-dentiste",
+      "url": "https://paro-spe.fr/specialiste-cathy-birgy.html",
+      "worksFor": { "@id": "https://paro-spe.fr/#dentist" }
     }
   ]
 }

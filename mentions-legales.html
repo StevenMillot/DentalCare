@@ -27,22 +27,29 @@
       "@context": "https://schema.org",
       "@graph": [
         {
-    "@type": "WebPage",
-    "@id": "https://paro-spe.fr/mentions-legales.html#webpage",
-    "name": "Mentions légales",
-    "description": "Mentions légales du site du Cabinet Paro-Spé.",
-    "url": "https://paro-spe.fr/mentions-legales.html",
-    "isPartOf": { "@id": "https://paro-spe.fr/#dentist" },
-    "inLanguage": "fr-FR"
+          "@type": "WebPage",
+          "@id": "https://paro-spe.fr/mentions-legales.html#webpage",
+          "name": "Mentions légales",
+          "description": "Mentions légales du site du Cabinet Paro-Spé.",
+          "url": "https://paro-spe.fr/mentions-legales.html",
+          "isPartOf": { "@id": "https://paro-spe.fr/#website" },
+          "inLanguage": "fr-FR"
         },
-    {
-      "@type": "Dentist",
-      "@id": "https://paro-spe.fr/#dentist",
-      "name": "Cabinet Paro-Spé",
-      "url": "https://paro-spe.fr"
-    }
+        {
+          "@type": "WebSite",
+          "@id": "https://paro-spe.fr/#website",
+          "url": "https://paro-spe.fr/",
+          "name": "Paro-Spé",
+          "publisher": { "@id": "https://paro-spe.fr/#dentist" }
+        },
+        {
+          "@type": "Dentist",
+          "@id": "https://paro-spe.fr/#dentist",
+          "name": "Cabinet Paro-Spé",
+          "url": "https://paro-spe.fr/"
+        }
       ]
-  }
+    }
   </script>
   <meta name="theme-color" content="#667eea">
     <meta name="mobile-web-app-capable" content="yes">
