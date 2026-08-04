@@ -164,7 +164,8 @@
 /* SCROLL OFFSET - Décalage pour les ancres avec header fixe                 */
 /* ========================================================================== */
 
-/* Décalage pour toutes les sections avec ancres */
+/* Décalage pour toutes les sections avec ancres (+ skip targets) */
+#main-content,
 #accueil,
 #traitements,
 #equipe,
@@ -173,6 +174,18 @@
 #contact,
 #doctolib {
   scroll-margin-top: var(--header-height);
+}
+
+/* Cibles skip / ancre : focusables sans contour sur tout le bloc */
+#main-content:focus,
+#accueil:focus,
+#traitements:focus,
+#equipe:focus,
+#cabinet:focus,
+#technologies:focus,
+#contact:focus,
+#doctolib:focus {
+  outline: none;
 }
 
 #map {

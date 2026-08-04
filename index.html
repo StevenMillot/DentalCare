@@ -16,7 +16,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <!-- Manifest PWA : injecté après window.load dans le script principal (réduit la chaîne critique). -->
     <!-- Logo RB (réintégrable) : <link rel="preload" href="assets/logo-b-raphael-brochand.svg" as="image"> -->
-    <meta name="description" content="Cabinet de chirurgie dentaire à Châtenay-Malabry. Paro-Spé : parodontie, implantologie et chirurgie orale en Hauts-de-Seine (92). Équipe spécialisée, RDV en ligne.">
+    <meta name="description" content="Parodontite, maladies des gencives, implants dentaires, greffes gingivales et chirurgie orale. Cabinet spécialisé à Châtenay-Malabry. Rendez-vous en ligne.">
     <meta name="author" content="Dr Raphaël BROCHAND">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="geo.region" content="FR-92">
@@ -27,7 +27,7 @@
     <!-- Open Graph / Twitter (image absolue pour le partage) -->
     <meta property="og:site_name" content="Paro-Spé">
     <meta property="og:title" content="Cabinet de chirurgie dentaire à Châtenay-Malabry (92) — Parodontie, Implantologie &amp; Chirurgie orale | Paro-Spé">
-    <meta property="og:description" content="Cabinet de chirurgie dentaire à Châtenay-Malabry. Parodontie, implantologie et chirurgie orale en Hauts-de-Seine (92). RDV en ligne.">
+    <meta property="og:description" content="Parodontite, maladies des gencives, implants dentaires, greffes gingivales et chirurgie orale. Cabinet spécialisé à Châtenay-Malabry. Rendez-vous en ligne.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://paro-spe.fr/">
     <meta property="og:locale" content="fr_FR">
@@ -38,7 +38,7 @@
     <meta property="og:image:alt" content="Équipe du cabinet Paro-Spé — Châtenay-Malabry (92)">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Cabinet de chirurgie dentaire à Châtenay-Malabry (92) — Parodontie, Implantologie &amp; Chirurgie orale | Paro-Spé">
-    <meta name="twitter:description" content="Cabinet de chirurgie dentaire à Châtenay-Malabry. Parodontie, implantologie et chirurgie orale en Hauts-de-Seine (92).">
+    <meta name="twitter:description" content="Parodontite, maladies des gencives, implants dentaires, greffes gingivales et chirurgie orale. Cabinet spécialisé à Châtenay-Malabry. Rendez-vous en ligne.">
     <meta name="twitter:image" content="https://paro-spe.fr/assets/cabinet-gallery/equipe-groupe-og.jpg">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="shortcut icon" href="favicon.ico">
@@ -52,7 +52,7 @@
       "@id": "https://paro-spe.fr/#website",
       "url": "https://paro-spe.fr/",
       "name": "Paro-Spé",
-      "description": "Cabinet de chirurgie dentaire à Châtenay-Malabry (92) : parodontie, implantologie et chirurgie orale.",
+      "description": "Parodontite, maladies des gencives, implants dentaires, greffes gingivales et chirurgie orale. Cabinet spécialisé à Châtenay-Malabry. Rendez-vous en ligne.",
       "inLanguage": "fr-FR",
       "publisher": { "@id": "https://paro-spe.fr/#dentist" }
     },
@@ -63,11 +63,12 @@
       "name": "Cabinet de chirurgie dentaire à Châtenay-Malabry (92) — Parodontie, Implantologie & Chirurgie orale | Paro-Spé",
       "isPartOf": { "@id": "https://paro-spe.fr/#website" },
       "about": { "@id": "https://paro-spe.fr/#dentist" },
-      "description": "Cabinet de chirurgie dentaire à Châtenay-Malabry. Parodontie, implantologie et chirurgie orale en Hauts-de-Seine (92).",
+      "description": "Parodontite, maladies des gencives, implants dentaires, greffes gingivales et chirurgie orale. Cabinet spécialisé à Châtenay-Malabry. Rendez-vous en ligne.",
       "inLanguage": "fr-FR",
       "primaryImageOfPage": {
         "@type": "ImageObject",
-        "url": "https://paro-spe.fr/assets/cabinet-gallery/equipe-groupe-og.jpg"
+        "url": "https://paro-spe.fr/assets/cabinet-gallery/equipe-groupe-og.jpg",
+        "caption": "Équipe du cabinet Paro-Spé à Châtenay-Malabry"
       }
     },
     {
@@ -75,11 +76,12 @@
       "@id": "https://paro-spe.fr/#dentist",
       "name": "Cabinet Paro-Spé",
       "alternateName": ["Paro-Spé", "Paro Spe"],
-      "description": "Cabinet de chirurgie dentaire à Châtenay-Malabry, Hauts-de-Seine (92). Spécialisé en parodontie, implantologie et chirurgie orale.",
+      "description": "Parodontite, maladies des gencives, implants dentaires, greffes gingivales et chirurgie orale. Cabinet spécialisé à Châtenay-Malabry. Rendez-vous en ligne.",
       "url": "https://paro-spe.fr/",
       "logo": "https://paro-spe.fr/favicon.svg",
       "image": [
         "https://paro-spe.fr/assets/cabinet-gallery/equipe-groupe-og.jpg",
+        "https://paro-spe.fr/assets/team/raphael-brochand-chirurgien-dentiste.jpg",
         "https://paro-spe.fr/apple-touch-icon.png"
       ],
       "telephone": "+33675173880",
@@ -465,7 +467,11 @@
     </style>
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    <nav class="skip-links" aria-label="Accès rapide">
+        <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+        <a href="#contact" class="skip-link">Aller au contact</a>
+        <a href="#doctolib" class="skip-link">Prendre rendez-vous</a>
+    </nav>
 <!-- Navigation -->
     <nav class="navbar" aria-label="Navigation principale">
         <div class="container navbar__container">
@@ -537,7 +543,7 @@
         </li>
     </ul>
 <!-- Section Accueil -->
-    <main id="main-content">
+    <main id="main-content" tabindex="-1">
     <section id="accueil" class="hero" aria-labelledby="hero-title">
         <video
           class="hero__video"
@@ -603,7 +609,7 @@
                     <a class="team-card team-card--link card card--padded" href="specialiste-raphael-brochand.html" aria-labelledby="team-spec-name-1">
                         <div class="team-card__media">
                             <img
-                              src="assets/team/raphael-brochand-chirurgien-dentiste.jpg"
+                              src="assets/team/raphael-brochand-chirurgien-dentiste-720w.jpg"
                               srcset="
                                 assets/team/raphael-brochand-chirurgien-dentiste-360w.jpg 360w,
                                 assets/team/raphael-brochand-chirurgien-dentiste-540w.jpg 540w,
@@ -625,7 +631,7 @@
                     <a class="team-card team-card--link card card--padded" href="specialiste-cecile-guelaud.html" aria-labelledby="team-spec-name-2">
                         <div class="team-card__media">
                             <img
-                              src="assets/team/cecile-guelaud-chirurgien-dentiste.jpg"
+                              src="assets/team/cecile-guelaud-chirurgien-dentiste-720w.jpg"
                               srcset="
                                 assets/team/cecile-guelaud-chirurgien-dentiste-360w.jpg 360w,
                                 assets/team/cecile-guelaud-chirurgien-dentiste-540w.jpg 540w,
@@ -674,7 +680,7 @@
                     <article class="team-card team-card--assistant card card--padded">
                         <div class="team-card__media">
                             <img
-                              src="assets/team/alicia-assistante-dentaire.jpg"
+                              src="assets/team/alicia-assistante-dentaire-720w.jpg"
                               srcset="
                                 assets/team/alicia-assistante-dentaire-360w.jpg 360w,
                                 assets/team/alicia-assistante-dentaire-540w.jpg 540w,
@@ -682,7 +688,7 @@
                                 assets/team/alicia-assistante-dentaire-1080w.jpg 1080w
                               "
                               sizes="(max-width: 768px) 92vw, calc(362px - 4rem)"
-                              alt="Portrait d'Alicia"
+                              alt="Alicia, assistante dentaire au cabinet Paro-Spé"
                               loading="lazy"
                               decoding="async"
                               width="720"
@@ -1066,7 +1072,7 @@
         </div>
     </section>
 <!-- Section Contact & Accès -->
-    <section id="contact" class="section section--alt" aria-labelledby="contact-title">
+    <section id="contact" class="section section--alt" aria-labelledby="contact-title" tabindex="-1">
         <div class="container">
             <header class="contact__header">
                 <h2 id="contact-title" class="heading heading--lg gradient-text">Contact & Accès</h2>
@@ -1194,7 +1200,7 @@
                 </div>
             </div>
             <!-- Section Doctolib - Pleine largeur -->
-            <div id="doctolib" class="contact__doctolib-section">
+            <div id="doctolib" class="contact__doctolib-section" tabindex="-1">
                 <div class="container">
                     <div class="contact__doctolib-content">
                         <div class="doctolib__header">

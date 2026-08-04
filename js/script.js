@@ -264,24 +264,38 @@
   // ============================================================================
 
   /**
-   * Initialise le scroll fluide pour les liens d'ancrage
-   * Ajoute un offset pour compenser la hauteur de la navbar fixe
+   * Initialise le scroll fluide pour les liens d'ancrage (navbar, skip links).
+   * Utilise scrollIntoView (respecte scroll-margin-top) et déplace le focus
+   * vers la cible pour que Tab poursuive depuis la section atteinte.
    * @function initSmoothScroll
-   * @example
-   * initSmoothScroll();
    */
   function initSmoothScroll() {
-    $$('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = $(this.getAttribute('href'));
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        if (target) {
-          const offsetTop = target.offsetTop - 70;
-          window.scrollTo({
-            top: offsetTop,
-            behavior: 'smooth'
-          });
+    $$('a[href^="#"]').forEach(anchor => {
+      const href = anchor.getAttribute('href');
+      if (!href || href === '#') return;
+
+      anchor.addEventListener('click', function(e) {
+        const target = document.getElementById(href.slice(1));
+        if (!target) return;
+
+        e.preventDefault();
+
+        if (!target.hasAttribute('tabindex')) {
+          target.setAttribute('tabindex', '-1');
+        }
+
+        target.scrollIntoView({
+          behavior: reduceMotion ? 'auto' : 'smooth',
+          block: 'start'
+        });
+        target.focus({ preventScroll: true });
+
+        if (history.pushState) {
+          history.pushState(null, '', href);
+        } else {
+          location.hash = href;
         }
       });
     });
