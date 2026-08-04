@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Analyse SEO — Représentation des mots-clés | Paro-Spé</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    :root {
+      --ink: #1a2332;
+      --muted: #5a6a7a;
+      --line: #d8e0e8;
+      --bg: #f4f7fa;
+      --card: #ffffff;
+      --teal: #0d9b82;
+      --teal-soft: #e6f7f3;
+      --blue: #2b7bb8;
+      --blue-soft: #e8f2fa;
+      --warn: #b86e00;
+      --warn-soft: #fff4e0;
+      --danger: #b42318;
+      --danger-soft: #fdecea;
+      --ok: #1b7a4e;
+      --ok-soft: #e6f5ed;
+      --info: #1f6f9f;
+      --info-soft: #e8f3fa;
+    }
+
+    * { box-sizing: border-box; }
+    html { font-size: 16px; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+
+    .sheet {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    .cover {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 2rem 2rem 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cover-kicker {
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--teal);
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+    }
+
+    h1 {
+      font-size: 1.85rem;
+      line-height: 1.2;
+      margin: 0 0 0.75rem;
+      font-weight: 700;
+    }
+
+    .cover p.lead {
+      margin: 0 0 1.25rem;
+      color: var(--muted);
+      max-width: 42rem;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.25rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+    }
+
+    .meta strong { color: var(--ink); font-weight: 600; }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      align-items: center;
+    }
+
+    .btn {
+      appearance: none;
+      border: 1px solid var(--teal);
+      background: var(--teal);
+      color: #fff;
+      font: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.55rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .btn:hover { filter: brightness(0.95); }
+
+    .btn-ghost {
+      background: var(--card);
+      color: var(--teal);
+    }
+
+    .hint {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 1rem 1rem 0.9rem;
+    }
+
+    .stat .v {
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat .l {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .stat.ok .v { color: var(--ok); }
+    .stat.warn .v { color: var(--warn); }
+    .stat.danger .v { color: var(--danger); }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 1.25rem 1.35rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .card h2 {
+      font-size: 1.2rem;
+      margin: 0 0 0.75rem;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin: 1.1rem 0 0.5rem;
+    }
+
+    .verdict {
+      background: var(--warn-soft);
+      border: 1px solid #f0d6a0;
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .verdict strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: var(--warn);
+    }
+
+    .bar {
+      display: flex;
+      height: 12px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #e8eef3;
+      margin: 0.75rem 0 0.5rem;
+    }
+
+    .bar span { display: block; height: 100%; }
+    .bar .fort { background: var(--ok); width: 40%; }
+    .bar .correct { background: var(--info); width: 23.3%; }
+    .bar .faible { background: var(--warn); width: 20%; }
+    .bar .absent { background: var(--danger); width: 16.7%; }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .legend i {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      margin-right: 0.35rem;
+      vertical-align: -1px;
+    }
+
+    .pill {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.15rem 0.45rem;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .pill.fort { background: var(--ok-soft); color: var(--ok); }
+    .pill.correct { background: var(--info-soft); color: var(--info); }
+    .pill.faible { background: var(--warn-soft); color: var(--warn); }
+    .pill.absent { background: var(--danger-soft); color: var(--danger); }
+    .pill.indisp { background: var(--danger-soft); color: var(--danger); }
+    .pill.utile { background: var(--warn-soft); color: var(--warn); }
+    .pill.option { background: #eef1f4; color: var(--muted); }
+    .pill.risque { background: var(--blue-soft); color: var(--blue); }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 0 -0.25rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.55rem 0.5rem;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    th {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--muted);
+      font-weight: 700;
+      background: #f8fafc;
+      position: sticky;
+      top: 0;
+    }
+
+    td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    tr:hover td { background: #fafcfd; }
+
+    .prio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .prio {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 1rem;
+      background: #fff;
+    }
+
+    .prio .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+    }
+
+    .prio.p1 .tag { background: var(--danger-soft); color: var(--danger); }
+    .prio.p2 .tag { background: var(--warn-soft); color: var(--warn); }
+    .prio.p3 .tag { background: #eef1f4; color: var(--muted); }
+
+    .prio ul {
+      margin: 0.5rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.88rem;
+    }
+
+    .prio li { margin-bottom: 0.35rem; }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .two-col ul {
+      margin: 0.35rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.9rem;
+    }
+
+    .two-col li { margin-bottom: 0.4rem; }
+
+    .footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      font-weight: 700;
+      margin: 1.75rem 0 0.65rem;
+    }
+
+    @media (max-width: 800px) {
+      .stats, .prio-grid, .two-col { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .stats, .prio-grid, .two-col { grid-template-columns: 1fr; }
+      h1 { font-size: 1.45rem; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .sheet { max-width: none; padding: 0; }
+      .toolbar { display: none !important; }
+      .cover, .card, .verdict, .stat, .prio {
+        break-inside: avoid;
+        border-color: #ccc;
+        box-shadow: none;
+      }
+      .cover { padding: 0 0 1rem; border: none; border-bottom: 1px solid #ccc; border-radius: 0; }
+      a { color: inherit; text-decoration: none; }
+      table { font-size: 0.72rem; }
+      th { background: #f0f0f0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .pill, .bar span, .prio .tag, .stat .v {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .section-label { break-after: avoid; }
+      h2, h3 { break-after: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <header class="cover">
+      <p class="cover-kicker">Livrable client · SEO sémantique</p>
+      <h1>Analyse de représentation des mots-clés</h1>
+      <p class="lead">
+        Audit de couverture sémantique du site <strong>paro-spe.fr</strong> :
+        termes métier fournis, manques patient / locaux, et termes non prioritaires.
+        Objectif : prioriser les enrichissements utiles sans bourrage de mots-clés.
+      </p>
+      <div class="meta">
+        <span><strong>Cabinet</strong> Paro-Spé — Châtenay-Malabry (92)</span>
+        <span><strong>Périmètre</strong> 15 pages HTML publiques</span>
+        <span><strong>Date</strong> août 2026</span>
+        <span><strong>Méthode</strong> inventaire site + intention de recherche FR</span>
+      </div>
+    </header>
+
+    <div class="toolbar">
+      <button class="btn" type="button" onclick="window.print()">Télécharger en PDF (Imprimer)</button>
+      <button class="btn btn-ghost" type="button" onclick="window.print()">Cmd / Ctrl + P</button>
+      <span class="hint">Choisissez « Enregistrer au format PDF » dans la boîte d’impression.</span>
+    </div>
+
+    <div class="verdict">
+      <strong>Verdict</strong>
+      Les piliers métier (parodontie, implantologie, chirurgie orale) sont solides.
+      Le site sous-exploite le langage patient (« parodontiste », déchaussement, symptômes)
+      et les formulations locales à fort ROI (acte + Châtenay-Malabry / 92).
+      Plusieurs synonymes techniques de la liste sont absents, mais tous ne sont pas prioritaires.
+    </div>
+
+    <div class="stats">
+      <div class="stat ok">
+        <div class="v">19/30</div>
+        <div class="l">Termes de la liste OK (Fort + Correct)</div>
+      </div>
+      <div class="stat warn">
+        <div class="v">11</div>
+        <div class="l">Termes de la liste à traiter (Faible + Absent)</div>
+      </div>
+      <div class="stat danger">
+        <div class="v">5</div>
+        <div class="l">Indispensables faibles / absents (liste)</div>
+      </div>
+      <div class="stat danger">
+        <div class="v">6+</div>
+        <div class="l">Manques hors liste (symptômes / local)</div>
+      </div>
+    </div>
+
+    <section class="card">
+      <h2>Répartition — liste fournie (30 termes)</h2>
+      <div class="bar" aria-hidden="true">
+        <span class="fort"></span>
+        <span class="correct"></span>
+        <span class="faible"></span>
+        <span class="absent"></span>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--ok)"></i>Fort — 12</span>
+        <span><i style="background:var(--info)"></i>Correct — 7</span>
+        <span><i style="background:var(--warn)"></i>Faible — 6</span>
+        <span><i style="background:var(--danger)"></i>Absent — 5</span>
+      </div>
+      <p style="margin:0.9rem 0 0;font-size:0.9rem;color:var(--muted)">
+        Un score <em>Fort</em> suppose une présence multi-pages et/ou une page dédiée avec title / meta.
+        Les volumes de recherche cités dans ce document sont <strong>relatifs</strong> (priorité stratégique),
+        pas des chiffres Keyword Planner absolus.
+      </p>
+    </section>
+
+    <p class="section-label">1 · Inventaire exhaustif — liste client</p>
+    <section class="card">
+      <h2>Parodontie</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Terme</th>
+              <th>Occ.</th>
+              <th>Fichiers</th>
+              <th>Couverture</th>
+              <th>Nécessité</th>
+              <th>Intention</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Parodontie</td><td class="num">66</td><td class="num">7</td>
+              <td><span class="pill fort">Fort</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Pilier de marque + requête locale</td>
+              <td>Conserver ; renforcer avec ville</td>
+            </tr>
+            <tr>
+              <td>Parodontologie</td><td class="num">17</td><td class="num">7</td>
+              <td><span class="pill fort">Fort</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Synonyme exact (patient + pro)</td>
+              <td>OK — déjà en nav / traitements</td>
+            </tr>
+            <tr>
+              <td>Parodontiste</td><td class="num">3</td><td class="num">2</td>
+              <td><span class="pill faible">Faible</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Requête métier #1 patient</td>
+              <td>Priorité haute : title, meta, intro</td>
+            </tr>
+            <tr>
+              <td>Parodontologue</td><td class="num">0</td><td class="num">0</td>
+              <td><span class="pill absent">Absent</span></td>
+              <td><span class="pill utile">Utile</span></td>
+              <td>Synonyme grand public</td>
+              <td>1–2 mentions naturelles</td>
+            </tr>
+            <tr>
+              <td>Parodontite</td><td class="num">13</td><td class="num">3</td>
+              <td><span class="pill correct">Correct</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Pathologie + conversion</td>
+              <td>OK ; ajouter symptômes</td>
+            </tr>
+            <tr>
+              <td>Surfaçage</td><td class="num">1</td><td class="num">1</td>
+              <td><span class="pill faible">Faible</span></td>
+              <td><span class="pill utile">Utile</span></td>
+              <td>Acte clé (souvent « radiculaire »)</td>
+              <td>Renforcer protocole + meta</td>
+            </tr>
+            <tr>
+              <td>Greffe gingivale</td><td class="num">17</td><td class="num">2</td>
+              <td><span class="pill fort">Fort</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Acte HN, page dédiée</td>
+              <td>OK ; coupler « greffe de gencive »</td>
+            </tr>
+            <tr>
+              <td>Chirurgie muco-gingivale</td><td class="num">1</td><td class="num">1</td>
+              <td><span class="pill faible">Faible</span></td>
+              <td><span class="pill utile">Utile</span></td>
+              <td>Langage confrère</td>
+              <td>1 phrase synonyme sur greffe</td>
+            </tr>
+            <tr>
+              <td>Chirurgie des gencives</td><td class="num">0</td><td class="num">0</td>
+              <td><span class="pill absent">Absent</span></td>
+              <td><span class="pill utile">Utile</span></td>
+              <td>Formulation grand public</td>
+              <td>Reformulation patient</td>
+            </tr>
+            <tr>
+              <td>Maintenance parodontale</td><td class="num">8</td><td class="num">2</td>
+              <td><span class="pill fort">Fort</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Acte récurrent + SEO</td>
+              <td>OK — page dédiée</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Implantologie</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Terme</th>
+              <th>Occ.</th>
+              <th>Fichiers</th>
+              <th>Couverture</th>
+              <th>Nécessité</th>
+              <th>Intention</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Implant / implants</td><td class="num">161</td><td class="num">7</td>
+              <td><span class="pill fort">Fort</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Cœur commercial HN</td>
+              <td>OK ; équilibrer singulier / pluriel</td>
+            </tr>
+            <tr>
+              <td>Implant dentaire (singulier)</td><td class="num">0</td><td class="num">0</td>
+              <td><span class="pill absent">Absent</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>« implant dentaire + ville / prix »</td>
+              <td>Ajouter en title / meta / intro</td>
+            </tr>
+            <tr>
+              <td>Implants dentaires (pluriel)</td><td class="num">23</td><td class="num">4</td>
+              <td><span class="pill fort">Fort</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Variante plurielle dominante</td>
+              <td>Conserver</td>
+            </tr>
+            <tr>
+              <td>Implantologie</td><td class="num">82</td><td class="num">7</td>
+              <td><span class="pill fort">Fort</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Pilier spécialité</td>
+              <td>OK</td>
+            </tr>
+            <tr>
+              <td>Implantologue</td><td class="num">0</td><td class="num">0</td>
+              <td><span class="pill absent">Absent</span></td>
+              <td><span class="pill utile">Utile</span></td>
+              <td>Recherche de praticien</td>
+              <td>Usage prudent (pas de titre Ordre)</td>
+            </tr>
+            <tr>
+              <td>Greffe osseuse</td><td class="num">1</td><td class="num">1</td>
+              <td><span class="pill faible">Faible</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Acte pré-implantaire</td>
+              <td>Renforcer H2 / meta reconstruction</td>
+            </tr>
+            <tr>
+              <td>Greffe sinusienne / Sinus lift</td><td class="num">1</td><td class="num">1</td>
+              <td><span class="pill faible">Faible</span></td>
+              <td><span class="pill utile">Utile</span></td>
+              <td>Acte technique, forte intention</td>
+              <td>Paragraphe dédié + lien CBCT</td>
+            </tr>
+            <tr>
+              <td>Chirurgie implantaire</td><td class="num">0</td><td class="num">0</td>
+              <td><span class="pill absent">Absent</span></td>
+              <td><span class="pill utile">Utile</span></td>
+              <td>Reformulation pose d’implants</td>
+              <td>Ajouter en intro pose</td>
+            </tr>
+            <tr>
+              <td>Chirurgie pré-implantaire</td><td class="num">0</td><td class="num">0</td>
+              <td><span class="pill absent">Absent</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Couvre greffes / reconstruction</td>
+              <td>H2 page reconstruction</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Chirurgie orale &amp; imagerie</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Terme</th>
+              <th>Occ.</th>
+              <th>Fichiers</th>
+              <th>Couverture</th>
+              <th>Nécessité</th>
+              <th>Intention</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Chirurgie orale</td><td class="num">43</td><td class="num">7</td>
+              <td><span class="pill fort">Fort</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Spécialité officielle FR (DESCO)</td>
+              <td>OK comme terme pivot</td>
+            </tr>
+            <tr>
+              <td>Chirurgie buccale</td><td class="num">0</td><td class="num">0</td>
+              <td><span class="pill absent">Absent</span></td>
+              <td><span class="pill option">Optionnel</span></td>
+              <td>Ancienne dénomination encore tapée</td>
+              <td>1 mention historique max</td>
+            </tr>
+            <tr>
+              <td>Extraction dentaire</td><td class="num">8</td><td class="num">2</td>
+              <td><span class="pill correct">Correct</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Requête large + locale</td>
+              <td>OK ; renforcer locale</td>
+            </tr>
+            <tr>
+              <td>Extraction dents de sagesse</td><td class="num">6</td><td class="num">2</td>
+              <td><span class="pill fort">Fort</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Acte volume + conversion</td>
+              <td>OK</td>
+            </tr>
+            <tr>
+              <td>Avulsion (dents de sagesse)</td><td class="num">0</td><td class="num">0</td>
+              <td><span class="pill absent">Absent</span></td>
+              <td><span class="pill utile">Utile</span></td>
+              <td>Terme HAS / CCAM / confrères</td>
+              <td>« extraction, ou avulsion » 1–2×</td>
+            </tr>
+            <tr>
+              <td>Frénectomie</td><td class="num">4</td><td class="num">2</td>
+              <td><span class="pill correct">Correct</span></td>
+              <td><span class="pill utile">Utile</span></td>
+              <td>Long-tail ; page = résection de frein</td>
+              <td>Aligner title / H1</td>
+            </tr>
+            <tr>
+              <td>Freinectomie (faute)</td><td class="num">0</td><td class="num">0</td>
+              <td><span class="pill absent">Absent</span></td>
+              <td><span class="pill risque">Inutile / risque</span></td>
+              <td>Orthographe incorrecte</td>
+              <td>Ne pas publier en contenu visible</td>
+            </tr>
+            <tr>
+              <td>Désinclusion</td><td class="num">3</td><td class="num">2</td>
+              <td><span class="pill correct">Correct</span></td>
+              <td><span class="pill utile">Utile</span></td>
+              <td>Terme orthodontiste / chirurgien</td>
+              <td>OK en synonyme</td>
+            </tr>
+            <tr>
+              <td>Dégagement de dent incluse</td><td class="num">9</td><td class="num">2</td>
+              <td><span class="pill fort">Fort</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Formulation patient + page dédiée</td>
+              <td>OK</td>
+            </tr>
+            <tr>
+              <td>CBCT</td><td class="num">11</td><td class="num">1</td>
+              <td><span class="pill correct">Correct</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Acronyme standard</td>
+              <td>Élargir hors page d’accueil</td>
+            </tr>
+            <tr>
+              <td>Cône beam / Cone beam</td><td class="num">0</td><td class="num">0</td>
+              <td><span class="pill absent">Absent</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Formulation FR la plus parlante</td>
+              <td>« radio 3D / cone beam (CBCT) »</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <p class="section-label">2 · Manques hors liste — nécessaires pour un SEO patient</p>
+    <section class="card">
+      <p style="margin-top:0;color:var(--muted);font-size:0.92rem">
+        En SEO dentaire français, les requêtes à forte conversion sont souvent
+        <strong>symptomatiques</strong> ou <strong>locales</strong>, plus que les seules formulations académiques.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Terme</th>
+              <th>Occ.</th>
+              <th>Couverture</th>
+              <th>Nécessité</th>
+              <th>Action recommandée</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Déchaussement dentaire</td><td class="num">0</td>
+              <td><span class="pill absent">Absent</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Intro pages maladies paro + greffe</td>
+            </tr>
+            <tr>
+              <td>Gencives qui saignent</td><td class="num">0</td>
+              <td><span class="pill absent">Absent</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Bloc symptômes page parodontite</td>
+            </tr>
+            <tr>
+              <td>Dents qui bougent / mobilité</td><td class="num">1</td>
+              <td><span class="pill faible">Faible</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Ajouter dans symptômes paro</td>
+            </tr>
+            <tr>
+              <td>Récession gingivale</td><td class="num">6</td>
+              <td><span class="pill correct">Correct</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Monter en title / H2 greffe</td>
+            </tr>
+            <tr>
+              <td>Maladie des gencives</td><td class="num">6</td>
+              <td><span class="pill correct">Correct</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Étendre hors meta d’accueil</td>
+            </tr>
+            <tr>
+              <td>Greffe de gencive</td><td class="num">1</td>
+              <td><span class="pill faible">Faible</span></td>
+              <td><span class="pill utile">Utile</span></td>
+              <td>Synonyme grand public sur page greffe</td>
+            </tr>
+            <tr>
+              <td>Prix / tarif / coût</td><td class="num">1</td>
+              <td><span class="pill faible">Faible</span></td>
+              <td><span class="pill utile">Utile</span></td>
+              <td>Section honoraires / devis (déonto OK)</td>
+            </tr>
+            <tr>
+              <td>Parodontiste Châtenay-Malabry / 92</td><td class="num">0</td>
+              <td><span class="pill absent">Absent</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Title / H1 locaux explicites</td>
+            </tr>
+            <tr>
+              <td>Implant dentaire Châtenay-Malabry / 92</td><td class="num">0</td>
+              <td><span class="pill absent">Absent</span></td>
+              <td><span class="pill indisp">Indispensable</span></td>
+              <td>Title page pose d’implants</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <p class="section-label">3 · Termes non nécessaires ou à manier avec prudence</p>
+    <section class="card">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Terme / pratique</th>
+              <th>Pourquoi ce n’est pas prioritaire</th>
+              <th>Verdict</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Freinectomie (faute)</td>
+              <td>Orthographe incorrecte ; risque de crédibilité (contenu YMYL)</td>
+              <td>Ne pas publier en contenu visible</td>
+            </tr>
+            <tr>
+              <td>Stuffing de tous les synonymes</td>
+              <td>Cannibalisation + lecture artificielle</td>
+              <td>1 page = 1 intention + 2–4 synonymes naturels</td>
+            </tr>
+            <tr>
+              <td>All-on-4 / prothèses complètes</td>
+              <td>Hors positionnement actuel du cabinet</td>
+              <td>Ignorer tant que l’offre n’existe pas</td>
+            </tr>
+            <tr>
+              <td>LANAP / laser parodontal</td>
+              <td>Technique non présentée sur le site</td>
+              <td>Ne pas cibler sans offre réelle</td>
+            </tr>
+            <tr>
+              <td>Stomatologie (comme offre actuelle)</td>
+              <td>Diplôme fermé ; remplacé par chirurgie orale</td>
+              <td>Éviter comme promesse d’offre</td>
+            </tr>
+            <tr>
+              <td>Chirurgie buccale (page dédiée)</td>
+              <td>Terme secondaire ; « chirurgie orale » est officiel</td>
+              <td>Mention courte suffit, pas de silo</td>
+            </tr>
+            <tr>
+              <td>Implantologue / parodontologue en titre réglementaire</td>
+              <td>Pas de spécialités Ordre ainsi libellées</td>
+              <td>Usage grand public OK en prose ; pas comme grade officiel</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <p class="section-label">4 · Plan d’action priorisé</p>
+    <div class="prio-grid" style="margin-bottom:1.25rem">
+      <div class="prio p1">
+        <span class="tag">P1 — Impact immédiat</span>
+        <ul>
+          <li><strong>Parodontiste + local</strong> (Châtenay-Malabry / 92) en title, H1, intro</li>
+          <li><strong>Implant dentaire</strong> (singulier) + local</li>
+          <li><strong>Cône beam / Cone beam</strong> jumelé à CBCT</li>
+          <li><strong>Symptômes paro</strong> : déchaussement, saignements, dents qui bougent</li>
+        </ul>
+      </div>
+      <div class="prio p2">
+        <span class="tag">P2 — Renforcement actes</span>
+        <ul>
+          <li><strong>Greffe osseuse / pré-implantaire</strong> (H2 + meta)</li>
+          <li><strong>Surfaçage radiculaire</strong> dans le protocole</li>
+          <li><strong>Greffe sinusienne / sinus lift</strong> + lien CBCT</li>
+          <li><strong>Avulsion</strong> en synonyme sur extractions</li>
+        </ul>
+      </div>
+      <div class="prio p3">
+        <span class="tag">P3 — Finitions</span>
+        <ul>
+          <li><strong>Parodontologue / implantologue</strong> (mentions naturelles)</li>
+          <li><strong>Chirurgie des gencives / muco-gingivale</strong></li>
+          <li><strong>Chirurgie buccale</strong> : une mention historique max</li>
+          <li><strong>Frénectomie</strong> dans le title de la page frein</li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="card">
+      <h2>5 · Règles d’intégration (anti-bourrage)</h2>
+      <div class="two-col">
+        <div>
+          <h3 style="margin-top:0">À faire</h3>
+          <ul>
+            <li>1 intention principale par URL (silos déjà bien structurés)</li>
+            <li>Synonymes dans le 1er écran + 1 H2, pas une liste keyword</li>
+            <li>Toujours coupler acte + localité sur les pages business</li>
+            <li>Langage patient en intro, jargon pro en corps / FAQ</li>
+            <li>E-E-A-T : signatures praticiens, formations, photos cliniques</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="margin-top:0">À éviter</h3>
+          <ul>
+            <li>Répéter les 30 termes sur l’accueil</li>
+            <li>Créer des pages fines pour chaque orthographe</li>
+            <li>Affirmer des titres non reconnus par l’Ordre</li>
+            <li>Cibler des techniques non proposées</li>
+            <li>Confondre densité de mots-clés et pertinence médicale</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Méthodologie &amp; sources</h2>
+      <ul style="margin:0;padding-left:1.1rem;font-size:0.9rem;color:var(--muted)">
+        <li>Inventaire : comptage sur le HTML public du dépôt (contenu, meta, JSON-LD, formulaires).</li>
+        <li>Cadre SEO dentaire : prioriser intention commerciale locale et actes à forte valeur (implantologie, parodontie).</li>
+        <li>Synonymie clinique : parodontie = parodontologie ; parodontiste ≈ parodontologue (usages santé grand public FR).</li>
+        <li>Nomenclature FR : chirurgie orale = spécialité actuelle (CNPCO / Ordre) ; remplace stomatologie / chirurgie buccale.</li>
+        <li>Imagerie / extractions : CBCT / Cone Beam utilisés indifféremment ; « avulsion » est le terme technique HAS.</li>
+        <li>Limite : pas d’export Keyword Planner / Ahrefs — priorités relatives, pas volumes mensuels absolus.</li>
+      </ul>
+    </section>
+
+    <footer class="footer">
+      Document confidentiel — Paro-Spé · Analyse SEO sémantique · août 2026<br>
+      Fichier : <code>docs/analyse-seo-mots-cles-paro-spe.html</code> · Impression PDF via le navigateur
+    </footer>
+  </div>
+</body>
+</html>
