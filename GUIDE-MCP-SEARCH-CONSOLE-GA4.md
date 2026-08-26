@@ -130,6 +130,16 @@ Vous avez maintenant 3 valeurs : **Client ID**, **Client Secret**, **Refresh tok
 2. Search Console : [search.google.com/search-console](https://search.google.com/search-console)
    > notez l'URL exacte de la propriété (ex. `https://paro-spe.fr/` ou `sc-domain:paro-spe.fr`)
 
+> ✅ **Configuration validée** pour ce dépôt : propriété GA4 « Site Paro-Spé »
+> (`properties/546646264`, ID `546646264`, déjà renseigné dans `.cursor/mcp.json`) et site Search
+> Console `https://paro-spe.fr/`. Des requêtes réelles (`run_report`, `gsc_search_analytics`) ont
+> été testées avec succès en direct depuis l'agent.
+
+> ℹ️ **Astuce découverte automatique** : si vous n'avez que le Client ID/Secret/Refresh token,
+> pas besoin de fouiller dans les menus GA4/Search Console — demandez à l'agent d'appeler
+> `accountSummaries` (Analytics Admin API) et `sites.list` (Search Console API) pour lister
+> automatiquement vos propriétés et leurs identifiants exacts.
+
 ### A.7 Générer le fichier de credentials local
 
 Avec les 3 valeurs de l'étape A.5, exécutez (sur l'ordinateur/serveur qui fera tourner le serveur
