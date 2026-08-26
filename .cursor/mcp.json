@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "ga4-search-console": {
+      "command": "npx",
+      "args": ["-y", "ga4-mcp", "--tools", "ga4,gsc"],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "${workspaceFolder}/.cursor/secrets/ga4-gsc-service-account.json",
+        "GA4_PROPERTY_ID": ""
+      }
+    }
+  }
+}
