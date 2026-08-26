@@ -19,9 +19,130 @@ Le serveur MCP utilisé est [`ga4-mcp`](https://github.com/chimpmatic/ga4-mcp) (
 seul serveur les outils GA4 (rapports, temps réel, dimensions personnalisées) et Search Console
 (analytics de recherche, sitemaps, inspection d'URL).
 
+Deux méthodes d'authentification sont possibles :
+
+- **Option A (recommandée, 100% mobile)** : vous vous connectez avec **votre propre compte
+  Gmail**, celui qui a déjà accès à GA4 et à Search Console. Aucun compte de service, aucun
+  fichier à télécharger, aucun ordinateur nécessaire. C'est la méthode décrite ci-dessous.
+- **Option B (compte de service)** : plus adaptée si vous préférez un accès dédié séparé de votre
+  compte personnel, ou une automatisation serveur. Voir la section [Option B](#option-b--compte-de-service-alternative)
+  en bas de ce guide — nécessite de télécharger un fichier JSON, plus simple depuis un ordinateur.
+
 ---
 
-## 📍 Étape 1 : Créer un projet Google Cloud et un compte de service
+## 📱 Option A : connexion avec votre compte Google personnel (OAuth, 100% mobile)
+
+Cette méthode utilise le format d'identifiants "OAuth utilisateur" (le même que celui produit par
+`gcloud auth login`), sans jamais avoir besoin de créer ni télécharger de clé de compte de service.
+Tout se fait dans le navigateur de votre téléphone.
+
+### A.1 Créer un projet Google Cloud
+
+1. Ouvrez [console.cloud.google.com/projectcreate](https://console.cloud.google.com/projectcreate)
+2. Connectez-vous avec le compte Gmail qui a accès à GA4 et Search Console
+3. **Nom du projet** : `mcp-analytics` (ou ce que vous voulez)
+4. Appuyez sur **Créer**, puis attendez quelques secondes que le projet soit sélectionné
+
+### A.2 Activer les 2 API nécessaires
+
+Ouvrez ces deux liens (le projet créé à l'étape précédente doit être sélectionné en haut de page) et
+appuyez sur **Activer/Enable** sur chacun :
+
+1. [console.cloud.google.com/apis/library/analyticsdata.googleapis.com](https://console.cloud.google.com/apis/library/analyticsdata.googleapis.com)
+2. [console.cloud.google.com/apis/library/searchconsole.googleapis.com](https://console.cloud.google.com/apis/library/searchconsole.googleapis.com)
+
+### A.3 Configurer l'écran de consentement OAuth
+
+1. Ouvrez [console.cloud.google.com/apis/credentials/consent](https://console.cloud.google.com/apis/credentials/consent)
+2. Type d'utilisateurs : **Externe (External)** > **Créer**
+3. **Nom de l'application** : `MCP Analytics` (libre)
+4. **E-mail d'assistance utilisateur** et **Coordonnées du développeur** : votre Gmail
+5. **Enregistrer et continuer** sur les écrans Scopes et Test users (pas besoin d'en ajouter ici)
+6. Une fois l'écran créé, revenez sur la page et appuyez sur **Publier l'application (Publish app)**
+   puis confirmez. *(Cette étape évite que le jeton n'expire après 7 jours ; vous verrez un
+   avertissement « Google n'a pas vérifié cette appli » lors de la connexion à l'étape A.5 — c'est
+   normal pour un usage personnel, vous pourrez cliquer sur « Advanced » puis « Go to MCP Analytics
+   (unsafe) » pour continuer.)*
+
+### A.4 Créer un identifiant OAuth (Client ID)
+
+1. Ouvrez [console.cloud.google.com/apis/credentials](https://console.cloud.google.com/apis/credentials)
+2. **+ Créer des identifiants (Create credentials) > ID client OAuth (OAuth client ID)**
+3. **Type d'application** : **Application Web (Web application)**
+4. **Nom** : `mcp-oauth-playground`
+5. **URI de redirection autorisés** : ajoutez exactement :
+
+   ```
+   https://developers.google.com/oauthplayground
+   ```
+
+6. **Créer**. Une fenêtre affiche votre **Client ID** et **Client Secret** — copiez-les (vous
+   pouvez aussi les retrouver plus tard en rouvrant cet identifiant depuis la même page)
+
+### A.5 Générer le refresh token avec OAuth Playground
+
+1. Ouvrez [developers.google.com/oauthplayground](https://developers.google.com/oauthplayground/)
+2. Appuyez sur l'icône ⚙️ (Settings) en haut à droite
+3. Cochez **Use your own OAuth credentials**
+4. Collez votre **OAuth Client ID** et **OAuth Client secret** (étape A.4), fermez le panneau
+5. Dans la colonne de gauche (**Step 1**), champ **Input your own scopes**, collez :
+
+   ```
+   https://www.googleapis.com/auth/analytics.readonly,https://www.googleapis.com/auth/webmasters.readonly
+   ```
+
+6. Appuyez sur **Authorize APIs**
+7. Connectez-vous avec le Gmail qui a accès à GA4/Search Console, acceptez l'avertissement
+   « application non vérifiée » (Advanced > Go to... (unsafe) > Continue), puis **Autoriser**
+8. Vous revenez sur OAuth Playground avec un code déjà rempli à l'**Step 2** : appuyez sur
+   **Exchange authorization code for tokens**
+9. Copiez la valeur affichée dans **Refresh token** (commence souvent par `1//...`)
+
+Vous avez maintenant 3 valeurs : **Client ID**, **Client Secret**, **Refresh token**.
+
+### A.6 Récupérer l'ID de propriété GA4 et le site Search Console
+
+1. GA4 : [analytics.google.com](https://analytics.google.com/) > icône ⚙️ **Admin** > **Détails de
+   la propriété** > notez l'**ID de propriété** (nombre, pas le `G-XXXXXXXXXX`)
+2. Search Console : [search.google.com/search-console](https://search.google.com/search-console)
+   > notez l'URL exacte de la propriété (ex. `https://paro-spe.fr/` ou `sc-domain:paro-spe.fr`)
+
+### A.7 Générer le fichier de credentials local
+
+Avec les 3 valeurs de l'étape A.5, exécutez (sur l'ordinateur/serveur qui fera tourner le serveur
+MCP, ou transmettez-les à l'agent pour qu'il le fasse pour vous) :
+
+```bash
+GOOGLE_OAUTH_CLIENT_ID="...apps.googleusercontent.com" \
+GOOGLE_OAUTH_CLIENT_SECRET="..." \
+GOOGLE_OAUTH_REFRESH_TOKEN="1//..." \
+npm run mcp:setup-google-auth
+```
+
+Cela écrit `.cursor/secrets/ga4-gsc-service-account.json` (déjà exclu de git) au format attendu
+par `ga4-mcp` — aucune autre modification n'est nécessaire, `.cursor/mcp.json` pointe déjà vers ce
+fichier.
+
+> 💾 **Pour persister ces identifiants entre plusieurs sessions Cursor Cloud Agent** sans les
+> retaper : enregistrez les 3 valeurs comme secrets dans **Cursor Dashboard > Cloud Agents >
+> Secrets** sous les noms `GOOGLE_OAUTH_CLIENT_ID`, `GOOGLE_OAUTH_CLIENT_SECRET`,
+> `GOOGLE_OAUTH_REFRESH_TOKEN`. Elles seront réinjectées automatiquement dans chaque nouvelle
+> session ; relancez alors `npm run mcp:setup-google-auth` une fois par session pour régénérer le
+> fichier local.
+
+Passez ensuite directement à la section **« Tester la connexion »** en bas de ce guide (l'Étape 4
+« Configuration du serveur MCP », plus bas, ne concerne que l'Option B — avec l'Option A la
+configuration `.cursor/mcp.json` existante fonctionne sans modification, il suffit d'y ajouter
+votre `GA4_PROPERTY_ID`).
+
+---
+
+## Option B : compte de service (alternative)
+
+Cette méthode nécessite de créer un compte de service Google Cloud, de télécharger une clé JSON et
+de la transférer sur la machine qui exécute Cursor — plus simple à faire depuis un ordinateur.
+
+### Étape 1 : Créer un projet Google Cloud et un compte de service
 
 ### 1.1 Créer/choisir un projet
 
@@ -92,9 +213,9 @@ Dans **API et services > Bibliothèque**, activez :
 
 ---
 
-## 📍 Étape 4 : Configuration du serveur MCP dans Cursor
+## 📍 Étape 4 : Configuration du serveur MCP dans Cursor (Option B)
 
-La configuration est déjà présente dans `.cursor/mcp.json` :
+La configuration est déjà présente dans `.cursor/mcp.json` (valable pour les deux options, A et B) :
 
 ```json
 {
@@ -130,7 +251,7 @@ La configuration est déjà présente dans `.cursor/mcp.json` :
 
 ---
 
-## 📍 Étape 5 : Tester la connexion
+## 📍 Tester la connexion (Option A ou B)
 
 Dans le chat Cursor, essayez par exemple :
 
@@ -142,18 +263,26 @@ Dans le chat Cursor, essayez par exemple :
 
 Si l'agent renvoie une erreur d'authentification :
 
-- Vérifiez que le fichier JSON existe bien au chemin configuré
-- Vérifiez que le compte de service a bien un accès **Lecteur** sur la propriété GA4 et sur la
-  propriété Search Console (Étape 2)
-- Vérifiez que les API **Analytics Data** et **Search Console** sont bien activées sur le projet
-  Google Cloud (Étape 1.2)
+- Vérifiez que le fichier `.cursor/secrets/ga4-gsc-service-account.json` existe bien
+- **Option A** : vérifiez que les 3 valeurs (Client ID / Secret / Refresh token) sont correctes et
+  que les scopes autorisés à l'étape A.5 incluent bien `analytics.readonly` et
+  `webmasters.readonly`
+- **Option B** : vérifiez que le compte de service a bien un accès **Lecteur** sur la propriété
+  GA4 et sur la propriété Search Console (Étape 2)
+- Dans les deux cas, vérifiez que les API **Analytics Data** et **Search Console** sont bien
+  activées sur le projet Google Cloud utilisé
 
 ---
 
 ## 🔐 Rappel sécurité
 
-- ❌ Ne commitez jamais le fichier `ga4-gsc-service-account.json`
-- ❌ Ne partagez pas ce fichier par email ou messagerie non chiffrée
-- ✅ En cas de doute sur une fuite, révoquez la clé dans Google Cloud Console
+- ❌ Ne commitez jamais le fichier `ga4-gsc-service-account.json`, ni le Client Secret / Refresh
+  token en clair dans un fichier suivi par git
+- ❌ Ne partagez pas ces valeurs par email ou messagerie non chiffrée
+- ✅ **Option A** : en cas de doute sur une fuite, révoquez l'accès dans
+  [myaccount.google.com/permissions](https://myaccount.google.com/permissions) (section « Accès
+  tiers ») en supprimant l'accès de l'application `MCP Analytics`, puis recommencez l'étape A.5
+  pour générer un nouveau refresh token
+- ✅ **Option B** : en cas de doute sur une fuite, révoquez la clé dans Google Cloud Console
   (**Identifiants > Compte de service > Clés > Supprimer**) et générez-en une nouvelle
-- ✅ Gardez le compte de service en accès **Lecteur uniquement**, sauf besoin explicite d'écriture
+- ✅ Limitez les scopes/rôles au strict nécessaire en lecture, sauf besoin explicite d'écriture
