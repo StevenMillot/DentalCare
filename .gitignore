@@ -2,6 +2,9 @@
 **/.DS_Store
 .tmp-*
 
+# Dépendances npm (réinstallées via `npm install`, jamais versionnées)
+node_modules/
+
 # Fichiers de configuration sensibles OVH
 .env.ovh
 .env*.local
