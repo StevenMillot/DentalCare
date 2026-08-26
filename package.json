@@ -17,8 +17,8 @@
     "pwa:icons": "node scripts/generate-pwa-icons.mjs",
     "sw:bump": "node scripts/bump-sw-cache-version.mjs",
     "mcp:setup-google-auth": "node scripts/setup-google-oauth-credentials.mjs",
-    "seo:audit": "node scripts/seo-audit.mjs",
-    "seo:audit:dry-run": "node scripts/seo-audit.mjs --dry-run"
+    "analytics:report": "node scripts/analytics-weekly-report.mjs",
+    "analytics:report:dry-run": "node scripts/analytics-weekly-report.mjs --dry-run"
   },
   "repository": {
     "type": "git",

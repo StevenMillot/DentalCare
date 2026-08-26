@@ -1,12 +1,16 @@
 #!/usr/bin/env node
-// Audit SEO hebdomadaire pour paro-spe.fr : interroge la Google Search Console
-// et la Google Analytics 4 Data API (mêmes credentials OAuth que le serveur MCP,
-// voir GUIDE-MCP-SEARCH-CONSOLE-GA4.md), calcule les variations semaine sur semaine,
-// et génère un rapport Markdown.
+// Rapport analytics hebdomadaire pour paro-spe.fr : interroge la Google Search
+// Console et la Google Analytics 4 Data API (mêmes credentials OAuth que le
+// serveur MCP, voir GUIDE-MCP-SEARCH-CONSOLE-GA4.md), calcule les variations
+// semaine sur semaine, et génère un rapport Markdown.
+//
+// ⚠️ Lecture seule : ce script ne modifie jamais le contenu du site. Il est
+// indépendant de l'automatisation "SEO Weekly Audit" (audit SEO technique
+// on-page + corrections, gouvernée par .cursor/commands/seo-*.md).
 //
 // Usage :
 //   GOOGLE_OAUTH_CLIENT_ID=... GOOGLE_OAUTH_CLIENT_SECRET=... GOOGLE_OAUTH_REFRESH_TOKEN=... \
-//     node scripts/seo-audit.mjs [--dry-run]
+//     node scripts/analytics-weekly-report.mjs [--dry-run]
 //
 // Variables optionnelles :
 //   GA4_PROPERTY_ID (défaut: 546646264)
@@ -248,7 +252,7 @@ async function main() {
   }
 
   const lines = [];
-  lines.push(`# Audit SEO hebdomadaire — paro-spe.fr`);
+  lines.push(`# Rapport analytics hebdomadaire — paro-spe.fr`);
   lines.push('');
   lines.push(
     `Semaine du **${period.current.start}** au **${period.current.end}** (comparée à la semaine précédente du ${period.previous.start} au ${period.previous.end}).`
@@ -352,7 +356,7 @@ async function main() {
     return;
   }
 
-  const outDir = join(repoRoot, 'seo-reports');
+  const outDir = join(repoRoot, 'rapports-analytics');
   if (!existsSync(outDir)) mkdirSync(outDir, { recursive: true });
   const outPath = join(outDir, `${period.current.end}.md`);
   writeFileSync(outPath, report);
@@ -365,8 +369,8 @@ async function main() {
 
   const outputPath = process.env.GITHUB_OUTPUT;
   if (outputPath) {
-    const issueTitle = `Audit SEO — semaine du ${period.current.start} au ${period.current.end}`;
-    const delimiter = 'SEO_REPORT_EOF';
+    const issueTitle = `Rapport analytics — semaine du ${period.current.start} au ${period.current.end}`;
+    const delimiter = 'ANALYTICS_REPORT_EOF';
     const outputs =
       `report_path=${outPath}\n` +
       `issue_title=${issueTitle}\n` +

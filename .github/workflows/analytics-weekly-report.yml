@@ -1,0 +1,75 @@
+name: Rapport Analytics Hebdomadaire
+
+# ⚠️ Ne pas confondre avec l'automatisation "SEO Weekly Audit" (audit SEO technique
+# on-page + corrections, gouvernée par les commandes .cursor/commands/seo-*.md avec
+# confirmation humaine explicite). Ce workflow-ci ne fait AUCUNE correction sur le
+# site : il se contente d'agréger des métriques Search Console + GA4 en lecture
+# seule et de committer un rapport, sans jamais toucher au contenu du site.
+
+on:
+  schedule:
+    # Tous les lundis à 8h00 UTC (9h/10h heure de Paris selon la saison).
+    - cron: '0 8 * * 1'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: analytics-weekly-report
+  cancel-in-progress: false
+
+jobs:
+  analytics-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run analytics report
+        id: report
+        env:
+          GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
+          GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
+          GOOGLE_OAUTH_REFRESH_TOKEN: ${{ secrets.GOOGLE_OAUTH_REFRESH_TOKEN }}
+          GA4_PROPERTY_ID: '546646264'
+          GSC_SITE_URL: 'https://paro-spe.fr/'
+        run: node scripts/analytics-weekly-report.mjs
+
+      - name: Commit report
+        run: |
+          git config user.name "analytics-report-bot"
+          git config user.email "actions@github.com"
+          git add rapports-analytics/
+          if git diff --cached --quiet; then
+            echo "Aucun changement à committer."
+          else
+            git commit -m "Rapport analytics hebdomadaire ${{ steps.report.outputs.report_path }}"
+            git push
+          fi
+
+      - name: Create summary issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create "analytics-report" --color "1D76DB" \
+            --description "Rapports analytics hebdomadaires (GA4 / Search Console)" --force
+          {
+            echo "${{ steps.report.outputs.report_body }}"
+            echo ""
+            echo "_Ce rapport a aussi été committé dans le dépôt : \`${{ steps.report.outputs.report_path }}\`._"
+          } > /tmp/analytics-report-issue-body.md
+          gh issue create \
+            --title "${{ steps.report.outputs.issue_title }}" \
+            --label "analytics-report" \
+            --body-file /tmp/analytics-report-issue-body.md

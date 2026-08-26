@@ -199,7 +199,7 @@ Le projet inclut des guides complets pour déployer sur OVH :
 - **[GUIDE-ANALYTICS-SANS-COOKIES.md](./GUIDE-ANALYTICS-SANS-COOKIES.md)** - Google Analytics anonyme
 - **[GUIDE-UPTIMEROBOT.md](./GUIDE-UPTIMEROBOT.md)** - Monitoring uptime
 - **[GUIDE-MCP-SEARCH-CONSOLE-GA4.md](./GUIDE-MCP-SEARCH-CONSOLE-GA4.md)** - Serveur MCP GA4 / Search Console pour Cursor
-- **[AUDIT-SEO-AUTOMATIQUE.md](./AUDIT-SEO-AUTOMATIQUE.md)** - Rapport SEO hebdomadaire automatique (GitHub Actions)
+- **[RAPPORT-ANALYTICS-HEBDOMADAIRE.md](./RAPPORT-ANALYTICS-HEBDOMADAIRE.md)** - Rapport analytics hebdomadaire automatique GA4/Search Console (GitHub Actions, distinct de l'automatisation "SEO Weekly Audit")
 - **[QUICKSTART-OVH.md](./QUICKSTART-OVH.md)** - Déploiement rapide
 - **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Documentation complète (800+ lignes)
 - **[CHECKLIST-DEPLOIEMENT.md](./CHECKLIST-DEPLOIEMENT.md)** - 70+ points de vérification
