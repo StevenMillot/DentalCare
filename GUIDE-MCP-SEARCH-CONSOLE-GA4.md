@@ -62,18 +62,27 @@ trouviez pas — utilisez les liens ci-dessous.
    (le bon projet doit être sélectionné en haut). Si c'est la première fois, appuyez sur
    **Commencer/Get started** et suivez l'assistant :
    - **Type d'utilisateurs (Audience/User type)** : **Externe (External)**
-   - **Nom de l'application** : `Paro-spe` ou `MCP Analytics` (libre)
+   - **Nom de l'application** : `Paro-spe Analytics` ou `MCP Analytics` (libre)
    - **E-mail d'assistance utilisateur** et **Coordonnées du développeur** : votre Gmail
    - Terminez l'assistant (**Créer/Save and continue** puis **Créer/Create**)
-2. Une fois configuré, allez dans l'onglet **Audience** :
+2. Avant de pouvoir publier, l'onglet **Branding**
+   ([console.cloud.google.com/auth/branding](https://console.cloud.google.com/auth/branding)) peut
+   demander des informations de domaine (« App Domain »). Le site `paro-spe.fr` a déjà ce qu'il
+   faut, pas besoin de créer de nouvelles pages :
+   - **Page d'accueil de l'application** : `https://paro-spe.fr/`
+   - **Lien vers la politique de confidentialité** : `https://paro-spe.fr/politique-de-confidentialite.html`
+   - **Conditions d'utilisation** (facultatif) : `https://paro-spe.fr/mentions-legales.html`
+   - **Domaines autorisés (Authorized domains)** : `paro-spe.fr`
+   - **Enregistrer/Save**
+3. Une fois configuré, allez dans l'onglet **Audience** :
    [console.cloud.google.com/auth/audience](https://console.cloud.google.com/auth/audience)
-3. Dans la section **Statut de publication (Publishing status)**, appuyez sur **Publier
+4. Dans la section **Statut de publication (Publishing status)**, appuyez sur **Publier
    l'application (Publish app)** puis confirmez. *(Cette étape évite que le jeton n'expire après 7
    jours et évite de devoir gérer une liste de testeurs. Vous verrez quand même un avertissement
    « Google n'a pas vérifié cette appli » lors de la connexion à l'étape A.5 — c'est normal pour un
    usage personnel : cliquez sur « Advanced/Paramètres avancés » puis « Go to ... (unsafe)/Accéder
    à ... (non sécurisé) » pour continuer.)*
-4. Si vous ne trouvez pas ce bouton, utilisez plutôt la section **Utilisateurs test (Test users)**
+5. Si vous ne trouvez pas ce bouton, utilisez plutôt la section **Utilisateurs test (Test users)**
    juste au-dessus : **+ Ajouter des utilisateurs (Add users)**, ajoutez votre propre Gmail,
    **Enregistrer** — cela débloque l'accès immédiatement, mais le jeton généré à l'étape A.5
    expirera après 7 jours tant que l'app n'est pas publiée.
