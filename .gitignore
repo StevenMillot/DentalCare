@@ -25,3 +25,7 @@ yarn-error.log*
 
 # Outils locaux (ex. git-filter-repo)
 tools/bin/
+
+# Secrets MCP (clé de compte de service Google GA4 / Search Console)
+.cursor/secrets/*
+!.cursor/secrets/README.md
