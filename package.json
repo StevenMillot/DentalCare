@@ -15,7 +15,10 @@
     "icons:sync-inline": "node scripts/sync-inline-sprite.mjs",
     "pwa:head": "node scripts/ensure-pwa-head.mjs",
     "pwa:icons": "node scripts/generate-pwa-icons.mjs",
-    "sw:bump": "node scripts/bump-sw-cache-version.mjs"
+    "sw:bump": "node scripts/bump-sw-cache-version.mjs",
+    "mcp:setup-google-auth": "node scripts/setup-google-oauth-credentials.mjs",
+    "analytics:report": "node scripts/analytics-weekly-report.mjs",
+    "analytics:report:dry-run": "node scripts/analytics-weekly-report.mjs --dry-run"
   },
   "repository": {
     "type": "git",
