@@ -51,33 +51,47 @@ appuyez sur **Activer/Enable** sur chacun :
 1. [console.cloud.google.com/apis/library/analyticsdata.googleapis.com](https://console.cloud.google.com/apis/library/analyticsdata.googleapis.com)
 2. [console.cloud.google.com/apis/library/searchconsole.googleapis.com](https://console.cloud.google.com/apis/library/searchconsole.googleapis.com)
 
-### A.3 Configurer l'écran de consentement OAuth
+### A.3 Configurer l'écran de consentement OAuth (« Google Auth Platform »)
 
-1. Ouvrez [console.cloud.google.com/apis/credentials/consent](https://console.cloud.google.com/apis/credentials/consent)
-2. Type d'utilisateurs : **Externe (External)** > **Créer**
-3. **Nom de l'application** : `MCP Analytics` (libre)
-4. **E-mail d'assistance utilisateur** et **Coordonnées du développeur** : votre Gmail
-5. **Enregistrer et continuer** sur les écrans Scopes et Test users (pas besoin d'en ajouter ici)
-6. Une fois l'écran créé, revenez sur la page et appuyez sur **Publier l'application (Publish app)**
-   puis confirmez. *(Cette étape évite que le jeton n'expire après 7 jours ; vous verrez un
-   avertissement « Google n'a pas vérifié cette appli » lors de la connexion à l'étape A.5 — c'est
-   normal pour un usage personnel, vous pourrez cliquer sur « Advanced » puis « Go to MCP Analytics
-   (unsafe) » pour continuer.)*
+⚠️ Depuis 2024, Google a renommé et éclaté cette page en 3 onglets : **Branding**, **Audience**,
+**Clients** (l'ancien menu « OAuth consent screen » / « Écran de consentement OAuth » a disparu).
+Si vous suivez un tutoriel plus ancien qui parle d'une page unique, c'est normal que vous ne la
+trouviez pas — utilisez les liens ci-dessous.
+
+1. Ouvrez [console.cloud.google.com/auth/overview](https://console.cloud.google.com/auth/overview)
+   (le bon projet doit être sélectionné en haut). Si c'est la première fois, appuyez sur
+   **Commencer/Get started** et suivez l'assistant :
+   - **Type d'utilisateurs (Audience/User type)** : **Externe (External)**
+   - **Nom de l'application** : `Paro-spe` ou `MCP Analytics` (libre)
+   - **E-mail d'assistance utilisateur** et **Coordonnées du développeur** : votre Gmail
+   - Terminez l'assistant (**Créer/Save and continue** puis **Créer/Create**)
+2. Une fois configuré, allez dans l'onglet **Audience** :
+   [console.cloud.google.com/auth/audience](https://console.cloud.google.com/auth/audience)
+3. Dans la section **Statut de publication (Publishing status)**, appuyez sur **Publier
+   l'application (Publish app)** puis confirmez. *(Cette étape évite que le jeton n'expire après 7
+   jours et évite de devoir gérer une liste de testeurs. Vous verrez quand même un avertissement
+   « Google n'a pas vérifié cette appli » lors de la connexion à l'étape A.5 — c'est normal pour un
+   usage personnel : cliquez sur « Advanced/Paramètres avancés » puis « Go to ... (unsafe)/Accéder
+   à ... (non sécurisé) » pour continuer.)*
+4. Si vous ne trouvez pas ce bouton, utilisez plutôt la section **Utilisateurs test (Test users)**
+   juste au-dessus : **+ Ajouter des utilisateurs (Add users)**, ajoutez votre propre Gmail,
+   **Enregistrer** — cela débloque l'accès immédiatement, mais le jeton généré à l'étape A.5
+   expirera après 7 jours tant que l'app n'est pas publiée.
 
 ### A.4 Créer un identifiant OAuth (Client ID)
 
-1. Ouvrez [console.cloud.google.com/apis/credentials](https://console.cloud.google.com/apis/credentials)
-2. **+ Créer des identifiants (Create credentials) > ID client OAuth (OAuth client ID)**
+1. Ouvrez l'onglet **Clients** : [console.cloud.google.com/auth/clients](https://console.cloud.google.com/auth/clients)
+2. **+ Créer un client OAuth (Create client)**
 3. **Type d'application** : **Application Web (Web application)**
 4. **Nom** : `mcp-oauth-playground`
-5. **URI de redirection autorisés** : ajoutez exactement :
+5. **URI de redirection autorisés (Authorized redirect URIs)** : ajoutez exactement :
 
    ```
    https://developers.google.com/oauthplayground
    ```
 
 6. **Créer**. Une fenêtre affiche votre **Client ID** et **Client Secret** — copiez-les (vous
-   pouvez aussi les retrouver plus tard en rouvrant cet identifiant depuis la même page)
+   pouvez aussi les retrouver plus tard en rouvrant ce client depuis l'onglet **Clients**)
 
 ### A.5 Générer le refresh token avec OAuth Playground
 
