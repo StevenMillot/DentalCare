@@ -13,7 +13,7 @@
  */
 /* global self */
 
-const CACHE_VERSION = 'dc-v42';
+const CACHE_VERSION = 'dc-v43';
 const CACHE_NAME = `dentalcare-${CACHE_VERSION}`;
 
 // On reste volontairement conservateur : cache-first pour assets statiques,

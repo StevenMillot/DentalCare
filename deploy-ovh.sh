@@ -165,8 +165,10 @@ node_modules/
 scripts/
 tools/
 backups/
+rapports-analytics/
 .git/
 .github/
+.cursor/
 .tmp-*
 *.log
 .DS_Store
@@ -226,8 +228,10 @@ mirror --reverse \
        --exclude-glob scripts/ \
        --exclude-glob tools/ \
        --exclude-glob backups/ \
+       --exclude-glob rapports-analytics/ \
        --exclude-glob .git/ \
        --exclude-glob .github/ \
+       --exclude-glob .cursor/ \
        --exclude-glob .tmp-* \
        --exclude-glob *.log \
        --exclude-glob .DS_Store \
