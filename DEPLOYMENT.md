@@ -72,6 +72,13 @@ FTP_REMOTE_DIR=/www                       # Répertoire distant (/www sur OVH)
 
 ⚠️ **Important** : Le fichier `.env.ovh` est déjà dans `.gitignore` et ne sera **jamais** commité.
 
+> 💾 **Pour déployer depuis un Cursor Cloud Agent** (sans terminal local ni fichier à éditer
+> manuellement) : enregistrez `FTP_HOST`, `FTP_USER` et `FTP_PASS` (et éventuellement
+> `FTP_PORT`, `FTP_REMOTE_DIR`) comme secrets dans **Cursor Dashboard > Cloud Agents >
+> Secrets**. Ils seront réinjectés automatiquement dans chaque nouvelle session ; lancez
+> alors `npm run ovh:setup-env` (ou laissez le hook `scripts/start-cloud-agent.sh` le faire
+> automatiquement au démarrage) pour régénérer `.env.ovh`, puis `./deploy-ovh.sh production`.
+
 ### 3. Installer les dépendances
 
 ```bash
