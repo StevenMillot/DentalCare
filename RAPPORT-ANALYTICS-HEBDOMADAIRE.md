@@ -20,14 +20,18 @@ Chaque semaine (et à la demande via « Run workflow ») :
    top requêtes, top pages, état des sitemaps) et GA4 (sessions, utilisateurs,
    pages vues, taux d'engagement, top pages) sur les 7 derniers jours, comparées à
    la semaine précédente.
-2. Génère un rapport Markdown, committé dans le dossier
+2. Vérifie le **statut d'indexation Google de chaque page du sitemap** (API URL
+   Inspection de Search Console) : indexée, découverte mais pas encore indexée,
+   erreur de crawl, etc.
+3. Génère un rapport Markdown, committé dans le dossier
    [`rapports-analytics/`](rapports-analytics/) (un fichier par semaine, nommé par
    date de fin de période).
-3. Ouvre une **issue GitHub** (label `analytics-report`) avec le résumé complet —
+4. Ouvre une **issue GitHub** (label `analytics-report`) avec le résumé complet —
    vous recevrez une notification (email / app GitHub mobile) sans avoir à aller
    chercher le rapport.
-4. Signale automatiquement les anomalies (baisse de clics/impressions ≥ 20 %,
-   erreurs de sitemap, sitemap manquant) en haut du rapport.
+5. Signale automatiquement les anomalies (baisse de clics/impressions ≥ 20 %,
+   erreurs de sitemap, sitemap manquant, page(s) du sitemap non indexée(s)) en
+   haut du rapport.
 
 Fichiers concernés : `.github/workflows/analytics-weekly-report.yml`,
 `scripts/analytics-weekly-report.mjs`.
