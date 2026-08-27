@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 // Rapport analytics hebdomadaire pour paro-spe.fr : interroge la Google Search
-// Console et la Google Analytics 4 Data API (mêmes credentials OAuth que le
-// serveur MCP, voir GUIDE-MCP-SEARCH-CONSOLE-GA4.md), calcule les variations
-// semaine sur semaine, et génère un rapport Markdown.
+// Console (dont le statut d'indexation de chaque page du sitemap, via l'API
+// URL Inspection) et la Google Analytics 4 Data API (mêmes credentials OAuth
+// que le serveur MCP, voir GUIDE-MCP-SEARCH-CONSOLE-GA4.md), calcule les
+// variations semaine sur semaine, et génère un rapport Markdown.
 //
 // ⚠️ Lecture seule : ce script ne modifie jamais le contenu du site. Il est
 // indépendant de l'automatisation "SEO Weekly Audit" (audit SEO technique
@@ -170,6 +171,48 @@ async function ga4Report(accessToken, start, end) {
   };
 }
 
+async function fetchSitemapUrls(sitemapUrl) {
+  const res = await fetch(sitemapUrl);
+  if (!res.ok) return [];
+  const xml = await res.text();
+  return [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].trim());
+}
+
+async function inspectUrl(accessToken, url) {
+  const res = await fetch('https://searchconsole.googleapis.com/v1/urlInspection/index:inspect', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ inspectionUrl: url, siteUrl: GSC_SITE_URL }),
+  });
+  if (!res.ok) {
+    return { url, verdict: 'ERROR', coverageState: `Erreur HTTP ${res.status}`, lastCrawlTime: null };
+  }
+  const data = await res.json();
+  const r = data.inspectionResult?.indexStatusResult;
+  return {
+    url,
+    verdict: r?.verdict ?? 'UNKNOWN',
+    coverageState: r?.coverageState ?? '—',
+    lastCrawlTime: r?.lastCrawlTime ?? null,
+  };
+}
+
+// Inspecte chaque URL du sitemap une par une (l'API Search Console n'a pas de
+// mode batch), avec une petite pause pour rester loin des quotas.
+async function checkIndexingStatus(accessToken) {
+  const sitemapUrl = new URL('sitemap.xml', GSC_SITE_URL).toString();
+  const urls = await fetchSitemapUrls(sitemapUrl);
+  const results = [];
+  for (const url of urls) {
+    results.push(await inspectUrl(accessToken, url));
+    await new Promise((resolve) => setTimeout(resolve, 300));
+  }
+  return results;
+}
+
 async function ga4TopPages(accessToken, start, end, rowLimit = 10) {
   const res = await fetch(
     `https://analyticsdata.googleapis.com/v1beta/properties/${GA4_PROPERTY_ID}:runReport`,
@@ -224,6 +267,10 @@ async function main() {
       ga4TopPages(accessToken, period.current.start, period.current.end),
     ]);
 
+  // Appel séquentiel (pas de mode batch côté API), fait à part pour ne pas
+  // ralentir les requêtes ci-dessus qui peuvent tourner en parallèle.
+  const indexing = await checkIndexingStatus(accessToken);
+
   const alerts = [];
   if (gscPrevious.clicks > 0) {
     const clicksDelta = ((gscCurrent.clicks - gscPrevious.clicks) / gscPrevious.clicks) * 100;
@@ -249,6 +296,12 @@ async function main() {
   }
   if ((sitemaps.sitemap ?? []).length === 0) {
     alerts.push('⚠️ Aucun sitemap déclaré dans Search Console.');
+  }
+  const notIndexed = indexing.filter((p) => p.verdict !== 'PASS');
+  if (notIndexed.length > 0) {
+    alerts.push(
+      `⚠️ ${notIndexed.length} page(s) du sitemap non indexée(s) par Google : ${notIndexed.map((p) => p.url).join(', ')}.`
+    );
   }
 
   const lines = [];
@@ -315,6 +368,22 @@ async function main() {
     lines.push('| --- | --- | --- | --- |');
     for (const s of sitemaps.sitemap) {
       lines.push(`| ${s.path} | ${s.lastDownloaded ?? '—'} | ${s.errors ?? 0} | ${s.warnings ?? 0} |`);
+    }
+  }
+  lines.push('');
+
+  lines.push('### Statut d\'indexation Google (toutes les pages du sitemap)');
+  lines.push('');
+  if (indexing.length === 0) {
+    lines.push('_Sitemap introuvable ou vide._');
+  } else {
+    lines.push('| Page | Statut | Couverture | Dernier passage de Google |');
+    lines.push('| --- | --- | --- | --- |');
+    for (const p of indexing) {
+      const statusIcon = p.verdict === 'PASS' ? '✅' : p.verdict === 'NEUTRAL' ? '⏳' : '❌';
+      lines.push(
+        `| ${p.url} | ${statusIcon} ${p.verdict} | ${p.coverageState} | ${p.lastCrawlTime ?? 'jamais'} |`
+      );
     }
   }
   lines.push('');
