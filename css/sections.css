@@ -560,6 +560,18 @@ body.treatment-page {
   margin-bottom: 0;
 }
 
+/* --- Bloc "Voir aussi" (maillage interne) -------------------------------- */
+
+.treatment-page__related {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(45, 55, 72, 0.12);
+}
+
+.treatment-page__related h2 {
+  margin-top: 0;
+}
+
 /* --- Figures ------------------------------------------------------------ */
 
 .treatment-page__figure {
