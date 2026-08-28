@@ -1275,24 +1275,166 @@
    * Vidéo hero : MP4 H.264 (OK iPhone + Android), jamais dans le chemin critique.
    * On attend la fin du chargement document (`load`) puis une fenêtre idle pour ne pas
    * concurrencer LCP / images ; poster + preload=none gardent le premier rendu léger.
+   *
+   * Test HQ (rollback) : retirer `data-hero-src-hq` sur `.hero__video` dans index.html.
+   * Sans cet attribut, seul le 720p est chargé.
    */
+  function heroConnectionAllowsVideo(strict) {
+    try {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return false;
+      }
+    } catch (_) {}
+    try {
+      const c = navigator.connection;
+      if (!c) return true;
+      if (c.saveData) return false;
+      const t = typeof c.effectiveType === 'string' ? c.effectiveType : '';
+      if (t === 'slow-2g' || t === '2g') return false;
+      if (strict && t === '3g') return false;
+      if (strict && typeof c.downlink === 'number' && c.downlink > 0 && c.downlink < 1.5) {
+        return false;
+      }
+    } catch (_) {}
+    return true;
+  }
+
+  function runWhenIdle(fn, timeoutMs, fallbackMs) {
+    if (window.requestIdleCallback) {
+      requestIdleCallback(fn, { timeout: timeoutMs });
+    } else {
+      setTimeout(fn, fallbackMs);
+    }
+  }
+
+  function runWhenVisibleAndIdle(fn, timeoutMs, fallbackMs) {
+    const start = () => runWhenIdle(fn, timeoutMs, fallbackMs);
+    if (document.visibilityState === 'hidden') {
+      document.addEventListener('visibilitychange', function onVis() {
+        if (document.visibilityState !== 'visible') return;
+        document.removeEventListener('visibilitychange', onVis);
+        start();
+      });
+      return;
+    }
+    start();
+  }
+
+  /**
+   * Test : après lecture du 720p, fetch basse priorité du 1080p puis swap sans couper
+   * le fond (2e <video> derrière, sync currentTime, fade du 720p).
+   * Rollback : supprimer data-hero-src-hq — cette fonction n'est alors jamais appelée.
+   */
+  function scheduleHeroHqUpgrade(sdVideo, hqSrc) {
+    if (!sdVideo || !hqSrc) return;
+    if (sdVideo.getAttribute('data-hero-hq-scheduled') === 'true') return;
+    sdVideo.setAttribute('data-hero-hq-scheduled', 'true');
+
+    const upgrade = async () => {
+      if (!sdVideo.isConnected) return;
+      if (!heroConnectionAllowsVideo(true)) return;
+
+      let objectUrl = null;
+      let swapped = false;
+      const hq = document.createElement('video');
+      hq.className = 'hero__video';
+      hq.muted = true;
+      hq.defaultMuted = true;
+      hq.volume = 0;
+      hq.loop = true;
+      hq.autoplay = true;
+      hq.playsInline = true;
+      hq.preload = 'auto';
+      hq.setAttribute('muted', '');
+      hq.setAttribute('playsinline', '');
+      hq.setAttribute('aria-hidden', 'true');
+      hq.setAttribute('data-hero-quality', '1080p');
+
+      const cleanupHq = () => {
+        if (objectUrl) {
+          try { URL.revokeObjectURL(objectUrl); } catch (_) {}
+          objectUrl = null;
+        }
+        if (hq.parentNode) hq.remove();
+      };
+
+      const swapIn = () => {
+        if (swapped) return;
+        swapped = true;
+        if (!sdVideo.isConnected || !hq.isConnected) {
+          cleanupHq();
+          return;
+        }
+        try {
+          hq.currentTime = sdVideo.currentTime || 0;
+        } catch (_) {}
+        const go = () => {
+          sdVideo.style.transition = 'opacity 400ms ease';
+          sdVideo.style.opacity = '0';
+          window.setTimeout(() => {
+            try { sdVideo.pause(); } catch (_) {}
+            if (sdVideo.parentNode) sdVideo.remove();
+          }, 420);
+        };
+        const playPromise = hq.play();
+        if (playPromise && typeof playPromise.then === 'function') {
+          playPromise.then(go).catch(cleanupHq);
+        } else {
+          go();
+        }
+      };
+
+      hq.addEventListener('error', cleanupHq, { once: true });
+      hq.addEventListener('canplaythrough', swapIn, { once: true });
+
+      let blob = null;
+      try {
+        if (location.protocol !== 'file:' && typeof fetch === 'function') {
+          const res = await fetch(hqSrc, { priority: 'low', credentials: 'same-origin' });
+          if (!res.ok) throw new Error('hq-http');
+          blob = await res.blob();
+          if (!sdVideo.isConnected) {
+            cleanupHq();
+            return;
+          }
+        }
+      } catch (_) {
+        blob = null;
+      }
+
+      const hero = sdVideo.parentNode;
+      if (!hero) {
+        cleanupHq();
+        return;
+      }
+      hero.insertBefore(hq, sdVideo);
+      if (blob) {
+        objectUrl = URL.createObjectURL(blob);
+        hq.src = objectUrl;
+      } else {
+        const source = document.createElement('source');
+        source.src = hqSrc;
+        source.type = 'video/mp4';
+        hq.appendChild(source);
+      }
+      try { hq.load(); } catch (_) {}
+      if (hq.readyState >= 2) swapIn();
+      window.setTimeout(() => {
+        if (swapped || !hq.isConnected || !sdVideo.isConnected) return;
+        if (hq.readyState >= 2) swapIn();
+      }, 6000);
+    };
+
+    runWhenVisibleAndIdle(() => { void upgrade(); }, 12000, 2500);
+  }
+
   function initHeroVideoDeferred() {
     const video = $('.hero__video[data-hero-src]');
     if (!video) return;
     const src = video.getAttribute('data-hero-src');
     if (!src) return;
 
-    try {
-      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    } catch {}
-    try {
-      if (navigator.connection && navigator.connection.saveData) return;
-      if (navigator.connection && typeof navigator.connection.effectiveType === 'string') {
-        const t = navigator.connection.effectiveType;
-        if (t === 'slow-2g' || t === '2g') return;
-      }
-    } catch {}
-
+    if (!heroConnectionAllowsVideo(false)) return;
     if (video.querySelector('source')) return;
 
     const start = () => {
@@ -1300,20 +1442,24 @@
       source.src = src;
       source.type = 'video/mp4';
       video.appendChild(source);
+      video.setAttribute('data-hero-quality', '720p');
       try {
         video.load();
       } catch (_) {}
       const playPromise = video.play();
       if (playPromise && typeof playPromise.catch === 'function') playPromise.catch(() => {});
-    };
 
-    const runAfterQuiet = () => {
-      if (window.requestIdleCallback) {
-        requestIdleCallback(start, { timeout: 4000 });
+      const hqSrc = video.getAttribute('data-hero-src-hq');
+      if (!hqSrc) return;
+      const armHq = () => scheduleHeroHqUpgrade(video, hqSrc);
+      if (!video.paused && video.readyState >= 2) {
+        armHq();
       } else {
-        setTimeout(start, 900);
+        video.addEventListener('playing', armHq, { once: true });
       }
     };
+
+    const runAfterQuiet = () => runWhenIdle(start, 4000, 900);
 
     // Après `load` : le navigateur a fini les ressources synchrones du document (meilleur pour perf / LCP).
     if (document.readyState === 'complete') {

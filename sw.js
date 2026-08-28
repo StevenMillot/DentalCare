@@ -43,6 +43,8 @@ self.addEventListener('fetch', (event) => {
   if (req.method !== 'GET') return;
 
   const url = new URL(req.url);
+  // data:, blob:, chrome-extension:, etc. : ne pas intercepter
+  if (url.protocol !== 'http:' && url.protocol !== 'https:') return;
   if (url.origin !== self.location.origin) return;
 
   const isHTML =
