@@ -36,6 +36,12 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:alt" content="Équipe du cabinet Paro-Spé — Châtenay-Malabry (92)">
+    <!-- 1:1 centré : format de la pastille Google (le 1.91:1 ci-dessus reste pour Facebook / LinkedIn) -->
+    <meta property="og:image" content="https://paro-spe.fr/assets/cabinet-gallery/equipe-groupe-square.jpg?v=20260828">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="1200">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:alt" content="Équipe du cabinet Paro-Spé — Châtenay-Malabry (92)">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Cabinet de chirurgie dentaire à Châtenay-Malabry (92) — Parodontie, Implantologie &amp; Chirurgie orale | Paro-Spé">
     <meta name="twitter:description" content="Parodontite, maladies des gencives, implants dentaires, greffes gingivales et chirurgie orale. Cabinet spécialisé à Châtenay-Malabry. Rendez-vous en ligne.">
@@ -66,11 +72,16 @@
       "about": { "@id": "https://paro-spe.fr/#dentist" },
       "description": "Parodontite, maladies des gencives, implants dentaires, greffes gingivales et chirurgie orale. Cabinet spécialisé à Châtenay-Malabry. Rendez-vous en ligne.",
       "inLanguage": "fr-FR",
-      "primaryImageOfPage": {
-        "@type": "ImageObject",
-        "url": "https://paro-spe.fr/assets/cabinet-gallery/equipe-groupe-og.jpg?v=20260804",
-        "caption": "Équipe du cabinet Paro-Spé à Châtenay-Malabry"
-      }
+      "primaryImageOfPage": { "@id": "https://paro-spe.fr/#primaryimage" }
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://paro-spe.fr/#primaryimage",
+      "url": "https://paro-spe.fr/assets/cabinet-gallery/equipe-groupe-square.jpg?v=20260828",
+      "contentUrl": "https://paro-spe.fr/assets/cabinet-gallery/equipe-groupe-square.jpg?v=20260828",
+      "width": 1200,
+      "height": 1200,
+      "caption": "Équipe du cabinet Paro-Spé à Châtenay-Malabry"
     },
     {
       "@type": ["Dentist", "LocalBusiness", "MedicalBusiness"],
@@ -81,9 +92,8 @@
       "url": "https://paro-spe.fr/",
       "logo": "https://paro-spe.fr/favicon.svg",
       "image": [
-        "https://paro-spe.fr/assets/cabinet-gallery/equipe-groupe-og.jpg?v=20260804",
-        "https://paro-spe.fr/assets/team/raphael-brochand-chirurgien-dentiste.jpg",
-        "https://paro-spe.fr/apple-touch-icon.png"
+        { "@id": "https://paro-spe.fr/#primaryimage" },
+        "https://paro-spe.fr/assets/cabinet-gallery/equipe-groupe-og.jpg?v=20260804"
       ],
       "telephone": "+33675173880",
       "email": "secretariat@paro-spe.fr",
@@ -249,7 +259,7 @@
         "@type": "ReserveAction",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": "https://www.doctolib.fr/dentiste/chatenay-malabry/raphael-brochand",
+          "urlTemplate": "https://www.doctolib.fr/cabinet-dentaire/chatenay-malabry/cabinet-paro-spe",
           "actionPlatform": [
             "http://schema.org/DesktopWebPlatform",
             "http://schema.org/MobileWebPlatform"
@@ -261,7 +271,7 @@
         }
       },
       "sameAs": [
-        "https://www.doctolib.fr/dentiste/chatenay-malabry/raphael-brochand",
+        "https://www.doctolib.fr/cabinet-dentaire/chatenay-malabry/cabinet-paro-spe",
         "https://www.instagram.com/paro.spe"
       ],
       "contactPoint": [
@@ -282,7 +292,7 @@
       "jobTitle": "Chirurgien-dentiste",
       "url": "https://paro-spe.fr/specialiste-raphael-brochand.html",
       "telephone": "+33675173880",
-      "image": "https://paro-spe.fr/assets/team/raphael-brochand-chirurgien-dentiste.jpg",
+      "image": "https://paro-spe.fr/assets/team/raphael-brochand-chirurgien-dentiste-square.jpg?v=20260828",
       "worksFor": { "@id": "https://paro-spe.fr/#dentist" },
       "address": {
         "@type": "PostalAddress",
@@ -300,7 +310,7 @@
       "jobTitle": "Chirurgien-dentiste",
       "url": "https://paro-spe.fr/specialiste-cecile-guelaud.html",
       "telephone": "+33675173880",
-      "image": "https://paro-spe.fr/assets/team/cecile-guelaud-chirurgien-dentiste.jpg",
+      "image": "https://paro-spe.fr/assets/team/cecile-guelaud-chirurgien-dentiste-square.jpg?v=20260828",
       "worksFor": { "@id": "https://paro-spe.fr/#dentist" },
       "address": {
         "@type": "PostalAddress",
@@ -318,7 +328,7 @@
       "jobTitle": "Chirurgien-dentiste",
       "url": "https://paro-spe.fr/specialiste-cathy-birgy.html",
       "telephone": "+33675173880",
-      "image": "https://paro-spe.fr/assets/team/cathy-birgy-chirurgien-dentiste.jpg",
+      "image": "https://paro-spe.fr/assets/team/cathy-birgy-chirurgien-dentiste-square.jpg?v=20260828",
       "worksFor": { "@id": "https://paro-spe.fr/#dentist" },
       "address": {
         "@type": "PostalAddress",
@@ -654,7 +664,7 @@
                     <a class="team-card team-card--link card card--padded" href="specialiste-cathy-birgy.html" aria-labelledby="team-spec-name-3">
                         <div class="team-card__media">
                             <img
-                              src="assets/team/cathy-birgy-chirurgien-dentiste.jpg"
+                              src="assets/team/cathy-birgy-chirurgien-dentiste-720w.jpg"
                               srcset="
                                 assets/team/cathy-birgy-chirurgien-dentiste-360w.jpg 360w,
                                 assets/team/cathy-birgy-chirurgien-dentiste-540w.jpg 540w,
@@ -702,7 +712,7 @@
                     <article class="team-card team-card--assistant card card--padded">
                         <div class="team-card__media">
                             <img
-                              src="assets/team/assia-assistante-dentaire.jpg"
+                              src="assets/team/assia-assistante-dentaire-720w.jpg"
                               srcset="
                                 assets/team/assia-assistante-dentaire-360w.jpg 360w,
                                 assets/team/assia-assistante-dentaire-540w.jpg 540w,
@@ -738,22 +748,27 @@
                                 <figure id="cabinet-slide-0" class="cabinet-media-carousel__slide" data-cabinet-slide data-thumb="assets/cabinet-gallery/equipe-groupe-240w.avif" data-label="Équipe du cabinet">
                                     <div class="cabinet-media-carousel__slide-inner">
                                         <div class="cabinet-media-carousel__media">
-                                            <img
-                                              src="assets/cabinet-gallery/equipe-groupe-640w.avif"
-                                              srcset="
-                                                assets/cabinet-gallery/equipe-groupe-480w.avif 480w,
-                                                assets/cabinet-gallery/equipe-groupe-640w.avif 640w,
-                                                assets/cabinet-gallery/equipe-groupe-960w.avif 960w,
-                                                assets/cabinet-gallery/equipe-groupe-1600w.avif 1600w
-                                              "
-                                              sizes="calc((min(100vw, 1200px) - 3rem) / 1.4)"
-                                              alt="Équipe du cabinet Paro-Spé à Châtenay-Malabry"
-                                              width="1600"
-                                              height="900"
-                                              fetchpriority="high"
-                                              loading="eager"
-                                              decoding="async"
-                                            >
+                                            <picture>
+                                              <source
+                                                type="image/avif"
+                                                srcset="
+                                                  assets/cabinet-gallery/equipe-groupe-480w.avif 480w,
+                                                  assets/cabinet-gallery/equipe-groupe-640w.avif 640w,
+                                                  assets/cabinet-gallery/equipe-groupe-960w.avif 960w,
+                                                  assets/cabinet-gallery/equipe-groupe-1600w.avif 1600w
+                                                "
+                                                sizes="calc((min(100vw, 1200px) - 3rem) / 1.4)"
+                                              >
+                                              <img
+                                                src="assets/cabinet-gallery/equipe-groupe-square.jpg?v=20260828"
+                                                alt="Équipe du cabinet Paro-Spé à Châtenay-Malabry"
+                                                width="1600"
+                                                height="900"
+                                                fetchpriority="high"
+                                                loading="eager"
+                                                decoding="async"
+                                              >
+                                            </picture>
                                             <button type="button" class="cabinet-media-carousel__open" aria-label="Agrandir : Équipe du cabinet"></button>
                                         </div>
                                     </div>
@@ -1212,7 +1227,8 @@
                             La plateforme Doctolib vous permet de prendre rendez-vous en ligne de manière rapide et pratique.
                         </p>
                         <div class="doctolib__actions">
-                            <a href="https://www.doctolib.fr/dentiste/chatenay-malabry/raphael-brochand/booking" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+                            <a href="https://www.doctolib.fr/cabinet-dentaire/chatenay-malabry/cabinet-paro-spe" target="_blank" rel="noopener noreferrer" class="btn btn--primary
+                            doctolib__actions-link">
                                 <svg class="icon icon--sm" aria-hidden="true"><use href="assets/Icones/icons.svg#i-calendar-plus"></use></svg>
                                 Prendre RDV sur Doctolib
                             </a>
@@ -1241,7 +1257,7 @@
                         >
                             <p class="text text--sm map__placeholder-text">
                                 Google Maps est désactivée par défaut.
-                                <br>Cliquez pour afficher le cabinet <span class="brand-name">Paro-Spé</span> sur la carte.
+                                <br>Cliquez ci-dessous pour afficher le cabinet <span class="brand-name">Paro-Spé</span> sur la carte.
                             </p>
                             <button type="button" class="btn btn--primary map__activate">
                                 Charger Google&nbsp;Maps

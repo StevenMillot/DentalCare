@@ -250,19 +250,23 @@
   min-height: 0;
 }
 
-.cabinet-media-carousel__media img,
-.cabinet-media-carousel__media video {
+.cabinet-media-carousel__media picture {
   display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
 }
 
 .cabinet-media-carousel__media img,
 .cabinet-media-carousel__media video {
+  display: block;
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* Slides latérales atténuées (desktop + mobile, 20 % visibles) — pas de filter:blur (coût GPU / Lighthouse) */

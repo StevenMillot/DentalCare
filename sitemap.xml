@@ -1,28 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://paro-spe.fr/</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://paro-spe.fr/assets/cabinet-gallery/equipe-groupe-square.jpg</image:loc>
+      <image:title>Équipe du cabinet Paro-Spé à Châtenay-Malabry</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://paro-spe.fr/specialiste-raphael-brochand.html</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://paro-spe.fr/assets/team/raphael-brochand-chirurgien-dentiste-square.jpg</image:loc>
+      <image:title>Portrait du Dr Raphaël Brochand</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://paro-spe.fr/specialiste-cecile-guelaud.html</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://paro-spe.fr/assets/team/cecile-guelaud-chirurgien-dentiste-square.jpg</image:loc>
+      <image:title>Portrait du Dr Cécile Guélaud</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://paro-spe.fr/specialiste-cathy-birgy.html</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://paro-spe.fr/assets/team/cathy-birgy-chirurgien-dentiste-square.jpg</image:loc>
+      <image:title>Portrait du Dr Cathy Birgy</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://paro-spe.fr/parodontie-traitement-maladies-parodontales.html</loc>

@@ -36,6 +36,9 @@ export const TARGETS = [
 /** Variante simple : `photo-720w.jpg` */
 export const RE_SINGLE_VARIANT = /-\d+w\.(?:avif|jpe?g)$/i;
 
+/** Crops SEO (miniatures Google / Open Graph), pas des originaux srcset. */
+export const RE_SEO_CROP = /-(?:square|og)\.(?:jpe?g)$/i;
+
 /** Doublon corrompu : `photo-1080w-360w.jpg` (ne jamais utiliser comme source) */
 export const RE_MULTI_VARIANT = /-\d+w-.*-\d+w\.(?:avif|jpe?g)$/i;
 
@@ -63,6 +66,7 @@ export function isOriginal(filename, allowedExts) {
   if (!allowedExts.includes(ext)) return false;
   if (isResponsiveVariant(filename)) return false;
   if (isMultiVariant(filename)) return false;
+  if (RE_SEO_CROP.test(filename)) return false;
   return true;
 }
 

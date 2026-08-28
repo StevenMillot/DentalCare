@@ -15,10 +15,11 @@ Ouvrir [http://127.0.0.1:8000/](http://127.0.0.1:8000/) — éviter `file://` (s
 
 ---
 
-## Les 2 commandes à retenir
+## Les commandes à retenir
 
 | Commande | Quand |
 |----------|-------|
+| **`npm run css:watch`** | Pendant le CSS : régénère `bundle.css` à chaque sauvegarde |
 | **`npm run dev:refresh`** | Après modif CSS, JS ou sprite `icons.svg` |
 | **`npm run deploy:prepare`** | Juste avant `git push` (déploiement) |
 
@@ -52,7 +53,13 @@ Tu n’as donc **pas** à lancer à la main : `css:*`, `js:*`, `icons:sync-inlin
    - CSS → fichiers dans `css/` (pas `bundle.css` directement)
    - JS global → `js/script.js`
    - Carrousel → `js/src/carousel/`
-2. Lancer :
+2. Pendant une session CSS, laisser tourner :
+
+```bash
+npm run css:watch
+```
+
+Puis recharger la page. Pour un rebuild unique (CSS + JS + sprite) :
 
 ```bash
 npm run dev:refresh
@@ -131,13 +138,14 @@ tools/                  Génération images responsive
 
 ## Scripts (`scripts/` et `tools/`) — référence
 
-Détail pour comprendre ce qui tourne sous le capot. En usage normal : seulement `dev:refresh` et `deploy:prepare`.
+Détail pour comprendre ce qui tourne sous le capot. En usage normal : `css:watch`, `dev:refresh` et `deploy:prepare`.
 
 | npm | Inclus dans | Rôle |
 |-----|-------------|------|
 | `dev:refresh` | — | **Commande principale dev** |
+| `css:watch` | — | Recrée `bundle.css` à chaque sauvegarde CSS |
 | `deploy:prepare` | — | **Commande principale deploy** |
-| `css:bundle` / `css:minify` | `dev:refresh` | Assemble et minifie le CSS |
+| `css:bundle` / `css:minify` | `dev:refresh` / `css:watch` | Assemble et minifie le CSS |
 | `js:bundle` / `js:minify` | `dev:refresh` | Assemble et minifie le JS |
 | `icons:sync-inline` | `dev:refresh` | Sprite → fallback dans `script.js` |
 | `images:responsive` | `deploy:prepare` | Variantes `srcset` manquantes |
