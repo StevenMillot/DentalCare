@@ -192,7 +192,8 @@
 #cabinet,
 #technologies,
 #contact,
-#doctolib {
+#doctolib,
+#faq {
   scroll-margin-top: var(--header-height);
 }
 
@@ -204,7 +205,8 @@
 #cabinet:focus,
 #technologies:focus,
 #contact:focus,
-#doctolib:focus {
+#doctolib:focus,
+#faq:focus {
   outline: none;
 }
 

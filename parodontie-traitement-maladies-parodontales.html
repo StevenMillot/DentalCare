@@ -96,6 +96,55 @@
           "about": { "@id": "https://paro-spe.fr/parodontie-traitement-maladies-parodontales.html#procedure" },
           "breadcrumb": { "@id": "https://paro-spe.fr/parodontie-traitement-maladies-parodontales.html#breadcrumb" },
           "inLanguage": "fr-FR"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://paro-spe.fr/parodontie-traitement-maladies-parodontales.html#faqpage",
+          "url": "https://paro-spe.fr/parodontie-traitement-maladies-parodontales.html#faq",
+          "isPartOf": { "@id": "https://paro-spe.fr/parodontie-traitement-maladies-parodontales.html#webpage" },
+          "inLanguage": "fr-FR",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Quelle est la différence entre gingivite et parodontite ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "La gingivite est une inflammation de la gencive, généralement réversible avec un traitement adapté. La parodontite est une maladie inflammatoire chronique qui détruit progressivement les tissus de soutien de la dent (gencive, ligament, os)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Comment se déroule le traitement des maladies parodontales ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "La prise en charge combine plusieurs étapes : perfectionnement de l’hygiène, contrôle des facteurs de risque (tabac, diabète, stress), assainissement parodontal, éventuellement une chirurgie, puis une maintenance régulière."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Une parodontite peut-elle être guérie ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "La parodontite est une maladie chronique. L’objectif du traitement est d’arrêter l’évolution, de stabiliser les tissus de soutien et de prévenir les récidives grâce à un suivi régulier."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Le traitement parodontal est-il douloureux ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Les soins d’assainissement se font sous anesthésie locale si besoin. Une gêne passagère peut suivre les séances ; l’équipe adapte la prise en charge à chaque patient."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Pourquoi un suivi après le traitement ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "La maintenance parodontale permet de contrôler la stabilité des tissus, de prévenir les récidives et d’adapter l’hygiène au fil du temps. Sans suivi, le risque de réapparition de la maladie augmente."
+              }
+            }
+          ]
         }
       ]
     }
@@ -222,6 +271,33 @@ body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Ro
                             <p class="paro-protocol__text"><strong>Maintenance parodontale</strong> — Contrôles réguliers pour stabiliser la situation et prévenir les récidives.</p>
                         </li>
                     </ol>
+                </section>
+
+                <!-- Test visuel FAQ (style éditorial, sans accordéon) — à comparer avec la FAQ accueil -->
+                <section id="faq" class="paro-section paro-faq" aria-labelledby="paro-faq-title">
+                    <h2 id="paro-faq-title" class="paro-section__label">Questions fréquentes</h2>
+                    <dl class="paro-faq__list">
+                        <div class="paro-faq__item">
+                            <dt class="paro-faq__q">Quelle est la différence entre gingivite et parodontite&nbsp;?</dt>
+                            <dd class="paro-faq__a">La gingivite est une inflammation de la gencive, généralement réversible avec un traitement adapté. La parodontite est une maladie inflammatoire chronique qui détruit progressivement les tissus de soutien de la dent (gencive, ligament, os).</dd>
+                        </div>
+                        <div class="paro-faq__item">
+                            <dt class="paro-faq__q">Comment se déroule le traitement des maladies parodontales&nbsp;?</dt>
+                            <dd class="paro-faq__a">La prise en charge combine plusieurs étapes : perfectionnement de l’hygiène, contrôle des facteurs de risque (tabac, diabète, stress), assainissement parodontal, éventuellement une chirurgie, puis une maintenance régulière.</dd>
+                        </div>
+                        <div class="paro-faq__item">
+                            <dt class="paro-faq__q">Une parodontite peut-elle être guérie&nbsp;?</dt>
+                            <dd class="paro-faq__a">La parodontite est une maladie chronique. L’objectif du traitement est d’arrêter l’évolution, de stabiliser les tissus de soutien et de prévenir les récidives grâce à un suivi régulier.</dd>
+                        </div>
+                        <div class="paro-faq__item">
+                            <dt class="paro-faq__q">Le traitement parodontal est-il douloureux&nbsp;?</dt>
+                            <dd class="paro-faq__a">Les soins d’assainissement se font sous anesthésie locale si besoin. Une gêne passagère peut suivre les séances ; l’équipe adapte la prise en charge à chaque patient.</dd>
+                        </div>
+                        <div class="paro-faq__item">
+                            <dt class="paro-faq__q">Pourquoi un suivi après le traitement&nbsp;?</dt>
+                            <dd class="paro-faq__a">La maintenance parodontale permet de contrôler la stabilité des tissus, de prévenir les récidives et d’adapter l’hygiène au fil du temps. Sans suivi, le risque de réapparition de la maladie augmente.</dd>
+                        </div>
+                    </dl>
                 </section>
 
                 <section class="paro-section treatment-page__related" aria-labelledby="paro-voir-aussi">

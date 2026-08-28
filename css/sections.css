@@ -838,6 +838,45 @@ body.treatment-page {
   font-weight: 600;
 }
 
+/* FAQ éditoriale (test page traitement — toujours visible, sans accordéon) */
+.paro-faq__list {
+  display: grid;
+  gap: 0;
+  margin: 0;
+}
+
+.paro-faq__item {
+  display: grid;
+  gap: var(--space-xs);
+  padding: var(--space-md) 0 var(--space-md) var(--space-md);
+  border-bottom: 1px solid rgba(45, 55, 72, 0.1);
+  border-left: 3px solid var(--color-primary);
+}
+
+.paro-faq__item:first-child {
+  padding-top: 0;
+}
+
+.paro-faq__item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.paro-faq__q {
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-dark);
+}
+
+.paro-faq__a {
+  margin: 0;
+  color: var(--treatment-text);
+  line-height: 1.7;
+  font-size: var(--font-size-sm);
+}
+
 @media (max-width: 960px) {
   .paro-tissues {
     grid-template-columns: 1fr;

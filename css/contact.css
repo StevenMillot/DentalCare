@@ -183,8 +183,102 @@
   transform: translateX(4px);
 }
 
-.contact__map-section {
+.contact__map-section,
+.contact__faq-section {
   margin-top: var(--space-2xl);
+}
+
+.contact__faq-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  color: var(--color-dark);
+}
+
+.faq {
+  display: flex;
+  flex-direction: column;
+}
+
+.faq__item {
+  border-bottom: 1px solid rgba(45, 55, 72, 0.1);
+}
+
+.faq__item:last-child {
+  border-bottom: 0;
+}
+
+.faq__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  width: 100%;
+  min-height: 44px;
+  padding: var(--space-md) 0;
+  cursor: pointer;
+  list-style: none;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-dark);
+  overflow-wrap: anywhere;
+}
+
+.faq__question::-webkit-details-marker {
+  display: none;
+}
+
+.faq__question::marker {
+  content: '';
+}
+
+.faq__question::after {
+  content: '';
+  flex: 0 0 0.45rem;
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-top: -0.15em;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform var(--transition);
+}
+
+.faq__item[open] .faq__question {
+  color: var(--color-primary);
+}
+
+.faq__item[open] .faq__question::after {
+  margin-top: 0.2em;
+  transform: rotate(225deg);
+}
+
+.faq__answer {
+  padding: 0 0 var(--space-md);
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+.faq__answer p {
+  margin: 0;
+}
+
+.faq__answer ul {
+  margin: var(--space-sm) 0 0 1.15rem;
+}
+
+.faq__answer li + li {
+  margin-top: var(--space-xs);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq__question::after {
+    transition: none;
+  }
 }
 
 @media (max-width: 767px) {
@@ -560,7 +654,8 @@ a.contact__link:focus-visible {
     transform: none;
   }
 
-  .contact__map {
+  .contact__map,
+  .contact__faq {
     padding: var(--space-md);
   }
 
