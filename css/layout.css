@@ -57,6 +57,15 @@
   text-align: center;
 }
 
+/* Bandeau fond plein viewport (sort d’un .container centré) */
+.full-bleed {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  box-sizing: border-box;
+}
+
 @media (max-width: 1060px) {
   .treatment-page--specialist .container {
     padding: 0 var(--space-2xl);

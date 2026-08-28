@@ -72,7 +72,26 @@
       "about": { "@id": "https://paro-spe.fr/#dentist" },
       "description": "Parodontite, maladies des gencives, implants dentaires, greffes gingivales et chirurgie orale. Cabinet spécialisé à Châtenay-Malabry. Rendez-vous en ligne.",
       "inLanguage": "fr-FR",
-      "primaryImageOfPage": { "@id": "https://paro-spe.fr/#primaryimage" }
+      "primaryImageOfPage": { "@id": "https://paro-spe.fr/#primaryimage" },
+      "hasPart": { "@id": "https://paro-spe.fr/#faqpage" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://paro-spe.fr/#faq-breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://paro-spe.fr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "FAQ",
+          "item": "https://paro-spe.fr/#faq"
+        }
+      ]
     },
     {
       "@type": "ImageObject",
@@ -133,6 +152,7 @@
         "Maladies parodontales",
         "Greffe gingivale"
       ],
+      "knowsLanguage": ["French", "English"],
       "areaServed": [
         { "@type": "City", "name": "Châtenay-Malabry" },
         { "@type": "AdministrativeArea", "name": "Hauts-de-Seine" },
@@ -280,7 +300,7 @@
           "contactType": "customer service",
           "email": "secretariat@paro-spe.fr",
           "telephone": "+33675173880",
-          "availableLanguage": ["French"],
+          "availableLanguage": ["French", "English"],
           "areaServed": "FR"
         }
       ]
@@ -343,25 +363,11 @@
       "@type": "FAQPage",
       "@id": "https://paro-spe.fr/#faqpage",
       "url": "https://paro-spe.fr/#faq",
+      "name": "FAQ — Cabinet Paro-Spé",
       "isPartOf": { "@id": "https://paro-spe.fr/#webpage" },
+      "breadcrumb": { "@id": "https://paro-spe.fr/#faq-breadcrumb" },
       "inLanguage": "fr-FR",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Quelle est l'adresse du cabinet Paro-Spé ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "L'adresse du cabinet Paro-Spé est 40 Avenue de la Division Leclerc, 92290 Châtenay-Malabry."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Quels sont les horaires d'ouverture du cabinet Paro-Spé ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Le cabinet Paro-Spé est ouvert du lundi au jeudi, de 09h00 à 18h00."
-          }
-        },
         {
           "@type": "Question",
           "name": "Quels sont les moyens de paiement acceptés par le cabinet Paro-Spé ?",
@@ -538,6 +544,7 @@
     <nav class="skip-links" aria-label="Accès rapide">
         <a href="#main-content" class="skip-link">Aller au contenu principal</a>
         <a href="#contact" class="skip-link">Aller au contact</a>
+        <a href="#faq" class="skip-link">Aller à la FAQ</a>
         <a href="#doctolib" class="skip-link">Prendre rendez-vous</a>
     </nav>
 <!-- Navigation -->
@@ -1274,7 +1281,7 @@
                 </div>
             </div>
             <!-- Section Doctolib - Pleine largeur -->
-            <div id="doctolib" class="contact__doctolib-section" tabindex="-1">
+            <div id="doctolib" class="contact__doctolib-section full-bleed" tabindex="-1">
                 <div class="container">
                     <div class="contact__doctolib-content">
                         <div class="doctolib__header">
@@ -1335,57 +1342,39 @@
                     </div>
                 </div>
             </div>
-            <div id="faq" class="contact__faq-section" tabindex="-1">
-                <div class="contact__faq card card--padded">
-                    <h3 class="contact__faq-title">
-                        <svg class="icon icon--md icon--primary" aria-hidden="true"><use href="assets/Icones/icons.svg#i-info"></use></svg>
-                        FAQ
-                    </h3>
-                    <div class="faq">
-                        <details class="faq__item" name="contact-faq">
-                            <summary class="faq__question">Quelle est l'adresse du cabinet Paro-Spé ?</summary>
-                            <div class="faq__answer">
-                                <p>L'adresse du cabinet Paro-Spé est 40 Avenue de la Division Leclerc, 92290 Châtenay-Malabry.</p>
-                            </div>
-                        </details>
-                        <details class="faq__item" name="contact-faq">
-                            <summary class="faq__question">Quels sont les horaires d'ouverture du cabinet Paro-Spé ?</summary>
-                            <div class="faq__answer">
-                                <p>Le cabinet Paro-Spé est ouvert&nbsp;:</p>
-                                <ul>
-                                    <li>Lundi : 09h00 - 18h00</li>
-                                    <li>Mardi : 09h00 - 18h00</li>
-                                    <li>Mercredi : 09h00 - 18h00</li>
-                                    <li>Jeudi : 09h00 - 18h00</li>
-                                </ul>
-                            </div>
-                        </details>
-                        <details class="faq__item" name="contact-faq">
-                            <summary class="faq__question">Quels sont les moyens de paiement acceptés par le cabinet Paro-Spé ?</summary>
-                            <div class="faq__answer">
-                                <p>Le cabinet Paro-Spé accepte les chèques, les espèces et la carte bancaire.</p>
-                            </div>
-                        </details>
-                        <details class="faq__item" name="contact-faq">
-                            <summary class="faq__question">Est-ce que le cabinet Paro-Spé accepte la carte Vitale ?</summary>
-                            <div class="faq__answer">
-                                <p>Oui, le cabinet Paro-Spé accepte la carte Vitale.</p>
-                            </div>
-                        </details>
-                        <details class="faq__item" name="contact-faq">
-                            <summary class="faq__question">Quelles sont les langues parlées au cabinet Paro-Spé ?</summary>
-                            <div class="faq__answer">
-                                <p>Les langues parlées au cabinet Paro-Spé sont le français et l'anglais.</p>
-                            </div>
-                        </details>
-                        <details class="faq__item" name="contact-faq">
-                            <summary class="faq__question">Est-ce que le cabinet Paro-Spé accepte des nouveaux patients ?</summary>
-                            <div class="faq__answer">
-                                <p>Oui, le cabinet Paro-Spé accepte de nouveaux patients.</p>
-                            </div>
-                        </details>
+        </div>
+    </section>
+    <section id="faq" class="section faq-section" aria-labelledby="faq-title" tabindex="-1">
+        <div class="container">
+            <header class="faq__header">
+                <svg class="icon icon--md icon--primary" aria-hidden="true"><use href="assets/Icones/icons.svg#i-info"></use></svg>
+                <h2 id="faq-title" class="heading heading--lg gradient-text">FAQ</h2>
+            </header>
+            <div class="faq">
+                <details class="faq__item" name="home-faq">
+                    <summary class="faq__question">Quels sont les moyens de paiement acceptés par le cabinet Paro-Spé ?</summary>
+                    <div class="faq__answer">
+                        <p>Le cabinet Paro-Spé accepte les chèques, les espèces et la carte bancaire.</p>
                     </div>
-                </div>
+                </details>
+                <details class="faq__item" name="home-faq">
+                    <summary class="faq__question">Est-ce que le cabinet Paro-Spé accepte la carte Vitale ?</summary>
+                    <div class="faq__answer">
+                        <p>Oui, le cabinet Paro-Spé accepte la carte Vitale.</p>
+                    </div>
+                </details>
+                <details class="faq__item" name="home-faq">
+                    <summary class="faq__question">Quelles sont les langues parlées au cabinet Paro-Spé ?</summary>
+                    <div class="faq__answer">
+                        <p>Les langues parlées au cabinet Paro-Spé sont le français et l'anglais.</p>
+                    </div>
+                </details>
+                <details class="faq__item" name="home-faq">
+                    <summary class="faq__question">Est-ce que le cabinet Paro-Spé accepte des nouveaux patients ?</summary>
+                    <div class="faq__answer">
+                        <p>Oui, le cabinet Paro-Spé accepte de nouveaux patients.</p>
+                    </div>
+                </details>
             </div>
         </div>
     </section>
@@ -1429,6 +1418,8 @@
             <div class="footer__bottom">
                 <p>&copy; <span class="copyright-year"></span> Cabinet <span class="brand-name">Paro-Spé</span>. Tous droits réservés.</p>
                 <div class="footer__legal">
+                    <a class="link--bold" href="#faq">FAQ</a>
+                    <span aria-hidden="true"> · </span>
                     <a class="link--bold" href="mentions-legales.html">Mentions légales</a>
                     <span aria-hidden="true"> · </span>
                     <a class="link--bold" href="politique-de-confidentialite.html">Politique de confidentialité</a>

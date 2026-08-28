@@ -651,7 +651,7 @@ body.treatment-page {
 
 .treatment-page__body--parodontal {
   display: grid;
-  gap: var(--space-xl);
+  gap: var(--space-2xl);
   max-width: var(--container-max);
   margin-inline: auto;
 }
@@ -839,6 +839,18 @@ body.treatment-page {
 }
 
 /* FAQ éditoriale (test page traitement — toujours visible, sans accordéon) */
+.paro-faq {
+  gap: var(--space-lg);
+  padding-block: var(--space-lg);
+  padding-inline: max(
+    var(--space-lg),
+    calc((100vw - min(100vw, var(--container-max))) / 2 + var(--space-lg))
+  );
+  background: linear-gradient(135deg, rgba(0, 212, 170, 0.05), rgba(102, 126, 234, 0.05));
+  border-top: 1px solid rgba(0, 212, 170, 0.2);
+  border-bottom: 1px solid rgba(0, 212, 170, 0.2);
+}
+
 .paro-faq__list {
   display: grid;
   gap: 0;
@@ -853,13 +865,14 @@ body.treatment-page {
   border-left: 3px solid var(--color-primary);
 }
 
-.paro-faq__item:first-child {
-  padding-top: 0;
-}
-
 .paro-faq__item:last-child {
   border-bottom: 0;
-  padding-bottom: 0;
+}
+
+.paro-faq + .treatment-page__related {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
 }
 
 .paro-faq__q {

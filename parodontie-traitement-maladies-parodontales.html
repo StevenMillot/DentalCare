@@ -95,13 +95,46 @@
           "isPartOf": { "@id": "https://paro-spe.fr/#website" },
           "about": { "@id": "https://paro-spe.fr/parodontie-traitement-maladies-parodontales.html#procedure" },
           "breadcrumb": { "@id": "https://paro-spe.fr/parodontie-traitement-maladies-parodontales.html#breadcrumb" },
+          "hasPart": { "@id": "https://paro-spe.fr/parodontie-traitement-maladies-parodontales.html#faqpage" },
           "inLanguage": "fr-FR"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://paro-spe.fr/parodontie-traitement-maladies-parodontales.html#faq-breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Accueil",
+              "item": "https://paro-spe.fr/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Traitements",
+              "item": "https://paro-spe.fr/#traitements"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Parodontie",
+              "item": "https://paro-spe.fr/parodontie-traitement-maladies-parodontales.html"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Questions fréquentes",
+              "item": "https://paro-spe.fr/parodontie-traitement-maladies-parodontales.html#faq"
+            }
+          ]
         },
         {
           "@type": "FAQPage",
           "@id": "https://paro-spe.fr/parodontie-traitement-maladies-parodontales.html#faqpage",
           "url": "https://paro-spe.fr/parodontie-traitement-maladies-parodontales.html#faq",
+          "name": "Questions fréquentes — Traitement des maladies parodontales",
           "isPartOf": { "@id": "https://paro-spe.fr/parodontie-traitement-maladies-parodontales.html#webpage" },
+          "breadcrumb": { "@id": "https://paro-spe.fr/parodontie-traitement-maladies-parodontales.html#faq-breadcrumb" },
           "inLanguage": "fr-FR",
           "mainEntity": [
             {
@@ -178,7 +211,10 @@ body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Ro
     </style>
 </head>
 <body class="treatment-page">
-    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    <nav class="skip-links" aria-label="Accès rapide">
+        <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+        <a href="#faq" class="skip-link">Aller aux questions fréquentes</a>
+    </nav>
     <nav class="navbar" aria-label="Navigation principale">
         <div class="container navbar__container">
             <a href="index.html" class="navbar__logo">
@@ -274,7 +310,7 @@ body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Ro
                 </section>
 
                 <!-- Test visuel FAQ (style éditorial, sans accordéon) — à comparer avec la FAQ accueil -->
-                <section id="faq" class="paro-section paro-faq" aria-labelledby="paro-faq-title">
+                <section id="faq" class="paro-section paro-faq full-bleed" aria-labelledby="paro-faq-title">
                     <h2 id="paro-faq-title" class="paro-section__label">Questions fréquentes</h2>
                     <dl class="paro-faq__list">
                         <div class="paro-faq__item">
