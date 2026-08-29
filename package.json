@@ -19,7 +19,8 @@
     "sw:bump": "node scripts/bump-sw-cache-version.mjs",
     "mcp:setup-google-auth": "node scripts/setup-google-oauth-credentials.mjs",
     "analytics:report": "node scripts/analytics-weekly-report.mjs",
-    "analytics:report:dry-run": "node scripts/analytics-weekly-report.mjs --dry-run"
+    "analytics:report:dry-run": "node scripts/analytics-weekly-report.mjs --dry-run",
+    "seo:keywords": "node scripts/seo-keyword-count.mjs"
   },
   "repository": {
     "type": "git",

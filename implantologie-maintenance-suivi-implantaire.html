@@ -95,7 +95,89 @@
           "isPartOf": { "@id": "https://paro-spe.fr/#website" },
           "about": { "@id": "https://paro-spe.fr/implantologie-maintenance-suivi-implantaire.html#procedure" },
           "breadcrumb": { "@id": "https://paro-spe.fr/implantologie-maintenance-suivi-implantaire.html#breadcrumb" },
+          "hasPart": { "@id": "https://paro-spe.fr/implantologie-maintenance-suivi-implantaire.html#faqpage" },
           "inLanguage": "fr-FR"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://paro-spe.fr/implantologie-maintenance-suivi-implantaire.html#faq-breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Accueil",
+              "item": "https://paro-spe.fr/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Traitements",
+              "item": "https://paro-spe.fr/#traitements"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Maintenance implantaire",
+              "item": "https://paro-spe.fr/implantologie-maintenance-suivi-implantaire.html"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Questions fréquentes",
+              "item": "https://paro-spe.fr/implantologie-maintenance-suivi-implantaire.html#faq"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://paro-spe.fr/implantologie-maintenance-suivi-implantaire.html#faqpage",
+          "url": "https://paro-spe.fr/implantologie-maintenance-suivi-implantaire.html#faq",
+          "name": "Questions fréquentes — Maintenance et suivi implantaire",
+          "isPartOf": { "@id": "https://paro-spe.fr/implantologie-maintenance-suivi-implantaire.html#webpage" },
+          "breadcrumb": { "@id": "https://paro-spe.fr/implantologie-maintenance-suivi-implantaire.html#faq-breadcrumb" },
+          "inLanguage": "fr-FR",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Pourquoi un suivi après la pose d’implants dentaires ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Un implant ne développe pas de carie, mais les tissus qui l’entourent restent exposés à l’inflammation et aux bactéries. La maintenance implantaire dépiste ces atteintes avant qu’elles ne compromettent l’ancrage osseux de l’implant."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Quelle différence entre mucosite péri-implantaire et péri-implantite ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "La mucosite péri-implantaire est une inflammation limitée à la gencive autour de l’implant ; elle est réversible. La péri-implantite s’accompagne d’une perte d’os de soutien : la prise en charge est plus lourde et le résultat moins prévisible, d’où l’intérêt d’un dépistage précoce."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "À quelle fréquence les contrôles ont-ils lieu ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "En général une à deux fois par an, davantage en cas d’antécédent de parodontite, de tabagisme ou de diabète. Une radiographie de contrôle permet de comparer le niveau osseux autour de l’implant d’une année sur l’autre."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Quels signes doivent m’alerter autour d’un implant ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Des gencives qui saignent au brossage, un gonflement ou du pus, une gêne à la mastication, une mauvaise odeur ou l’impression que la couronne bouge. Ces signes justifient une consultation rapide, sans attendre le contrôle annuel."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Comment entretenir ses implants au quotidien ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Brossage biquotidien avec une brosse souple, nettoyage des espaces interdentaires par brossettes ou fil adapté, et arrêt du tabac qui reste le principal facteur de risque. Les techniques sont montrées et ajustées à chaque séance de maintenance."
+              }
+            }
+          ]
         }
       ]
     }
@@ -129,7 +211,10 @@ body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Ro
     </style>
 </head>
 <body class="treatment-page treatment-page--implantologie">
-    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    <nav class="skip-links" aria-label="Accès rapide">
+        <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+        <a href="#faq" class="skip-link">Aller aux questions fréquentes</a>
+    </nav>
     <nav class="navbar" aria-label="Navigation principale">
         <div class="container navbar__container">
             <a href="index.html" class="navbar__logo">
@@ -162,14 +247,43 @@ body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Ro
                         <li>des conseils personnalisés d’hygiène bucco-dentaire.</li>
                     </ul>
                     <p>Un suivi régulier permet de prévenir les complications, de maintenir la fonction masticatoire et de préserver l’esthétique du sourire sur le long terme.</p>
-                    <div class="treatment-page__related">
-                        <h2>Voir aussi</h2>
-                        <ul class="treatment-page__bullets">
-                            <li><a class="link--bold" href="implantologie-pose-implants-dentaires.html">Pose d’implants dentaires (Straumann®)</a></li>
-                            <li><a class="link--bold" href="implantologie-reconstruction-osseuse-gingivale.html">Reconstruction osseuse et gingivale</a></li>
-                        </ul>
-                    </div>
                 </div>
+            </div>
+
+            <div class="treatment-page__tail treatment-page__tail--narrow">
+                <section id="faq" class="paro-section paro-faq full-bleed" aria-labelledby="suivi-implant-faq-title">
+                    <h2 id="suivi-implant-faq-title" class="paro-section__label">Questions fréquentes</h2>
+                    <dl class="paro-faq__list">
+                        <div class="paro-faq__item">
+                            <dt class="paro-faq__q">Pourquoi un suivi après la pose d’implants dentaires&nbsp;?</dt>
+                            <dd class="paro-faq__a">Un implant ne développe pas de carie, mais les tissus qui l’entourent restent exposés à l’inflammation et aux bactéries. La maintenance implantaire dépiste ces atteintes avant qu’elles ne compromettent l’ancrage osseux de l’implant.</dd>
+                        </div>
+                        <div class="paro-faq__item">
+                            <dt class="paro-faq__q">Quelle différence entre mucosite péri-implantaire et péri-implantite&nbsp;?</dt>
+                            <dd class="paro-faq__a">La mucosite péri-implantaire est une inflammation limitée à la gencive autour de l’implant&nbsp;; elle est réversible. La péri-implantite s’accompagne d’une perte d’os de soutien&nbsp;: la prise en charge est plus lourde et le résultat moins prévisible, d’où l’intérêt d’un dépistage précoce.</dd>
+                        </div>
+                        <div class="paro-faq__item">
+                            <dt class="paro-faq__q">À quelle fréquence les contrôles ont-ils lieu&nbsp;?</dt>
+                            <dd class="paro-faq__a">En général une à deux fois par an, davantage en cas d’antécédent de parodontite, de tabagisme ou de diabète. Une radiographie de contrôle permet de comparer le niveau osseux autour de l’implant d’une année sur l’autre.</dd>
+                        </div>
+                        <div class="paro-faq__item">
+                            <dt class="paro-faq__q">Quels signes doivent m’alerter autour d’un implant&nbsp;?</dt>
+                            <dd class="paro-faq__a">Des gencives qui saignent au brossage, un gonflement ou du pus, une gêne à la mastication, une mauvaise odeur ou l’impression que la couronne bouge. Ces signes justifient une consultation rapide, sans attendre le contrôle annuel.</dd>
+                        </div>
+                        <div class="paro-faq__item">
+                            <dt class="paro-faq__q">Comment entretenir ses implants au quotidien&nbsp;?</dt>
+                            <dd class="paro-faq__a">Brossage biquotidien avec une brosse souple, nettoyage des espaces interdentaires par brossettes ou fil adapté, et arrêt du tabac qui reste le principal facteur de risque. Les techniques sont montrées et ajustées à chaque séance de maintenance.</dd>
+                        </div>
+                    </dl>
+                </section>
+
+                <section class="paro-section treatment-page__related" aria-labelledby="suivi-implant-voir-aussi">
+                    <h2 id="suivi-implant-voir-aussi" class="paro-section__label">Voir aussi</h2>
+                    <ul class="treatment-page__bullets">
+                        <li><a class="link--bold" href="implantologie-pose-implants-dentaires.html">Pose d’implants dentaires (Straumann®)</a></li>
+                        <li><a class="link--bold" href="implantologie-reconstruction-osseuse-gingivale.html">Reconstruction osseuse et gingivale</a></li>
+                    </ul>
+                </section>
             </div>
         </div>
     </main>

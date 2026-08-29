@@ -890,6 +890,22 @@ body.treatment-page {
   font-size: var(--font-size-sm);
 }
 
+/* Pied de page traitement (FAQ + maillage) pour les gabarits hors layout
+   parodontal, où la FAQ n’est pas un enfant direct de la grille du corps. */
+.treatment-page__tail {
+  display: grid;
+  gap: var(--space-2xl);
+  margin-top: var(--space-2xl);
+}
+
+/* Recale le bloc sur la colonne de lecture des gabarits --text (46rem). */
+.treatment-page__tail--narrow > :not(.paro-faq),
+.treatment-page__tail--narrow .paro-faq > * {
+  width: 100%;
+  max-width: 46rem;
+  margin-inline: auto;
+}
+
 @media (max-width: 960px) {
   .paro-tissues {
     grid-template-columns: 1fr;

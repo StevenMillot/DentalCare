@@ -95,7 +95,89 @@
           "isPartOf": { "@id": "https://paro-spe.fr/#website" },
           "about": { "@id": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#procedure" },
           "breadcrumb": { "@id": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#breadcrumb" },
+          "hasPart": { "@id": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#faqpage" },
           "inLanguage": "fr-FR"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#faq-breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Accueil",
+              "item": "https://paro-spe.fr/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Traitements",
+              "item": "https://paro-spe.fr/#traitements"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Reconstruction osseuse et gingivale",
+              "item": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Questions fréquentes",
+              "item": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#faq"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#faqpage",
+          "url": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#faq",
+          "name": "Questions fréquentes — Reconstruction osseuse et gingivale",
+          "isPartOf": { "@id": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#webpage" },
+          "breadcrumb": { "@id": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#faq-breadcrumb" },
+          "inLanguage": "fr-FR",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Qu’appelle-t-on chirurgie pré-implantaire ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "C’est l’ensemble des interventions réalisées avant ou pendant la pose d’implants pour reconstituer les tissus manquants : greffe osseuse, greffe de gencive et greffe sinusienne. Elles conditionnent la stabilité à long terme du traitement implantaire."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Pourquoi une greffe osseuse avant un implant dentaire ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Après la perte d’une dent, l’os alvéolaire se résorbe progressivement. Lorsque la hauteur ou l’épaisseur d’os restante est insuffisante pour ancrer l’implant, une greffe osseuse recrée le volume nécessaire et permet un positionnement correct de l’implant."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Qu’est-ce qu’une greffe sinusienne ou sinus lift ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "La greffe sinusienne, aussi appelée sinus lift ou élévation sinusienne, augmente la hauteur d’os disponible dans le maxillaire postérieur, sous le sinus. Elle rend possible la pose d’implants dans un secteur où l’os est naturellement peu épais."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Comment évalue-t-on le volume osseux disponible ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Par une radio 3D de type cone beam (CBCT), qui mesure précisément la hauteur et l’épaisseur d’os, la position du sinus et le trajet des structures nerveuses. Cet examen détermine le type de greffe et la stratégie implantaire."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Combien de temps faut-il attendre avant la pose des implants ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Cela dépend de la technique. Certaines greffes se font simultanément à la pose de l’implant ; d’autres imposent une cicatrisation osseuse de quatre à neuf mois. Le calendrier est établi au cas par cas au cabinet de Châtenay-Malabry (92)."
+              }
+            }
+          ]
         }
       ]
     }
@@ -129,7 +211,10 @@ body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Ro
     </style>
 </head>
 <body class="treatment-page treatment-page--implantologie">
-    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    <nav class="skip-links" aria-label="Accès rapide">
+        <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+        <a href="#faq" class="skip-link">Aller aux questions fréquentes</a>
+    </nav>
     <nav class="navbar" aria-label="Navigation principale">
         <div class="container navbar__container">
             <a href="index.html" class="navbar__logo">
@@ -154,14 +239,43 @@ body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Ro
                     <p>Dans le cadre de l’implantologie dentaire, il est parfois nécessaire de réaliser des reconstructions osseuses et gingivales avant ou simultanément à la pose d’implants dentaires.</p>
                     <p>Ces traitements permettent de recréer un volume osseux et une gencive suffisants afin d’assurer la stabilité et la longévité des implants ainsi que l’esthétique. Ces chirurgies peuvent être des greffes de gencives, des greffes osseuses ou des greffes sinusiennes, aussi appelées sinus lift ou élévations sinusiennes.</p>
                     <p>Une greffe sinusienne est une intervention chirurgicale qui permet d’augmenter la hauteur osseuse au niveau de l’os maxillaire postérieur afin de rendre possible la pose d’un ou plusieurs implants dentaires.</p>
-                    <div class="treatment-page__related">
-                        <h2>Voir aussi</h2>
-                        <ul class="treatment-page__bullets">
-                            <li><a class="link--bold" href="implantologie-pose-implants-dentaires.html">Pose d’implants dentaires (Straumann®)</a></li>
-                            <li><a class="link--bold" href="implantologie-maintenance-suivi-implantaire.html">Maintenance et suivi implantaire</a></li>
-                        </ul>
-                    </div>
                 </div>
+            </div>
+
+            <div class="treatment-page__tail treatment-page__tail--narrow">
+                <section id="faq" class="paro-section paro-faq full-bleed" aria-labelledby="reconstruction-faq-title">
+                    <h2 id="reconstruction-faq-title" class="paro-section__label">Questions fréquentes</h2>
+                    <dl class="paro-faq__list">
+                        <div class="paro-faq__item">
+                            <dt class="paro-faq__q">Qu’appelle-t-on chirurgie pré-implantaire&nbsp;?</dt>
+                            <dd class="paro-faq__a">C’est l’ensemble des interventions réalisées avant ou pendant la pose d’implants pour reconstituer les tissus manquants&nbsp;: greffe osseuse, greffe de gencive et greffe sinusienne. Elles conditionnent la stabilité à long terme du traitement implantaire.</dd>
+                        </div>
+                        <div class="paro-faq__item">
+                            <dt class="paro-faq__q">Pourquoi une greffe osseuse avant un implant dentaire&nbsp;?</dt>
+                            <dd class="paro-faq__a">Après la perte d’une dent, l’os alvéolaire se résorbe progressivement. Lorsque la hauteur ou l’épaisseur d’os restante est insuffisante pour ancrer l’implant, une greffe osseuse recrée le volume nécessaire et permet un positionnement correct de l’implant.</dd>
+                        </div>
+                        <div class="paro-faq__item">
+                            <dt class="paro-faq__q">Qu’est-ce qu’une greffe sinusienne ou sinus lift&nbsp;?</dt>
+                            <dd class="paro-faq__a">La greffe sinusienne, aussi appelée sinus lift ou élévation sinusienne, augmente la hauteur d’os disponible dans le maxillaire postérieur, sous le sinus. Elle rend possible la pose d’implants dans un secteur où l’os est naturellement peu épais.</dd>
+                        </div>
+                        <div class="paro-faq__item">
+                            <dt class="paro-faq__q">Comment évalue-t-on le volume osseux disponible&nbsp;?</dt>
+                            <dd class="paro-faq__a">Par une radio 3D de type cone beam (CBCT), qui mesure précisément la hauteur et l’épaisseur d’os, la position du sinus et le trajet des structures nerveuses. Cet examen détermine le type de greffe et la stratégie implantaire.</dd>
+                        </div>
+                        <div class="paro-faq__item">
+                            <dt class="paro-faq__q">Combien de temps faut-il attendre avant la pose des implants&nbsp;?</dt>
+                            <dd class="paro-faq__a">Cela dépend de la technique. Certaines greffes se font simultanément à la pose de l’implant&nbsp;; d’autres imposent une cicatrisation osseuse de quatre à neuf mois. Le calendrier est établi au cas par cas au cabinet de Châtenay-Malabry (92).</dd>
+                        </div>
+                    </dl>
+                </section>
+
+                <section class="paro-section treatment-page__related" aria-labelledby="reconstruction-voir-aussi">
+                    <h2 id="reconstruction-voir-aussi" class="paro-section__label">Voir aussi</h2>
+                    <ul class="treatment-page__bullets">
+                        <li><a class="link--bold" href="implantologie-pose-implants-dentaires.html">Pose d’implants dentaires (Straumann®)</a></li>
+                        <li><a class="link--bold" href="implantologie-maintenance-suivi-implantaire.html">Maintenance et suivi implantaire</a></li>
+                    </ul>
+                </section>
             </div>
         </div>
     </main>

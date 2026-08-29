@@ -95,7 +95,89 @@
           "isPartOf": { "@id": "https://paro-spe.fr/#website" },
           "about": { "@id": "https://paro-spe.fr/implantologie-pose-implants-dentaires.html#procedure" },
           "breadcrumb": { "@id": "https://paro-spe.fr/implantologie-pose-implants-dentaires.html#breadcrumb" },
+          "hasPart": { "@id": "https://paro-spe.fr/implantologie-pose-implants-dentaires.html#faqpage" },
           "inLanguage": "fr-FR"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://paro-spe.fr/implantologie-pose-implants-dentaires.html#faq-breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Accueil",
+              "item": "https://paro-spe.fr/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Traitements",
+              "item": "https://paro-spe.fr/#traitements"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Pose d’implants dentaires",
+              "item": "https://paro-spe.fr/implantologie-pose-implants-dentaires.html"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Questions fréquentes",
+              "item": "https://paro-spe.fr/implantologie-pose-implants-dentaires.html#faq"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://paro-spe.fr/implantologie-pose-implants-dentaires.html#faqpage",
+          "url": "https://paro-spe.fr/implantologie-pose-implants-dentaires.html#faq",
+          "name": "Questions fréquentes — Pose d’implants dentaires",
+          "isPartOf": { "@id": "https://paro-spe.fr/implantologie-pose-implants-dentaires.html#webpage" },
+          "breadcrumb": { "@id": "https://paro-spe.fr/implantologie-pose-implants-dentaires.html#faq-breadcrumb" },
+          "inLanguage": "fr-FR",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Comment se déroule la pose d’un implant dentaire ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "La pose d’un implant dentaire se déroule au cabinet de Châtenay-Malabry (92), sous anesthésie locale. Cette chirurgie implantaire consiste à insérer l’implant dans l’os au site prévu, puis à refermer la muqueuse. Comptez trente à soixante minutes pour un implant unitaire."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Suis-je candidat à un implant dentaire ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Trois conditions sont vérifiées avant tout : un parodonte sain, un volume osseux suffisant et une hauteur de gencive kératinisée adéquate. Le bilan s’appuie sur un examen clinique et une radio 3D de type cone beam (CBCT). Si l’os est insuffisant, une greffe osseuse est envisagée avant la pose."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Combien de temps entre la pose de l’implant et la couronne ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "L’implant doit d’abord s’intégrer à l’os : c’est l’ostéo-intégration, qui demande en général deux à quatre mois. La couronne, le bridge ou la prothèse implanto-portée est réalisée ensuite, une fois la stabilité de l’implant confirmée."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "La chirurgie implantaire est-elle douloureuse ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "L’intervention est indolore sous anesthésie locale. Les suites se limitent le plus souvent à un œdème et à une gêne de quelques jours, encadrés par une prescription d’antalgiques et des consignes remises en fin de séance. Le geste est réalisé par un praticien formé en implantologie — ce que le langage courant appelle un implantologue, sans qu’il s’agisse d’un titre reconnu par l’Ordre."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Quel est le prix d’un implant dentaire ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Les honoraires dépendent du nombre d’implants, de la nécessité d’une greffe osseuse ou d’une greffe sinusienne et du type de prothèse. Un devis détaillé est remis avant le début du traitement. La pose d’implants dentaires n’est pas prise en charge par l’Assurance maladie ; certains contrats de complémentaire santé y participent."
+              }
+            }
+          ]
         }
       ]
     }
@@ -129,7 +211,10 @@ body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Ro
     </style>
 </head>
 <body class="treatment-page">
-    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    <nav class="skip-links" aria-label="Accès rapide">
+        <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+        <a href="#faq" class="skip-link">Aller aux questions fréquentes</a>
+    </nav>
     <nav class="navbar" aria-label="Navigation principale">
         <div class="container navbar__container">
             <a href="index.html" class="navbar__logo">
@@ -155,14 +240,43 @@ body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Ro
                     <p>Avant la pose d’implants, il est indispensable que le parodonte soit sain, que le volume osseux soit suffisant et qu’une quantité adéquate de tissu kératinisé soit présente afin d'assurer la pérennité du traitement.</p>
                     <p>L’objectif est de restaurer la fonction masticatoire, l’esthétique du sourire et le confort du patient.</p>
                     <p>Au cabinet, nous utilisons la marque d’implants <strong>Straumann®</strong>, reconnue pour sa qualité et sa fiabilité.</p>
-                    <div class="treatment-page__related">
-                        <h2>Voir aussi</h2>
-                        <ul class="treatment-page__bullets">
-                            <li><a class="link--bold" href="implantologie-reconstruction-osseuse-gingivale.html">Reconstruction osseuse et gingivale</a></li>
-                            <li><a class="link--bold" href="implantologie-maintenance-suivi-implantaire.html">Maintenance et suivi implantaire</a></li>
-                        </ul>
-                    </div>
                 </div>
+            </div>
+
+            <div class="treatment-page__tail treatment-page__tail--narrow">
+                <section id="faq" class="paro-section paro-faq full-bleed" aria-labelledby="pose-faq-title">
+                    <h2 id="pose-faq-title" class="paro-section__label">Questions fréquentes</h2>
+                    <dl class="paro-faq__list">
+                        <div class="paro-faq__item">
+                            <dt class="paro-faq__q">Comment se déroule la pose d’un implant dentaire&nbsp;?</dt>
+                            <dd class="paro-faq__a">La pose d’un implant dentaire se déroule au cabinet de Châtenay-Malabry (92), sous anesthésie locale. Cette chirurgie implantaire consiste à insérer l’implant dans l’os au site prévu, puis à refermer la muqueuse. Comptez trente à soixante minutes pour un implant unitaire.</dd>
+                        </div>
+                        <div class="paro-faq__item">
+                            <dt class="paro-faq__q">Suis-je candidat à un implant dentaire&nbsp;?</dt>
+                            <dd class="paro-faq__a">Trois conditions sont vérifiées avant tout&nbsp;: un parodonte sain, un volume osseux suffisant et une hauteur de gencive kératinisée adéquate. Le bilan s’appuie sur un examen clinique et une radio 3D de type cone beam (CBCT). Si l’os est insuffisant, une greffe osseuse est envisagée avant la pose.</dd>
+                        </div>
+                        <div class="paro-faq__item">
+                            <dt class="paro-faq__q">Combien de temps entre la pose de l’implant et la couronne&nbsp;?</dt>
+                            <dd class="paro-faq__a">L’implant doit d’abord s’intégrer à l’os&nbsp;: c’est l’ostéo-intégration, qui demande en général deux à quatre mois. La couronne, le bridge ou la prothèse implanto-portée est réalisée ensuite, une fois la stabilité de l’implant confirmée.</dd>
+                        </div>
+                        <div class="paro-faq__item">
+                            <dt class="paro-faq__q">La chirurgie implantaire est-elle douloureuse&nbsp;?</dt>
+                            <dd class="paro-faq__a">L’intervention est indolore sous anesthésie locale. Les suites se limitent le plus souvent à un œdème et à une gêne de quelques jours, encadrés par une prescription d’antalgiques et des consignes remises en fin de séance. Le geste est réalisé par un praticien formé en implantologie — ce que le langage courant appelle un implantologue, sans qu’il s’agisse d’un titre reconnu par l’Ordre.</dd>
+                        </div>
+                        <div class="paro-faq__item">
+                            <dt class="paro-faq__q">Quel est le prix d’un implant dentaire&nbsp;?</dt>
+                            <dd class="paro-faq__a">Les honoraires dépendent du nombre d’implants, de la nécessité d’une greffe osseuse ou d’une greffe sinusienne et du type de prothèse. Un devis détaillé est remis avant le début du traitement. La pose d’implants dentaires n’est pas prise en charge par l’Assurance maladie&nbsp;; certains contrats de complémentaire santé y participent.</dd>
+                        </div>
+                    </dl>
+                </section>
+
+                <section class="paro-section treatment-page__related" aria-labelledby="pose-voir-aussi">
+                    <h2 id="pose-voir-aussi" class="paro-section__label">Voir aussi</h2>
+                    <ul class="treatment-page__bullets">
+                        <li><a class="link--bold" href="implantologie-reconstruction-osseuse-gingivale.html">Reconstruction osseuse et gingivale</a></li>
+                        <li><a class="link--bold" href="implantologie-maintenance-suivi-implantaire.html">Maintenance et suivi implantaire</a></li>
+                    </ul>
+                </section>
             </div>
         </div>
     </main>
