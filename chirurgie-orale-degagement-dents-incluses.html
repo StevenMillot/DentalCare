@@ -46,19 +46,15 @@
           "name": "Dégagement de dents incluses",
           "description": "Dégagement de dents incluses en chirurgie orale à Châtenay-Malabry (92).",
           "procedureType": "https://schema.org/SurgicalProcedure",
-          "provider": {
-            "@id": "https://paro-spe.fr/#dentist"
-          },
+          "provider": { "@id": "https://paro-spe.fr/#dentist" },
           "url": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html"
         },
-        {
+                {
           "@type": "WebSite",
           "@id": "https://paro-spe.fr/#website",
           "url": "https://paro-spe.fr/",
           "name": "Paro-Spé",
-          "publisher": {
-            "@id": "https://paro-spe.fr/#dentist"
-          }
+          "publisher": { "@id": "https://paro-spe.fr/#dentist" }
         },
         {
           "@type": "Dentist",
@@ -96,116 +92,96 @@
           "url": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html",
           "name": "Dents incluses à Châtenay-Malabry (92) | Paro-Spé",
           "description": "Dégagement de dents incluses à Châtenay-Malabry : indication, geste et suivi. Cabinet Paro-Spé, chirurgie orale (92).",
-          "isPartOf": {
-            "@id": "https://paro-spe.fr/#website"
-          },
-          "about": {
-            "@id": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html#procedure"
-          },
-          "breadcrumb": {
-            "@id": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html#breadcrumb"
-          },
+          "isPartOf": { "@id": "https://paro-spe.fr/#website" },
+          "about": { "@id": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html#procedure" },
+          "breadcrumb": { "@id": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html#breadcrumb" },
+          "hasPart": { "@id": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html#faqpage" },
           "inLanguage": "fr-FR"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html#faq-breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Accueil",
+              "item": "https://paro-spe.fr/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Traitements",
+              "item": "https://paro-spe.fr/#traitements"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Dents incluses",
+              "item": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Questions fréquentes",
+              "item": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html#faq"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html#faqpage",
+          "url": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html#faq",
+          "name": "Questions fréquentes — Dégagement de dents incluses",
+          "isPartOf": { "@id": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html#webpage" },
+          "breadcrumb": { "@id": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html#faq-breadcrumb" },
+          "inLanguage": "fr-FR",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Qu’est-ce qu’une dent incluse ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "C’est une dent formée mais restée bloquée dans l’os ou sous la gencive, qui n’a pas fait son éruption sur l’arcade. Les cas les plus fréquents concernent les canines et les dents de sagesse."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Dégagement ou désinclusion : est-ce la même intervention ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Oui. Le dégagement de dent incluse est aussi appelé désinclusion : le chirurgien libère la couronne de la dent et y colle une attache, sans l’extraire. C’est le terme employé entre praticiens, notamment sur les courriers d’orthodontie."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Comment la position de la dent est-elle repérée ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Par une radio 3D de type cone beam (CBCT), qui donne l’orientation exacte de la dent incluse, sa profondeur et sa proximité avec les racines voisines. Cet examen conditionne la voie d’abord retenue."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Comment se déroule le dégagement ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sous anesthésie locale au cabinet de chirurgie orale de Châtenay-Malabry (92). La gencive est ouverte au regard de la dent, une chaînette est collée sur la couronne, puis le site est refermé. L’intervention dure en moyenne trente à quarante-cinq minutes."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Combien de temps dure la traction orthodontique ensuite ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "La traction est activée par l’orthodontiste quelques semaines après le dégagement. La mise en place de la dent sur l’arcade demande le plus souvent six à dix-huit mois selon sa position de départ et l’âge du patient."
+              }
+            }
+          ]
         }
       ]
     }
     </script>
-    <!-- faq-traitement-off
-    <script type="application/ld+json" data-faq-traitement-off>
-    [
-      {
-        "_restoreHasPart": {
-          "@id": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html#faqpage"
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html#faq-breadcrumb",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Accueil",
-            "item": "https://paro-spe.fr/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Traitements",
-            "item": "https://paro-spe.fr/#traitements"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Dents incluses",
-            "item": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html"
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": "Questions fréquentes",
-            "item": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html#faq"
-          }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html#faqpage",
-        "url": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html#faq",
-        "name": "Questions fréquentes — Dégagement de dents incluses",
-        "isPartOf": {
-          "@id": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html#webpage"
-        },
-        "breadcrumb": {
-          "@id": "https://paro-spe.fr/chirurgie-orale-degagement-dents-incluses.html#faq-breadcrumb"
-        },
-        "inLanguage": "fr-FR",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Qu’est-ce qu’une dent incluse ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "C’est une dent formée mais restée bloquée dans l’os ou sous la gencive, qui n’a pas fait son éruption sur l’arcade. Les cas les plus fréquents concernent les canines et les dents de sagesse."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Dégagement ou désinclusion : est-ce la même intervention ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Oui. Le dégagement de dent incluse est aussi appelé désinclusion : le chirurgien libère la couronne de la dent et y colle une attache, sans l’extraire. C’est le terme employé entre praticiens, notamment sur les courriers d’orthodontie."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Comment la position de la dent est-elle repérée ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Par une radio 3D de type cone beam (CBCT), qui donne l’orientation exacte de la dent incluse, sa profondeur et sa proximité avec les racines voisines. Cet examen conditionne la voie d’abord retenue."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Comment se déroule le dégagement ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Sous anesthésie locale au cabinet de chirurgie orale de Châtenay-Malabry (92). La gencive est ouverte au regard de la dent, une chaînette est collée sur la couronne, puis le site est refermé. L’intervention dure en moyenne trente à quarante-cinq minutes."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Combien de temps dure la traction orthodontique ensuite ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "La traction est activée par l’orthodontiste quelques semaines après le dégagement. La mise en place de la dent sur l’arcade demande le plus souvent six à dix-huit mois selon sa position de départ et l’âge du patient."
-            }
-          }
-        ]
-      }
-    ]
-    </script>
-    faq-traitement-off -->
     <link rel="icon" href="favicon.ico?v=20260804" sizes="48x48">
     <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png?v=20260804">
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260804">
@@ -237,9 +213,7 @@ body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Ro
 <body class="treatment-page">
     <nav class="skip-links" aria-label="Accès rapide">
         <a href="#main-content" class="skip-link">Aller au contenu principal</a>
-        <!-- faq-traitement-off
-<a href="#faq" class="skip-link">Aller aux questions fréquentes</a>
-        faq-traitement-off -->
+        <a href="#faq" class="skip-link">Aller aux questions fréquentes</a>
     </nav>
     <nav class="navbar" aria-label="Navigation principale">
         <div class="container navbar__container">
@@ -268,8 +242,7 @@ body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Ro
             </div>
 
             <div class="treatment-page__tail treatment-page__tail--narrow">
-                <!-- faq-traitement-off
-<section id="faq" class="paro-section paro-faq full-bleed" aria-labelledby="incluses-faq-title">
+                <section id="faq" class="paro-section paro-faq full-bleed" aria-labelledby="incluses-faq-title">
                     <h2 id="incluses-faq-title" class="paro-section__label">Questions fréquentes</h2>
                     <dl class="paro-faq__list">
                         <div class="paro-faq__item">
@@ -294,7 +267,6 @@ body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Ro
                         </div>
                     </dl>
                 </section>
-                faq-traitement-off -->
 
                 <section class="paro-section treatment-page__related" aria-labelledby="incluses-voir-aussi">
                     <h2 id="incluses-voir-aussi" class="paro-section__label">Voir aussi</h2>

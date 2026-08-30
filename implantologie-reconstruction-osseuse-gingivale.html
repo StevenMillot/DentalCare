@@ -46,19 +46,15 @@
           "name": "Reconstruction osseuse et gingivale",
           "description": "Reconstruction osseuse et gingivale en vue d’une implantologie à Châtenay-Malabry (92).",
           "procedureType": "https://schema.org/TherapeuticProcedure",
-          "provider": {
-            "@id": "https://paro-spe.fr/#dentist"
-          },
+          "provider": { "@id": "https://paro-spe.fr/#dentist" },
           "url": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html"
         },
-        {
+                {
           "@type": "WebSite",
           "@id": "https://paro-spe.fr/#website",
           "url": "https://paro-spe.fr/",
           "name": "Paro-Spé",
-          "publisher": {
-            "@id": "https://paro-spe.fr/#dentist"
-          }
+          "publisher": { "@id": "https://paro-spe.fr/#dentist" }
         },
         {
           "@type": "Dentist",
@@ -96,116 +92,96 @@
           "url": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html",
           "name": "Reconstruction osseuse à Châtenay-Malabry (92) | Paro-Spé",
           "description": "Reconstruction osseuse et gingivale avant implantologie à Châtenay-Malabry. Cabinet Paro-Spé, Hauts-de-Seine (92).",
-          "isPartOf": {
-            "@id": "https://paro-spe.fr/#website"
-          },
-          "about": {
-            "@id": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#procedure"
-          },
-          "breadcrumb": {
-            "@id": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#breadcrumb"
-          },
+          "isPartOf": { "@id": "https://paro-spe.fr/#website" },
+          "about": { "@id": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#procedure" },
+          "breadcrumb": { "@id": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#breadcrumb" },
+          "hasPart": { "@id": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#faqpage" },
           "inLanguage": "fr-FR"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#faq-breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Accueil",
+              "item": "https://paro-spe.fr/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Traitements",
+              "item": "https://paro-spe.fr/#traitements"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Reconstruction osseuse et gingivale",
+              "item": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Questions fréquentes",
+              "item": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#faq"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#faqpage",
+          "url": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#faq",
+          "name": "Questions fréquentes — Reconstruction osseuse et gingivale",
+          "isPartOf": { "@id": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#webpage" },
+          "breadcrumb": { "@id": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#faq-breadcrumb" },
+          "inLanguage": "fr-FR",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Qu’appelle-t-on chirurgie pré-implantaire ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "C’est l’ensemble des interventions réalisées avant ou pendant la pose d’implants pour reconstituer les tissus manquants : greffe osseuse, greffe de gencive et greffe sinusienne. Elles conditionnent la stabilité à long terme du traitement implantaire."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Pourquoi une greffe osseuse avant un implant dentaire ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Après la perte d’une dent, l’os alvéolaire se résorbe progressivement. Lorsque la hauteur ou l’épaisseur d’os restante est insuffisante pour ancrer l’implant, une greffe osseuse recrée le volume nécessaire et permet un positionnement correct de l’implant."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Qu’est-ce qu’une greffe sinusienne ou sinus lift ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "La greffe sinusienne, aussi appelée sinus lift ou élévation sinusienne, augmente la hauteur d’os disponible dans le maxillaire postérieur, sous le sinus. Elle rend possible la pose d’implants dans un secteur où l’os est naturellement peu épais."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Comment évalue-t-on le volume osseux disponible ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Par une radio 3D de type cone beam (CBCT), qui mesure précisément la hauteur et l’épaisseur d’os, la position du sinus et le trajet des structures nerveuses. Cet examen détermine le type de greffe et la stratégie implantaire."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Combien de temps faut-il attendre avant la pose des implants ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Cela dépend de la technique. Certaines greffes se font simultanément à la pose de l’implant ; d’autres imposent une cicatrisation osseuse de quatre à neuf mois. Le calendrier est établi au cas par cas au cabinet de Châtenay-Malabry (92)."
+              }
+            }
+          ]
         }
       ]
     }
     </script>
-    <!-- faq-traitement-off
-    <script type="application/ld+json" data-faq-traitement-off>
-    [
-      {
-        "_restoreHasPart": {
-          "@id": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#faqpage"
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#faq-breadcrumb",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Accueil",
-            "item": "https://paro-spe.fr/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Traitements",
-            "item": "https://paro-spe.fr/#traitements"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Reconstruction osseuse et gingivale",
-            "item": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html"
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": "Questions fréquentes",
-            "item": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#faq"
-          }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#faqpage",
-        "url": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#faq",
-        "name": "Questions fréquentes — Reconstruction osseuse et gingivale",
-        "isPartOf": {
-          "@id": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#webpage"
-        },
-        "breadcrumb": {
-          "@id": "https://paro-spe.fr/implantologie-reconstruction-osseuse-gingivale.html#faq-breadcrumb"
-        },
-        "inLanguage": "fr-FR",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Qu’appelle-t-on chirurgie pré-implantaire ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "C’est l’ensemble des interventions réalisées avant ou pendant la pose d’implants pour reconstituer les tissus manquants : greffe osseuse, greffe de gencive et greffe sinusienne. Elles conditionnent la stabilité à long terme du traitement implantaire."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Pourquoi une greffe osseuse avant un implant dentaire ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Après la perte d’une dent, l’os alvéolaire se résorbe progressivement. Lorsque la hauteur ou l’épaisseur d’os restante est insuffisante pour ancrer l’implant, une greffe osseuse recrée le volume nécessaire et permet un positionnement correct de l’implant."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Qu’est-ce qu’une greffe sinusienne ou sinus lift ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "La greffe sinusienne, aussi appelée sinus lift ou élévation sinusienne, augmente la hauteur d’os disponible dans le maxillaire postérieur, sous le sinus. Elle rend possible la pose d’implants dans un secteur où l’os est naturellement peu épais."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Comment évalue-t-on le volume osseux disponible ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Par une radio 3D de type cone beam (CBCT), qui mesure précisément la hauteur et l’épaisseur d’os, la position du sinus et le trajet des structures nerveuses. Cet examen détermine le type de greffe et la stratégie implantaire."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Combien de temps faut-il attendre avant la pose des implants ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Cela dépend de la technique. Certaines greffes se font simultanément à la pose de l’implant ; d’autres imposent une cicatrisation osseuse de quatre à neuf mois. Le calendrier est établi au cas par cas au cabinet de Châtenay-Malabry (92)."
-            }
-          }
-        ]
-      }
-    ]
-    </script>
-    faq-traitement-off -->
     <link rel="icon" href="favicon.ico?v=20260804" sizes="48x48">
     <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png?v=20260804">
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260804">
@@ -237,9 +213,7 @@ body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Ro
 <body class="treatment-page treatment-page--implantologie">
     <nav class="skip-links" aria-label="Accès rapide">
         <a href="#main-content" class="skip-link">Aller au contenu principal</a>
-        <!-- faq-traitement-off
-<a href="#faq" class="skip-link">Aller aux questions fréquentes</a>
-        faq-traitement-off -->
+        <a href="#faq" class="skip-link">Aller aux questions fréquentes</a>
     </nav>
     <nav class="navbar" aria-label="Navigation principale">
         <div class="container navbar__container">
@@ -269,8 +243,7 @@ body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Ro
             </div>
 
             <div class="treatment-page__tail treatment-page__tail--narrow">
-                <!-- faq-traitement-off
-<section id="faq" class="paro-section paro-faq full-bleed" aria-labelledby="reconstruction-faq-title">
+                <section id="faq" class="paro-section paro-faq full-bleed" aria-labelledby="reconstruction-faq-title">
                     <h2 id="reconstruction-faq-title" class="paro-section__label">Questions fréquentes</h2>
                     <dl class="paro-faq__list">
                         <div class="paro-faq__item">
@@ -295,7 +268,6 @@ body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Ro
                         </div>
                     </dl>
                 </section>
-                faq-traitement-off -->
 
                 <section class="paro-section treatment-page__related" aria-labelledby="reconstruction-voir-aussi">
                     <h2 id="reconstruction-voir-aussi" class="paro-section__label">Voir aussi</h2>
