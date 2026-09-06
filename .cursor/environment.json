@@ -1,0 +1,17 @@
+{
+  "name": "DentalCare (Paro-Spé)",
+  "install": "npm ci && npm run dev:refresh",
+  "start": "bash scripts/start-cloud-agent.sh",
+  "terminals": [
+    {
+      "name": "static-server",
+      "command": "python3 -m http.server 8000"
+    }
+  ],
+  "ports": [
+    {
+      "name": "site",
+      "port": 8000
+    }
+  ]
+}
