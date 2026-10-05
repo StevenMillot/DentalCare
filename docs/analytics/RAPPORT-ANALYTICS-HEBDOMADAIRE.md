@@ -3,7 +3,7 @@
 Ce dépôt contient un workflow GitHub Actions qui génère **automatiquement, chaque
 lundi**, un rapport de métriques pour `paro-spe.fr` à partir de la Google Search
 Console et de Google Analytics 4 (mêmes identifiants OAuth que le serveur MCP, voir
-`GUIDE-MCP-SEARCH-CONSOLE-GA4.md`).
+[GUIDE-MCP-SEARCH-CONSOLE-GA4.md](GUIDE-MCP-SEARCH-CONSOLE-GA4.md)).
 
 ⚠️ **Ne pas confondre avec l'automatisation « SEO Weekly Audit »** (audit SEO
 technique on-page + corrections, PR dédiées, commandes `.cursor/commands/seo-*.md`
@@ -41,7 +41,7 @@ Fichiers concernés : `.github/workflows/analytics-weekly-report.yml`,
 ### 1. Ajouter les secrets GitHub Actions
 
 Les mêmes 3 valeurs OAuth déjà utilisées pour le serveur MCP (voir
-`GUIDE-MCP-SEARCH-CONSOLE-GA4.md`) doivent être ajoutées comme **secrets GitHub**
+[GUIDE-MCP-SEARCH-CONSOLE-GA4.md](GUIDE-MCP-SEARCH-CONSOLE-GA4.md)) doivent être ajoutées comme **secrets GitHub**
 (différents des secrets Cursor — GitHub Actions ne peut pas lire les secrets Cursor).
 
 Depuis votre mobile, ouvrez ce lien puis ajoutez chaque secret un par un (bouton

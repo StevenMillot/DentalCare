@@ -15,12 +15,12 @@ Exécute strictement les étapes suivantes, dans l'ordre, et arrête-toi si une 
 Pour ce projet (DentalCare / Paro-Spé), le script de déploiement officiel identifié dans le repository est :
 
 ```bash
-./deploy-ovh.sh production
+./scripts/deploy-ovh.sh production
 ```
 
-(fichier `deploy-ovh.sh` à la racine du repository — déploiement OVH Cloud via FTP/SFTP, décrit dans `DEPLOYMENT.md` et `README-OVH.md`).
+(fichier `scripts/deploy-ovh.sh` — déploiement OVH Cloud via FTP/SFTP, décrit dans `docs/deploiement/DEPLOYMENT.md` et `docs/deploiement/README-OVH.md`).
 
-Avant d'utiliser cette commande, vérifie que le fichier `deploy-ovh.sh` existe toujours à la racine et n'a pas été renommé ou remplacé. Si le script a changé de nom, d'emplacement, ou n'existe plus, ne suppose jamais une commande alternative : indique précisément ce qui manque et ARRÊTE-TOI.
+Avant d'utiliser cette commande, vérifie que le fichier `scripts/deploy-ovh.sh` existe toujours. Si le script a changé de nom, d'emplacement, ou n'existe plus, ne suppose jamais une commande alternative : indique précisément ce qui manque et ARRÊTE-TOI.
 
 Ne jamais inventer une commande de déploiement (`npm run deploy`, `vercel deploy`, `git push heroku`, etc.) si elle n'est pas explicitement définie dans le repository (`package.json`, script à la racine, documentation officielle du projet).
 
@@ -34,7 +34,7 @@ Ne jamais inventer une commande de déploiement (`npm run deploy`, `vercel deplo
 Affiche explicitement, avant toute exécution :
 
 ```
-Commande de déploiement : ./deploy-ovh.sh production
+Commande de déploiement : ./scripts/deploy-ovh.sh production
 Commit à déployer : [SHA court] — [message du commit]
 Branche : main
 Environnement : production (paro-spe.fr)
@@ -48,7 +48,7 @@ N'exécute AUCUN déploiement sans une confirmation explicite et non ambiguë de
 
 ## 6. Lancer le script officiel
 
-- Une fois confirmé, exécute `./deploy-ovh.sh production`.
+- Une fois confirmé, exécute `./scripts/deploy-ovh.sh production`.
 - N'exécute jamais ce script avec l'argument `staging` à la place de `production` sans que l'utilisateur l'ait explicitement demandé.
 
 ## 7. Attendre le résultat
@@ -80,6 +80,6 @@ Heure de fin : [horodatage]
 ## Rappels de sécurité (toujours valables)
 
 - Ne jamais déployer un commit qui n'est pas sur la branche principale.
-- Ne jamais modifier `deploy-ovh.sh` ou sa logique dans le cadre de cette commande.
+- Ne jamais modifier `scripts/deploy-ovh.sh` ou sa logique dans le cadre de cette commande.
 - Ne jamais lire, afficher ou logguer le contenu de `.env.ovh` ou d'autres identifiants.
 - Si un doute existe à n'importe quelle étape, arrête-toi et demande une clarification plutôt que de continuer.

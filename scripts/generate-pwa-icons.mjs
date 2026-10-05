@@ -7,7 +7,7 @@
  * Prérequis : `npm install` (sharp).
  * Source : `assets/logo-b-raphael-brochand.svg`
  *
- * Produits à la racine du projet :
+ * Produits dans `assets/icons/` :
  * - `apple-touch-icon.png` (180×180)
  * - `web-app-manifest-192x192.png`, `web-app-manifest-512x512.png`
  * - variantes maskable (fond blanc, zone sûre ~20 %)
@@ -19,6 +19,7 @@ import fs from 'node:fs';
 import sharp from 'sharp';
 
 const SOURCE_SVG = 'assets/logo-b-raphael-brochand.svg';
+const ICON_DIR = 'assets/icons';
 
 if (!fs.existsSync(SOURCE_SVG)) {
   throw new Error(`Source SVG not found: ${SOURCE_SVG}`);
@@ -57,12 +58,14 @@ async function renderMaskablePng({ size, outPath, bg = '#ffffff' }) {
     .toFile(outPath);
 }
 
+fs.mkdirSync(ICON_DIR, { recursive: true });
+
 await Promise.all([
-  renderSquarePng({ size: 180, outPath: 'apple-touch-icon.png' }),
-  renderSquarePng({ size: 192, outPath: 'web-app-manifest-192x192.png' }),
-  renderSquarePng({ size: 512, outPath: 'web-app-manifest-512x512.png' }),
-  renderMaskablePng({ size: 192, outPath: 'web-app-manifest-192x192-maskable.png' }),
-  renderMaskablePng({ size: 512, outPath: 'web-app-manifest-512x512-maskable.png' }),
+  renderSquarePng({ size: 180, outPath: `${ICON_DIR}/apple-touch-icon.png` }),
+  renderSquarePng({ size: 192, outPath: `${ICON_DIR}/web-app-manifest-192x192.png` }),
+  renderSquarePng({ size: 512, outPath: `${ICON_DIR}/web-app-manifest-512x512.png` }),
+  renderMaskablePng({ size: 192, outPath: `${ICON_DIR}/web-app-manifest-192x192-maskable.png` }),
+  renderMaskablePng({ size: 512, outPath: `${ICON_DIR}/web-app-manifest-512x512-maskable.png` }),
 ]);
 
 console.log('Generated PWA icons (apple-touch + manifest + maskable).');

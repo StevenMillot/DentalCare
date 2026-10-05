@@ -14,7 +14,7 @@ Activer le HTTPS sur tous vos domaines avec un certificat SSL gratuit Let's Encr
 
 Avant d'activer le SSL, vous DEVEZ avoir :
 
-- ✅ Configuré les DNS (voir [GUIDE-DNS-OVH.md](./GUIDE-DNS-OVH.md))
+- ✅ Configuré les DNS (voir [GUIDE-DNS-OVH.md](GUIDE-DNS-OVH.md))
 - ✅ Attendu la propagation DNS (4-24h)
 - ✅ Vérifié que le domaine pointe vers votre hébergement
 
@@ -314,9 +314,9 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 
 Une fois le SSL activé :
 
-1. ✅ Créez les adresses email → Voir **[GUIDE-EMAILS-OVH.md](./GUIDE-EMAILS-OVH.md)**
-2. ✅ Déployez le site → Voir **[QUICKSTART-OVH.md](./QUICKSTART-OVH.md)**
-3. ✅ Vérifiez la sécurité → Voir **[CHECKLIST-DEPLOIEMENT.md](./CHECKLIST-DEPLOIEMENT.md)**
+1. ✅ Créez les adresses email → Voir **[GUIDE-EMAILS-OVH.md](GUIDE-EMAILS-OVH.md)**
+2. ✅ Déployez le site → Voir **[QUICKSTART-OVH.md](../deploiement/QUICKSTART-OVH.md)**
+3. ✅ Vérifiez la sécurité → Voir **[CHECKLIST-DEPLOIEMENT.md](../deploiement/CHECKLIST-DEPLOIEMENT.md)**
 
 ---
 

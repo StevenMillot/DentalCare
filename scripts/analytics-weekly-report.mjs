@@ -2,7 +2,7 @@
 // Rapport analytics hebdomadaire pour paro-spe.fr : interroge la Google Search
 // Console (dont le statut d'indexation de chaque page du sitemap, via l'API
 // URL Inspection) et la Google Analytics 4 Data API (mêmes credentials OAuth
-// que le serveur MCP, voir GUIDE-MCP-SEARCH-CONSOLE-GA4.md), calcule les
+// que le serveur MCP, voir docs/analytics/GUIDE-MCP-SEARCH-CONSOLE-GA4.md), calcule les
 // variations semaine sur semaine, et génère un rapport Markdown.
 //
 // ⚠️ Lecture seule : ce script ne modifie jamais le contenu du site. Il est

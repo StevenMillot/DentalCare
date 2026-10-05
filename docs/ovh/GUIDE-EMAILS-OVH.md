@@ -19,7 +19,7 @@ Vous avez besoin de **2 adresses email** :
 
 Avant de créer les adresses email, vous DEVEZ avoir :
 
-- ✅ Configuré les DNS avec les enregistrements MX (voir [GUIDE-DNS-OVH.md](./GUIDE-DNS-OVH.md))
+- ✅ Configuré les DNS avec les enregistrements MX (voir [GUIDE-DNS-OVH.md](GUIDE-DNS-OVH.md))
 - ✅ Attendu la propagation DNS (4-24h)
 
 **Pour vérifier que les MX sont configurés :**
@@ -389,9 +389,9 @@ Dans le webmail RoundCube :
 
 Une fois les emails créés :
 
-1. ✅ Déployez le site → Voir **[QUICKSTART-OVH.md](./QUICKSTART-OVH.md)**
+1. ✅ Déployez le site → Voir **[QUICKSTART-OVH.md](../deploiement/QUICKSTART-OVH.md)**
 2. ✅ Testez le formulaire de contact
-3. ✅ Configurez le monitoring → Voir **[GUIDE-MONITORING-OVH.md](./GUIDE-MONITORING-OVH.md)**
+3. ✅ Configurez le monitoring → Voir **[GUIDE-UPTIMEROBOT.md](../monitoring/GUIDE-UPTIMEROBOT.md)**
 
 ---
 

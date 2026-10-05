@@ -11,7 +11,7 @@ if [ -n "${GOOGLE_OAUTH_CLIENT_ID:-}" ] && [ -n "${GOOGLE_OAUTH_CLIENT_SECRET:-}
     echo "[start] Échec de la génération des credentials MCP (non bloquant)." >&2
   fi
 else
-  echo "[start] Secrets GOOGLE_OAUTH_* absents — MCP GA4/Search Console non initialisé (voir GUIDE-MCP-SEARCH-CONSOLE-GA4.md)." >&2
+  echo "[start] Secrets GOOGLE_OAUTH_* absents — MCP GA4/Search Console non initialisé (voir docs/analytics/GUIDE-MCP-SEARCH-CONSOLE-GA4.md)." >&2
 fi
 
 exit 0

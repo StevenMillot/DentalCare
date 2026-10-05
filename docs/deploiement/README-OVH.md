@@ -10,14 +10,14 @@ Ce projet inclut une documentation complète pour le déploiement sur OVH :
 
 ### 🚀 Pour commencer rapidement
 
-**[QUICKSTART-OVH.md](./QUICKSTART-OVH.md)** - Déploiement en 5 minutes
+**[QUICKSTART-OVH.md](QUICKSTART-OVH.md)** - Déploiement en 5 minutes
 - Configuration rapide en 3 étapes
 - Commandes essentielles
 - Dépannage express
 
 ### 📖 Documentation complète
 
-**[DEPLOYMENT.md](./DEPLOYMENT.md)** - Guide complet de déploiement
+**[DEPLOYMENT.md](DEPLOYMENT.md)** - Guide complet de déploiement
 - Configuration initiale détaillée
 - Déploiement automatique et manuel
 - Configuration DNS et SSL
@@ -27,7 +27,7 @@ Ce projet inclut une documentation complète pour le déploiement sur OVH :
 
 ### ✅ Checklist de déploiement
 
-**[CHECKLIST-DEPLOIEMENT.md](./CHECKLIST-DEPLOIEMENT.md)** - Liste de vérifications
+**[CHECKLIST-DEPLOIEMENT.md](CHECKLIST-DEPLOIEMENT.md)** - Liste de vérifications
 - Avant le déploiement
 - Pendant le déploiement
 - Après le déploiement (70+ points de contrôle)
@@ -47,8 +47,8 @@ npm install
 brew install lftp  # ou apt-get install lftp
 
 # 3. Déploiement
-chmod +x deploy-ovh.sh
-./deploy-ovh.sh production
+chmod +x scripts/deploy-ovh.sh
+./scripts/deploy-ovh.sh production
 ```
 
 ✅ **Site en ligne sur https://paro-spe.fr**
@@ -62,11 +62,11 @@ chmod +x deploy-ovh.sh
 | Fichier | Description |
 |---------|-------------|
 | `.htaccess` | Configuration Apache : HTTPS, sécurité, cache, compression |
-| `deploy-ovh.sh` | Script de déploiement automatisé FTP/SFTP |
+| `scripts/deploy-ovh.sh` | Script de déploiement automatisé FTP/SFTP |
 | `.env.ovh.template` | Template de configuration (à copier en `.env.ovh`) |
-| `health-check.php` | Endpoint de monitoring du site |
-| `error-handler.php` | Gestionnaire d'erreurs PHP |
-| `monitoring.js` | Système de monitoring JavaScript |
+| `health-check.php` | Endpoint de monitoring du site (racine, URL publique) |
+| `server/error-handler.php` | Gestionnaire d'erreurs PHP |
+| `server/monitoring.js` | Système de monitoring JavaScript |
 | `500.html` | Page d'erreur serveur personnalisée |
 | `robots.txt` | Optimisé pour OVH (bloque fichiers sensibles) |
 
@@ -120,7 +120,7 @@ Cibles de performance :
 
 ```bash
 # Déploiement complet
-./deploy-ovh.sh production
+./scripts/deploy-ovh.sh production
 
 # Préparer le build (sans déployer)
 npm run deploy:prepare
@@ -192,7 +192,7 @@ python3 -m http.server 8000
 
 # 3. Déployer
 npm run deploy:prepare
-./deploy-ovh.sh production
+./scripts/deploy-ovh.sh production
 
 # 4. Vérifier
 # Ouvrir https://paro-spe.fr
@@ -203,7 +203,7 @@ npm run deploy:prepare
 
 ```bash
 npm run sw:bump
-./deploy-ovh.sh production
+./scripts/deploy-ovh.sh production
 ```
 
 ### Rollback (en cas de problème)
@@ -216,7 +216,7 @@ ls -t *.tar.gz | head -n 1  # Voir le dernier
 # Extraire et redéployer
 tar -xzf backup-YYYYMMDD-HHMMSS.tar.gz -C /tmp/restore
 cd /tmp/restore
-./deploy-ovh.sh production
+./scripts/deploy-ovh.sh production
 ```
 
 ---
@@ -233,7 +233,7 @@ cd /tmp/restore
 
 ```bash
 npm run dev:refresh
-./deploy-ovh.sh production
+./scripts/deploy-ovh.sh production
 ```
 
 ### Formulaire ne fonctionne pas ?
@@ -246,11 +246,11 @@ npm run dev:refresh
 
 ```bash
 npm run sw:bump
-./deploy-ovh.sh production
+./scripts/deploy-ovh.sh production
 # Côté client : F12 > Application > Service Workers > Unregister
 ```
 
-Plus de solutions dans **[DEPLOYMENT.md](./DEPLOYMENT.md)** section Dépannage.
+Plus de solutions dans **[DEPLOYMENT.md](DEPLOYMENT.md)** section Dépannage.
 
 ---
 
@@ -258,9 +258,9 @@ Plus de solutions dans **[DEPLOYMENT.md](./DEPLOYMENT.md)** section Dépannage.
 
 ### Documentation
 
-1. **[QUICKSTART-OVH.md](./QUICKSTART-OVH.md)** - Démarrage rapide
-2. **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Documentation complète
-3. **[CHECKLIST-DEPLOIEMENT.md](./CHECKLIST-DEPLOIEMENT.md)** - Vérifications
+1. **[QUICKSTART-OVH.md](QUICKSTART-OVH.md)** - Démarrage rapide
+2. **[DEPLOYMENT.md](DEPLOYMENT.md)** - Documentation complète
+3. **[CHECKLIST-DEPLOIEMENT.md](CHECKLIST-DEPLOIEMENT.md)** - Vérifications
 
 ### OVH
 
@@ -282,10 +282,10 @@ Votre site Paro-Spé est maintenant configuré pour un déploiement optimal sur 
 
 **Prochaines étapes :**
 
-1. Lire **[QUICKSTART-OVH.md](./QUICKSTART-OVH.md)**
+1. Lire **[QUICKSTART-OVH.md](QUICKSTART-OVH.md)**
 2. Configurer `.env.ovh`
-3. Déployer avec `./deploy-ovh.sh production`
-4. Vérifier avec **[CHECKLIST-DEPLOIEMENT.md](./CHECKLIST-DEPLOIEMENT.md)**
+3. Déployer avec `./scripts/deploy-ovh.sh production`
+4. Vérifier avec **[CHECKLIST-DEPLOIEMENT.md](CHECKLIST-DEPLOIEMENT.md)**
 
 ---
 

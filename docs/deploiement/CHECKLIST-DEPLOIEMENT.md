@@ -11,7 +11,7 @@ Utilisez cette checklist avant et après chaque déploiement pour vous assurer q
 - [ ] Fichier `.env.ovh` créé et rempli avec identifiants OVH
 - [ ] Dépendances npm installées (`npm install`)
 - [ ] Outil `lftp` installé sur la machine locale
-- [ ] Script `deploy-ovh.sh` rendu exécutable (`chmod +x`)
+- [ ] Script `scripts/deploy-ovh.sh` rendu exécutable (`chmod +x scripts/deploy-ovh.sh`)
 - [ ] DNS configuré (enregistrements A et CNAME)
 - [ ] Certificat SSL activé sur OVH
 
@@ -39,7 +39,7 @@ Utilisez cette checklist avant et après chaque déploiement pour vous assurer q
 
 ### Upload
 
-- [ ] Script de déploiement lancé : `./deploy-ovh.sh production`
+- [ ] Script de déploiement lancé : `./scripts/deploy-ovh.sh production`
 - [ ] Connexion FTP réussie
 - [ ] Tous les fichiers uploadés sans erreur
 - [ ] Fichier `.htaccess` bien présent sur le serveur
@@ -273,7 +273,7 @@ ls -t *.tar.gz | head -n 1  # Voir le dernier backup
 # Extraire et redéployer
 tar -xzf backup-YYYYMMDD-HHMMSS.tar.gz -C /tmp/restore
 cd /tmp/restore
-./deploy-ovh.sh production
+./scripts/deploy-ovh.sh production
 ```
 
 ### Contact d'urgence

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Génère le fichier de credentials ADC (Application Default Credentials) au format
 // "authorized_user" attendu par google-auth-library, à partir des 3 valeurs obtenues
-// via Google OAuth Playground (voir GUIDE-MCP-SEARCH-CONSOLE-GA4.md, section "Option mobile").
+// via Google OAuth Playground (voir docs/analytics/GUIDE-MCP-SEARCH-CONSOLE-GA4.md, section "Option mobile").
 //
 // Usage :
 //   GOOGLE_OAUTH_CLIENT_ID=... GOOGLE_OAUTH_CLIENT_SECRET=... GOOGLE_OAUTH_REFRESH_TOKEN=... \
@@ -33,7 +33,7 @@ const missing = [
 if (missing.length > 0) {
   console.error(
     `Variables manquantes : ${missing.join(', ')}\n` +
-      'Voir GUIDE-MCP-SEARCH-CONSOLE-GA4.md pour les obtenir via OAuth Playground.'
+      'Voir docs/analytics/GUIDE-MCP-SEARCH-CONSOLE-GA4.md pour les obtenir via OAuth Playground.'
   );
   process.exit(1);
 }

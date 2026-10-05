@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Comptage de représentation des mots-clés sur les pages HTML publiques.
- * Sert de base au livrable docs/analyse-seo-mots-cles-paro-spe*.html.
+ * Sert de base au livrable docs/seo/analyse-seo-mots-cles-paro-spe*.html.
  *
  * Usage : node scripts/seo-keyword-count.mjs [--json]
  */

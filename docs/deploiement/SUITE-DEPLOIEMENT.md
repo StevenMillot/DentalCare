@@ -16,7 +16,7 @@
 ### 2. Configuration du Site
 - ✅ `.htaccess` configuré avec redirections multi-domaines
 - ✅ SSL/HTTPS, sécurité, compression, cache configurés
-- ✅ Monitoring client-side (`monitoring.js`) et server-side (`error-handler.php`, `health-check.php`)
+- ✅ Monitoring client-side (`server/monitoring.js`) et server-side (`server/error-handler.php`, `health-check.php`)
 - ✅ Page d'erreur 500 personnalisée
 - ✅ Robots.txt optimisé pour SEO
 
@@ -26,7 +26,7 @@
 - ✅ Guide Emails OVH (`GUIDE-EMAILS-OVH.md`)
 - ✅ Guide Analytics sans cookies (`GUIDE-ANALYTICS-SANS-COOKIES.md`)
 - ✅ Guide UptimeRobot (`GUIDE-UPTIMEROBOT.md`)
-- ✅ Script de déploiement automatisé (`deploy-ovh.sh`)
+- ✅ Script de déploiement automatisé (`scripts/deploy-ovh.sh`)
 
 ---
 
@@ -56,7 +56,7 @@ cat .env.ovh
 # ADMIN_EMAIL=secretariat@paro-spe.fr
 
 # 3. Lance le déploiement
-./deploy-ovh.sh
+./scripts/deploy-ovh.sh
 ```
 
 **Le script va :**
@@ -82,7 +82,7 @@ cat .env.ovh
    ```javascript
    const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // ← TON ID ICI
    ```
-6. Redéploie avec `./deploy-ovh.sh`
+6. Redéploie avec `./scripts/deploy-ovh.sh`
 
 **Durée estimée :** 10 minutes
 
@@ -254,13 +254,13 @@ curl https://paro-spe.fr/health-check.php
 | Guide | Description |
 |-------|-------------|
 | `DEMARRAGE-PARO-SPE.md` | Guide de démarrage rapide personnalisé |
-| `GUIDE-DNS-OVH.md` | Configuration DNS complète |
-| `GUIDE-SSL-OVH.md` | Activation SSL Let's Encrypt |
-| `GUIDE-EMAILS-OVH.md` | Création emails professionnels |
-| `GUIDE-ANALYTICS-SANS-COOKIES.md` | Google Analytics RGPD-compliant |
-| `GUIDE-UPTIMEROBOT.md` | Monitoring uptime |
+| `../ovh/GUIDE-DNS-OVH.md` | Configuration DNS complète |
+| `../ovh/GUIDE-SSL-OVH.md` | Activation SSL Let's Encrypt |
+| `../ovh/GUIDE-EMAILS-OVH.md` | Création emails professionnels |
+| `../analytics/GUIDE-ANALYTICS-SANS-COOKIES.md` | Google Analytics RGPD-compliant |
+| `../monitoring/GUIDE-UPTIMEROBOT.md` | Monitoring uptime |
 | `DEPLOYMENT.md` | Procédures de déploiement avancées |
-| `README.md` | Documentation générale du projet |
+| `../../README.md` | Documentation générale du projet |
 
 ---
 
@@ -268,7 +268,7 @@ curl https://paro-spe.fr/health-check.php
 
 ```bash
 # Déployer le site
-./deploy-ovh.sh
+./scripts/deploy-ovh.sh
 
 # Développement local
 npm run dev:refresh
@@ -289,7 +289,7 @@ ls -lh backups/
 
 Coche au fur et à mesure :
 
-- [ ] **ÉTAPE 1** : Site déployé sur OVH via `./deploy-ovh.sh`
+- [ ] **ÉTAPE 1** : Site déployé sur OVH via `./scripts/deploy-ovh.sh`
 - [ ] **ÉTAPE 2** : Google Analytics configuré et testé
 - [ ] **ÉTAPE 3** : UptimeRobot configuré avec alertes
 - [ ] **ÉTAPE 4** : Formulaire de contact testé et fonctionnel

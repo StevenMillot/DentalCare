@@ -122,6 +122,7 @@ js/script.js            JS principal (source)
 js/script.min.js        JS livré (généré)
 js/src/carousel/        Carrousel cabinet (source)
 js/cabinet-media-carousel.min.js
+assets/icons/           Favicon SVG/PNG, apple-touch et icônes PWA
 assets/Icones/
   icons.svg             Sprite UI (cœur, téléphone, flèches…)
   technologies/         Icônes raster section Technologies
@@ -130,8 +131,12 @@ assets/team/            Portraits + variantes *-{360,540,720,1080}w.jpg
 assets/cabinet-gallery/ Photos + variantes *-{240…1600}w.avif
 sw.js                   Service worker
 site.webmanifest        Manifest PWA
-scripts/                Scripts Node (maintenance / build)
+favicon.ico             Icône demandée par défaut par les navigateurs
+scripts/                Scripts Node et déploiement OVH
 tools/                  Génération images responsive
+docs/                   Guides (déploiement, OVH, analytics, SEO)
+server/                 Monitoring PHP/JS (hors site public)
+rapports-analytics/     Rapports hebdomadaires GA4 / Search Console
 ```
 
 ---
@@ -200,17 +205,17 @@ Ou DevTools → Application → Service Workers → Unregister.
 
 Le projet inclut des guides complets pour déployer sur OVH :
 
-- **[DEMARRAGE-PARO-SPE.md](./DEMARRAGE-PARO-SPE.md)** - 🎯 **COMMENCER ICI** - Guide complet étape par étape
-- **[GUIDE-DNS-OVH.md](./GUIDE-DNS-OVH.md)** - Configuration DNS (4 domaines)
-- **[GUIDE-SSL-OVH.md](./GUIDE-SSL-OVH.md)** - Activation SSL Let's Encrypt
-- **[GUIDE-EMAILS-OVH.md](./GUIDE-EMAILS-OVH.md)** - Création des emails @paro-spe.fr
-- **[GUIDE-ANALYTICS-SANS-COOKIES.md](./GUIDE-ANALYTICS-SANS-COOKIES.md)** - Google Analytics anonyme
-- **[GUIDE-UPTIMEROBOT.md](./GUIDE-UPTIMEROBOT.md)** - Monitoring uptime
-- **[GUIDE-MCP-SEARCH-CONSOLE-GA4.md](./GUIDE-MCP-SEARCH-CONSOLE-GA4.md)** - Serveur MCP GA4 / Search Console pour Cursor
-- **[RAPPORT-ANALYTICS-HEBDOMADAIRE.md](./RAPPORT-ANALYTICS-HEBDOMADAIRE.md)** - Rapport analytics hebdomadaire automatique GA4/Search Console (GitHub Actions, distinct de l'automatisation "SEO Weekly Audit")
-- **[QUICKSTART-OVH.md](./QUICKSTART-OVH.md)** - Déploiement rapide
-- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Documentation complète (800+ lignes)
-- **[CHECKLIST-DEPLOIEMENT.md](./CHECKLIST-DEPLOIEMENT.md)** - 70+ points de vérification
+- **[DEMARRAGE-PARO-SPE.md](docs/deploiement/DEMARRAGE-PARO-SPE.md)** - 🎯 **COMMENCER ICI** - Guide complet étape par étape
+- **[GUIDE-DNS-OVH.md](docs/ovh/GUIDE-DNS-OVH.md)** - Configuration DNS (4 domaines)
+- **[GUIDE-SSL-OVH.md](docs/ovh/GUIDE-SSL-OVH.md)** - Activation SSL Let's Encrypt
+- **[GUIDE-EMAILS-OVH.md](docs/ovh/GUIDE-EMAILS-OVH.md)** - Création des emails @paro-spe.fr
+- **[GUIDE-ANALYTICS-SANS-COOKIES.md](docs/analytics/GUIDE-ANALYTICS-SANS-COOKIES.md)** - Google Analytics anonyme
+- **[GUIDE-UPTIMEROBOT.md](docs/monitoring/GUIDE-UPTIMEROBOT.md)** - Monitoring uptime
+- **[GUIDE-MCP-SEARCH-CONSOLE-GA4.md](docs/analytics/GUIDE-MCP-SEARCH-CONSOLE-GA4.md)** - Serveur MCP GA4 / Search Console pour Cursor
+- **[RAPPORT-ANALYTICS-HEBDOMADAIRE.md](docs/analytics/RAPPORT-ANALYTICS-HEBDOMADAIRE.md)** - Rapport analytics hebdomadaire automatique GA4/Search Console (GitHub Actions, distinct de l'automatisation "SEO Weekly Audit")
+- **[QUICKSTART-OVH.md](docs/deploiement/QUICKSTART-OVH.md)** - Déploiement rapide
+- **[DEPLOYMENT.md](docs/deploiement/DEPLOYMENT.md)** - Documentation complète (800+ lignes)
+- **[CHECKLIST-DEPLOIEMENT.md](docs/deploiement/CHECKLIST-DEPLOIEMENT.md)** - 70+ points de vérification
 
 ### Déploiement rapide
 
@@ -223,8 +228,8 @@ npm install
 brew install lftp  # ou: sudo apt-get install lftp
 
 # 3. Déploiement
-chmod +x deploy-ovh.sh
-./deploy-ovh.sh production
+chmod +x scripts/deploy-ovh.sh
+./scripts/deploy-ovh.sh production
 ```
 
 ✅ **Site en ligne sur https://paro-spe.fr**

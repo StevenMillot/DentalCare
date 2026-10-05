@@ -84,14 +84,14 @@ npm install
 
 ### Utilisation du script de déploiement
 
-Le script `deploy-ovh.sh` automatise tout le processus :
+Le script `scripts/deploy-ovh.sh` automatise tout le processus :
 
 ```bash
 # Rendre le script exécutable (première fois seulement)
-chmod +x deploy-ovh.sh
+chmod +x scripts/deploy-ovh.sh
 
 # Déployer en production
-./deploy-ovh.sh production
+./scripts/deploy-ovh.sh production
 ```
 
 ### Ce que fait le script
@@ -152,7 +152,7 @@ Transférez **tout le contenu** du projet vers `/www` sur le serveur **SAUF** :
 - `package.json`, `package-lock.json`
 - `README.md`, `DEPLOYMENT.md`
 - `.env.ovh`
-- `deploy-ovh.sh`
+- `scripts/deploy-ovh.sh`
 
 ✅ **Assurez-vous d'uploader** :
 - `.htaccess` (crucial pour la sécurité et redirections)
@@ -327,7 +327,7 @@ git status
 git diff
 
 # 5. Déployer
-./deploy-ovh.sh production
+./scripts/deploy-ovh.sh production
 ```
 
 ### Mises à jour du CSS/JS
@@ -341,7 +341,7 @@ python3 -m http.server 8000
 
 # Déployer
 npm run deploy:prepare
-./deploy-ovh.sh production
+./scripts/deploy-ovh.sh production
 ```
 
 ### Ajout de photos
@@ -358,7 +358,7 @@ npm run images:responsive
 
 # 4. Déployer
 npm run deploy:prepare
-./deploy-ovh.sh production
+./scripts/deploy-ovh.sh production
 ```
 
 ### Rotation des backups
@@ -381,7 +381,7 @@ Si le contenu ne se met pas à jour après déploiement :
 npm run sw:bump
 
 # Redéployer
-./deploy-ovh.sh production
+./scripts/deploy-ovh.sh production
 ```
 
 ---
@@ -435,7 +435,7 @@ lftp -u $FTP_USER,$FTP_PASS $FTP_HOST -e "cat /www/.htaccess; quit"
    ```bash
    npm run dev:refresh
    npm run deploy:prepare
-   ./deploy-ovh.sh production
+   ./scripts/deploy-ovh.sh production
    ```
 4. Videz le cache du navigateur (Ctrl+F5)
 
@@ -477,7 +477,7 @@ lftp -u $FTP_USER,$FTP_PASS $FTP_HOST -e "cat /www/.htaccess; quit"
 npm run sw:bump
 
 # 2. Redéployer
-./deploy-ovh.sh production
+./scripts/deploy-ovh.sh production
 
 # 3. Côté client :
 # - Ouvrir DevTools > Application > Service Workers
@@ -497,7 +497,7 @@ npm run sw:bump
    ```bash
    npm run images:responsive
    npm run deploy:prepare
-   ./deploy-ovh.sh production
+   ./scripts/deploy-ovh.sh production
    ```
 4. Vérifiez les permissions sur le serveur
 

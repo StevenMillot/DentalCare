@@ -319,9 +319,9 @@ Une fois la propagation terminée :
 
 Une fois les DNS configurés :
 
-1. ✅ Activez le certificat SSL → Voir **[GUIDE-SSL-OVH.md](./GUIDE-SSL-OVH.md)**
-2. ✅ Créez les adresses email → Voir **[GUIDE-EMAILS-OVH.md](./GUIDE-EMAILS-OVH.md)**
-3. ✅ Déployez le site → Voir **[QUICKSTART-OVH.md](./QUICKSTART-OVH.md)**
+1. ✅ Activez le certificat SSL → Voir **[GUIDE-SSL-OVH.md](GUIDE-SSL-OVH.md)**
+2. ✅ Créez les adresses email → Voir **[GUIDE-EMAILS-OVH.md](GUIDE-EMAILS-OVH.md)**
+3. ✅ Déployez le site → Voir **[QUICKSTART-OVH.md](../deploiement/QUICKSTART-OVH.md)**
 
 ---
 

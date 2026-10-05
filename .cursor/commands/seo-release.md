@@ -17,11 +17,11 @@ Exécute strictement les étapes suivantes, dans l'ordre, et arrête-toi dès qu
 
 Ne commence cette partie qu'après la fin complète et réussie de la Partie A, avec une NOUVELLE confirmation explicite (la confirmation du merge ne vaut pas confirmation du déploiement).
 
-9. **Identifier le script de déploiement officiel** : `./deploy-ovh.sh production`, présent à la racine du repository. Ne jamais inventer une alternative. Si le script n'existe plus ou a changé, l'indiquer précisément et ARRÊTER.
+9. **Identifier le script de déploiement officiel** : `./scripts/deploy-ovh.sh production`. Ne jamais inventer une alternative. Si le script n'existe plus ou a changé, l'indiquer précisément et ARRÊTER.
 10. **Vérifier les prérequis** (`npm`, `lftp`, `.env.ovh`) ; si absents, l'indiquer et ARRÊTER sans contourner.
 11. **Afficher la commande exacte** qui sera exécutée, le commit à déployer et l'environnement cible (production — paro-spe.fr).
 12. **Demander confirmation** : "Confirmes-tu le lancement du déploiement en production ? (oui/non)". Ne pas continuer sans un "oui" explicite.
-13. **Déployer** en exécutant `./deploy-ovh.sh production`.
+13. **Déployer** en exécutant `./scripts/deploy-ovh.sh production`.
 14. **Attendre le résultat** complet du script (npm install, build, transfert FTP/SFTP).
 15. **Vérifier** le code de sortie du script ; en cas d'échec, afficher l'erreur complète et ARRÊTER sans prétendre à un succès.
 16. **Vérifier le site déployé** si techniquement possible (requête HTTP sur `https://paro-spe.fr/`) ; sinon l'indiquer clairement.

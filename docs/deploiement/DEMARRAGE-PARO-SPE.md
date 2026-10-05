@@ -25,7 +25,7 @@ Guide complet étape par étape pour déployer votre site sur OVH Cloud.
 ## 🎯 Plan de déploiement en 7 étapes
 
 ### ✅ Étape 1 : Configuration DNS (30 min + 24h propagation)
-**Guide** : [GUIDE-DNS-OVH.md](./GUIDE-DNS-OVH.md)
+**Guide** : [GUIDE-DNS-OVH.md](../ovh/GUIDE-DNS-OVH.md)
 
 **À faire :**
 1. Se connecter à OVH Manager
@@ -39,7 +39,7 @@ Guide complet étape par étape pour déployer votre site sur OVH Cloud.
 ---
 
 ### ✅ Étape 2 : Activation SSL (10 min + 2h activation)
-**Guide** : [GUIDE-SSL-OVH.md](./GUIDE-SSL-OVH.md)
+**Guide** : [GUIDE-SSL-OVH.md](../ovh/GUIDE-SSL-OVH.md)
 
 **À faire :**
 1. Attendre que les DNS soient propagés (étape 1)
@@ -53,7 +53,7 @@ Guide complet étape par étape pour déployer votre site sur OVH Cloud.
 ---
 
 ### ✅ Étape 3 : Création des adresses email (15 min)
-**Guide** : [GUIDE-EMAILS-OVH.md](./GUIDE-EMAILS-OVH.md)
+**Guide** : [GUIDE-EMAILS-OVH.md](../ovh/GUIDE-EMAILS-OVH.md)
 
 **À faire :**
 1. Dans OVH Manager > Emails > paro-spe.fr
@@ -68,7 +68,7 @@ Guide complet étape par étape pour déployer votre site sur OVH Cloud.
 ---
 
 ### ✅ Étape 4 : Déploiement du site (5 min)
-**Guide** : [QUICKSTART-OVH.md](./QUICKSTART-OVH.md)
+**Guide** : [QUICKSTART-OVH.md](QUICKSTART-OVH.md)
 
 **À faire :**
 1. Le fichier `.env.ovh` est déjà configuré avec vos identifiants ✅
@@ -79,8 +79,8 @@ Guide complet étape par étape pour déployer votre site sur OVH Cloud.
    ```
 3. Déployer :
    ```bash
-   chmod +x deploy-ovh.sh
-   ./deploy-ovh.sh production
+   chmod +x scripts/deploy-ovh.sh
+   ./scripts/deploy-ovh.sh production
    ```
 4. Attendre la fin du déploiement (2-3 min)
 
@@ -89,13 +89,13 @@ Guide complet étape par étape pour déployer votre site sur OVH Cloud.
 ---
 
 ### ✅ Étape 5 : Google Analytics (20 min - optionnel)
-**Guide** : [GUIDE-ANALYTICS-SANS-COOKIES.md](./GUIDE-ANALYTICS-SANS-COOKIES.md)
+**Guide** : [GUIDE-ANALYTICS-SANS-COOKIES.md](../analytics/GUIDE-ANALYTICS-SANS-COOKIES.md)
 
 **À faire :**
 1. Créer un compte Google Analytics
 2. Récupérer l'ID de mesure (G-XXXXXXXXXX)
 3. Éditer `js/analytics.js` et remplacer `G-XXXXXXXXXX` par votre ID
-4. Redéployer avec `./deploy-ovh.sh production`
+4. Redéployer avec `./scripts/deploy-ovh.sh production`
 5. Vérifier dans GA > Rapports > Temps réel
 
 **⚠️ Sans cookies, pas de bandeau obligatoire !**
@@ -105,7 +105,7 @@ Guide complet étape par étape pour déployer votre site sur OVH Cloud.
 ---
 
 ### ✅ Étape 6 : Monitoring UptimeRobot (15 min - optionnel)
-**Guide** : [GUIDE-UPTIMEROBOT.md](./GUIDE-UPTIMEROBOT.md)
+**Guide** : [GUIDE-UPTIMEROBOT.md](../monitoring/GUIDE-UPTIMEROBOT.md)
 
 **À faire :**
 1. Créer un compte sur uptimerobot.com
@@ -118,7 +118,7 @@ Guide complet étape par étape pour déployer votre site sur OVH Cloud.
 ---
 
 ### ✅ Étape 7 : Vérifications finales (15 min)
-**Checklist** : [CHECKLIST-DEPLOIEMENT.md](./CHECKLIST-DEPLOIEMENT.md)
+**Checklist** : [CHECKLIST-DEPLOIEMENT.md](CHECKLIST-DEPLOIEMENT.md)
 
 **À vérifier :**
 - [ ] `https://paro-spe.fr` accessible
@@ -155,15 +155,15 @@ Guide complet étape par étape pour déployer votre site sur OVH Cloud.
 ## 📞 Support en cas de problème
 
 ### Documentation complète
-- [DEPLOYMENT.md](./DEPLOYMENT.md) - Guide exhaustif (800+ lignes)
-- [CHECKLIST-DEPLOIEMENT.md](./CHECKLIST-DEPLOIEMENT.md) - 70+ points de vérification
+- [DEPLOYMENT.md](DEPLOYMENT.md) - Guide exhaustif (800+ lignes)
+- [CHECKLIST-DEPLOIEMENT.md](CHECKLIST-DEPLOIEMENT.md) - 70+ points de vérification
 
 ### Guides spécifiques
-- [GUIDE-DNS-OVH.md](./GUIDE-DNS-OVH.md) - Configuration DNS détaillée
-- [GUIDE-SSL-OVH.md](./GUIDE-SSL-OVH.md) - Activation SSL pas à pas
-- [GUIDE-EMAILS-OVH.md](./GUIDE-EMAILS-OVH.md) - Création emails
-- [GUIDE-ANALYTICS-SANS-COOKIES.md](./GUIDE-ANALYTICS-SANS-COOKIES.md) - GA anonyme
-- [GUIDE-UPTIMEROBOT.md](./GUIDE-UPTIMEROBOT.md) - Monitoring uptime
+- [GUIDE-DNS-OVH.md](../ovh/GUIDE-DNS-OVH.md) - Configuration DNS détaillée
+- [GUIDE-SSL-OVH.md](../ovh/GUIDE-SSL-OVH.md) - Activation SSL pas à pas
+- [GUIDE-EMAILS-OVH.md](../ovh/GUIDE-EMAILS-OVH.md) - Création emails
+- [GUIDE-ANALYTICS-SANS-COOKIES.md](../analytics/GUIDE-ANALYTICS-SANS-COOKIES.md) - GA anonyme
+- [GUIDE-UPTIMEROBOT.md](../monitoring/GUIDE-UPTIMEROBOT.md) - Monitoring uptime
 
 ### Support OVH
 - Espace client : [ovh.com/manager](https://www.ovh.com/manager/)
@@ -179,7 +179,7 @@ Une fois que tout est configuré, déployer une mise à jour est ultra-simple :
 ```bash
 # 1. Faire vos modifications dans le code
 # 2. Déployer
-./deploy-ovh.sh production
+./scripts/deploy-ovh.sh production
 ```
 
 C'est tout ! Le script s'occupe de :
@@ -228,7 +228,7 @@ Dans ce projet, **tout est déjà configuré** :
 
 - ✅ Fichier `.htaccess` avec redirections multi-domaines
 - ✅ Fichier `.env.ovh` avec vos identifiants FTP
-- ✅ Script de déploiement `deploy-ovh.sh` prêt à l'emploi
+- ✅ Script de déploiement `scripts/deploy-ovh.sh` prêt à l'emploi
 - ✅ Formulaire configuré pour `secretariat@paro-spe.fr`
 - ✅ Google Analytics en mode anonyme (juste mettre votre ID)
 - ✅ Monitoring JS/PHP intégré
@@ -258,6 +258,6 @@ Votre site sera :
 
 ---
 
-**Commencez par l'étape 1 : [GUIDE-DNS-OVH.md](./GUIDE-DNS-OVH.md)**
+**Commencez par l'étape 1 : [GUIDE-DNS-OVH.md](../ovh/GUIDE-DNS-OVH.md)**
 
 Bonne chance ! 💪

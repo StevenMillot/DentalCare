@@ -51,7 +51,7 @@ function formatPwaHead(html) {
 }
 
 const manifestLink = '    <link rel="manifest" href="site.webmanifest">';
-const appleTouch = '    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">';
+const appleTouch = '    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">';
 const iosCapable = '    <meta name="apple-mobile-web-app-capable" content="yes">';
 const iosTitle = '    <meta name="apple-mobile-web-app-title" content="Paro-Spé">';
 const iosStatus = '    <meta name="apple-mobile-web-app-status-bar-style" content="default">';

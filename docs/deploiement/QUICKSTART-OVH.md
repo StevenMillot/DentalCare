@@ -41,10 +41,10 @@ sudo apt-get install lftp
 
 ```bash
 # Rendre le script exécutable (première fois)
-chmod +x deploy-ovh.sh
+chmod +x scripts/deploy-ovh.sh
 
 # Déployer !
-./deploy-ovh.sh production
+./scripts/deploy-ovh.sh production
 ```
 
 ✅ **C'est tout !** Votre site est en ligne sur `https://paro-spe.fr`
@@ -73,7 +73,7 @@ Pour mettre à jour le site après modifications :
 # Faire vos modifications...
 
 # Déployer
-./deploy-ovh.sh production
+./scripts/deploy-ovh.sh production
 ```
 
 Le script s'occupe de tout :
@@ -96,20 +96,20 @@ Le script s'occupe de tout :
 ### CSS/JS ne se chargent pas ?
 ```bash
 npm run dev:refresh
-./deploy-ovh.sh production
+./scripts/deploy-ovh.sh production
 ```
 
 ### Service Worker ne se met pas à jour ?
 ```bash
 npm run sw:bump
-./deploy-ovh.sh production
+./scripts/deploy-ovh.sh production
 ```
 
 ---
 
 ## 📚 Documentation complète
 
-Pour en savoir plus, consultez **[DEPLOYMENT.md](./DEPLOYMENT.md)** :
+Pour en savoir plus, consultez **[DEPLOYMENT.md](DEPLOYMENT.md)** :
 
 - Configuration DNS
 - Certificat SSL
@@ -127,7 +127,7 @@ Pour en savoir plus, consultez **[DEPLOYMENT.md](./DEPLOYMENT.md)** :
 npm run deploy:prepare
 
 # Déployer sur OVH
-./deploy-ovh.sh production
+./scripts/deploy-ovh.sh production
 
 # Rafraîchir CSS/JS après modification
 npm run dev:refresh
@@ -161,4 +161,4 @@ Testez : [securityheaders.com](https://securityheaders.com/?q=https://paro-spe.f
 
 **🎉 Félicitations ! Votre site est déployé et sécurisé sur OVH Cloud.**
 
-Pour toute question, consultez [DEPLOYMENT.md](./DEPLOYMENT.md) ou le support OVH.
+Pour toute question, consultez [DEPLOYMENT.md](DEPLOYMENT.md) ou le support OVH.

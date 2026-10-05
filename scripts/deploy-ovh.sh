@@ -4,11 +4,14 @@
 # SCRIPT DE DÉPLOIEMENT OVH CLOUD - PARO-SPE.FR
 # =====================================================
 # Ce script prépare et déploie le site sur OVH via FTP/SFTP
-# Usage: ./deploy-ovh.sh [environnement]
+# Usage (depuis la racine du dépôt) : ./scripts/deploy-ovh.sh [environnement]
 # Environnements: production, staging
 # =====================================================
 
 set -e  # Arrêter en cas d'erreur
+
+# Toujours travailler depuis la racine du dépôt
+cd "$(dirname "$0")/.."
 
 # Couleurs pour les messages
 RED='\033[0;31m'
@@ -100,7 +103,7 @@ EOF
     
     echo -e "${GREEN}✓ Fichier .env.ovh créé${NC}"
     echo -e "${YELLOW}⚠️  IMPORTANT: Éditez .env.ovh avec vos identifiants OVH${NC}"
-    echo -e "${YELLOW}   Puis relancez: ./deploy-ovh.sh${NC}"
+    echo -e "${YELLOW}   Puis relancez: ./scripts/deploy-ovh.sh${NC}"
     exit 0
 fi
 
@@ -164,6 +167,8 @@ cat > /tmp/deploy-exclude.txt << 'EOF'
 node_modules/
 scripts/
 tools/
+server/
+docs/
 backups/
 rapports-analytics/
 .git/
@@ -176,7 +181,6 @@ rapports-analytics/
 package.json
 package-lock.json
 *.md
-deploy-ovh.sh
 .gitignore
 EOF
 
@@ -227,6 +231,8 @@ mirror --reverse \
        --exclude-glob node_modules/ \
        --exclude-glob scripts/ \
        --exclude-glob tools/ \
+       --exclude-glob server/ \
+       --exclude-glob docs/ \
        --exclude-glob backups/ \
        --exclude-glob rapports-analytics/ \
        --exclude-glob .git/ \
@@ -239,7 +245,6 @@ mirror --reverse \
        --exclude-glob package.json \
        --exclude-glob package-lock.json \
        --exclude-glob *.md \
-       --exclude-glob deploy-ovh.sh \
        --exclude-glob .gitignore \
        --exclude-glob .nojekyll \
        . .;
