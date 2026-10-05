@@ -17,8 +17,16 @@
 }
 
 .traitements__grid > .traitement-card {
-  flex: 1 1 min(100%, 320px);
-  max-width: min(380px, 100%);
+  flex: 1 1 100%;
+  max-width: 400px;
+}
+
+/* Quatre familles de traitements : deux colonnes, pour garder les intitulés lisibles */
+@media (min-width: 760px) {
+  .traitements__grid > .traitement-card {
+    flex: 1 1 calc(50% - var(--space-xl));
+    max-width: 400px;
+  }
 }
 
 .traitements__link {
@@ -95,6 +103,52 @@ img.section-picto[src*='piezochirurgie'] {
   font-weight: 600;
   margin-bottom: var(--space-lg);
   color: var(--color-dark);
+}
+
+.traitement-card__title a {
+  color: inherit;
+  text-decoration: none;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+  position: relative;
+  padding-bottom: 0.45rem;
+  transition: color var(--transition);
+}
+
+/* Seul titre de carte cliquable : flèche et trait visibles sans survol. */
+.traitement-card__title a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-primary);
+}
+
+.traitement-card__title a::after {
+  content: '→';
+  color: var(--color-primary);
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.traitement-card__title a:hover,
+.traitement-card__title a:focus-visible {
+  color: var(--color-primary);
+}
+
+.traitement-card__title a:hover::after,
+.traitement-card__title a:focus-visible::after {
+  transform: translateX(4px);
+}
+
+.traitement-card__title a:focus-visible {
+  outline: 3px solid rgba(0, 212, 170, 0.45);
+  outline-offset: 3px;
 }
 
 .traitement-card__list {
@@ -638,6 +692,61 @@ body.treatment-page {
   top: calc(var(--header-height) + var(--space-lg));
 }
 
+/* Article long + paire de photos avant / après */
+.treatment-page__body--case {
+  display: grid;
+  gap: clamp(var(--space-xl), 4vw, var(--space-2xl));
+}
+
+.treatment-page__body--case .treatment-page__figures {
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-sm), 2vw, var(--space-lg));
+  width: 100%;
+}
+
+.treatment-page__body--case .treatment-page__prose {
+  width: min(100%, 46rem);
+  margin-inline: auto;
+}
+
+@media (min-width: 961px) {
+  .treatment-page__body--case .treatment-page__figures {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .treatment-page__body--case .treatment-page__figure {
+    min-width: 0;
+  }
+
+  /* Largeurs proportionnelles au format réel (1018×466 et 1018×430), même hauteur, sans recadrage. */
+  .treatment-page__body--case .treatment-page__figure:first-child {
+    flex: 2.185 1 0;
+  }
+
+  .treatment-page__body--case .treatment-page__figure:last-child {
+    flex: 2.367 1 0;
+  }
+
+  .treatment-page__body--case .treatment-page__figure img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+    object-fit: contain;
+  }
+}
+
+.treatment-page__figure figcaption {
+  margin-top: 0.45rem;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  text-align: center;
+}
+
 /* --- Page parodontologie (layout maquette) -------------------------------- */
 
 .treatment-page__header--parodontal {
@@ -999,6 +1108,12 @@ body.treatment-page--specialist .treatment-page__media {
     max-width: 28rem;
     margin-inline: auto;
     width: 100%;
+  }
+
+  .treatment-page__body--case .treatment-page__figures {
+    grid-template-columns: 1fr;
+    width: min(100%, 36rem);
+    margin-inline: auto;
   }
 
   .treatment-page__layout {
