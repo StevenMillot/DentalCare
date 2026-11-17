@@ -747,6 +747,42 @@ body.treatment-page {
   text-align: center;
 }
 
+/* Schéma légendé : le dessin porte déjà ses légendes. */
+.treatment-page__schema {
+  margin: var(--space-xl) 0;
+  background: var(--color-white);
+  border: 1px solid rgba(45, 55, 72, 0.1);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.treatment-page__schema img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.treatment-page__schema figcaption {
+  margin: 0;
+  padding: 0.7rem var(--space-md) 0.85rem;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--treatment-text-muted);
+  text-align: center;
+}
+
+.treatment-page__schema--photo {
+  background: #0c0c0e;
+}
+
+.treatment-page__schema--photo figcaption {
+  background: var(--color-white);
+}
+
 /* --- Page parodontologie (layout maquette) -------------------------------- */
 
 .treatment-page__header--parodontal {
