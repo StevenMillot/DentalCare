@@ -514,7 +514,7 @@
       const serviceLabel = selectedOpt ? selectedOpt.text : serviceValue;
       const message = $('#message').value.trim();
 
-      const subject = `[paro-spe.fr] Demande RDV — ${serviceLabel}`;
+      const subject = `[paro-spe.fr] Demande RDV : ${serviceLabel}`;
       const bodyLines = [
         'Bonjour,',
         '',
@@ -525,7 +525,7 @@
         `Motif : ${serviceLabel}`,
       ];
       if (message) bodyLines.push('', 'Message :', message);
-      bodyLines.push('', '— Message envoyé depuis paro-spe.fr');
+      bodyLines.push('', 'Message envoyé depuis paro-spe.fr');
       const bodyText = bodyLines.join('\n');
 
       const accessKey = (appointmentForm.getAttribute('data-web3forms-access-key') || '').trim();

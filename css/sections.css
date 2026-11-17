@@ -17,16 +17,8 @@
 }
 
 .traitements__grid > .traitement-card {
-  flex: 1 1 100%;
-  max-width: 400px;
-}
-
-/* Quatre familles de traitements : deux colonnes, pour garder les intitulés lisibles */
-@media (min-width: 760px) {
-  .traitements__grid > .traitement-card {
-    flex: 1 1 calc(50% - var(--space-xl));
-    max-width: 400px;
-  }
+  flex: 1 1 min(100%, 320px);
+  max-width: min(380px, 100%);
 }
 
 .traitements__link {
@@ -103,52 +95,6 @@ img.section-picto[src*='piezochirurgie'] {
   font-weight: 600;
   margin-bottom: var(--space-lg);
   color: var(--color-dark);
-}
-
-.traitement-card__title a {
-  color: inherit;
-  text-decoration: none;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: var(--space-sm);
-  width: 100%;
-  position: relative;
-  padding-bottom: 0.45rem;
-  transition: color var(--transition);
-}
-
-/* Seul titre de carte cliquable : flèche et trait visibles sans survol. */
-.traitement-card__title a::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--color-primary);
-}
-
-.traitement-card__title a::after {
-  content: '→';
-  color: var(--color-primary);
-  font-weight: 600;
-  transition: transform 0.2s ease;
-}
-
-.traitement-card__title a:hover,
-.traitement-card__title a:focus-visible {
-  color: var(--color-primary);
-}
-
-.traitement-card__title a:hover::after,
-.traitement-card__title a:focus-visible::after {
-  transform: translateX(4px);
-}
-
-.traitement-card__title a:focus-visible {
-  outline: 3px solid rgba(0, 212, 170, 0.45);
-  outline-offset: 3px;
 }
 
 .traitement-card__list {
@@ -747,7 +693,7 @@ body.treatment-page {
   text-align: center;
 }
 
-/* Schéma légendé : le dessin porte déjà ses légendes. */
+/* Schéma légendé (désinclusion) : le dessin porte déjà ses trois temps. */
 .treatment-page__schema {
   margin: var(--space-xl) 0;
   background: var(--color-white);
